@@ -1,21 +1,20 @@
 ---
-title: API Reference
+title: bambora API Reference
 
 language_tabs:
   - shell: CUrl
-  - javascript
-  - android
-  - objective_c
-  - swift
+  - javascript: nodeJS
   - php
   - ruby
   - python
-  - java
-  - csharp
-  - go
+  - java: Java
+  - csharp: C#
+  - go: Go
 
 toc_above:
-  - <a href='client.html'>Client</a>
+  - <a href='index.html'>Getting Started</a>
+  - <a href='web.html'>Web</a>
+  - <a href='mobile.html'>Mobile</a>
   - <a href='api.html'>API</a>
   
 includes:
@@ -26,17 +25,11 @@ includes:
 
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='http://docs.bambora.com'>General Documentation</a>
-  - <a href='http://docs.bambora.com/terminology'>Terminology</a>
-  - <a href='http://support.bambora.com'>Support</a>
+  - <a href='#'>Get a Test Account</a>
   - <a href='http://golive.bambora.com'>Activate Account</a>
   
 search: true
 ---
+# Overview
 
-# Introduction
-
-Welcome to Bambora's developer documentation. These pages will walk you through setting up your application with client-side and server-side code samples.
-
-
+This guide will walk you through the capabilities of our payments API for your server-side integration.

@@ -1,37 +1,32 @@
 ---
-title: API Reference
+title: dev/bambora
 
-language_tabs:
-  - shell: CUrl
-  - javascript
-  - android
-  - objective_c
-  - swift
-  - php
-  - ruby
-  - python
-  - java
-  - csharp
-  - go
+toc_above:
+  - <a href='index.html'>Getting Started</a>
+  
+toc_below:
+  - <a href='web.html'>Web</a>
+  - <a href='mobile.html'>Mobile</a>
+  - <a href='api.html'>API</a>
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='http://docs.bambora.com'>General Documentation</a>
-  - <a href='http://docs.bambora.com/terminology'>Terminology</a>
-  - <a href='http://support.bambora.com'>Support</a>
+  - <a href='#'>Get a Test Account</a>
   - <a href='http://golive.bambora.com'>Activate Account</a>
-  
-includes:
-  - authentication
-  - client
-  - server
-  - errors
 
 search: true
 ---
-
-# Introduction
-
+# Welcome
 Welcome to Bambora's developer documentation. These pages will walk you through setting up your application with client-side and server-side code samples.
 
+# Contributing To The Docs
 
+We've made it easy for anyone to update the documentation. So if you see any docs in error or sections that could use improvement simply look for the `Update Docs` link at the top of every page. It will send you to the GitHub page where you can make the change.
+
+# Get Your Test Account
+
+
+# Support
+Running into issues? No problem, just give a call or send us an email.
+
+# Going Live
+You've finished your testing, it's now time to turn your account live and start earning money.
