@@ -7,7 +7,7 @@ node("!master") {
   sh "docker build -t dev.bambora.com ."
 
   stage name: 'Build static web content'
-  sh "docker run --rm -v \$(pwd):/app dev.bambora.com rake build"
+  sh "docker run --rm -v \$PWD:/app dev.bambora.com rake build"
 
   if (env.BRANCH_NAME == "master") {
     stage name: 'Publish to S3'
