@@ -1,13 +1,4 @@
-FROM ubuntu:trusty
+FROM tutum/slate
 
-RUN apt-get update
-RUN apt-get install -yq ruby ruby-dev build-essential git
-RUN gem install --no-ri --no-rdoc bundler
-ADD Gemfile /app/Gemfile
-ADD Gemfile.lock /app/Gemfile.lock
-RUN cd /app; bundle install
-ADD . /app
-EXPOSE 4567
-WORKDIR /app
-ENTRYPOINT ["bundle", "exec"]
-CMD ["middleman", "server"]
+#docker build -t devbamboracom .
+#docker run -d -p 4567:4567 --name devmamboracom devbamboracom 
