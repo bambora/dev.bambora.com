@@ -35,4 +35,3 @@ Now that Slate is all set up your machine, you'll probably want to learn more ab
 Instead of using `rake publish`, use `rake build`. Middleman will build your website to the `build` directory of your project, and you can copy those static HTML files to the server of your choice.
 
 Another alternative is to use the [middleman-deploy](https://github.com/middleman-contrib/middleman-deploy) gem. 
-
