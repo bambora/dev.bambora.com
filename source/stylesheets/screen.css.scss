@@ -220,8 +220,7 @@ html, body {
     box-shadow: 0px -5px 5px 1px #000000;
 
     li,a {
-      color: $nav-text;
-      text-decoration: none;
+      @extend %footer-font;
     }
 
     a:hover {
@@ -240,7 +239,7 @@ html, body {
 .nav-top {
   position: relative;
   background-color: $top-nav-bg;
-  box-shadow: 0px 5px 5px 1px #000000;
+  box-shadow: 0px 5px 4px 1px $nav-gradient;
 }
 
 .nav-bottom {

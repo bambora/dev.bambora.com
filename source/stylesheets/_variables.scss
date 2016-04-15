@@ -28,6 +28,7 @@ $top-nav-bg: #48256B;
 $bottom-nav-bg: #000000;
 $examples-bg: #393939;
 $code-bg: #292929;
+$nav-gradient: #151414;
 $code-annotation-bg: #1c1c1c;
 $nav-subitem-bg: #262626;
 $nav-active-bg: #8A52B4;
@@ -45,7 +46,7 @@ $search-notice-bg: #c97a7e;
 // TEXT COLORS
 ////////////////////
 $main-text: #333; // main content text color
-$nav-text: #fff;
+$nav-text: rgb(208, 205, 205);
 $nav-active-text: #fff;
 $lang-select-text: #fff; // color of unselected language tab text
 $lang-select-active-text: #fff; // color of selected language tab text
@@ -86,6 +87,12 @@ $phone-width: $tablet-width - $nav-width; // min width before reverting to mobil
   line-height: 1.5;
 }
 
+%footer-font {
+  color: $nav-text;
+  font-weight: lighter;
+  text-decoration: none;
+  font-size: 0.9em;
+}
 
 // OTHER
 ////////////////////
