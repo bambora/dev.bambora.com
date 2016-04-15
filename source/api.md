@@ -18,6 +18,7 @@ toc_above:
   - <a href='api.html'>API</a>
   
 includes:
+  - api/spec
   - api/authentication
   - api/server
   - api/errors
