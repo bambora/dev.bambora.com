@@ -1,5 +1,5 @@
 FROM ruby:onbuild
-EXPOSE 4567
+EXPOSE 8000
 
 RUN apt-get update && apt-get install -y \
 nodejs \
@@ -13,4 +13,4 @@ RUN bundle exec middleman build --clean
 RUN mv build public
 RUN mv api ./public/
 WORKDIR public
-CMD ["static", "-p", "8000"]
+CMD ["static", "-p", "8000", "-a", "0.0.0.0"]
