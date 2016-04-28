@@ -1,1 +1,8 @@
 .git
+.gitignore
+.travis.yml
+CHANGELOG.md
+CONTRIBUTING.md
+docker-compose.yml
+Jenkinsfile
+LICENSE

@@ -3,10 +3,6 @@ require 'rake/clean'
 
 CLOBBER.include('build')
 
-task :dependencies do
-  puts "installing node-static"
-  sh "npm install -g node-static"
-end
 
 task :build_slate do
   puts "building slate"
@@ -17,14 +13,11 @@ task :copy_swagger do
   puts "copying swagger UI"
   sh "cp build public -r"
   sh "cp -r api public/api"
-  sh "find ."
 end
 
-task :run do 
-  puts "static -a 0.0.0.0 -p "+ENV['port']
-  sh "static -a 0.0.0.0 -p "+ENV['port']
+task :run_server do
+  sh "bundle install"
+  sh "ruby -run -ehttpd ./public -p4567"
 end
+task :run => [:build_slate, :copy_swagger, :run_server]
 
-task :build => [:dependencies, :build_slate, :copy_swagger]
-
-task :default => [:build]
