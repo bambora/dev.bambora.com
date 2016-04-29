@@ -1,5 +1,6 @@
 Getting Started With Customizing The Developer Portal
 ------------------------------
+Welcome to the bambora developer portal source site. Here you will find the source that builds up the portal as well as the documentation. We have also included instructions on how to build this site on your own and how to contribute changes.
 
 ## Submit A Documentation Change
 If you want to make a change to the documentation on the developer portal, click on one of these following links to be taken to the markdown file that defines the page. Edit that file (in the browser if you wish) and submit a pull request. We will review it and if accepted, and automated build will deploy your change.
@@ -26,6 +27,9 @@ includes:
 You will need to prefix the actual file name with an underscore, but make sure to leave that out when adding it in the includes section.
 
 *Note* that in preview mode in GitHub it will look a bit wonky with the code samples. That is because we render the markdown using a tool called Slate and it is not built into GitHub.
+
+## Build The Site
+If you want to build the site on your own machine to play around with the layout our CSS, follow the steps instructions here.
 
 ### Prerequisites
 
