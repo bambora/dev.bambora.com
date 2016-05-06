@@ -9,5 +9,5 @@ RUN bundle install
 ENTRYPOINT ["rake"]
 CMD ["run"]
 
-# 1) Build: docker run devbamboracom rake build
-# 2) Run:   docker run devbamboracom
+# 1) Build: docker build -t devbamboracom .
+# 2) Run:   docker run -d -p 4567:4567 devbamboracom

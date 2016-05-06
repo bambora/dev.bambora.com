@@ -21,3 +21,4 @@ task :run_server do
 end
 task :run => [:build_slate, :copy_swagger, :run_server]
 
+task :static => [:build_slate, :copy_swagger]
