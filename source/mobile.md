@@ -1,10 +1,6 @@
 ---
 title: bambora Mobile
 
-language_tabs:
-  - android
-  - objective_c
-
 toc_above:
   - <a href='index.html'>Getting Started</a>
   - <a href='web.html'>Web</a>
@@ -25,4 +21,16 @@ toc_footers:
 search: true
 ---
 # Overview
-This guide will walk you through setting up payments in your native mobile app.
+
+The Bambora Checkout mobile native SDKs make it super simple to accept credit card payments in your app. 
+
+By adding a few lines of code you make it possible for users to:
+
+* Register credit cards.
+* Make purchases.
+
+In addition to the features themselves, there are multiple good reasons for using the Bambora SDKs:
+
+* We handle the backend and code that's needed to power the services that the SDK requires. This can save a lot of time and money compared to doing it yourself.
+* We save you additional time and work by managing PCI requirements (which is something that requires ongoing work).
+* The SDK has no third-party dependencies.
