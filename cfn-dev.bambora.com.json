@@ -1,0 +1,17 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Public access bucket for dev.bambora.com",
+    "Resources": {
+        "Bucket": {
+            "Type": "AWS::CloudFormation::Stack",
+            "Properties": {
+                "Parameters": {
+                    "Environment": "prod",
+                    "ApplicationName": "dev-portal"
+                },
+                "TemplateURL": "https://s3-eu-west-1.amazonaws.com/bambora-cfntemplates-prod-eu-west-1/shared/master/apps/static_website_public_access.json",
+                "TimeoutInMinutes": "60"
+            }
+        }
+    }
+}
