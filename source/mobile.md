@@ -35,7 +35,7 @@ The purpose of `Native Payment` is to save you time by providing you with an eas
 
 ## How it works
 
-This is a brief overview of how what Native Payment does. You can find implementation instructions with code samples in the guides for [Android](mobile.html#native-payment-android) and [iOS](mobile.html#native-payment-ios).
+This is a brief overview of what Native Payment does. You can find implementation instructions with code samples in the guides for [Android](mobile.html#native-payment-android) and [iOS](mobile.html#native-payment-ios).
 
 ### Merchant registration
 
