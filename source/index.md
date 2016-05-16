@@ -5,9 +5,7 @@ toc_above:
   - <a href='index.html'>Getting Started</a>
   
 toc_below:
-  - <a href='online.html'>Online</a>
-  - <a href='mobile.html'>Mobile</a>
-  - <a href='api.html'>API</a>
+  - <a href='mobile.html'>Native</a>
 
 
 search: true
@@ -19,11 +17,7 @@ Welcome to Bambora's developer documentation. These pages will walk you through 
 
 We've made it easy for anyone to update the documentation. So if you see any docs in error or sections that could use improvement simply look for the `Update Docs` link at the top of every page. It will send you to the GitHub page where you can make the change.
 
-# Get Your Test Account
-
 
 # Support
 Running into issues? No problem, just give a call or send us an email.
 
-# Going Live
-You've finished your testing, it's now time to turn your account live and start earning money.

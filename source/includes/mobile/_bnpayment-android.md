@@ -21,60 +21,91 @@ If you have found an issue in this documentation or want to improve it, simply c
 
 Internet (android.permission.INTERNET)
 
-##Recommended IDE
+## Recommended IDE
 
 [Android Studio](https://developer.android.com/sdk/index.html) with the [Android Plugin for Gradle](http://developer.android.com/tools/revisions/gradle-plugin.html).
 
-## Installation
+## Installation Via Source
 
-### Option 1: Clone the repository
-> ### Step 1: Type the following command in a terminal window of your choice in the directory that you want to clone the SDK to:
+*This is the only installation method at this point since JCenter distribution is not yet in place for **Native Payment**.*
 
-```
+### Step 1: git clone repo
+
+```console
 git clone git@github.com:bambora/BMPS-Android-SDK.git -b develop
 ```
 
-> ### Step 2: Place the cloned repository in your app project. You can then include the Base library and the Transaction library in your app project by including the modules in **settings.gradle** like this:
+Type this command in a terminal window of your choice in the directory that you want to clone the SDK to. You will need to have Git installed on your system.
+
+
+### Step 2: Copy Source to Your Project
 
 ```groovy
 include ':bps-base-lib'
 include ':bps-transaction'
 ```
 
-> ### Step 3: Add the following groovy code to the app module's **build.gradle** file:
+Place the cloned repository in your app project. You can then include the Base library and the Transaction library in your app project by including the modules in **settings.gradle** like this:
+
+
+
+### Step 3: Add Dependencies
 
 ```groovy
 dependencies {
     compile project(':bps-transaction')
 }
 ```
+Add the following groovy code to the app module's **build.gradle** file:
 
-> A sample app is included in the cloned repository (BMPS-Android-SDK/app).
+A sample app is included in the cloned repository (BMPS-Android-SDK/app).
 
-*This is the only installation method at this point since JCenter distribution is not yet in place for `Native Payment`.*
 
-### Option 2: Install through JCenter
-> ### Step 1: Enter the following under **allprojects -> repositories** either in the top-level **build.gradle file** or in the **build.gradle** file that contains one or more dependencies to the SDK:
+
+## Installation Through JCenter
+
+*This distribution method is currently not yet in place for **Native Payment**. At this point, we recommend that you clone the repository instead (please see instructions above).*
+
+### Step 1: Add Repository
 
 ```groovy
 <TO_BE_ADDED>
 ```
-> ### Step 2: Add the following under **dependencies** in the **app-specific build.gradle file**:
+
+Enter the following under **allprojects -> repositories** either in the top-level `build.gradle` file or in the `build.gradle` file that contains one or more dependencies to the SDK:
+
+### Step 2: Add Dependencies
 
 ```groovy
 compile project('<TO_BE_ADDED>')
 ```
-> ### Step 3: Add the following permission after the **manifest** tag in your **AndroidManifest.xml** file:
+
+Add the following under **dependencies** in the app-specific `build.gradle` file:
+
+### Step 3: Set Permissions
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
 ```
-*This distribution method is currently not yet in place for `Native Payment`. At this point, we recommend that you clone the repository instead (please see instructions above).*
+
+Add the following permission after the **manifest** tag in your **AndroidManifest.xml** file:
+
+
 
 <a name="androidsetup"></a>
 ## Setup
 
-> ### Add the following code at the beginning of the **onCreate method** in the **MainActivity class**:
+
+
+An API token is required in order to communicate with Bambora’s backend through the SDK.
+
+The API token has two purposes: it identifies you as a merchant and it determines whether the SDK should be connected to the test environment or to the production environment. Each environment requires a separate API token.
+
+After signing up for a SDK developer account, you will receive an API token for the test environment. You can then decide to apply for an API token for the production environment.
+
+Once you have an API token, you can use it to implement the setup code in the example.
+
+### Register Handler
 
 ```java
 BPSBaseLibHandlerBuilder builder = new BPSBaseLibHandlerBuilder(getApplicationContext(), <API_TOKEN>).debug(false);
@@ -96,21 +127,20 @@ BPSBaseLibHandler.setupBpsBaseLibHandler(builder, new ISetupCallback() {
     }
 });
 ```
-> If you provide a test API token, the SDK will enter test mode. If you provide a production API token, the SDK will enter production mode.
-
 > The debug setting enables logging through logcat if set to true (and disables logging if set to false). The debug setting should be set to false in live applications.
 
-An API token is required in order to communicate with Bambora’s backend through the SDK.
+Here you register a Handler by using the `BPSBaseLibHandlerBuilder` to build it for you using your API token.
 
-The API token has two purposes: it identifies you as a merchant and it determines whether the SDK should be connected to the test environment or to the production environment. Each environment requires a separate API token.
+Add the following code at the beginning of the `onCreate method` in the `MainActivity class`, and be sure to swap out `<API_TOKEN>` with your test API token.
 
-After signing up for a SDK developer account, you will receive an API token for the test environment. You can then decide to apply for an API token for the production environment.
 
-Once you have an API token, you can use it to implement the setup code in the example.
+
+*Note that if you provide a test API token, the SDK will enter test mode. If you provide a production API token, the SDK will enter production mode.*
+
 
 <a name="androidcreditcardregistration"></a>
+
 ## Credit Card registration
-> ### How to accept credit card registrations
 
 ```java
 public class RegisterCreditCardActivity extends AppCompatActivity 
@@ -155,14 +185,18 @@ public class RegisterCreditCardActivity extends AppCompatActivity
 ```
 Credit card registration is done through a secure web-based registration form, also known as a Hosted Payment Page, that you can easily include in your app as the code example shows.
 
-### How to customize the Hosted Payment Page
-> ### Set a custom CSS file
-> You can use the setCssUrl() method on a CreditCardRegistrationWebView object to provide the URL to a custom CSS file in order to affect the design of the Hosted Payment Page.
+## How to customize the Hosted Payment Page
+
+### Set a custom CSS file
+
 
 ```java
 myWebView.setCssUrl(CSS_URL)
 ```
-> ### Custom CSS example
+
+You can use the `setCssUrl()` method on a CreditCardRegistrationWebView object to provide the URL to a custom CSS file in order to affect the design of the Hosted Payment Page.
+
+### Custom CSS example
 
 ```css
 body {
@@ -247,7 +281,9 @@ input:focus {
 }
 ```
 
-> ### Set Hosted Payment Page text using a layout file
+The CSS on the right shows you a working example of custom styling.
+
+### Set Hosted Payment Page text using a layout file
 
 ```xml
 <RelativeLayout
@@ -269,16 +305,17 @@ input:focus {
 
 </RelativeLayout>
 ```
-> ### Set the Hosted Payment Page text using code
+Here you can see a custom layout file for setting the text on the form. The other alternative is to set the text from your code, as described in the next section.
 
-```
+### Set the Hosted Payment Page text using code
+
+```java
 mWebView.setCardNumberHint("Card Number");
 mWebView.setCardExpiryHint("Expiration");
 mWebView.setCardCvvHint("CVV");
 mWebView.setSubmitButtonText("Register");
 ```
 
-> While there are two different ways of editing the default text in the Hosted Payment Page - using a layout file and setting the text by using code - we recommend using one of these two method (but not both).
 
 You can custom the Hosted Payment Page by:
 
@@ -286,10 +323,15 @@ You can custom the Hosted Payment Page by:
 
 * Selecting text to be used in the form.
 
-### Managing credit cards
+While there are two different ways of editing the default text in the Hosted Payment Page - using a layout file and setting the text by using code - we recommend using one of these two method (but not both).
 
-> ### How to get all registered credit card objects
-> The following code example starts by checking if any credit cards have been selected and then proceeds to select the credit card that was registered first. The `getRegisteredCreditCards` function reads all stored credit card tokens from local storage asynchronously and notifies the IOnCreditCardRead listener of the result.
+
+## Managing credit cards
+
+Here you can run standard read, update, and delete operations on the credit card tokens stored on the device.
+
+### Get All Cards
+
 
 ```java
 new BPSTransactionLibHandler().getRegisteredCreditCards(MainActivity.this, new CreditCardManager.IOnCreditCardRead() {
@@ -309,8 +351,9 @@ new BPSTransactionLibHandler().getRegisteredCreditCards(MainActivity.this, new C
   }
 }
 ```
-> ### How to get details about a credit card object
-> Building on the above example, here's how to read information from a credit card object:
+This code example will get all registered cards on the device and starts by checking if any credit cards have been selected and then proceeds to select the credit card that was registered first. The `getRegisteredCreditCards` function reads all stored credit card tokens from local storage asynchronously and notifies the IOnCreditCardRead listener of the result.
+
+### Get Card Details
 
 ```java
 // Get credit card alias:
@@ -323,8 +366,9 @@ creditCard.getTruncatedCardNumber();
 creditCard.getCreditCardToken();
 ```
 
-> ### How to delete a registered credit card token from the device
-> The `getRegisteredCreditCards` function deletes a specific stored credit card token from local storage.
+Building on the above example, this code on the right shows how to read information from a credit card object.
+
+### Delete Card Token
 
 ```java
 public void deleteCreditCard(CreditCard creditCard) {
@@ -342,8 +386,11 @@ public void deleteCreditCard(CreditCard creditCard) {
 ```
 When a credit card is registered, a credit card token is saved on the device. This token is necessary in order to make a payment, as the code example in the [Making payments](#androidmakingpayments) below shows. This section contains code examples showing how to get and remove credit card tokens from the device.
 
+The `getRegisteredCreditCards` function deletes a specific stored credit card token from local storage.
+
 <a name="androidmakingpayments"></a>
 ## Making payments
+
 ```java
 public void makeCreditCardPayment(CreditCard creditCard) {
 
@@ -373,7 +420,7 @@ public void makeCreditCardPayment(CreditCard creditCard) {
 ```
 > PAYMENT_ID is an identifier for the transaction. It is required and needs to be unique.
 
-*Make sure you've successfully [set up `Native Payment`](#androidsetup) and implemented [Credit Card Registration](#androidcreditcardregistration) before continuing with this step.*
+*Make sure you've successfully [set up Native Payment](#androidsetup) and implemented [Credit Card Registration](#androidcreditcardregistration) before continuing with this step.*
 
 Assuming a credit card token is registered on the device, it is possible to accept payments in the app. The code example shows how to configure and make a payment.
 
@@ -397,24 +444,26 @@ You can find a code example in the [Setup](#androidsetup) section above.
 
 **Test credit cards**
 
-You can use the following test credit cards for testing registration and purchasing when the SDK is running in test mode (no real money is charged when these test cards are used):
-
+```
 VISA (Sweden)
-<br />Card number: 4002 6200 0000 0005 
-<br />Expiration (month/year): 05/17 
-<br />CVC: 000
+Card number: 4002 6200 0000 0005 
+Expiration (month/year): 05/17 
+CVC: 000
 
 MasterCard (Sweden) 
-<br />Card number: 5125 8600 0000 0006 
-<br />Expiration (month/year): 05/17 
-<br />CVC: 000
+Card number: 5125 8600 0000 0006 
+Expiration (month/year): 05/17 
+CVC: 000
 
 VISA (Norway) 
-<br />Card number: 4002 7700 0000 0008 
-<br />Expiration (month/year): 05/17 
-<br />CVC: 000
+Card number: 4002 7700 0000 0008 
+Expiration (month/year): 05/17 
+CVC: 000
 
 MasterCard (Norway) 
-<br />Card number: 5206 8300 0000 0001 
-<br />Expiration (month/year): 05/17 
-<br />CVC: 000
+Card number: 5206 8300 0000 0001 
+Expiration (month/year): 05/17 
+CVC: 000
+```
+
+You can use these test credit cards for testing registration and purchasing when the SDK is running in test mode (no real money is charged when these test cards are used):

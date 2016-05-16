@@ -1,18 +1,14 @@
 ---
-title: Mobile
+title: Native
 
 toc_above:
   - <a href='index.html'>Getting Started</a>
-  - <a href='online.html'>Online</a>
-  - <a href='mobile.html'>Mobile</a>
+  - <a href='mobile.html'>Native</a>
   
 includes:
   - mobile/bnpayment-android
   - mobile/bnpayment-ios
 
-  
-toc_below:
-  - <a href='api.html'>API</a>
 
   
 search: true

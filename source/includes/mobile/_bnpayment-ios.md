@@ -8,7 +8,7 @@ If you have found an issue in this documentation or want to improve it, simply c
 
 ## Language and Requirements
 
-`Native Payment` is written in Objective-C.
+Native Payment is written in Objective-C.
 
 If you're interested in using `Native Payment` in a Swift-based app, please see [iOS Developer Library](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html) for details on how to use Objective-C and Swift together.
 
@@ -17,7 +17,7 @@ If you're interested in using `Native Payment` in a Swift-based app, please see 
 
 ## Installation
 
-To install `Native Payment`, we recommend using either CocoaPods or Carthage.
+To install Native Payment, we recommend using either CocoaPods or Carthage.
 
 ### How to install via CocoaPods
 > ### Step 1: Create or select an Xcode project. Then open a terminal window and `cd` into the project directory
@@ -90,7 +90,7 @@ We recommend following [these instructions](https://github.com/Carthage/Carthage
 #import <BNPayment/BNPayment.h>
 ```
 
-> ### Step 2: Add the following setup code to `‑ application:didFinishLaunchingWithOptions:` method in AppDelegate.m.
+> ### Step 2: Add the following setup code to `application:didFinishLaunchingWithOptions:` method in AppDelegate.m.
 
 ```objective_c
 NSError *error;
@@ -322,7 +322,7 @@ NSString *paymentIdentifier = [NSString stringWithFormat:@"%u", arc4random_unifo
             }];
 }
 ```
-*Make sure you've successfully [set up `Native Payment`](#iossetup) and implemented [Credit Card Registration](#ioscreditcardregistration) before continuing with this step.*
+*Make sure you've successfully [set up Native Payment](#iossetup) and implemented [Credit Card Registration](#ioscreditcardregistration) before continuing with this step.*
 
 Assuming a credit card token is registered on the device, it is possible to accept payments in the app. The code example shows how to configure and make a payment.
 
@@ -345,24 +345,28 @@ You can find a code example in the [Setup section](#iossetup) above.
 
 ### Test credit cards
 
-You can use the following test credit cards for testing registration and purchasing when the SDK is running in test mode (no real money is charged when these test cards are used):
-
+```
 VISA (Sweden)
-<br />Card number: 4002 6200 0000 0005 
-<br />Expiration (month/year): 05/17 
-<br />CVC: 000
+Card number: 4002 6200 0000 0005 
+Expiration (month/year): 05/17 
+CVC: 000
 
 MasterCard (Sweden) 
-<br />Card number: 5125 8600 0000 0006 
-<br />Expiration (month/year): 05/17 
-<br />CVC: 000
+Card number: 5125 8600 0000 0006 
+Expiration (month/year): 05/17 
+CVC: 000
 
 VISA (Norway) 
-<br />Card number: 4002 7700 0000 0008 
-<br />Expiration (month/year): 05/17 
-<br />CVC: 000
+Card number: 4002 7700 0000 0008 
+Expiration (month/year): 05/17 
+CVC: 000
 
 MasterCard (Norway) 
-<br />Card number: 5206 8300 0000 0001 
-<br />Expiration (month/year): 05/17 
-<br />CVC: 000
+Card number: 5206 8300 0000 0001 
+Expiration (month/year): 05/17 
+CVC: 000
+```
+
+You can use the following test credit cards for testing registration and purchasing when the SDK is running in test mode (no real money is charged when these test cards are used):
+
+
