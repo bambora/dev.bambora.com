@@ -1,16 +1,20 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
     "Description": "Public access bucket for dev.bambora.com",
-    "Resources": {
-        "Bucket": {
-            "Type": "AWS::CloudFormation::Stack",
-            "Properties": {
-                "Parameters": {
-                    "Environment": "prod",
-                    "ApplicationName": "dev-portal"
+    "Resources" : {
+        "Bucket" : {
+            "Type" : "AWS::S3::Bucket",
+            "Properties" : {
+                "AccessControl" : "PublicRead",
+                "BucketName" : "dev.bambora.com",
+                "WebsiteConfiguration" : {
+                    "ErrorDocument" : "error.html",
+                    "IndexDocument" : "index.html"
                 },
-                "TemplateURL": "https://s3-eu-west-1.amazonaws.com/bambora-cfntemplates-prod-eu-west-1/shared/master/apps/static_website_public_access.json",
-                "TimeoutInMinutes": "60"
+                "LoggingConfiguration" : {
+                    "DestinationBucketName" : { "Fn::Join" : [ "-", [ "bambora", "weblogs", "prod", { "Ref" : "AWS::Region" } ] ] },
+                    "LogFilePrefix" : { "Fn::Join" : [ "", [ "dev-portal", "/" ] ] }
+                }
             }
         }
     }
