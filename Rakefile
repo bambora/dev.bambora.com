@@ -11,8 +11,7 @@ end
 
 task :copy_swagger do
   puts "copying swagger UI"
-  sh "cp build public -r"
-  sh "cp -r api public/api"
+  sh "cp -r api build/api"
 end
 
 task :run_server do
