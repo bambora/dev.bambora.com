@@ -31,36 +31,31 @@ Internet (android.permission.INTERNET)
 
 ### Step 1: git clone repo
 
-```console
-git clone git@github.com:bambora/BMPS-Android-SDK.git -b develop
-```
-
 Type this command in a terminal window of your choice in the directory that you want to clone the SDK to. You will need to have Git installed on your system.
 
+```console
+git clone <TO BE ADDED>
+```
 
 ### Step 2: Copy Source to Your Project
 
-```groovy
-include ':bps-base-lib'
-include ':bps-transaction'
-```
-
 Place the cloned repository in your app project. You can then include the Base library and the Transaction library in your app project by including the modules in **settings.gradle** like this:
 
-
+```groovy
+include ':<TO_BE_ADDED>'
+```
 
 ### Step 3: Add Dependencies
 
-```groovy
-dependencies {
-    compile project(':bps-transaction')
-}
-```
 Add the following groovy code to the app module's **build.gradle** file:
 
-A sample app is included in the cloned repository (BMPS-Android-SDK/app).
+A sample app is included in the cloned repository (<TO_BE_ADDED>/app).
 
-
+```groovy
+dependencies {
+    compile project(':<TO_BE_ADDED>')
+}
+```
 
 ## Installation Through JCenter
 
@@ -68,34 +63,30 @@ A sample app is included in the cloned repository (BMPS-Android-SDK/app).
 
 ### Step 1: Add Repository
 
+Enter the following under **allprojects -> repositories** either in the top-level `build.gradle` file or in the `build.gradle` file that contains one or more dependencies to the SDK:
+
 ```groovy
 <TO_BE_ADDED>
 ```
 
-Enter the following under **allprojects -> repositories** either in the top-level `build.gradle` file or in the `build.gradle` file that contains one or more dependencies to the SDK:
-
 ### Step 2: Add Dependencies
+
+Add the following under **dependencies** in the app-specific `build.gradle` file:
 
 ```groovy
 compile project('<TO_BE_ADDED>')
 ```
 
-Add the following under **dependencies** in the app-specific `build.gradle` file:
-
 ### Step 3: Set Permissions
+
+Add the following permission after the **manifest** tag in your **AndroidManifest.xml** file:
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
 ```
 
-Add the following permission after the **manifest** tag in your **AndroidManifest.xml** file:
-
-
-
 <a name="androidsetup"></a>
 ## Setup
-
-
 
 An API token is required in order to communicate with Bambora’s backend through the SDK.
 
@@ -106,6 +97,12 @@ After signing up for a SDK developer account, you will receive an API token for 
 Once you have an API token, you can use it to implement the setup code in the example.
 
 ### Register Handler
+
+Here you register a Handler by using the `BPSBaseLibHandlerBuilder` to build it for you using your API token.
+
+Add the following code at the beginning of the `onCreate method` in the `MainActivity class`, and be sure to swap out `<API_TOKEN>` with your test API token.
+
+*Note that if you provide a test API token, the SDK will enter test mode. If you provide a production API token, the SDK will enter production mode.*
 
 ```java
 BPSBaseLibHandlerBuilder builder = new BPSBaseLibHandlerBuilder(getApplicationContext(), <API_TOKEN>).debug(false);
@@ -129,18 +126,10 @@ BPSBaseLibHandler.setupBpsBaseLibHandler(builder, new ISetupCallback() {
 ```
 > The debug setting enables logging through logcat if set to true (and disables logging if set to false). The debug setting should be set to false in live applications.
 
-Here you register a Handler by using the `BPSBaseLibHandlerBuilder` to build it for you using your API token.
-
-Add the following code at the beginning of the `onCreate method` in the `MainActivity class`, and be sure to swap out `<API_TOKEN>` with your test API token.
-
-
-
-*Note that if you provide a test API token, the SDK will enter test mode. If you provide a production API token, the SDK will enter production mode.*
-
-
 <a name="androidcreditcardregistration"></a>
-
 ## Credit Card registration
+
+Credit card registration is done through a secure web-based registration form, also known as a Hosted Payment Page, that you can easily include in your app as the code example shows.
 
 ```java
 public class RegisterCreditCardActivity extends AppCompatActivity 
@@ -183,20 +172,28 @@ public class RegisterCreditCardActivity extends AppCompatActivity
     
 }
 ```
-Credit card registration is done through a secure web-based registration form, also known as a Hosted Payment Page, that you can easily include in your app as the code example shows.
 
 ## How to customize the Hosted Payment Page
 
+You can custom the Hosted Payment Page by:
+
+* Using a custom CSS file to change the look and feel of the page.
+
+* Selecting text to be used in the form.
+
+While there are two different ways of editing the default text in the Hosted Payment Page - using a layout file and setting the text by using code - we recommend using one of these two method (but not both).
+
 ### Set a custom CSS file
 
+You can use the `setCssUrl()` method on a CreditCardRegistrationWebView object to provide the URL to a custom CSS file in order to affect the design of the Hosted Payment Page.
 
 ```java
 myWebView.setCssUrl(CSS_URL)
 ```
 
-You can use the `setCssUrl()` method on a CreditCardRegistrationWebView object to provide the URL to a custom CSS file in order to affect the design of the Hosted Payment Page.
-
 ### Custom CSS example
+
+The CSS on the right shows you a working example of custom styling.
 
 ```css
 body {
@@ -281,9 +278,9 @@ input:focus {
 }
 ```
 
-The CSS on the right shows you a working example of custom styling.
-
 ### Set Hosted Payment Page text using a layout file
+
+Here you can see a custom layout file for setting the text on the form. The other alternative is to set the text from your code, as described in the next section.
 
 ```xml
 <RelativeLayout
@@ -305,7 +302,6 @@ The CSS on the right shows you a working example of custom styling.
 
 </RelativeLayout>
 ```
-Here you can see a custom layout file for setting the text on the form. The other alternative is to set the text from your code, as described in the next section.
 
 ### Set the Hosted Payment Page text using code
 
@@ -316,22 +312,13 @@ mWebView.setCardCvvHint("CVV");
 mWebView.setSubmitButtonText("Register");
 ```
 
-
-You can custom the Hosted Payment Page by:
-
-* Using a custom CSS file to change the look and feel of the page.
-
-* Selecting text to be used in the form.
-
-While there are two different ways of editing the default text in the Hosted Payment Page - using a layout file and setting the text by using code - we recommend using one of these two method (but not both).
-
-
 ## Managing credit cards
 
 Here you can run standard read, update, and delete operations on the credit card tokens stored on the device.
 
 ### Get All Cards
 
+This code example will get all registered cards on the device and starts by checking if any credit cards have been selected and then proceeds to select the credit card that was registered first. The `getRegisteredCreditCards` function reads all stored credit card tokens from local storage asynchronously and notifies the IOnCreditCardRead listener of the result.
 
 ```java
 new BPSTransactionLibHandler().getRegisteredCreditCards(MainActivity.this, new CreditCardManager.IOnCreditCardRead() {
@@ -351,9 +338,10 @@ new BPSTransactionLibHandler().getRegisteredCreditCards(MainActivity.this, new C
   }
 }
 ```
-This code example will get all registered cards on the device and starts by checking if any credit cards have been selected and then proceeds to select the credit card that was registered first. The `getRegisteredCreditCards` function reads all stored credit card tokens from local storage asynchronously and notifies the IOnCreditCardRead listener of the result.
 
 ### Get Card Details
+
+Building on the above example, this code on the right shows how to read information from a credit card object.
 
 ```java
 // Get credit card alias:
@@ -366,9 +354,11 @@ creditCard.getTruncatedCardNumber();
 creditCard.getCreditCardToken();
 ```
 
-Building on the above example, this code on the right shows how to read information from a credit card object.
-
 ### Delete Card Token
+
+When a credit card is registered, a credit card token is saved on the device. This token is necessary in order to make a payment, as the code example in the [Making payments](#androidmakingpayments) below shows. This section contains code examples showing how to get and remove credit card tokens from the device.
+
+The `getRegisteredCreditCards` function deletes a specific stored credit card token from local storage.
 
 ```java
 public void deleteCreditCard(CreditCard creditCard) {
@@ -384,12 +374,13 @@ public void deleteCreditCard(CreditCard creditCard) {
 
 }
 ```
-When a credit card is registered, a credit card token is saved on the device. This token is necessary in order to make a payment, as the code example in the [Making payments](#androidmakingpayments) below shows. This section contains code examples showing how to get and remove credit card tokens from the device.
-
-The `getRegisteredCreditCards` function deletes a specific stored credit card token from local storage.
 
 <a name="androidmakingpayments"></a>
 ## Making payments
+
+*Make sure you've successfully [set up Native Payment](#androidsetup) and implemented [Credit Card Registration](#androidcreditcardregistration) before continuing with this step.*
+
+Assuming a credit card token is registered on the device, it is possible to accept payments in the app. The code example shows how to configure and make a payment.
 
 ```java
 public void makeCreditCardPayment(CreditCard creditCard) {
@@ -419,10 +410,6 @@ public void makeCreditCardPayment(CreditCard creditCard) {
 
 ```
 > PAYMENT_ID is an identifier for the transaction. It is required and needs to be unique.
-
-*Make sure you've successfully [set up Native Payment](#androidsetup) and implemented [Credit Card Registration](#androidcreditcardregistration) before continuing with this step.*
-
-Assuming a credit card token is registered on the device, it is possible to accept payments in the app. The code example shows how to configure and make a payment.
 
 <a name="androidtestmode"></a>
 ## Test mode
