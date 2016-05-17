@@ -15,7 +15,7 @@ If you're interested in using `Native Payment` in a Swift-based app, please see 
 **Minimum deployment target:** iOS 8.0
 
 
-## Installation
+## Installation - CocoaPods
 
 To install Native Payment, we recommend using either CocoaPods or Carthage.
 
@@ -23,14 +23,17 @@ CocoaPods is a dependency manager for third-party libraries.
 
 We recommend following [this guide](https://guides.cocoapods.org/using/getting-started.html#getting-started) for installing CocoaPods.
 
-### How to install via CocoaPods
-> ### Step 1: Create or select an Xcode project. Then open a terminal window and `cd` into the project directory
-> ### Step 2: Create a Podfile by running the following command in the OS X Terminal from the folder where your Xcode project file (`.xcodeproj`) is:
+### Step 1: Create Project
+Create or select an Xcode project. Then open a terminal window and `cd` into the project directory
+
+### Step 2: Create Podfile
+Create a Podfile by running the following command in the OS X Terminal from the folder where your Xcode project file (`.xcodeproj`) is:
 
 ```shell
 pod init
 ```
-> ### Step 3: Add this information to the Podfile:
+### Step 3: Modify Podfile
+Add this information to the Podfile:
 
 ```ruby
 source 'https://github.com/CocoaPods/Specs.git'
@@ -39,49 +42,63 @@ platform :ios, '8.0'
 
 pod "BNPayment"
 ```
-> ### Step 4: Install the pod by running this command in the OS X Terminal from the same folder as the Podfile:
+
+### Step 4: Install Pod
+Install the pod by running this command in the OS X Terminal from the same folder as the Podfile:
 
 ```shell
 pod install
 ```
-> ### Step 5: Re-open the project through the newly created `.xcworkspace` file.
+### Step 5: Load project
+Re-open the project through the newly created `.xcworkspace` file.
 
-### How to install via Carthage
+## Installation - Carthage
 
-Carthage is a is a dependency manager for third-party libraries.
+Carthage is a is a dependency manager for third-party libraries. It is an alternative to using CocoaPods.
 
 We recommend following [these instructions](https://github.com/Carthage/Carthage#installing-carthage) for installing Carthage.
 
-> ### Step 1: Create or select an Xcode project. Then open a terminal window and `cd` into the project directory
-> ### Step 2: Create a Cartfile by running the following command in the OS X Terminal from the folder where your Xcode project file (`.xcodeproj`) is:
+### Step 1: Create Project
+Create or select an Xcode project. Then open a terminal window and `cd` into the project directory
+
+### Step 2: Create Cartfile
+Create a Cartfile by running the following command in the OS X Terminal from the folder where your Xcode project file (`.xcodeproj`) is:
 
 ```shell
 touch Cartfile
 ```
-> ### Step 3: Open the newly created Cartfile in the text editor of your choice, and enter the following text:
+
+### Step 3: Edit Cartfile
+Open the newly created Cartfile in the text editor of your choice, and enter the following text:
 
 ```shell
 github "bambora/BNPayment-iOS-internal" "develop"
 ```
-> ### Step 4: Run the following command in the OS X Terminal:
+### Step 4: Update Project
+Run the following command in the OS X Terminal:
 
 ```shell
 carthage update
 ```
-> This will create a file called BNPayment.framework that you can find by going to Carthage/Build/iOS.
+This will create a file called BNPayment.framework that you can find by going to Carthage/Build/iOS.
 
-> ### Step 5: Add BNPayment.framework to Target -> General -> Linked Frameworks and Libraries in Xcode.
-> ### Step 6: Go to Target -> Build Phase in Xcode. Add a New Run Script Phase and then enter the following script line: 
+### Step 5: Link Framework
+Add BNPayment.framework to Target -> General -> Linked Frameworks and Libraries in Xcode.
+
+### Step 6: Add Run Script
+Go to Target -> Build Phase in Xcode. Add a New Run Script Phase and then enter the following script line: 
 
 ```shell
 /usr/local/bin/carthage copy-frameworks 
 ```
-> ### Step 7: Add the following line under Input Files: 
+### Step 7: Configure
+Add the following line under Input Files: 
 
 ```
 $(SRCROOT)/Carthage/Build/iOS/BNPayment.framework
 ```
-> ### Step 8: Build and run the project in Xcode.
+### Step 8: Build
+Build and run the project in Xcode.
 
 <a name="iossetup"></a>
 ## Setup
@@ -100,13 +117,15 @@ Once you have an API token, you can use it to implement the setup code in the ex
 
 **403 Forbidden:** A valid API token is missing.
 
-> ### Step 1: Import the SDK in AppDelegate.m:
+### Step 1: Import
+Import the SDK in AppDelegate.m:
 
 ```objective_c
 #import <BNPayment/BNPayment.h>
 ```
 
-> ### Step 2: Add the following setup code to `application:didFinishLaunchingWithOptions:` method in AppDelegate.m.
+### Step 2: Setup
+Add the following setup code to `application:didFinishLaunchingWithOptions:` method in AppDelegate.m.
 
 ```objective_c
 NSError *error;
@@ -115,20 +134,19 @@ NSError *error;
                               debug:NO // Optional. Enables logging in Xcode when set to YES.
                               error:&error];
 ```
-> If you provide a test API token, the SDK will enter test mode. If you provide a production API token, the SDK will enter production mode. 
+If you provide a test API token, the SDK will enter test mode. If you provide a production API token, the SDK will enter production mode. 
 
-> The debug setting should be set to NO in live applications.
+The debug setting should be set to NO in live applications.
 
 <a name="ioscreditcardregistration"></a>
 ## Credit Card Registration
 
 *Make sure you've successfully [set up `Native Payment`](#iossetup) before implementing this functionality.*
 
-### How to accept credit card registrations
-
 Credit card registration is done through a secure web-based registration form, also known as a Hosted Payment Page, that you can easily include in your app through the class `BNCCHostedRegistrationFormVC` as the code example shows.
 
-> ### How to add the Hosted Payment Page to a navigation controller:
+### Add Hosted Page
+This will add the Hosted Payment Page to a navigation controller:
 
 ```objective_c
 __weak UIViewController *weakSelf = self;
@@ -141,7 +159,9 @@ BNCCHostedRegistrationFormVC *ccHostedRegistrationVC =
 // Display the Hosted Payment Page:
 [self.navigationController pushViewController:ccHostedRegistrationVC animated:YES];
 ```
-> ### Callback methods for the Hosted Payment Page:
+### Callbacks
+
+This defines the callback methods for the Hosted Payment Page that you can use to handle the responses.
 
 ```objective_c
 - (void)BNPaymentWebview:(BNPaymentWebview *)webview didStartOperation:(BNPaymentWebviewOperation)operation {
@@ -168,7 +188,7 @@ BNCCHostedRegistrationFormVC *ccHostedRegistrationVC =
 
 **403 Forbidden:** Valid credentials are missing.
 
-### How to customize the Hosted Payment Page
+## Customize Hosted Payment Page
 
 You can customize the Hosted Payment Page by:
 
@@ -178,7 +198,8 @@ You can customize the Hosted Payment Page by:
 
 * Setting a custom header and footer.
 
-> ### Specify a CSS file and update text
+### CSS and Text
+Specify a CSS file and update text
 
 ```objective_c
 BNCCHostedFormParams customizationSettings = [BNCCHostedFormParams hostedFormParamsWithCSS:@"<CSS_URL>"
@@ -190,7 +211,9 @@ BNCCHostedFormParams customizationSettings = [BNCCHostedFormParams hostedFormPar
 BNCCHostedRegistrationFormVC *ccHostedRegistrationVC = 
   [[BNCCHostedRegistrationFormVC alloc] initWithHostedFormParams:[BNCCHostedFormParams customizationSettings]];
 ```
-> ### CSS example:
+
+### Custom CSS example
+This is some example CSS that you can use as a reference for customizing the layout of the payment page.
 
 ```css
 body {
@@ -276,7 +299,8 @@ input:focus {
 
 ```
 
-> ### Set a custom header view and a custom footer view:
+### Header and Footer
+Set a custom header view and a custom footer view:
 
 ```objective_c
 ccHostedRegistrationVC.webviewDelegate = self;
@@ -284,7 +308,7 @@ ccHostedRegistrationVC.webviewDelegate = self;
 [ccHostedRegistrationVC addFooterView:<FOOTER_VIEW>]; // Set a custom footer view
 ```
 
-### Managing credit cards
+## Managing Credit Cards
 
 When a credit card is registered using `BNCCHostedRegistrationFormVC`, a credit card token is saved on the device. This token is necessary in order to make a payment, as the code example in the [Making payments](#iosmakingpayments) below shows. This section contains code examples showing how to get and remove credit card tokens from the device.
 
@@ -356,15 +380,15 @@ The attempted operation could be retried again, or the payment
 could be queried to find out if its properties have changed.
 
 <a name="iostestmode"></a>
-## Test mode
-### Test mode vs Production mode
+## Test Mode
 
 The SDK can be used in one of two modes:
 
 * Test mode allows you to register test cards and make test payments using those cards. Real credit cards cannot be registered in test mode.
+
 * Production mode allows the user to register real credit cards and to make real payments using those cards. Test credit cards cannot be used in production mode.
 
-### How to switch between test and production mode
+### Switch Modes
 
 To enable test mode, you need to use a test API token as the initial parameter in the setupWithApiToken: method of the BNPaymentHandler class.
 
