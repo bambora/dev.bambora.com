@@ -8,7 +8,7 @@ toc_above:
 includes:
   - mobile/bnpayment-android
   - mobile/bnpayment-ios
-  - how-to-capture-payments
+  - mobile/how-to-capture-payments
 
   
 search: true
@@ -35,7 +35,7 @@ This is a brief overview of what Native Payment does. You can find implementatio
 
 ### Merchant registration
 
-You need to sign up with Bambora to get an API token in order to use `Native Payment`. Please send an email to [sdk@bambora.com](mailto:sdk@bambora.com) if you want to sign up.
+You need to sign up with Bambora to get an API token in order to use `Native Payment`. Please send an email to [sales.ecom@bambora.com](mailto:sales.ecom@bambora.com) if you want to sign up.
 
 ### Setup and authentication
 
