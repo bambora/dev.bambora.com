@@ -126,6 +126,12 @@ BPSBaseLibHandler.setupBpsBaseLibHandler(builder, new ISetupCallback() {
 ```
 > The debug setting enables logging through logcat if set to true (and disables logging if set to false). The debug setting should be set to false in live applications.
 
+### HTTP Responses
+
+**201 Created** 
+
+**403 Forbidden:** A valid API token is missing.
+
 <a name="androidcreditcardregistration"></a>
 ## Credit Card registration
 
@@ -172,6 +178,12 @@ public class RegisterCreditCardActivity extends AppCompatActivity
     
 }
 ```
+
+### HTTP Responses
+
+**200 OK:** A response body containing a session URL to the Hosted Payment Page is returned.
+
+**403 Forbidden:** Valid credentials are missing.
 
 ## How to customize the Hosted Payment Page
 
@@ -410,6 +422,18 @@ public void makeCreditCardPayment(CreditCard creditCard) {
 
 ```
 > PAYMENT_ID is an identifier for the transaction. It is required and needs to be unique.
+
+### HTTP Responses
+
+**201 Created: Payment successful**
+
+**400 Invalid payment state transition:** The state of the payment could not be changed in the way that the payment operation would require.
+
+**402 Payment required:** The payment could not be authorized.
+
+**409 Payment operation blocked:** The payment was being modified by another request.
+The attempted operation could be retried again, or the payment
+could be queried to find out if its properties have changed.
 
 <a name="androidtestmode"></a>
 ## Test mode
