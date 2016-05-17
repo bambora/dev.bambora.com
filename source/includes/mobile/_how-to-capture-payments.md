@@ -1,4 +1,51 @@
-# Native Payment - iOS
+# How to capture payments
+
+When a payment is successfully made using the `Native Payment` SDK, the payment amount becomes reserved in the customer's bank account. 
+
+In order to then withdraw the payment amount from the customer's bank account, you need to perform a capture operation through our API.
+
+Here are the necessary steps to capture payments:
+
+1: Authenticate with our API.
+
+2: 
+
+3:
+
+
+
+```python
+import requests
+​
+MERCHANT_ACCOUNT = '<MERCHANT_NUMBER>'
+MERCHANT_TOKEN = '<MERCHANT_TOKEN>'
+MERCHANT_SECRET = '<MERCHANT_SECRET>'
+CAPTURE_URL = 'https://api-beta.bambora.com/payments/{payment_reference}/capture/'
+​
+response = requests.post(
+    CAPTURE_URL.format(payment_reference='ABCD1234'),
+    auth=('{}@{}'.format(MERCHANT_TOKEN, MERCHANT_NUMBER), MERCHANT_SECRET),
+    json={'amount': 2000},
+    headers={'API-Version': '1'}
+)
+```
+
+```shell
+PAYMENT_REFERENCE='<BNPayment/BNPayment.h>'
+MERCHANT_NUMBER='<MERCHANT_NUMBER>'
+MERCHANT_TOKEN='<MERCHANT_TOKEN>'
+MERCHANT_SECRET='<MERCHANT_SECRET>'
+CAPTURE_URL='https://api-beta.bambora.com/payments/'$PAYMENT_REFERENCE'/capture/'
+​
+AUTH='Authorization: Basic '$(echo -n $MERCHANT_TOKEN@$MERCHANT_NUMBER:$MERCHANT_SECRET | base64)
+​
+curl \
+    --header "$AUTH" \
+    --header 'API-Version: 1' \
+    --header 'Content-Type: application/json' \
+    --data '{"amount": 2000}' \
+    $CAPTURE_URL
+```
 
 This section of the guide will walk you through how to add Native Payment to your iOS project.
 
@@ -18,10 +65,6 @@ If you're interested in using `Native Payment` in a Swift-based app, please see 
 ## Installation
 
 To install Native Payment, we recommend using either CocoaPods or Carthage.
-
-CocoaPods is a dependency manager for third-party libraries.
-
-We recommend following [this guide](https://guides.cocoapods.org/using/getting-started.html#getting-started) for installing CocoaPods.
 
 ### How to install via CocoaPods
 > ### Step 1: Create or select an Xcode project. Then open a terminal window and `cd` into the project directory
@@ -46,12 +89,11 @@ pod install
 ```
 > ### Step 5: Re-open the project through the newly created `.xcworkspace` file.
 
+CocoaPods is a dependency manager for third-party libraries.
+
+We recommend following [this guide](https://guides.cocoapods.org/using/getting-started.html#getting-started) for installing CocoaPods.
+
 ### How to install via Carthage
-
-Carthage is a is a dependency manager for third-party libraries.
-
-We recommend following [these instructions](https://github.com/Carthage/Carthage#installing-carthage) for installing Carthage.
-
 > ### Step 1: Create or select an Xcode project. Then open a terminal window and `cd` into the project directory
 > ### Step 2: Create a Cartfile by running the following command in the OS X Terminal from the folder where your Xcode project file (`.xcodeproj`) is:
 
@@ -83,17 +125,12 @@ $(SRCROOT)/Carthage/Build/iOS/BNPayment.framework
 ```
 > ### Step 8: Build and run the project in Xcode.
 
+Carthage is a is a dependency manager for third-party libraries.
+
+We recommend following [these instructions](https://github.com/Carthage/Carthage#installing-carthage) for installing Carthage.
+
 <a name="iossetup"></a>
 ## Setup
-
-An API token is required in order to communicate with Bambora’s backend through the SDK.
-
-The API token has two purposes: it identifies you as a merchant and it determines whether the SDK should be connected to the test environment or to the production environment. Each environment requires a separate API token.
-
-After signing up for a SDK developer account, you will receive an API token for the test environment. You can then decide to apply for an API token for the production environment.
-
-Once you have an API token, you can use it to implement the setup code in the example.
-
 > ### Step 1: Import the SDK in AppDelegate.m:
 
 ```objective_c
@@ -113,15 +150,22 @@ NSError *error;
 
 > The debug setting should be set to NO in live applications.
 
+An API token is required in order to communicate with Bambora’s backend through the SDK.
+
+The API token has two purposes: it identifies you as a merchant and it determines whether the SDK should be connected to the test environment or to the production environment. Each environment requires a separate API token.
+
+After signing up for a SDK developer account, you will receive an API token for the test environment. You can then decide to apply for an API token for the production environment.
+
+Once you have an API token, you can use it to implement the setup code in the example.
+
 <a name="ioscreditcardregistration"></a>
 ## Credit Card Registration
 
+
 *Make sure you've successfully [set up `Native Payment`](#iossetup) before implementing this functionality.*
 
+
 ### How to accept credit card registrations
-
-Credit card registration is done through a secure web-based registration form, also known as a Hosted Payment Page, that you can easily include in your app through the class `BNCCHostedRegistrationFormVC` as the code example shows.
-
 > ### How to add the Hosted Payment Page to a navigation controller:
 
 ```objective_c
@@ -155,16 +199,9 @@ BNCCHostedRegistrationFormVC *ccHostedRegistrationVC =
    // Lets you know that a credit card registration attempt failed.
 }
 ```
+Credit card registration is done through a secure web-based registration form, also known as a Hosted Payment Page, that you can easily include in your app through the class `BNCCHostedRegistrationFormVC` as the code example shows.
 
 ### How to customize the Hosted Payment Page
-
-You can customize the Hosted Payment Page by:
-
-* Using a custom CSS file to change the look and feel of the page.
-
-* Selecting text to be used in the form.
-
-* Setting a custom header and footer.
 
 > ### Specify a CSS file and update text
 
@@ -272,10 +309,16 @@ ccHostedRegistrationVC.webviewDelegate = self;
 [ccHostedRegistrationVC addFooterView:<FOOTER_VIEW>]; // Set a custom footer view
 ```
 
+You can custom the Hosted Payment Page by:
+
+* Using a custom CSS file to change the look and feel of the page.
+
+* Selecting text to be used in the form.
+
+* Setting a custom header and footer.
+
+
 ### Managing credit cards
-
-When a credit card is registered using `BNCCHostedRegistrationFormVC`, a credit card token is saved on the device. This token is necessary in order to make a payment, as the code example in the [Making payments](#iosmakingpayments) below shows. This section contains code examples showing how to get and remove credit card tokens from the device.
-
 ```objective_c
 // Get a list of all registered credit cards
 NSArray<BNAuthorizedCreditCard *> *registeredCards = [[BNPaymentHandler sharedInstance] authorizedCards];
@@ -293,14 +336,10 @@ BNPaymentHandler *paymentHandler = [BNPaymentHandler sharedInstance];
 [paymentHandler removeAuthorizedCreditCard:creditCard];
 
 ```
+When a credit card is registered using `BNCCHostedRegistrationFormVC`, a credit card token is saved on the device. This token is necessary in order to make a payment, as the code example in the [Making payments](#iosmakingpayments) below shows. This section contains code examples showing how to get and remove credit card tokens from the device.
 
 <a name="iosmakingpayments"></a>
 ## Making payments
-
-*Make sure you've successfully [set up Native Payment](#iossetup) and implemented [Credit Card Registration](#ioscreditcardregistration) before continuing with this step.*
-
-Assuming a credit card token is registered on the device, it is possible to accept payments in the app. The code example shows how to configure and make a payment.
-
 ```objective_c
 // Get a list of all authorized credit card tokens
 NSArray<BNAuthorizedCreditCard *> *registeredCards = [[BNPaymentHandler sharedInstance] authorizedCards];
@@ -330,6 +369,9 @@ NSString *paymentIdentifier = [NSString stringWithFormat:@"%u", arc4random_unifo
             }];
 }
 ```
+*Make sure you've successfully [set up Native Payment](#iossetup) and implemented [Credit Card Registration](#ioscreditcardregistration) before continuing with this step.*
+
+Assuming a credit card token is registered on the device, it is possible to accept payments in the app. The code example shows how to configure and make a payment.
 
 <a name="iostestmode"></a>
 ## Test mode
@@ -349,8 +391,6 @@ To enable production mode, you need to provide a production API token as the ini
 You can find a code example in the [Setup section](#iossetup) above.
 
 ### Test credit cards
-
-You can use the following test credit cards for testing registration and purchasing when the SDK is running in test mode (no real money is charged when these test cards are used):
 
 ```
 VISA (Sweden)
@@ -373,3 +413,7 @@ Card number: 5206 8300 0000 0001
 Expiration (month/year): 05/17 
 CVC: 000
 ```
+
+You can use the following test credit cards for testing registration and purchasing when the SDK is running in test mode (no real money is charged when these test cards are used):
+
+

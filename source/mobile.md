@@ -3,7 +3,7 @@ title: Native
 
 toc_above:
   - <a href='index.html'>Getting Started</a>
-  - <a href='mobile.html'>Native</a>
+  - <a href='mobile.html'>Mobile</a>
   
 includes:
   - mobile/bnpayment-android
