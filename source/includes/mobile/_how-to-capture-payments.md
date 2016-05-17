@@ -51,7 +51,6 @@ Please note that:
 ```python
 import requests
 ​
-PAYMENT_REFERENCE='<PAYMENT_REFERENCE>'
 MERCHANT_ACCOUNT = '<MERCHANT_NUMBER>'
 MERCHANT_TOKEN = '<MERCHANT_TOKEN>'
 MERCHANT_SECRET = '<MERCHANT_SECRET>'
@@ -87,3 +86,19 @@ curl \
     --data '{"amount": 2000}' \
     $CAPTURE_URL
 ```
+
+### HTTP Responses
+
+**201 Successful capture**
+
+**400 Bad request:** The API request was not formatted correctly.
+
+**401 Unauthorized:** The Authorization header was not set.
+
+**402 Cannot capture:** The capture request could not be performed.
+
+**409 Payment operation blocked:** The payment was being modified by another request.
+The attempted operation could be retried again, or the payment
+could be queried to find out if its properties have changed.
+
+**422 Invalid payment state transition:** The state of the payment could not be changed in the way that the payment operation would require.

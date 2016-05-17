@@ -94,6 +94,12 @@ After signing up for a SDK developer account, you will receive an API token for 
 
 Once you have an API token, you can use it to implement the setup code in the example.
 
+### HTTP Responses
+
+**201 Created** 
+
+**403 Forbidden:** A valid API token is missing.
+
 > ### Step 1: Import the SDK in AppDelegate.m:
 
 ```objective_c
@@ -155,6 +161,12 @@ BNCCHostedRegistrationFormVC *ccHostedRegistrationVC =
    // Lets you know that a credit card registration attempt failed.
 }
 ```
+
+### HTTP Responses
+
+**200 OK:** A response body containing a session URL to the Hosted Payment Page is returned.
+
+**403 Forbidden:** Valid credentials are missing.
 
 ### How to customize the Hosted Payment Page
 
@@ -330,6 +342,18 @@ NSString *paymentIdentifier = [NSString stringWithFormat:@"%u", arc4random_unifo
             }];
 }
 ```
+
+### HTTP Responses
+
+**201 Created: Payment successful**
+
+**400 Invalid payment state transition:** The state of the payment could not be changed in the way that the payment operation would require.
+
+**402 Payment required:** The payment could not be authorized.
+
+**409 Payment operation blocked:** The payment was being modified by another request.
+The attempted operation could be retried again, or the payment
+could be queried to find out if its properties have changed.
 
 <a name="iostestmode"></a>
 ## Test mode
