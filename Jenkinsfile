@@ -11,6 +11,6 @@ node('!master && amazon-linux-64bit-generic') {
 
     if (env.BRANCH_NAME == "master") {
         stage name: 'Publish to S3'
-        sh "aws --region eu-west-1 s3 cp --recursive --acl=public-read \"\$PWD\"/build/ s3://bambora-dev-portal-prod-eu-west-1/"
+        sh "aws --region eu-west-1 s3 cp --recursive --acl=public-read \"\$PWD\"/build/ s3://dev.bambora.com/"
     }
 }
