@@ -8,7 +8,7 @@ toc_above:
 includes:
   - mobile/bnpayment-android
   - mobile/bnpayment-ios
-
+  - how-to-capture-payments
 
   
 search: true
