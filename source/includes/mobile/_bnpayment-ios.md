@@ -100,6 +100,20 @@ $(SRCROOT)/Carthage/Build/iOS/BNPayment.framework
 ### Step 8: Build
 Build and run the project in Xcode.
 
+## How to run the sample app
+
+This repository contains a basic sample application. Using the sample app and inspecting its source code can be useful if you wish to try the features and get an overview of how `Native Payment` can be implemented.
+
+Type the following command in a terminal window of your choice in the directory that you want to clone the repository to (Git needs to be installed on your computer for this to work):
+
+```bash
+git clone https://github.com/bambora/BNPayment-iOS
+```
+
+Open the `BNPayment-iOS` folder on your computer and double-click the `BNPayment.xcworkspace` file. This will open the workspace in Xcode.
+
+Select `BNPayment-Example` and a simulator (or device) in the toolbar in Xcode and then use the Run command.
+
 <a name="iossetup"></a>
 ## Setup
 
