@@ -19,5 +19,4 @@ We've made it easy for anyone to update the documentation. So if you see any doc
 
 
 # Support
-Running into issues? No problem, just give a call or send us an email.
-
+Running into issues? No problem, just send us an email at [sdk@bambora.com](mailto:sdk@bambora.com).
