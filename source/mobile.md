@@ -1,5 +1,5 @@
 ---
-title: Native
+title: Mobile
 
 toc_above:
   - <a href='index.html'>Getting Started</a>
