@@ -53,9 +53,11 @@ dependencies {
 }
 ```
 
-A sample app is included in the cloned repository (<TO_BE_ADDED>/app).
+A sample app is included in the cloned repository (BNPayment/app).
 
 ## Installation Through JCenter
+
+**This distribution method is currently not available.**
 
 ### Step 1: Add Repository
 
@@ -70,7 +72,7 @@ Enter the following under **allprojects -> repositories** either in the top-leve
 Add the following under **dependencies** in the app-specific `build.gradle` file:
 
 ```groovy
-compile project('bn-payment')
+<TO_BE_ADDED>
 ```
 
 ### Step 3: Set Permissions
