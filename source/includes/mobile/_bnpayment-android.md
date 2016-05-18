@@ -53,7 +53,7 @@ dependencies {
 }
 ```
 
-A sample app is included in the cloned repository (BNPayment/app).
+A sample app is included in the cloned repository (BNPayment-Android/app).
 
 ## Installation Through JCenter
 
