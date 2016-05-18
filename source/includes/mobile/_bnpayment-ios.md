@@ -125,12 +125,6 @@ After signing up for a SDK developer account, you will receive an API token for 
 
 Once you have an API token, you can use it to implement the setup code in the example.
 
-### HTTP Responses
-
-**201 Created** 
-
-**403 Forbidden:** A valid API token is missing.
-
 ### Step 1: Import
 Import the SDK in AppDelegate.m:
 
@@ -141,6 +135,10 @@ Import the SDK in AppDelegate.m:
 ### Step 2: Setup
 Add the following setup code to `application:didFinishLaunchingWithOptions:` method in AppDelegate.m.
 
+If you provide a test API token, the SDK will enter test mode. If you provide a production API token, the SDK will enter production mode. 
+
+The debug setting should be set to NO in live applications.
+
 ```objective_c
 NSError *error;
 [BNPaymentHandler setupWithApiToken:@"<API_TOKEN>" // Required.
@@ -148,9 +146,12 @@ NSError *error;
                               debug:NO // Optional. Enables logging in Xcode when set to YES.
                               error:&error];
 ```
-If you provide a test API token, the SDK will enter test mode. If you provide a production API token, the SDK will enter production mode. 
 
-The debug setting should be set to NO in live applications.
+### HTTP Responses
+
+**201 Created** 
+
+**403 Forbidden:** A valid API token is missing.
 
 <a name="ioscreditcardregistration"></a>
 ## Credit Card Registration
