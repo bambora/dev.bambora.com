@@ -55,27 +55,19 @@ dependencies {
 
 A sample app is included in the cloned repository (BNPayment-Android/app).
 
-## Installation Through JCenter
-
-**This distribution method is currently not available.**
+## Installation Via JCenter
 
 ### Step 1: Add Repository
 
-Enter the following under **allprojects -> repositories** either in the top-level `build.gradle` file or in the `build.gradle` file that contains one or more dependencies to the SDK:
+Add the following dependency under ‘dependencies’ in the app module's build.gradle file:
 
 ```groovy
-<TO_BE_ADDED>
+dependencies {
+   compile 'com.bambora.bnpayment:bn-payment:1.+'
+}
 ```
 
-### Step 2: Add Dependencies
-
-Add the following under **dependencies** in the app-specific `build.gradle` file:
-
-```groovy
-<TO_BE_ADDED>
-```
-
-### Step 3: Set Permissions
+### Step 2: Set Permissions
 
 Add the following permission after the **manifest** tag in your **AndroidManifest.xml** file:
 
