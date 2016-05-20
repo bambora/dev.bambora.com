@@ -1,7 +1,5 @@
 # Authentication
 
-## Client-Side Only Authentication
-If you do not have a server, or just want to send payments through to Bambora from your client app, then we have an authentication method to ensure your payments are secure.
+You need to sign up with Bambora to use our API. As part of the onboarding process, you will receive two merchant numbers (one for test and one for production), a merchant token and a merchant secret. 
 
-## Server-Side Authentication - API Keys
-If you are sending payments through your server to Bambora, you will need an API key to authorize your payments.
+Please send an email to [sales.ecom@bambora.com](mailto:sales.ecom@bambora.com) if you want to sign up.

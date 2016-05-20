@@ -10,6 +10,8 @@ includes:
   - mobile/bnpayment-ios
   - mobile/how-to-capture-payments
 
+toc_below:
+  - <a href='api.html'>API</a>
   
 search: true
 ---
