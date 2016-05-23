@@ -180,9 +180,13 @@ You can use the `setCssUrl()` method on a CreditCardRegistrationWebView object t
 myWebView.setCssUrl(CSS_URL)
 ```
 
+If no custom CSS file is used, Native Payment will automatically use a default CSS file to style the Hosted Payment Page.
+
 ### Custom CSS example
 
 The CSS on the right shows you a working example of custom styling.
+
+The content type of your CSS file should be text/css.
 
 ```css
 body {
