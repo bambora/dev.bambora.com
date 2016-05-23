@@ -16,7 +16,7 @@ end
 
 task :run_server do
   sh "bundle install"
-  sh "ruby -run -ehttpd ./public -p4567"
+  sh "ruby -run -ehttpd ./build -p4567"
 end
 task :run => [:build_slate, :copy_swagger, :run_server]
 
