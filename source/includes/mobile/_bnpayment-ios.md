@@ -214,7 +214,7 @@ You can customize the Hosted Payment Page by:
 * Setting a custom header and footer.
 
 ### CSS and Text
-Specify a CSS file and update text
+Specify a CSS file and update text:
 
 ```objective_c
 BNCCHostedFormParams customizationSettings = [BNCCHostedFormParams hostedFormParamsWithCSS:@"<CSS_URL>"
@@ -227,8 +227,12 @@ BNCCHostedRegistrationFormVC *ccHostedRegistrationVC =
   [[BNCCHostedRegistrationFormVC alloc] initWithHostedFormParams:[BNCCHostedFormParams customizationSettings]];
 ```
 
+If no custom CSS file is used, Native Payment will automatically use a default CSS file to style the Hosted Payment Page.
+
 ### Custom CSS example
 This is some example CSS that you can use as a reference for customizing the layout of the payment page.
+
+The content type of your CSS file should be text/css.
 
 ```css
 body {
