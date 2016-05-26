@@ -3,9 +3,7 @@
 
 This section of the guide will walk you through how to add `Native Payment` to your Android project.
 
-**Edit this Page**
-
-If you have found an issue in this documentation or want to improve it, simply click [here](https://github.com/bambora/dev.bambora.com/blob/master/source/includes/mobile/_bnpayment-android.md), edit the markdown text on that page, and submit a change request. We will review it, accept it, and publish the change automatically.
+**[Click](https://github.com/bambora/dev.bambora.com/blob/master/source/includes/mobile/_bnpayment-android.md) to edit this section.**
 
 ## Requirements
 

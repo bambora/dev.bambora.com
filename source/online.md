@@ -10,12 +10,12 @@ toc_above:
   
 includes:
   - online/checkout
-  - online/hosted_fields
 
   
 toc_below:
   - <a href='mobile.html'>Mobile</a>
   - <a href='api.html'>API</a>
+  - <a href='carts.html'>Shopping Carts</a>
   
   
 search: true

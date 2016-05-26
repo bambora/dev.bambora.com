@@ -6,3 +6,4 @@ In order to then withdraw the payment amount from the customer's bank account, y
 
 Head to our API docs to see how to **[capture the payment](./api.html#capture-payment)**.
 
+**[Click](https://github.com/bambora/dev.bambora.com/blob/master/source/includes/mobile/_how-to-capture-payments.md) to edit this section.**

@@ -11,7 +11,9 @@ includes:
   - mobile/how-to-capture-payments
 
 toc_below:
+  - <a href='online.html'>Online</a>
   - <a href='api.html'>API</a>
+  - <a href='carts.html'>Shopping Carts</a>
   
 search: true
 ---
@@ -26,6 +28,8 @@ Specifically, by adding Native Payment to your project you can make it possible 
 * Make purchases using registered credit cards.
 
 The purpose of `Native Payment` is to save you time by providing you with an easy-to-use, up-to-date and actively maintained codebase for interacting with the Native Payment backend.
+
+**[Click](https://github.com/bambora/dev.bambora.com/blob/master/source/mobile.md) to edit this section.**
 
 ## Platform support
 
