@@ -61,8 +61,3 @@ curl \
 ```
 
 If receive an HTTP status code of 200 (OK) you will also find the payment object, in JSON format, in the response body. Any errors or problems will represent themselves as a non-200 status code. Along with the [standard error codes](./api.html#errors), these are the specific responses for `GET /{payment}/` that you may encounter:
-
-Response Code | Meaning
----------- | -------
-200 | OK -- You will also receive a json payment object
-404 | Payment not found

@@ -45,7 +45,7 @@ Our REST API contains a /capture/ endpoint that you can use in order to capture 
 You will need the following data in order to make the request:
 
   * A merchant number.
-  * A merchant token. 
+  * A merchant token.
   * A merchant secret.
   * A payment reference (the reference that you set in the SDK before the payment in question was made)
 
@@ -61,11 +61,3 @@ We have created code examples showing how to capture a payment - one written in 
 ## Response
 
 If the capture was successful you will receive an HTTP status code of 200 (OK). Any errors or problems will represent themselves as a non-200 status code. Along with the [standard error codes](./api.html#errors), these are the specific responses for `/capture` that you may encounter:
-
-Response Code | Meaning
----------- | -------
-200 | OK -- Successful capture, hooray!
-402 | Cannot capture -- The capture request could not be performed.
-409 | Payment operation blocked -- The payment was being modified by another request. The attempted operation could be retried again, or the payment could be queried to find out if its properties have changed.
-422 | Invalid payment state transition -- The state of the payment could not be changed in the way that the payment operation would require.
-
