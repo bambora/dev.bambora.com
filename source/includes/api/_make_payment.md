@@ -15,7 +15,7 @@ PAYMENT_REFERENCE='<PAYMENT_REFERENCE>'
 MERCHANT_NUMBER='<MERCHANT_NUMBER>'
 MERCHANT_TOKEN='<MERCHANT_TOKEN>'
 MERCHANT_SECRET='<MERCHANT_SECRET>'
-CAPTURE_URL='https://api-beta.bambora.com/payments/'$PAYMENT_REFERENCE'/card_token_authorization/'
+TOKEN_AUTHORIZATION_URL='https://api-beta.bambora.com/payments/'$PAYMENT_REFERENCE'/card_token_authorization/'
 ​
 AUTH='Authorization: Basic '$(echo -n $MERCHANT_TOKEN@$MERCHANT_NUMBER:$MERCHANT_SECRET | base64)
 ​
@@ -24,7 +24,7 @@ curl \
     --header 'API-Version: 1' \
     --header 'Content-Type: application/json' \
     --data '{"currency": "EUR","amount": 0,"token": "string","comment": "string", "merchant": "string"}' \
-    $CAPTURE_URL
+    $TOKEN_AUTHORIZATION_URL
 ```
 ```python
 import requests
@@ -32,7 +32,7 @@ import requests
 MERCHANT_ACCOUNT = '<MERCHANT_NUMBER>'
 MERCHANT_TOKEN = '<MERCHANT_TOKEN>'
 MERCHANT_SECRET = '<MERCHANT_SECRET>'
-CAPTURE_URL = 'https://api-beta.bambora.com/payments/{payment_reference}/card_token_authorization/'
+TOKEN_AUTHORIZATION_URL = 'https://api-beta.bambora.com/payments/{payment_reference}/card_token_authorization/'
 ​
 payload= {
   "currency": "EUR",
@@ -43,12 +43,14 @@ payload= {
 }
 
 response = requests.post(
-    CAPTURE_URL.format(payment_reference='<PAYMENT_REFERENCE>'),
+    TOKEN_AUTHORIZATION_URL.format(payment_reference='<PAYMENT_REFERENCE>'),
     auth=('{}@{}'.format(MERCHANT_TOKEN, MERCHANT_NUMBER), MERCHANT_SECRET),
     headers={'API-Version': '1'},
     json=payload
 )
 ```
+> The Python code example requires that the [requests library for Python.com](https://github.com/kennethreitz/requests/) is installed on the computer that is running the code.
+
 A tokenized card is when you have already registered a card with us and you're just using the token you received back to pay with it
 
 You will need the following data in order to make the request:
@@ -68,7 +70,7 @@ PAYMENT_REFERENCE='<PAYMENT_REFERENCE>'
 MERCHANT_NUMBER='<MERCHANT_NUMBER>'
 MERCHANT_TOKEN='<MERCHANT_TOKEN>'
 MERCHANT_SECRET='<MERCHANT_SECRET>'
-CAPTURE_URL='https://api-beta.bambora.com/payments/'$PAYMENT_REFERENCE'/encrypted_card_authorization'
+ENCRYPTED_AUTHORIZATION_URL='https://api-beta.bambora.com/payments/'$PAYMENT_REFERENCE'/encrypted_card_authorization'
 ​
 AUTH='Authorization: Basic '$(echo -n $MERCHANT_TOKEN@$MERCHANT_NUMBER:$MERCHANT_SECRET | base64)
 ​
@@ -77,7 +79,7 @@ curl \
     --header 'API-Version: 1' \
     --header 'Content-Type: application/json' \
     --data '{"currency": "EUR","amount": 0,"comment": "string","merchant": "string","encryptedSessionKeys": [{"fingerprint": "string","sessionKey": "string"}],"encryptedCard": {"cardNumber": "string","cvcCode": "string","expiryMonth": "string","expiryYear": "string"},"token": true}' \
-    $CAPTURE_URL
+    $ENCRYPTED_AUTHORIZATION_URL
 ```
 ```python
 import requests
@@ -85,7 +87,7 @@ import requests
 MERCHANT_ACCOUNT = '<MERCHANT_NUMBER>'
 MERCHANT_TOKEN = '<MERCHANT_TOKEN>'
 MERCHANT_SECRET = '<MERCHANT_SECRET>'
-CAPTURE_URL = 'https://api-beta.bambora.com/payments/{payment_reference}/encrypted_card_authorization/'
+ENCRYPTED_AUTHORIZATION_URL = 'https://api-beta.bambora.com/payments/{payment_reference}/encrypted_card_authorization/'
 ​
 payload= {
   "currency": "EUR",
@@ -108,12 +110,15 @@ payload= {
 }
 
 response = requests.post(
-    CAPTURE_URL.format(payment_reference='<PAYMENT_REFERENCE>'),
+    ENCRYPTED_AUTHORIZATION_URL.format(payment_reference='<PAYMENT_REFERENCE>'),
     auth=('{}@{}'.format(MERCHANT_TOKEN, MERCHANT_NUMBER), MERCHANT_SECRET),
     headers={'API-Version': '1'},
     json=payload
 )
 ```
+
+> The Python code example requires that the [requests library for Python.com](https://github.com/kennethreitz/requests/) is installed on the computer that is running the code.
+
 An encrypted card will usually be used the first time you make a payment, sending the encrypted card information, in return you will receive a tokenized card.
 
 You will need the following data in order to make the request:
@@ -144,6 +149,7 @@ We have created code examples showing how to query a payment - one written in py
       "comment": "10 EUR capture"
     }
   ],
+  #only if the payment was made with an encrypted card:
   "card": {
     "token": "string",
     "cardNumber": "string",
