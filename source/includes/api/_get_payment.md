@@ -1,7 +1,5 @@
 # Get Payment
 
-Once you have created a payment Authorization you can then get that payment to see its details. You can also run a `GET` after a payment has been captured.
-
 **[Click](https://github.com/bambora/dev.bambora.com/blob/master/source/includes/api/_get_payment.md) to edit this section.**
 
 ## Request
@@ -39,6 +37,19 @@ curl \
 
 
 > The Python code example requires that the [requests library for Python.com](https://github.com/kennethreitz/requests/) is installed on the computer that is running the code.
+
+Once you have created a payment Authorization you can then get that payment to see its details. You can also run a `GET` after a payment has been captured.
+
+You will need the following data in order to make the request:
+
+  * A merchant number.
+  * A merchant token.
+  * A merchant secret.
+  * A payment reference (the reference that you set in the SDK before the payment in question was made)
+
+The payment reference refers to the one that you are required set in the SDK before making a payment. In order to capture a payment, you need to provide its unique payment reference.
+
+We have created code examples showing how to query a payment - one written in python and the other written in bash using CUrl. Please note that each placeholder needs to be replaced with real data.
 
 ## Response
 
