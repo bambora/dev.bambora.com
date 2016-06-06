@@ -127,6 +127,7 @@ GEM
     uglifier (2.7.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    wdm (0.1.1)
 
 PLATFORMS
   ruby
@@ -141,7 +142,8 @@ DEPENDENCIES
   rake (~> 10.4.2)
   redcarpet (~> 3.3.2)
   rouge (~> 1.9.0)
-  therubyracer (~> 0.12.1)
+  therubyracer (~> 0.12.2)
+  wdm (~> 0.1.0)
 
 BUNDLED WITH
-   1.10.6
+   1.12.5
