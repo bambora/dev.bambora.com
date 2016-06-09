@@ -4,7 +4,7 @@ title: Mobile
 toc_above:
   - <a href='index.html'>Getting Started</a>
   - <a href='mobile.html'>Mobile</a>
-  
+
 includes:
   - mobile/bnpayment-android
   - mobile/bnpayment-ios
@@ -14,7 +14,7 @@ toc_below:
   - <a href='online.html'>Online</a>
   - <a href='api.html'>API</a>
   - <a href='carts.html'>Shopping Carts</a>
-  
+
 search: true
 ---
 # Overview
@@ -60,6 +60,8 @@ The SDK supports multiple credit card registrations.
 When a valid credit card that contains sufficient funds has been registered through the SDK, payments can be made.
 
 This is done by making a call to the SDK backend that includes the amount, currency and credit card token.
+
+**Note**: The amount should be expressed in cents (or equivalent). For example, to make a payment of 10 EUR you would write the amount as `amount=1000; currency='EUR'`, for 100 SEK you would write `amount=10000; currency='SEK'`, etc.
 
 When an SDK payment is successful, the payment amount becomes reserved in the customer's bank account. It is then up to you as a merchant to capture/withdraw the payment from the customer's bank account (which can be done either through the merchant backend interface or by making an API integration with the Native Payment backend).
 
