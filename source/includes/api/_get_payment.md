@@ -12,7 +12,7 @@ MERCHANT_TOKEN = '<MERCHANT_TOKEN>'
 MERCHANT_SECRET = '<MERCHANT_SECRET>'
 PAYMENT_URL = 'https://api-beta.bambora.com/payments/{payment_reference}/'
 ​
-response = requests.post(
+response = requests.get(
     PAYMENT_URL.format(payment_reference='<PAYMENT_REFERENCE>'),
     auth=('{}@{}'.format(MERCHANT_TOKEN, MERCHANT_NUMBER), MERCHANT_SECRET),
     headers={'API-Version': '1'}
