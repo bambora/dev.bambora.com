@@ -36,7 +36,7 @@ curl \
 ```
 
 
-> The Python code example requires that the [requests library for Python.org](https://github.com/kennethreitz/requests/) is installed on the computer that is running the code.
+> The Python code example requires that the [requests library for Python](https://github.com/kennethreitz/requests/) is installed on the computer that is running the code.
 
 Once you have created a payment Authorization you can then get that payment to see its details. You can also run a `GET` after a payment has been captured.
 

@@ -49,7 +49,7 @@ response = requests.post(
     json=payload
 )
 ```
-> The Python code example requires that the [requests library for Python.org](https://github.com/kennethreitz/requests/) is installed on the computer that is running the code.
+> The Python code example requires that the [requests library for Python](https://github.com/kennethreitz/requests/) is installed on the computer that is running the code.
 
 A tokenized card is when you have already registered a card with us and you're just using the token you received back to pay with it
 
@@ -117,7 +117,7 @@ response = requests.post(
 )
 ```
 
-> The Python code example requires that the [requests library for Python.org](https://github.com/kennethreitz/requests/) is installed on the computer that is running the code.
+> The Python code example requires that the [requests library for Python](https://github.com/kennethreitz/requests/) is installed on the computer that is running the code.
 
 An encrypted card will usually be used the first time you make a payment, sending the encrypted card information, in return you will receive a tokenized card.
 
