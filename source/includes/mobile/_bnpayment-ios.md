@@ -179,7 +179,7 @@ If you don't want to use the default card registration form provided in the SDK 
 
 ### GUI compontents
 
-The SDK contains bundled text fields which helps you with input validation and formatting.
+The SDK contains bundled text fields that help you with input validation and formatting.
 
 **BNBaseTextField** is a subclass of `UITextField` with added functionality. You can either choose to use `BNBaseTextField` as is or make your own subclass. `BNBaseTextField` has two additional properties and a additional method compared to `UITextField`:
 
