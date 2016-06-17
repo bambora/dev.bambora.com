@@ -159,7 +159,7 @@ NSError *error;
 
 Native credit card registration is done through a native registration form. You can either choose to use the default card registration form contained in `BNCreditCardRegistrationVC` or create your own. All credit card details will be encrypted before sent to our servers.
 
-### Use BNCreditCardRegistrationVC
+### How to display the default native form
 
 This example shows you how to present the default card registration form.
 
@@ -173,7 +173,7 @@ vc.completionBlock = ^(BNCCRegCompletion completion, BNAuthorizedCreditCard *car
 [self.navigationController pushViewController:vc animated:YES];
 ```
 
-## Build your own card registration form.
+## How to build your own native form
 
 If you don't want to use the default card registration form provided in the SDK you are free to create your own custom form.
 
@@ -181,17 +181,17 @@ If you don't want to use the default card registration form provided in the SDK 
 
 The SDK contains bundled text fields which helps you with input validation and formatting.
 
-**BNBaseTextField** is a subclass of `UITextField` with added functionality. You can either choose to use `BNBaseTextField` as is or make your own subclass. `BNBaseTextField` have two additional properties and a additional method compared to `UITextField`:
+**BNBaseTextField** is a subclass of `UITextField` with added functionality. You can either choose to use `BNBaseTextField` as is or make your own subclass. `BNBaseTextField` has two additional properties and a additional method compared to `UITextField`:
 
 ```objective_c
-// This property let us specify a regex used for validating the input text.
+// This property lets us specify a regex used for validating the input text.
 @property (nonatomic, strong) NSString *validRegex;
 
-// This property let us specify a regex used for
+// This property lets us specify a regex used for
 // describing which type of input that is allowed.
 @property (nonatomic, strong) NSString *inputRegex;
 
-// This methods check if the text property matches the validRegex property.
+// This method checks if the text property matches the validRegex property.
 - (BOOL)hasValidInput;
 ```
 
@@ -199,9 +199,9 @@ The SDK contains bundled text fields which helps you with input validation and f
 
 **BNCreditCardExpiryTextField** is a subclass of `BNBaseTextField`. This textfield is tailored for handling card expiry input in the format `MM/YY"`. `BNBaseTextField` also contains automatic validation of the input triggered either by calling `hasValidInput` instance method or when the text field resigns first responder.
 
-### Handle input
+### How to handle input
 
-When building your own card registration form you are responsible for handling and formatting the input yourself. We do however include a nifty category `UITextField+BNCreditCard` which contains a few additional methods.
+When building your own card registration form you are responsible for handling and formatting the input yourself. We do however include a nifty category called `UITextField+BNCreditCard` which contains a few additional methods.
 
 ```objective_c
 // A method for applying default style to UITextField
@@ -215,17 +215,17 @@ When building your own card registration form you are responsible for handling a
 // Validate card number according regex: ^(?:\\d[ -]*?){16}$
 - (BOOL)validCardNumber;
 
-// Validate card cvc according regex: ^[0-9]{3,4}$
+// Validate card CVC according regex: ^[0-9]{3,4}$
 - (BOOL)validCVC;
 
-// Validate card cvc according regex: ^(0[1-9]|1[0-2])\\/?([0-9]{4}|[0-9]{2})$.
+// Validate card CVC according regex: ^(0[1-9]|1[0-2])\\/?([0-9]{4}|[0-9]{2})$.
 // and that the date is in the future.
 - (BOOL)validExpiryDate;
 
-// Check if input is a visa card.
+// Check if input is a Visa card.
 - (BOOL)isVisaCardNumber:(NSString *)cardNumber;
 
-// Check if input is a visa card.
+// Check if input is a Visa card.
 - (BOOL)isMasterCardNumber:(NSString *)cardNumber;
 ```
 
@@ -249,7 +249,7 @@ BNRegisterCCParams *params = [[BNRegisterCCParams alloc] initWithCreditCard:cred
 
 ### Handle the network request
 
-In order to register you have to generate `BNRegisterCCParams` described in the section above. When you have your params see code example below:
+In order to register you have to generate `BNRegisterCCParams` described in the section above. When you have your params see code example
 
 ```objective_c
 [[BNPaymentHandler sharedInstance] registerCreditCard:params completion:^(BNAuthorizedCreditCard *card, NSError *error) {
