@@ -12,7 +12,7 @@ MERCHANT_TOKEN = '<MERCHANT_TOKEN>'
 MERCHANT_SECRET = '<MERCHANT_SECRET>'
 PAYMENT_URL = 'https://api-beta.bambora.com/payments/{payment_reference}/'
 ​
-response = requests.post(
+response = requests.get(
     PAYMENT_URL.format(payment_reference='<PAYMENT_REFERENCE>'),
     auth=('{}@{}'.format(MERCHANT_TOKEN, MERCHANT_NUMBER), MERCHANT_SECRET),
     headers={'API-Version': '1'}
@@ -36,7 +36,7 @@ curl \
 ```
 
 
-> The Python code example requires that the [requests library for Python.com](https://github.com/kennethreitz/requests/) is installed on the computer that is running the code.
+> The Python code example requires that the [requests library for Python](https://github.com/kennethreitz/requests/) is installed on the computer that is running the code.
 
 Once you have created a payment Authorization you can then get that payment to see its details. You can also run a `GET` after a payment has been captured.
 
@@ -49,7 +49,7 @@ You will need the following data in order to make the request:
 
 The payment reference refers to the one that you are required set in the SDK before making a payment. In order to capture a payment, you need to provide its unique payment reference.
 
-We have created code examples showing how to query a payment - one written in python and the other written in bash using CUrl. Please note that each placeholder needs to be replaced with real data.
+We have created code examples showing how to query a payment - one written in python and the other written in bash using cURL. Please note that each placeholder needs to be replaced with real data.
 
 ## Response
 
@@ -71,4 +71,4 @@ We have created code examples showing how to query a payment - one written in py
 }
 ```
 
-If receive an HTTP status code of 200 (OK) you will also find the payment object, in JSON format, in the response body. Any errors or problems will represent themselves as a non-200 status code. Along with the [standard error codes](./api.html#errors), these are the specific responses for `GET /{payment}/` that you may encounter:
+If you receive an HTTP status code of 200 (OK) you will also find the payment object, in JSON format, in the response body. Any errors or problems will represent themselves as a non-200 status code. You can see those in the [standard error codes](./api.html#errors).

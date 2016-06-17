@@ -25,7 +25,7 @@ curl \
     --header "$AUTH" \
     --header 'API-Version: 1' \
     --header 'Content-Type: application/json' \
-    --data '{"currency": "EUR","amount": 0,"token": "string","comment": "string", "merchant": "string"}' \
+    --data '{"currency": "EUR","amount": 0,"token": "string", "comment": "string", "merchant": "string"}' \
     $TOKEN_AUTHORIZATION_URL
 ```
 ```python
@@ -51,7 +51,7 @@ response = requests.post(
     json=payload
 )
 ```
-> The Python code example requires that the [requests library for Python.com](https://github.com/kennethreitz/requests/) is installed on the computer that is running the code.
+> The Python code example requires that the [requests library for Python](https://github.com/kennethreitz/requests/) is installed on the computer that is running the code.
 
 A tokenized card is when you have already registered a card with us and you're just using the token you received back to pay with it
 
@@ -80,7 +80,7 @@ curl \
     --header "$AUTH" \
     --header 'API-Version: 1' \
     --header 'Content-Type: application/json' \
-    --data '{"currency": "EUR","amount": 0,"comment": "string","merchant": "string","encryptedSessionKeys": [{"fingerprint": "string","sessionKey": "string"}],"encryptedCard": {"cardNumber": "string","cvcCode": "string","expiryMonth": "string","expiryYear": "string"},"token": true}' \
+    --data '{"currency": "EUR","amount": 0,"comment": "string","merchant": "string","encryptedSessionKeys": [{"fingerprint": "string","sessionKey": "string"}],"encryptedCard": {"cardNumber": "string", "cvcCode": "string", "expiryMonth": "string", "expiryYear": "string"},"token": true}' \
     $ENCRYPTED_AUTHORIZATION_URL
 ```
 ```python
@@ -119,7 +119,7 @@ response = requests.post(
 )
 ```
 
-> The Python code example requires that the [requests library for Python.com](https://github.com/kennethreitz/requests/) is installed on the computer that is running the code.
+> The Python code example requires that the [requests library for Python](https://github.com/kennethreitz/requests/) is installed on the computer that is running the code.
 
 An encrypted card will usually be used the first time you make a payment, sending the encrypted card information, in return you will receive a tokenized card.
 
@@ -141,17 +141,11 @@ We have created code examples showing how to query a payment - one written in py
   "region": "emea_0",
   "merchant": "string",
   "payment": "string",
-  "state": "None",
+  "state": "Authorized",
   "currency": "EUR",
   "amount": 0,
   "comment": "string",
-  "captures": [
-    {
-      "amount": 1000,
-      "comment": "10 EUR capture"
-    }
-  ],
-  #only if the payment was made with an encrypted card:
+  #if token was set to "true"
   "card": {
     "token": "string",
     "cardNumber": "string",
@@ -161,8 +155,8 @@ We have created code examples showing how to query a payment - one written in py
   }
 }
 ```
-If the query was successful and you used the encrypted card method then you will receive a tokenized card in return as well (as seen in the example here, the "card" part).
+If the query was successful and you used the encrypted card method then you will receive a tokenized card in return as well (as seen in the example here, the "card" part). This is only the case if you set the "token" to "true" in the payload.
 
 Otherwise you will only get the first part of the response (not the tokenized card).
 
-If the query was successful you will receive an HTTP status code of 200 (OK). Any errors or problems will represent themselves as a non-200 status code. Check the [standard error codes](./api.html#errors) if you get something other than 200. See the response example provided as well.
+If the query was successful you will receive an HTTP status code of 201 (Created). Any errors or problems will represent themselves as a non-200 status code. Check the [standard error codes](./api.html#errors) if you get something other than 200. See the response example provided as well.

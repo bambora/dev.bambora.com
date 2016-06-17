@@ -6,6 +6,7 @@ Standard API error codes:
 Error Code | Meaning
 ---------- | -------
 200 | OK -- Successful request, hooray!
+201 | Created -- Successful payment!
 400 | Bad Request -- The API request was not formatted correctly.
 401 | Unauthorized -- Your API key is wrong or the Authorization header was not set.
 402 | Cannot authorize -- The authorization request could not be performed.
