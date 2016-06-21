@@ -84,13 +84,13 @@ This will create a file called BNPayment.framework that you can find by going to
 Add BNPayment.framework to Target -> General -> Linked Frameworks and Libraries in Xcode.
 
 ### Step 6: Add Run Script
-Go to Target -> Build Phase in Xcode. Add a New Run Script Phase and then enter the following script line: 
+Go to Target -> Build Phase in Xcode. Add a New Run Script Phase and then enter the following script line:
 
 ```shell
-/usr/local/bin/carthage copy-frameworks 
+/usr/local/bin/carthage copy-frameworks
 ```
 ### Step 7: Configure
-Add the following line under Input Files: 
+Add the following line under Input Files:
 
 ```
 $(SRCROOT)/Carthage/Build/iOS/BNPayment.framework
@@ -133,7 +133,7 @@ Import the SDK in AppDelegate.m:
 ### Step 2: Setup
 Add the following setup code to `application:didFinishLaunchingWithOptions:` method in AppDelegate.m.
 
-If you provide a test API token, the SDK will enter test mode. If you provide a production API token, the SDK will enter production mode. 
+If you provide a test API token, the SDK will enter test mode. If you provide a production API token, the SDK will enter production mode.
 
 The debug setting should be set to NO in live applications.
 
@@ -147,12 +147,131 @@ NSError *error;
 
 ### HTTP Responses
 
-**201 Created** 
+**201 Created**
 
 **403 Forbidden:** A valid API token is missing.
 
 <a name="ioscreditcardregistration"></a>
-## Credit Card Registration
+
+## Native Card Registration
+
+*Make sure you've successfully [set up `Native Payment`](#iossetup) before implementing this functionality.*
+
+Native credit card registration is done through a native registration form. You can either choose to use the default card registration form contained in `BNCreditCardRegistrationVC` or create your own. All credit card details will be encrypted before sent to our servers.
+
+### How to display the default native form
+
+This example shows you how to present the default card registration form.
+
+```objective_c
+// Create an instance of `BNCreditCardRegistrationVC`
+BNCreditCardRegistrationVC *vc = [BNCreditCardRegistrationVC new];
+vc.completionBlock = ^(BNCCRegCompletion completion, BNAuthorizedCreditCard *card){
+    // Handle completion here
+};
+
+[self.navigationController pushViewController:vc animated:YES];
+```
+
+### HTTP Responses
+
+**200:** OK:** Successful request
+**201:** Created:** Successful payment!
+**400:** Bad Request – The API request was not formatted correctly.
+**401:** Unauthorized – Your API key is wrong or the Authorization header was not set.
+**402:** Cannot authorize – The authorization request could not be performed.
+**404:** Not Found – Unknown path or resource was not found.
+**409:** Payment operation blocked – The payment was being modified by another request. The attempted operation could be retried again, or the payment could be queried to find out if its properties have changed.
+**422:** Invalid payment state transition – The state of the payment could not be changed in the way that the payment operation would require.
+**500:** Internal Server Error – We had a problem with our server. Try again later.
+
+## How to build your own native form
+
+If you don't want to use the default card registration form provided in the SDK you are free to create your own custom form.
+
+### GUI compontents
+
+The SDK contains bundled text fields that help you with input validation and formatting.
+
+**BNBaseTextField** is a subclass of `UITextField` with added functionality. You can either choose to use `BNBaseTextField` as is or make your own subclass. `BNBaseTextField` has two additional properties and a additional method compared to `UITextField`:
+
+```objective_c
+// This property lets us specify a regex used for validating the input text.
+@property (nonatomic, strong) NSString *validRegex;
+
+// This property lets us specify a regex used for
+// describing which type of input that is allowed.
+@property (nonatomic, strong) NSString *inputRegex;
+
+// This method checks if the text property matches the validRegex property.
+- (BOOL)hasValidInput;
+```
+
+**BNCreditCardNumberTextField** is a subclass of `BNBaseTextField`. This textfield is tailored for handling credit card number formatting in the format `dddd dddd dddd dddd`. `BNBaseTextField` also contains automatic validation of the input triggered either by calling `hasValidInput` instance method or when the text field resigns first responder.
+
+**BNCreditCardExpiryTextField** is a subclass of `BNBaseTextField`. This textfield is tailored for handling card expiry input in the format `MM/YY"`. `BNBaseTextField` also contains automatic validation of the input triggered either by calling `hasValidInput` instance method or when the text field resigns first responder.
+
+### How to handle input
+
+When building your own card registration form you are responsible for handling and formatting the input yourself. We do however include a nifty category called `UITextField+BNCreditCard` which contains a few additional methods.
+
+```objective_c
+// A method for applying default style to UITextField
+- (void)applyStyle;
+
+// A method for styling the textfield.
+// Invalid textfield will have red text color.
+// Valid textfield will have black text color.
+- (void)setTextfieldValid:(BOOL)valid;
+
+// Validate card number according regex: ^(?:\\d[ -]*?){16}$
+- (BOOL)validCardNumber;
+
+// Validate card CVC according regex: ^[0-9]{3,4}$
+- (BOOL)validCVC;
+
+// Validate card CVC according regex: ^(0[1-9]|1[0-2])\\/?([0-9]{4}|[0-9]{2})$.
+// and that the date is in the future.
+- (BOOL)validExpiryDate;
+
+// Check if input is a Visa card.
+- (BOOL)isVisaCardNumber:(NSString *)cardNumber;
+
+// Check if input is a Visa card.
+- (BOOL)isMasterCardNumber:(NSString *)cardNumber;
+```
+
+### Handle encryption
+
+In order to send the credit card information to our server you must encrypt the data. This is done in two steps.
+
+**Collect credit card information:**
+```objective_c
+BNCreditCard *creditCard = [BNCreditCard new];
+creditCard.cardNumber = @"Your form input here";
+creditCard.expMonth = @"Your form input here";
+creditCard.expYear = @"Your form input here";
+creditCard.cvv = @"Your form input here";
+```
+
+**Encrypt credit card information:**
+```objective_c
+BNRegisterCCParams *params = [[BNRegisterCCParams alloc] initWithCreditCard:creditCard];
+```
+
+### Handle the network request
+
+In order to register you have to generate `BNRegisterCCParams` described in the section above. When you have your params see code example
+
+```objective_c
+[[BNPaymentHandler sharedInstance] registerCreditCard:params completion:^(BNAuthorizedCreditCard *card, NSError *error) {
+    if(self.completionBlock && card) {
+        self.completionBlock(BNCCRegCompletionDone, card);
+    }
+}];
+```
+
+## Web based Credit Card Registration
 
 *Make sure you've successfully [set up `Native Payment`](#iossetup) before implementing this functionality.*
 
@@ -165,7 +284,7 @@ This will add the Hosted Payment Page to a navigation controller:
 __weak UIViewController *weakSelf = self;
 
 // Create the view controller for the Hosted Payment Page:
-BNCCHostedRegistrationFormVC *ccHostedRegistrationVC = 
+BNCCHostedRegistrationFormVC *ccHostedRegistrationVC =
     [[BNCCHostedRegistrationFormVC alloc] initWithHostedFormParams:<CUSTOM_HOSTED_FORM_SETTINGS>];
     /* Instructions for creating <CUSTOM_HOSTED_FORM_SETTINGS> can found further down on this page in the section "How to customize the Hosted Payment Page" */
 
@@ -186,7 +305,7 @@ This defines the callback methods for the Hosted Payment Page that you can use t
 }
 
 - (void)BNPaymentWebview:(BNPaymentWebview *)webview didRegisterAuthorizedCard:(BNAuthorizedCreditCard *)authorizedCard {
-  /* Lets you know that a credit card registration attempt succeeded. 
+  /* Lets you know that a credit card registration attempt succeeded.
   This method Also lets you access the card token (through authorizedCard). */
 }
 
@@ -221,7 +340,7 @@ BNCCHostedFormParams customizationSettings = [BNCCHostedFormParams hostedFormPar
                                                                             cvvPlaceholder:@"CVV"
                                                                                 submitText:@"Submit"];
 
-BNCCHostedRegistrationFormVC *ccHostedRegistrationVC = 
+BNCCHostedRegistrationFormVC *ccHostedRegistrationVC =
   [[BNCCHostedRegistrationFormVC alloc] initWithHostedFormParams:[BNCCHostedFormParams customizationSettings]];
 ```
 
@@ -290,11 +409,11 @@ input {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -moz-tap-highlight-color: rgba(0,0,0,0);
     tap-highlight-color: rgba(0,0,0,0);
-    
+
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    
+
     color: #4f5355;
     font-size: 10pt;
     box-sizing: border-box;
@@ -370,8 +489,8 @@ paymentSettings.comment = <COMMENT>; // Comment about the payment
 // An example of how to create a random payment identifier:
 NSString *paymentIdentifier = [NSString stringWithFormat:@"%u", arc4random_uniform(INT_MAX)];
 
-// This function makes the payment based on the above settings and then returns a result.    
-[[BNPaymentHandler sharedInstance] 
+// This function makes the payment based on the above settings and then returns a result.
+[[BNPaymentHandler sharedInstance]
     makePaymentWithPaymentParams:paymentSettings
         identifier:paymentIdentifier
             result:^(BNPaymentResult result) {
@@ -419,22 +538,22 @@ You can use the following test credit cards for testing registration and purchas
 
 ```
 VISA (Sweden)
-Card number: 4002 6200 0000 0005 
-Expiration (month/year): 05/17 
+Card number: 4002 6200 0000 0005
+Expiration (month/year): 05/17
 CVC: 000
 
-MasterCard (Sweden) 
-Card number: 5125 8600 0000 0006 
-Expiration (month/year): 05/17 
+MasterCard (Sweden)
+Card number: 5125 8600 0000 0006
+Expiration (month/year): 05/17
 CVC: 000
 
-VISA (Norway) 
-Card number: 4002 7700 0000 0008 
-Expiration (month/year): 05/17 
+VISA (Norway)
+Card number: 4002 7700 0000 0008
+Expiration (month/year): 05/17
 CVC: 000
 
-MasterCard (Norway) 
-Card number: 5206 8300 0000 0001 
-Expiration (month/year): 05/17 
+MasterCard (Norway)
+Card number: 5206 8300 0000 0001
+Expiration (month/year): 05/17
 CVC: 000
 ```
