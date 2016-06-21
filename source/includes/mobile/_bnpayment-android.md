@@ -116,7 +116,7 @@ Credit card registration is done through a secure web-based registration form, a
 public class RegisterCreditCardActivity extends AppCompatActivity 
   implements CreditCardRegistrationWebView.IStateChangeListener {
 
-    private CreditCardRegistrationWebView mWebView;
+    private CreditCardRegistrationWebView myWebView;
     private static final String CSS_URL = "<CSS_URL>";
     
     @Override
@@ -297,10 +297,10 @@ Here you can see a custom layout file for setting the text on the form. The othe
 ### Set the Hosted Payment Page text using code
 
 ```java
-mWebView.setCardNumberHint("Card Number");
-mWebView.setCardExpiryHint("Expiration");
-mWebView.setCardCvvHint("CVV");
-mWebView.setSubmitButtonText("Register");
+myWebView.setCardNumberHint("Card Number");
+myWebView.setCardExpiryHint("Expiration");
+myWebView.setCardCvvHint("CVV");
+myWebView.setSubmitButtonText("Register");
 ```
 
 ## Managing credit cards

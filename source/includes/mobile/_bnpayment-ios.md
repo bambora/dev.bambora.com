@@ -175,15 +175,23 @@ vc.completionBlock = ^(BNCCRegCompletion completion, BNAuthorizedCreditCard *car
 
 ### HTTP Responses
 
-**200:** OK:** Successful request
-**201:** Created:** Successful payment!
-**400:** Bad Request – The API request was not formatted correctly.
-**401:** Unauthorized – Your API key is wrong or the Authorization header was not set.
-**402:** Cannot authorize – The authorization request could not be performed.
-**404:** Not Found – Unknown path or resource was not found.
-**409:** Payment operation blocked – The payment was being modified by another request. The attempted operation could be retried again, or the payment could be queried to find out if its properties have changed.
-**422:** Invalid payment state transition – The state of the payment could not be changed in the way that the payment operation would require.
-**500:** Internal Server Error – We had a problem with our server. Try again later.
+**200 OK:** Successful request
+
+**201 Created:** Successful payment!
+
+**400 Bad Request:** The API request was not formatted correctly.
+
+**401 Unauthorized:** Your API key is wrong or the Authorization header was not set.
+
+**402 Cannot authorize:** The authorization request could not be performed.
+
+**404 Not Found:** Unknown path or resource was not found.
+
+**409 Payment operation blocked:** The payment was being modified by another request. The attempted operation could be retried again, or the payment could be queried to find out if its properties have changed.
+
+**422 Invalid payment state transition:** The state of the payment could not be changed in the way that the payment operation would require.
+
+**500 Internal Server Error:** We had a problem with our server. Try again later.
 
 ## How to build your own native form
 
@@ -216,12 +224,12 @@ The SDK contains bundled text fields that help you with input validation and for
 When building your own card registration form you are responsible for handling and formatting the input yourself. We do however include a nifty category called `UITextField+BNCreditCard` which contains a few additional methods.
 
 ```objective_c
-// A method for applying default style to UITextField
+// A method for applying default style to UITextField.
 - (void)applyStyle;
 
-// A method for styling the textfield.
-// Invalid textfield will have red text color.
-// Valid textfield will have black text color.
+/* A method for styling the textfield.
+An invalid textfield will have red text color.
+A valid textfield will have black text color. */
 - (void)setTextfieldValid:(BOOL)valid;
 
 // Validate card number according regex: ^(?:\\d[ -]*?){16}$
@@ -230,8 +238,8 @@ When building your own card registration form you are responsible for handling a
 // Validate card CVC according regex: ^[0-9]{3,4}$
 - (BOOL)validCVC;
 
-// Validate card CVC according regex: ^(0[1-9]|1[0-2])\\/?([0-9]{4}|[0-9]{2})$.
-// and that the date is in the future.
+/* Validate card CVC according regex: ^(0[1-9]|1[0-2])\\/?([0-9]{4}|[0-9]{2})$.
+and that the date is in the future.*/
 - (BOOL)validExpiryDate;
 
 // Check if input is a Visa card.
@@ -243,20 +251,19 @@ When building your own card registration form you are responsible for handling a
 
 ### Handle encryption
 
-In order to send the credit card information to our server you must encrypt the data. This is done in two steps.
+In order to send the credit card information to our server you must encrypt the data. The code example shows how to do it.
 
-**Collect credit card information:**
 ```objective_c
+// Collect credit card information
 BNCreditCard *creditCard = [BNCreditCard new];
 creditCard.cardNumber = @"Your form input here";
 creditCard.expMonth = @"Your form input here";
 creditCard.expYear = @"Your form input here";
 creditCard.cvv = @"Your form input here";
-```
 
-**Encrypt credit card information:**
-```objective_c
+// Encrypt the credit card information
 BNRegisterCCParams *params = [[BNRegisterCCParams alloc] initWithCreditCard:creditCard];
+
 ```
 
 ### Handle the network request
@@ -265,7 +272,7 @@ In order to register you have to generate `BNRegisterCCParams` described in the 
 
 ```objective_c
 [[BNPaymentHandler sharedInstance] registerCreditCard:params completion:^(BNAuthorizedCreditCard *card, NSError *error) {
-    if(self.completionBlock && card) {
+    if (self.completionBlock && card) {
         self.completionBlock(BNCCRegCompletionDone, card);
     }
 }];
@@ -334,14 +341,13 @@ You can customize the Hosted Payment Page by:
 Specify a CSS file and update text:
 
 ```objective_c
-BNCCHostedFormParams customizationSettings = [BNCCHostedFormParams hostedFormParamsWithCSS:@"<CSS_URL>"
-                                                                     cardNumberPlaceholder:@"Card number"
-                                                                         expiryPlaceholder:@"Expiration"
-                                                                            cvvPlaceholder:@"CVV"
-                                                                                submitText:@"Submit"];
+BNCCHostedFormParams customizationSettings = [BNCCHostedFormParams hostedFormParamsWithCSS:@"CSS_URL>"
+  cardNumberPlaceholder:@"Card number"
+      expiryPlaceholder:@"Expiration"
+         cvvPlaceholder:@"CVV" submitText:@"Submit"];
 
 BNCCHostedRegistrationFormVC *ccHostedRegistrationVC =
-  [[BNCCHostedRegistrationFormVC alloc] initWithHostedFormParams:[BNCCHostedFormParams customizationSettings]];
+  [[BNCCHostedRegistrationFormVC alloc] initWithHostedFormParams:customizationSettings];
 ```
 
 If no custom CSS file is used, Native Payment will automatically use a default CSS file to style the Hosted Payment Page.
