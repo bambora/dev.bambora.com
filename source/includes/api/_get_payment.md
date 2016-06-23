@@ -6,33 +6,35 @@
 
 ```python
 import requests
-​
+
+PAYMENT_REFERENCE = '<PAYMENT_REFERENCE>'
 MERCHANT_ACCOUNT = '<MERCHANT_NUMBER>'
 MERCHANT_TOKEN = '<MERCHANT_TOKEN>'
 MERCHANT_SECRET = '<MERCHANT_SECRET>'
-PAYMENT_URL = 'https://api-beta.bambora.com/payments/{payment_reference}/'
-​
+
+URL = 'https://api-beta.bambora.com/payments/{payment_reference}/'
+
 response = requests.get(
-    PAYMENT_URL.format(payment_reference='<PAYMENT_REFERENCE>'),
+    URL.format(payment_reference=PAYMENT_REFERENCE),
     auth=('{}@{}'.format(MERCHANT_TOKEN, MERCHANT_NUMBER), MERCHANT_SECRET),
     headers={'API-Version': '1'}
 )
 ```
 
 ```shell
-PAYMENT_REFERENCE='<PAYMENT_REFERENCE>'
-MERCHANT_NUMBER='<MERCHANT_NUMBER>'
-MERCHANT_TOKEN='<MERCHANT_TOKEN>'
-MERCHANT_SECRET='<MERCHANT_SECRET>'
-PAYMENT_URL='https://api-beta.bambora.com/payments/'$PAYMENT_REFERENCE'/'
-​
-AUTH='Authorization: Basic '$(echo -n $MERCHANT_TOKEN@$MERCHANT_NUMBER:$MERCHANT_SECRET | base64)
+PAYMENT_REFERENCE="<PAYMENT_REFERENCE>"
+MERCHANT_NUMBER="<MERCHANT_NUMBER>"
+MERCHANT_TOKEN="<MERCHANT_TOKEN>"
+MERCHANT_SECRET="<MERCHANT_SECRET>"
+
+URL="https://api-beta.bambora.com/payments/${PAYMENT_REFERENCE}/"
+AUTHORIZATION="Authorization: Basic "$(echo -n ${MERCHANT_TOKEN}@${MERCHANT_NUMBER}:${MERCHANT_SECRET} | base64)
 ​
 curl \
-    --header "$AUTH" \
-    --header 'API-Version: 1' \
-    --header 'Content-Type: application/json' \
-    $PAYMENT_URL
+    --header "${AUTHORIZATION}" \
+    --header "API-Version: 1" \
+    --header "Content-Type: application/json" \
+    "${URL}"
 ```
 
 
