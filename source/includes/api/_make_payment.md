@@ -32,7 +32,7 @@ import requests
 MERCHANT_ACCOUNT = '<MERCHANT_NUMBER>'
 MERCHANT_TOKEN = '<MERCHANT_TOKEN>'
 MERCHANT_SECRET = '<MERCHANT_SECRET>'
-TOKEN_AUTHORIZATION_URL = 'https://api-beta.bambora.com/payments/{payment_reference}/card_token_authorization/'
+TOKEN_AUTHORIZATION_URL = 'https://api-beta.bambora.com/payments/{payment_reference}/card_token/'
 ​
 payload= {
   "currency": "EUR",

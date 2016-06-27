@@ -60,4 +60,20 @@ We have created code examples showing how to capture a payment - one written in 
 
 ## Response
 
+```{
+  "region": "emea_0",
+  "merchant": "string",
+  "payment": "string",
+  "state": "Authorized",
+  "currency": "SEK",
+  "amount": "integer",
+  "comment": "string"
+  "captures": [
+  "capture"{
+    "amount": "integer",
+    "comment": "string" 
+  }]
+}
+```
+
 If the capture was successful you will receive an HTTP status code of 200 (OK). Any errors or problems will represent themselves as a non-200 status code. Along with the [standard error codes](./api.html#errors), these are the specific responses for `/capture` that you may encounter:
