@@ -12,30 +12,39 @@ Making a payment is the most common operation you will want to perform. This is 
 There are two card formats that you can use to make a payment: tokenized cards, or encrypted cards.
 
 ### Tokenized Cards
+
 ```shell
-PAYMENT_REFERENCE='<PAYMENT_REFERENCE>'
-MERCHANT_NUMBER='<MERCHANT_NUMBER>'
-MERCHANT_TOKEN='<MERCHANT_TOKEN>'
-MERCHANT_SECRET='<MERCHANT_SECRET>'
-TOKEN_AUTHORIZATION_URL='https://api-beta.bambora.com/payments/'$PAYMENT_REFERENCE'/card_token_authorization/'
-​
-AUTH='Authorization: Basic '$(echo -n $MERCHANT_TOKEN@$MERCHANT_NUMBER:$MERCHANT_SECRET | base64)
+CARD_TOKEN="<CARD_TOKEN>"
+PAYMENT_REFERENCE="<PAYMENT_REFERENCE>"
+MERCHANT_NUMBER="<MERCHANT_NUMBER>"
+MERCHANT_TOKEN="<MERCHANT_TOKEN>"
+MERCHANT_SECRET="<MERCHANT_SECRET>"
+
+URL="https://api-beta.bambora.com/payments/${PAYMENT_REFERENCE}/card_token_authorization/"
+AUTHORIZATION="Authorization: Basic "$(echo -n ${MERCHANT_TOKEN}@${MERCHANT_NUMBER}:${MERCHANT_SECRET} | base64)
 ​
 curl \
-    --header "$AUTH" \
-    --header 'API-Version: 1' \
-    --header 'Content-Type: application/json' \
-    --data '{"currency": "EUR","amount": 0,"token": "string", "comment": "string", "merchant": "string"}' \
-    $TOKEN_AUTHORIZATION_URL
+    --header "${AUTHORIZATION}" \
+    --header "API-Version: 1" \
+    --header "Content-Type: application/json" \
+    --data '{"currency": "EUR",
+             "amount": 0,
+             "token": "${CARD_TOKEN}",
+             "comment": "string",
+             "merchant": "string"}' \
+    "${URL}"
 ```
+
 ```python
 import requests
-​
+
+PAYMENT_REFERENCE = '<PAYMENT_REFERENCE>'
 MERCHANT_ACCOUNT = '<MERCHANT_NUMBER>'
 MERCHANT_TOKEN = '<MERCHANT_TOKEN>'
 MERCHANT_SECRET = '<MERCHANT_SECRET>'
-TOKEN_AUTHORIZATION_URL = 'https://api-beta.bambora.com/payments/{payment_reference}/card_token_authorization/'
-​
+
+URL = 'https://api-beta.bambora.com/payments/{payment_reference}/card_token_authorization/'
+
 payload= {
   "currency": "EUR",
   "amount": 0,
@@ -45,7 +54,7 @@ payload= {
 }
 
 response = requests.post(
-    TOKEN_AUTHORIZATION_URL.format(payment_reference='<PAYMENT_REFERENCE>'),
+    URL.format(payment_reference=PAYMENT_REFERENCE),
     auth=('{}@{}'.format(MERCHANT_TOKEN, MERCHANT_NUMBER), MERCHANT_SECRET),
     headers={'API-Version': '1'},
     json=payload
@@ -57,42 +66,59 @@ A tokenized card is when you have already registered a card with us and you're j
 
 You will need the following data in order to make the request:
 
-  * A merchant number.
-  * A merchant token.
-  * A merchant secret.
-  * A payment reference.
+* Data about the payment including amount, currency and a credit card token.
+* A payment reference.
+* A merchant number.
+* A merchant token.
+* A merchant secret.
 
 You will get access to the merchant number, a merchant token and a merchant secret after registering with Bambora.
 
 You need to set a unique payment reference in order to make a payment. 
 
-We have created code examples showing how to query a payment - one written in python and the other written in bash using CUrl. Please note that each placeholder needs to be replaced with real data.
+We have created code examples showing how to query a payment - one written in python and the other written in bash using cURL. Please note that each placeholder needs to be replaced with real data.
 
 ### Encrypted Cards
+
 ```shell
-PAYMENT_REFERENCE='<PAYMENT_REFERENCE>'
-MERCHANT_NUMBER='<MERCHANT_NUMBER>'
-MERCHANT_TOKEN='<MERCHANT_TOKEN>'
-MERCHANT_SECRET='<MERCHANT_SECRET>'
-ENCRYPTED_AUTHORIZATION_URL='https://api-beta.bambora.com/payments/'$PAYMENT_REFERENCE'/encrypted_card_authorization'
-​
-AUTH='Authorization: Basic '$(echo -n $MERCHANT_TOKEN@$MERCHANT_NUMBER:$MERCHANT_SECRET | base64)
+PAYMENT_REFERENCE="<PAYMENT_REFERENCE>"
+MERCHANT_NUMBER="<MERCHANT_NUMBER>"
+MERCHANT_TOKEN="<MERCHANT_TOKEN>"
+MERCHANT_SECRET="<MERCHANT_SECRET>"
+
+URL='https://api-beta.bambora.com/payments/'$PAYMENT_REFERENCE'/encrypted_card_authorization'
+AUTHORIZATION="Authorization: Basic "$(echo -n ${MERCHANT_TOKEN}@${MERCHANT_NUMBER}:${MERCHANT_SECRET} | base64)
 ​
 curl \
-    --header "$AUTH" \
-    --header 'API-Version: 1' \
-    --header 'Content-Type: application/json' \
-    --data '{"currency": "EUR","amount": 0,"comment": "string","merchant": "string","encryptedSessionKeys": [{"fingerprint": "string","sessionKey": "string"}],"encryptedCard": {"cardNumber": "string", "cvcCode": "string", "expiryMonth": "string", "expiryYear": "string"},"token": true}' \
-    $ENCRYPTED_AUTHORIZATION_URL
+    --header "${AUTHORIZATION}" \
+    --header "API-Version: 1" \
+    --header "Content-Type: application/json" \
+    --data '{"currency": "EUR",
+         "amount": 0,
+         "comment": "string",
+         "merchant": "string",
+         "encryptedSessionKeys": 
+          [{"fingerprint": "string",
+            "sessionKey": "string"}],
+         "encryptedCard": 
+          {"cardNumber": "string", 
+           "cvcCode": "string", 
+           "expiryMonth": "string", 
+           "expiryYear": "string"},
+           "token": true}' \
+    "${URL}"
 ```
+
 ```python
 import requests
-​
+
+PAYMENT_REFERENCE = '<PAYMENT_REFERENCE>'
 MERCHANT_ACCOUNT = '<MERCHANT_NUMBER>'
 MERCHANT_TOKEN = '<MERCHANT_TOKEN>'
 MERCHANT_SECRET = '<MERCHANT_SECRET>'
-ENCRYPTED_AUTHORIZATION_URL = 'https://api-beta.bambora.com/payments/{payment_reference}/encrypted_card_authorization/'
-​
+
+URL = 'https://api-beta.bambora.com/payments/{payment_reference}/encrypted_card_authorization/'
+
 payload= {
   "currency": "EUR",
   "amount": 0,
@@ -110,11 +136,11 @@ payload= {
     "expiryMonth": "string",
     "expiryYear": "string"
   },
-  "token": true
+  "token": True
 }
 
 response = requests.post(
-    ENCRYPTED_AUTHORIZATION_URL.format(payment_reference='<PAYMENT_REFERENCE>'),
+    URL.format(payment_reference=PAYMENT_REFERENCE),
     auth=('{}@{}'.format(MERCHANT_TOKEN, MERCHANT_NUMBER), MERCHANT_SECRET),
     headers={'API-Version': '1'},
     json=payload
@@ -127,14 +153,15 @@ An encrypted card will usually be used the first time you make a payment, sendin
 
 You will need the following data in order to make the request:
 
-  * A merchant number.
-  * A merchant token.
-  * A merchant secret.
-  * A payment reference (the reference that you set in the SDK before the payment in question was made)
+* A payload consisting of data such as currency, amount and encrypted credit card data.
+* A merchant number.
+* A merchant token.
+* A merchant secret.
+* A payment reference (the reference that you set in the SDK before the payment in question was made)
 
 The payment reference refers to the one that you are required set in the SDK before making a payment. In order to capture a payment, you need to provide its unique payment reference.
 
-We have created code examples showing how to query a payment - one written in python and the other written in bash using CUrl. Please note that each placeholder needs to be replaced with real data.
+We have created code examples showing how to query a payment - one written in python and the other written in bash using cURL. Please note that each placeholder needs to be replaced with real data.
 
 ## Response
 
