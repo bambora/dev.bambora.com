@@ -64,7 +64,7 @@ html, body {
   overflow-x: hidden;
   position: fixed;
   z-index: 30;
-  top: 71px;
+  top: 60px;
   left: 0;
   bottom: 0;
   bottom: 0;
@@ -76,9 +76,12 @@ html, body {
   // language selector for mobile devices
   .lang-selector {
     display: none;
+    background-color: transparent;
+    padding: 5px;
     a {
       padding-top: 0.5em;
       padding-bottom: 0.5em;
+      text-decoration: none;
     }
   }
 
@@ -248,13 +251,13 @@ html, body {
   img{
     margin-top: 4px;
     margin-left: 4px;
-    width: 119px;
+    width: 91px;
   }
 }
 .nav-push{
   position: relative;
   width: 100%;
-  height: 71px;
+  height: 60px;
 }
 
 .nav-bottom {
@@ -270,7 +273,6 @@ html, body {
     display: block;
     $side-pad: $main-padding / 2 - 8px;
     padding: $side-pad $side-pad $side-pad;
-    background-color: rgba($main-bg, 0.7);
     transform-origin: 0 0;
     transform: rotate(-90deg) translate(-100%, 0);
     border-radius: 0 0 0 5px;
@@ -278,7 +280,7 @@ html, body {
   padding: 0 1.5em 5em 0; // increase touch size area
   display: none;
   position: fixed;
-  top: 0;
+  top: 60px;
   left: 0;
   z-index: 100;
   color: #000;
@@ -384,7 +386,6 @@ html, body {
   &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
     margin-right: $examples-width + 2%;
     padding: 0 $main-padding;
-    padding-top: 2.5em;
     box-sizing: border-box;
     display: block;
     @extend %left-col;
@@ -402,9 +403,8 @@ html, body {
   h1 {
     @extend %header-font;
     font-size: 30px;
+    padding-top: 2.5em;
     padding-bottom: 0.5em;
-    margin-top: 2em;
-    border-top: 1px solid #ddd;
   }
 
   h1:first-child, div:first-child + h1 {
@@ -415,12 +415,9 @@ html, body {
   h2 {
     @extend %header-font;
     font-size: 20px;
-    margin-top: 4em;
     margin-bottom: 0;
-    border-top: 1px solid $color-seperator;
-    padding-top: 1.2em;
+    padding-top: 4em;
     padding-bottom: 1.2em;
-    background-image: linear-gradient(to bottom, rgba(#fff, 0.4), rgba(#fff, 0));
   }
   
   a{
@@ -442,7 +439,7 @@ html, body {
   h3, h4, h5, h6 {
     @extend %header-font;
     font-size: 15px;
-    margin-top: 2.5em;
+    padding-top: 4em;
     margin-bottom: 0.8em;
   }
 
@@ -599,11 +596,9 @@ html, body {
   blockquote {
     &>p {
       background-color: $code-annotation-bg;
-      border-radius: 5px;
+      border-radius: 4px;
       padding: $code-annotation-padding;
-      color: #ccc;
-      border-top: 1px solid #000;
-      border-bottom: 1px solid #404040;
+      color: #f1f1f1;
     }
   }
 }
@@ -644,6 +639,9 @@ html, body {
 
   %left-col {
     margin-right: 0;
+  }
+  .tocify-wrapper{
+    box-shadow: 0px 5px 5px rgba(0,0,0,0.4);
   }
 
   .tocify-wrapper .lang-selector {
