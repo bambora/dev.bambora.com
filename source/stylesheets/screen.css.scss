@@ -384,6 +384,7 @@ html, body {
   &>h1, &>h2, &>h3, &>h4, &>h5, &>h6, &>p, &>table, &>ul, &>ol, &>aside, &>dl {
     margin-right: $examples-width + 2%;
     padding: 0 $main-padding;
+    padding-top: 2.5em;
     box-sizing: border-box;
     display: block;
     @extend %left-col;
@@ -401,10 +402,7 @@ html, body {
   h1 {
     @extend %header-font;
     font-size: 30px;
-    padding-top: 2.5em;
     padding-bottom: 0.5em;
-    // border-bottom: 1px solid #ccc;
-    // margin-bottom: $h1-margin-bottom;
     margin-top: 2em;
     border-top: 1px solid #ddd;
   }
