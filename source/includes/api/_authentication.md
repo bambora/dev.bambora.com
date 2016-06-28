@@ -17,7 +17,14 @@ Authorization: Basic YWJjZGVmZ0AxMjM0NTY3ODk6N0FRdTdGR0IyS3dt
 > This is an example base64 encoded Auth header: Basic abcdefg@123456789:7AQu7FGB2Kwm
 
 <form>
-<label for="merchantId">Merchant ID</label> <input id="merchantId" type="text"/><br>
-<label for="merchantToken">Token</label> <input id="merchantToken" type="text"/><br>
-<label for="merchantSecret">Secret</label> <input id="merchantSecret" type="text"/><br>
+    <div class="form-group">
+		<label for="merchantId">Merchant ID</label> <input id="merchantId" type="text"/>
+	</div>
+    <div class="form-group">	
+		<label for="merchantToken">Token</label> <input id="merchantToken" type="text"/>
+	</div>
+    <div class="form-group">
+		<label for="merchantSecret">Secret</label> <input id="merchantSecret" type="text"/>
+	</div>
+
 </form>

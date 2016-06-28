@@ -45,7 +45,7 @@ MERCHANT_SECRET = '<MERCHANT_SECRET>'
 
 URL = 'https://api-beta.bambora.com/payments/{payment_reference}/card_token_authorization/'
 
-payload= {
+payload = {
   "currency": "EUR",
   "amount": 0,
   "token": "string",
