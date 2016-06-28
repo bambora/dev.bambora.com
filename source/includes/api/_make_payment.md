@@ -119,7 +119,7 @@ MERCHANT_SECRET = '<MERCHANT_SECRET>'
 
 URL = 'https://api-beta.bambora.com/payments/{payment_reference}/encrypted_card_authorization/'
 
-payload= {
+payload = {
   "currency": "EUR",
   "amount": 0,
   "comment": "string",
