@@ -23,31 +23,33 @@ under the License.
 
 // BACKGROUND COLORS
 ////////////////////
-$nav-bg: #393939;
-$top-nav-bg: #48256B;
-$bottom-nav-bg: #000000;
-$examples-bg: #393939;
-$code-bg: #292929;
-$nav-gradient: #151414;
-$code-annotation-bg: #1c1c1c;
-$nav-subitem-bg: #262626;
-$nav-active-bg: #8A52B4;
-$lang-select-border: #000;
-$lang-select-bg: #222;
-$lang-select-active-bg: $examples-bg; // feel free to change this to blue or something
+
+// colors from https://bambora.github.io/ui.bambora.com/#colors
+
+$nav-bg: #fff;
+$top-nav-bg: #48256b; // same as logo
+$bottom-nav-bg: #000000; 
+$examples-bg: #dcddde; // muted 
+$code-bg: #232323; // darkest
+$nav-gradient: #151414; 
+$code-annotation-bg: #4f5355; // contrast-dark
+$nav-subitem-bg: #fff;
+$nav-active-bg: #fff;
+$lang-select-bg: #dcddde; // muted 
 $lang-select-pressed-bg: #111; // color of language tab bg when mouse is pressed
-$main-bg: #eaf2f6;
-$aside-notice-bg: #8fbcd4;
+$main-bg: #fff;
+$aside-notice-bg: #8fbcd4; 
 $aside-warning-bg: #c97a7e;
 $aside-success-bg: #6ac174;
 $search-notice-bg: #c97a7e;
+$color-seperator: #ccc;
 
 
 // TEXT COLORS
 ////////////////////
-$main-text: #333; // main content text color
-$nav-text: rgb(208, 205, 205);
-$nav-active-text: #fff;
+$main-text: #4f5355; // main content text color, contrast-dark
+$nav-text: #4f5355; // contrast-dark
+$nav-active-text: #4f5355; // contrast-dark
 $lang-select-text: #fff; // color of unselected language tab text
 $lang-select-active-text: #fff; // color of selected language tab text
 $lang-select-pressed-text: #fff; // color of language tab text when mouse is pressed
@@ -67,18 +69,24 @@ $code-annotation-padding: 13px; // padding inside code annotations
 $h1-margin-bottom: 21px; // padding under the largest header tags
 $tablet-width: 930px; // min width before reverting to tablet size
 $phone-width: $tablet-width - $nav-width; // min width before reverting to mobile size
-
+$header-height: 57px;
 
 // FONTS
 ////////////////////
+
+
 %default-font {
-  font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;
-  font-size: 13px;
+  font-family: "Fakt Pro", "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei","微软雅黑", STXihei, "华文细黑", sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 %header-font {
   @extend %default-font;
   font-weight: bold;
+  margin-right: 5px;
+
 }
 
 %code-font {
@@ -101,7 +109,7 @@ $nav-footer-border-color: #666;
 $nav-embossed-border-top: #000;
 $nav-embossed-border-bottom: #939393;
 $main-embossed-text-shadow: 0px 1px 0px #fff;
-$search-box-border-color: #666;
+$search-box-border-color: #ccc;
 
 
 ////////////////////////////////////////////////////////////////////////////////
