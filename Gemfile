@@ -10,4 +10,4 @@ gem 'redcarpet', '~> 3.3.2'
 gem 'puma', '~> 3.4.0'
 
 gem 'rake', '~> 10.4.2'
-gem 'therubyracer', '~> 0.12.1', platforms: :ruby
+gem 'therubyracer', '~> 0.12.2', platforms: :ruby

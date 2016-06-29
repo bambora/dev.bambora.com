@@ -41,6 +41,11 @@ under the License.
   </head>
 
   <body class="<%= page_classes %>">
+    <div class="nav-top">
+      <%= image_tag "bambora_logo.png" %>
+    </div>
+    <div class="nav-push"></div>
+    
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -48,9 +53,6 @@ under the License.
       </span>
     </a>
     <div class="tocify-wrapper">
-      <div class="nav-top">
-      <%= image_tag "bambora_logo.png" %>
-      </div>
       <% if language_tabs %>
         <div class="lang-selector">
           <% language_tabs.each do |lang| %>
