@@ -20,7 +20,7 @@
 }
 
 .swagger-section pre .annotation, .swagger-section pre .chunk, .swagger-section pre .comment, .swagger-section pre .diff .header, .swagger-section pre .markdown .blockquote, .swagger-section pre .template_comment {
-    color: #e8eaeb
+    color: #f1f1f1;
 }
 
 .swagger-section pre .change, .swagger-section pre .date, .swagger-section pre .go .constant, .swagger-section pre .literal, .swagger-section pre .markdown .bullet, .swagger-section pre .markdown .link_url, .swagger-section pre .number, .swagger-section pre .regexp, .swagger-section pre .smalltalk .char, .swagger-section pre .smalltalk .symbol, .swagger-section pre .tag {
@@ -48,7 +48,7 @@
 @media (min-width: 992px) {
     .swagger-section #resources:before {
         content: "";
-        background: #5c666f;
+        background: #dcddde;
         height: 100%;
         width: 50%;
         top: 0;
@@ -178,10 +178,11 @@
     color: #fff;
     text-transform: uppercase;
     font-size: 11px;
-    border-radius: 20px;
+    border-radius: 4px;
     padding: 2px 10px;
     font-weight: 700;
-    display: inline-block
+    display: inline-block;
+    line-height: 20px;
 }
 
 .swagger-section .action-summary {
@@ -191,19 +192,19 @@
 }
 
 .swagger-section .operation.get .http_method a, .swagger-section .operation.get .http_method span {
-    background: #44c7f4
+    background: #4ab0d1;
 }
 
 .swagger-section .operation.post .http_method a, .swagger-section .operation.post .http_method span {
-    background: #01b48f
+    background: #25a998;
 }
 
 .swagger-section .operation.delete .http_method a, .swagger-section .operation.delete .http_method span {
-    background: red
+    background: #e62232;
 }
 
 .swagger-section .operation.patch .http_method a, .swagger-section .operation.patch .http_method span {
-    background: #ff9a57
+    background: #fbc762;
 }
 
 .swagger-section .form-control.error {
@@ -213,7 +214,7 @@
 
 .swagger-section .parameter-item {
     min-width: 320px;
-    background: #e8eaeb;
+    background: #f1f1f1;;
     color: #5c666f;
     font-size: 14px;
     margin-bottom: 20px
@@ -256,8 +257,7 @@
 @media (min-width: 992px) {
     .swagger-section .parameter-item {
         margin: 0 20px 20px;
-        border-radius: 3px;
-        border: 1px solid #e8eaeb;
+        border-radius: 4px;
         min-width: 0
     }
 }
@@ -280,7 +280,7 @@
 .swagger-section .parameter-item .param-property {
     padding: 20px;
     line-height: 1.4;
-    border-bottom: 1px solid #e8eaeb;
+    border-bottom: 1px solid #f1f1f1;;
     min-height: 59px
 }
 
@@ -291,7 +291,7 @@
     }
 
     .swagger-section .parameter-item .param-property:hover {
-        background: #f0f0f2
+        background: #dcddde;
     }
 }
 
@@ -330,7 +330,7 @@
 
 @media (min-width: 992px) {
     .swagger-section .parameter-item .param-property:first-child {
-        border-bottom: 1px solid #e8eaeb;
+        border-bottom: 1px solid #f1f1f1;;
         background: #393939;
         color: #5c666f;
         font-weight: 400
@@ -363,7 +363,7 @@
 
 @media (min-width: 992px) {
     .swagger-section .operations .model-signature h4 {
-        color: #fff;
+        color: #4f5355;
         text-transform: uppercase;
         letter-spacing: .08em;
         font-size: 14px
@@ -371,7 +371,8 @@
 }
 
 .swagger-section .operations .model-signature h4:hover {
-  background: #4E575E;
+  background: #aeb1b2;
+  cursor: pointer;
 }
 
 @media (min-width: 1400px) {
@@ -458,7 +459,7 @@
 }
 
 .swagger-section .operations .model-signature .description .propType {
-    border-radius: 3px;
+    border-radius: 4px;
     padding: 0 5px;
     display: table-cell;
     border: 1px solid;
@@ -551,7 +552,7 @@
 }
 
 .swagger-section pre {
-    background: #393939;
+    background: #232323;
     margin: 0;
     word-wrap: break-word !important;
     max-height: none;
@@ -585,7 +586,7 @@
 .swagger-section .operation-status td {
     width: auto;
     vertical-align: middle;
-    border-bottom: 1px solid #e8eaeb;
+    border-bottom: 1px solid #f1f1f1;;
     line-height: 1.4;
     padding: 15px
 }
@@ -600,7 +601,7 @@
 
 .swagger-section .token-generator {
     min-width: 320px;
-    background: #5c666f;
+    background: #fff;
     padding: 15px 20px;
     box-shadow: none;
     position: relative;
@@ -613,14 +614,15 @@
         padding-top: 20px;
         padding-right: 20px;
         box-shadow: none;
-        background: #393939;
-        color: #5c666f;
+
+        background: #fff;
+        color: #4f5355;
         max-height: none;
         min-width: 100%;
         width: 100%;
         margin-bottom: 30px;
         margin-top: 20px;
-        border-bottom: 1px solid #e8eaeb
+        border-bottom: 1px solid #f1f1f1;
     }
 }
 
@@ -741,12 +743,13 @@
 @media (min-width: 992px) {
     .swagger-section .token-generator .btn {
         border: 1px solid #cfd3d5;
-        height: 32px
+        height: 34px;
+        padding:5px 15px;
     }
 }
 
 .swagger-section .token-generator .btn:active, .swagger-section .token-generator .btn:hover {
-    background: #e8eaeb
+    background: #f1f1f1;
 }
 
 @media (min-width: 992px) {
@@ -763,7 +766,7 @@
 .swagger-section .token-generator .custom-select {
     background: #fff;
     padding: 0 18px 0 12px;
-    border-radius: 3px;
+    border-radius: 4px;
     display: inline-block;
     width: 44.5%;
     width: calc(50% - 5px);
@@ -868,7 +871,7 @@
 
 @media (min-width: 992px) {
     .swagger-section .token-generator label {
-        color: #fff;
+        color: #4f5355;
         font-size: 13px;
         margin-bottom: 15px
     }
@@ -880,7 +883,7 @@
     margin: 0;
     color: #5c666f;
     cursor: pointer;
-    box-shadow: inset 0 -1px 0 0 #e8eaeb;
+    box-shadow: inset 0 -1px 0 0 #f1f1f1;;
     transition: box-shadow 0 300ms ease;
     min-width: 320px;
     position: relative
@@ -1015,7 +1018,7 @@
 @media (min-width: 992px) {
     .swagger-section .scopes .scope {
         display: inline-block;
-        border: 1px solid #e8eaeb;
+        border: 1px solid #f1f1f1;;
         border-radius: 20px;
         background: 0 0;
         padding: 8px 12px
@@ -1023,7 +1026,7 @@
 }
 
 .swagger-section .scopes .scope + .scope {
-    border-top: 1px solid #e8eaeb
+    border-top: 1px solid #f1f1f1;
 }
 
 @media (min-width: 992px) {
@@ -1073,7 +1076,7 @@
 .api-popup-scopes .scopes .scope {
     cursor: pointer;
     display: inline-block;
-    border: 1px solid #e8eaeb;
+    border: 1px solid #f1f1f1;;
     border-radius: 20px;
     background: 0 0;
     padding: 8px 12px
@@ -1110,8 +1113,7 @@
     height: 0;
     overflow-y: scroll;
     overflow-x: hidden;
-    background: #4e575e;
-    box-shadow: inset 0 2px 10px 0 rgba(0, 0, 0, .4);
+    background: #f1f1f1;
     position: absolute;
     top: 43px;
     width: 100%;
@@ -1123,7 +1125,7 @@
         position: static;
         height: auto;
         overflow: visible;
-        background: #393939;
+        background: #fff;
         box-shadow: none
     }
 
@@ -1132,7 +1134,7 @@
         content: "API Reference";
         text-transform: uppercase;
         letter-spacing: .08em;
-        color: #fff;
+        color: #4f5355;
         font-size: 13px;
         font-weight: 700;
         margin-bottom: 15px;
@@ -1161,13 +1163,13 @@
 .swagger-section .sticky-nav [data-navigator] [data-resource]:before {
     content: attr(label);
     display: block;
-    color: #fff;
+    color: #4f5355;
     padding: 10px 20px;
     text-transform: uppercase;
     letter-spacing: .08em;
     font-size: 11px;
     font-weight: 700;
-    background: #454d53
+    background: #fff;
 }
 
 @media (min-width: 992px) {
@@ -1189,7 +1191,7 @@
 
 .swagger-section .sticky-nav [data-navigator] .item {
     padding: 12px 20px;
-    color: #fff;
+    color: #4f5355;
     cursor: pointer;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1199,10 +1201,10 @@
 
 @media (min-width: 992px) {
     .swagger-section .sticky-nav [data-navigator] .item {
-        color: #fff;
+        color: #4f5355;
         padding: 9px 9px 9px 40px;
         font-size: 14px;
-        background: #262626
+        background: #fff
     }
 
     .swagger-section .sticky-nav [data-navigator] .item:active, .swagger-section .sticky-nav [data-navigator] .item:hover {
@@ -1229,24 +1231,24 @@
 
 .swagger-section .sticky-nav [data-navigator] .item[data-tg-switch].active:after {
     content: 'ON';
-    background: rgba(68, 199, 244, .5);
+    background: #ddd;
     opacity: 1
 }
 
 .swagger-section .sticky-nav [data-navigator] .item[data-selected] {
-    background: rgba(68, 199, 244, .5);
+    background: #fff;
     padding-right: 42px
 }
 
 @media (min-width: 992px) {
     .swagger-section .sticky-nav [data-navigator] .item[data-selected] {
-        background: #8A52B4;
-        font-weight: 700;
-        color: #fff
+        background: #fff;
+        // font-weight: 700;
+        text-decoration: underline;;
     }
 
     .swagger-section .sticky-nav [data-navigator] .item[data-selected]:active, .swagger-section .sticky-nav [data-navigator] .item[data-selected]:hover {
-        color: #fff
+        // color: #fff
     }
 }
 
@@ -1276,12 +1278,12 @@
 }
 
 .swagger-section .sticky-nav [data-navigator] .item + .item {
-    border-top: 1px solid #576169
+    border-top: 1px solid #fff
 }
 
 @media (min-width: 992px) {
     .swagger-section .sticky-nav [data-navigator] .item + .item {
-        border-top: 0px solid #e8eaeb
+        border-top: 0px solid #f1f1f1;
     }
 }
 
@@ -1373,13 +1375,13 @@
 
 .changes-disclaimer {
     display: none;
-    border: 1px solid #dddde2;
-    border-radius: 3px;
+    border-radius: 4px;
     padding: 15px;
     margin: 20px 20px 40px;
     line-height: 1.4;
-    background: #ebebee;
-    font-size: 13px
+    background: #f1f1f1;
+    font-size: 13px;
+    color: #4f5355;
 }
 
 @media (min-width: 992px) {
@@ -1422,7 +1424,7 @@ body {
 }
 
 #api2-explorer .modal pre {
-    border-radius: 3px
+    border-radius: 4px
 }
 
 #api2-explorer .modal .modal-content {
@@ -1469,9 +1471,6 @@ body {
     position: relative
 }
 
-.swagger-section #swagger_sidebar {
-    box-shadow: inset 0px 5px 4px -1px #151414;
-}
 
 @media (min-width: 992px) {
     .swagger-section #swagger_sidebar {
@@ -1480,7 +1479,7 @@ body {
         left: 0;
         top: 0;
         height: 100%;
-        background: #393939;
+        background: #fff;
         min-height: 100vh;
     }
 }
