@@ -80,4 +80,4 @@ We have created code examples showing how to capture a payment - one written in 
 }
 ```
 
-If the capture was successful you will receive an HTTP status code of 200 (OK). Any errors or problems will represent themselves as a non-200 status code. Along with the [standard error codes](./api.html#errors), these are the specific responses for `/capture` that you may encounter:
+If the capture was successful you will receive an HTTP status code of 201 (Created). Any errors or problems will represent themselves as a non-200 status code. Along with the [standard error codes](./api.html#errors), these are the specific responses for `/capture` that you may encounter:
