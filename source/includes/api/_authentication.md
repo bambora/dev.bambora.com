@@ -14,5 +14,5 @@ Requests to the API use Basic Authentication in the format of: `token@merchantID
 Authorization: Basic YWJjZGVmZ0AxMjM0NTY3ODk6N0FRdTdGR0IyS3dt
 ```
 
-> This is an example the base64 encoded string: abcdefg@123456789:7AQu7FGB2Kwm
+> This is an example base64 encoded Auth header: Basic abcdefg@123456789:7AQu7FGB2Kwm
 

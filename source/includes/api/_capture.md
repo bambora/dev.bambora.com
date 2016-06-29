@@ -44,6 +44,8 @@ curl \
     "${URL}"
 ```
 
+> The Python code example requires that the [requests library for Python.com](https://github.com/kennethreitz/requests/) is installed on the computer that is running the code.
+
 Our REST API contains a /capture/ endpoint that you can use in order to capture specific payments.
 
 You will need the following data in order to make the request:
@@ -60,8 +62,23 @@ The payment reference refers to the one that you are required set before making 
 
 We have created code examples showing how to capture a payment - one written in python and the other written in bash using cURL. Please note that each placeholder needs to be replaced with real data.
 
-> The Python code example requires that the [requests library for Python.com](https://github.com/kennethreitz/requests/) is installed on the computer that is running the code.
-
 ## Response
 
-If the capture was successful you will receive an HTTP status code of 200 (OK). Any errors or problems will represent themselves as a non-200 status code. Along with the [standard error codes](./api.html#errors), these are the specific responses for `/capture` that you may encounter:
+```Response
+{
+  "region": "emea_0",
+  "merchant": "string",
+  "payment": "string",
+  "state": "Captured",
+  "currency": "SEK",
+  "amount": "integer",
+  "comment": "string"
+  "captures": [
+  "capture"{
+    "amount": "integer",
+    "comment": "string" 
+  }]
+}
+```
+
+If the capture was successful you will receive an HTTP status code of 201 (Created). Any errors or problems will represent themselves as a non-200 status code. Along with the [standard error codes](./api.html#errors), these are the specific responses for `/capture` that you may encounter:
