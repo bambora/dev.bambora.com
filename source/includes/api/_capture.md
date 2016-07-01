@@ -33,7 +33,7 @@ MERCHANT_NUMBER="<MERCHANT_NUMBER>"
 MERCHANT_TOKEN="<MERCHANT_TOKEN>"
 MERCHANT_SECRET="<MERCHANT_SECRET>"
 ​
-URL="https://api-beta.bambora.com/payments/${PAYMENT_REFERENCE}/capture"
+URL="https://api-beta.bambora.com/payments/${PAYMENT_REFERENCE}/capture/"
 AUTHORIZATION="Authorization: Basic "$(echo -n ${MERCHANT_TOKEN}@${MERCHANT_NUMBER}:${MERCHANT_SECRET} | base64)​
 ​
 curl \
