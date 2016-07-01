@@ -128,6 +128,7 @@ Create a layout with a representative name, for an example activity_native_card_
     android:layout_height="match_parent">
 
     <com.bambora.nativepayment.widget.CardRegistrationForm
+	    android:id="@+id/registration_form"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -146,6 +147,42 @@ protected void onCreate(@Nullable Bundle savedInstanceState) {
 }
 ```
 
+#### Listen to registration callbacks
+
+To receive callbacks when registration is completed, add a listener to the CardRegistrationForm after you have set the contentView in onCreate. First make the activity implement ICardRegistrationCallback.
+
+```
+public class NativeCardRegistrationActivity extends AppCompatActivity implements ICardRegistrationCallback {
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_native_card_registration);
+    }
+
+    @Override
+    public void onRegistrationSuccess(CreditCard creditCard) {
+        // Card registration completed successfully
+    }
+
+    @Override
+    public void onRegistrationError() {
+        // Card registration failed
+    }
+}
+```
+
+Extend the onCreate method to set a registration result listener.
+
+```
+@Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_native_card_registration);
+        CardRegistrationFormLayout registrationForm = (CardRegistrationFormLayout) findViewById(R.id.registration_form);
+        registrationForm.setRegistrationResultListener(this);
+    }
+```
 #### Display the form activity
 
 After you have created both the activity and layout that contains the native form you have to start that activity.
@@ -163,7 +200,7 @@ If you don't want to use the default card registration form provided in the SDK 
 
 The SDK contains bundled EditText classes that help you with input validation and formatting.
 
-**CardFormEditText** is an abstract subclass of EditText with extended functionality that helps you with input validation. `CardFormEditText` introduces three new instance variables and four new methods.
+**CardFormEditText** is an abstract subclass of EditText with extended functionality that helps you with input validation. `CardFormEditText` introduces three new instance variables and five new methods. Use this class if you want to have full control of formatting and validation.
 
 ```java
 // Variabled
@@ -176,8 +213,11 @@ public abstract Integer getMaxLength();
 public abstract String getDefaultHint();
 
 // Methods
-@Override
+public void setValidationListener(IOnValidationEventListener validationListener) {
+    this.validationEventListener = validationListener;
+}
 
+@Override
 public boolean isFormatted() {
     return formatPattern == null || formatPattern.matcher(getText()).matches();
 }
@@ -188,10 +228,30 @@ public boolean isValid() {
 }
 ```
 
-**CardNumberEditText**
+**CardNumberEditText**, **ExpiryDateEditText** and **SecurityCodeEditText** are subclasses of CardFormEditText and add functionality for input formatting and automatic validation by using custom TextWatcher classes. Use these classes if you want to customise the look of the registration form but keep our standard formatting and validation of the input.
 
+Use them in your custom form layout by adding them in your layout.
+
+```
+<com.bambora.nativepayment.widget.edittext.CardNumberEditText
+	android:id="@+id/card_number_edit_text"
+	android:layout_width="match_parent"
+	android:layout_height="48dp" />
+
+<com.bambora.nativepayment.widget.edittext.ExpiryDateEditText
+    android:id="@+id/expiry_date_edit_text"
+    android:layout_width="match_parent"
+    android:layout_height="48dp" />
+
+<com.bambora.nativepayment.widget.edittext.SecurityCodeEditText
+    android:id="@+id/security_code_edit_text"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
+```
 
 ### How to handle input
+
+
 
 ### Handle encryption
 
