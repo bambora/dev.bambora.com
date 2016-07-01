@@ -28,7 +28,6 @@ search: true
 
 This guide will walk you through the capabilities of our payments API for your server-side integration.
 
-Important note: make sure the URLs have a ´/´ (slash) at the end otherwise the URL will not work
-
+Important note: Make sure the URL has a ´/´ (slash) at the end when making an API call, otherwise the URL will not work.
 
 
