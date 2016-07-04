@@ -248,6 +248,7 @@ public boolean isValid();
 Once you have your own shiny form set up you need to take the input from the form and send it to our back end for processing. This is done via the **registerCreditCard** method in **BNPaymentHandler**. This methods helps you with encrypting the card data and also helps you with the actual network call.
 
 #### Making the request
+
 ```java
 BNPaymentHandler.getInstance().registerCreditCard(
         getContext(),
@@ -257,9 +258,11 @@ BNPaymentHandler.getInstance().registerCreditCard(
         "[CVC code from your form]",
         resultListener);
 ```
+
 > **NOTE:** *You are responsible for only sending the form data once since this network call is not idempotent.*
->
+
 #### Callback
+
 ```java
 ICardRegistrationCallback resultListener = new ICardRegistrationCallback() {
   @Override
