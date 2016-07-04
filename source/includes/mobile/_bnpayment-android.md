@@ -274,22 +274,6 @@ ICardRegistrationCallback resultListener = new ICardRegistrationCallback() {
 }
 ```
 
-### HTTP Responses
-
-**200 OK:** A response body containing a session URL to the Hosted Payment Page is returned.
-
-**400 Bad request:** Malformed request.
-
-**401 Unauthorized:** Valid credentials are missing.
-
-**402 Cannot authorize:** The card could not be authorized.
-
-**403 Forbidden:** You are not allowed to perform this operation.
-
-**409 Payment operation blocked:** The payment is blocked.
-
-**422 Invalid payment state transition:** Authorize state transition is not allowed on this transaction.
-
 ## Web based credit card registration
 
 Credit card registration is done through a secure web-based registration form, also known as a Hosted Payment Page, that you can easily include in your app as the code example shows.
