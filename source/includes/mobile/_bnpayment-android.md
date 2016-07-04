@@ -151,7 +151,7 @@ protected void onCreate(@Nullable Bundle savedInstanceState) {
 
 To receive callbacks when registration is completed, add a listener to the CardRegistrationForm after you have set the contentView in onCreate. First make the activity implement ICardRegistrationCallback.
 
-```
+```java
 public class NativeCardRegistrationActivity extends AppCompatActivity implements ICardRegistrationCallback {
 
     @Override
@@ -174,7 +174,7 @@ public class NativeCardRegistrationActivity extends AppCompatActivity implements
 
 Extend the onCreate method to set a registration result listener.
 
-```
+```java
 @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -204,7 +204,7 @@ The SDK contains bundled EditText classes that help you with input validation an
 
 Use them in your custom form layout by adding them in your layout.
 
-```
+```java
 <com.bambora.nativepayment.widget.edittext.CardNumberEditText
   android:id="@+id/card_number_edit_text"
   android:layout_width="match_parent"
