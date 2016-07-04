@@ -128,7 +128,7 @@ Create a layout with a representative name, for an example activity_native_card_
     android:layout_height="match_parent">
 
     <com.bambora.nativepayment.widget.CardRegistrationForm
-	    android:id="@+id/registration_form"
+      android:id="@+id/registration_form"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
@@ -194,11 +194,32 @@ startActivity(intent);
 
 ## How to build your own native form
 
-If you don't want to use the default card registration form provided in the SDK you are free to create your own custom form.
+If you don't want to use the default card registration form provided in the SDK you are free to create your own custom form. This required a bit more effort but it gives you unlimited possibilities in customizing your registration form. This section i written with the assumption that you feel comportable with Android application development.
 
 ### GUI compontents
 
 The SDK contains bundled EditText classes that help you with input validation and formatting.
+
+**CardNumberEditText**, **ExpiryDateEditText** and **SecurityCodeEditText** are subclasses of **CardFormEditText** described below and add functionality for input formatting and automatic validation by using custom TextWatcher classes. Use these classes if you want to customise the look of the registration form but keep our standard formatting and validation of the input.
+
+Use them in your custom form layout by adding them in your layout.
+
+```
+<com.bambora.nativepayment.widget.edittext.CardNumberEditText
+  android:id="@+id/card_number_edit_text"
+  android:layout_width="match_parent"
+  android:layout_height="48dp" />
+
+<com.bambora.nativepayment.widget.edittext.ExpiryDateEditText
+    android:id="@+id/expiry_date_edit_text"
+    android:layout_width="match_parent"
+    android:layout_height="48dp" />
+
+<com.bambora.nativepayment.widget.edittext.SecurityCodeEditText
+    android:id="@+id/security_code_edit_text"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
+```
 
 **CardFormEditText** is an abstract subclass of EditText with extended functionality that helps you with input validation. `CardFormEditText` introduces three new instance variables and five new methods. Use this class if you want to have full control of formatting and validation.
 
@@ -213,50 +234,61 @@ public abstract Integer getMaxLength();
 public abstract String getDefaultHint();
 
 // Methods
-public void setValidationListener(IOnValidationEventListener validationListener) {
-    this.validationEventListener = validationListener;
-}
+public void setValidationListener(IOnValidationEventListener validationListener);
 
 @Override
-public boolean isFormatted() {
-    return formatPattern == null || formatPattern.matcher(getText()).matches();
-}
+public boolean isFormatted();
 
 @Override
-public boolean isValid() {
-    return validationPattern == null || validationPattern.matcher(FormInputHelper.clearNonDigits(getText().toString())).matches();
+public boolean isValid();
+```
+
+### Handle input and network request
+
+Once you have your own shiny form set up you need to take the input from the form and send it to our back end for processing. This is done via the **registerCreditCard** method in **BNPaymentHandler**. This methods helps you with encrypting the card data and also helps you with the actual network call.
+
+#### Making the request
+```java
+BNPaymentHandler.getInstance().registerCreditCard(
+        getContext(),
+        "[Card number from your form]",
+        "[Expiry month from your form]",
+        "[Expiry year from your form]",
+        "[CVC code from your form]",
+        resultListener);
+```
+> **NOTE:** *You are responsible for only sending the form data once since this network call is not idempotent.*
+>
+#### Callback
+```java
+ICardRegistrationCallback resultListener = new ICardRegistrationCallback() {
+  @Override
+  public void onRegistrationSuccess(CreditCard creditCard) {
+    // Handle success here
+  }
+
+  @Override
+  public void onRegistrationError() {
+    // Handle error here
+  }
 }
 ```
 
-**CardNumberEditText**, **ExpiryDateEditText** and **SecurityCodeEditText** are subclasses of CardFormEditText and add functionality for input formatting and automatic validation by using custom TextWatcher classes. Use these classes if you want to customise the look of the registration form but keep our standard formatting and validation of the input.
+### HTTP Responses
 
-Use them in your custom form layout by adding them in your layout.
+**200 OK:** A response body containing a session URL to the Hosted Payment Page is returned.
 
-```
-<com.bambora.nativepayment.widget.edittext.CardNumberEditText
-	android:id="@+id/card_number_edit_text"
-	android:layout_width="match_parent"
-	android:layout_height="48dp" />
+**400 Bad request:** Malformed request.
 
-<com.bambora.nativepayment.widget.edittext.ExpiryDateEditText
-    android:id="@+id/expiry_date_edit_text"
-    android:layout_width="match_parent"
-    android:layout_height="48dp" />
+**401 Unauthorized:** Valid credentials are missing.
 
-<com.bambora.nativepayment.widget.edittext.SecurityCodeEditText
-    android:id="@+id/security_code_edit_text"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" />
-```
+**402 Cannot authorize:** The card could not be authorized.
 
-### How to handle input
+**403 Forbidden:** You are not allowed to perform this operation.
 
+**409 Payment operation blocked:** The payment is blocked.
 
-
-### Handle encryption
-
-### Handle the network request
-
+**422 Invalid payment state transition:** Authorize state transition is not allowed on this transaction.
 
 ## Web based credit card registration
 
