@@ -49,9 +49,15 @@ Initially, the SDK connects to the SDK backend and sends in an API token. Based 
 
 ### Registering Credit cards
 
-The user needs to register his/her credit card in the app in order to make a purchase. Credit card registration is done through a secure web-based form, which we refer to as a Hosted Payment Page (HPP). The HPP is opened in a web view in the app and the user then registers his/her credit card on it.
+The user needs to register his/her credit card in the app in order to make a purchase. 
 
-After a successful registration, the HPP will return a credit card token which is automatically saved locally by the SDK. The credit card token can then be used by the SDK in order to make payments with the card in question.
+Credit card registration can be done in two ways:
+
+* Through a secure and fully native credit card form that is displayed directly in the app. This option has the best user experience and is fully customizable.
+
+* Through a secure web-based form, which we refer to as a Hosted Payment Page (HPP). The Native Payment SDK allows for customization of the areas surrounding the registration form and also slight customization of the form itself.
+
+After a credit card has been registered using either of the above methods, a credit card token is returned to the Native Payment SDK. This token can then be used to make payments.
 
 The SDK supports multiple credit card registrations.
 

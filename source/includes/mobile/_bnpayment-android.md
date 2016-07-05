@@ -103,39 +103,240 @@ BNPaymentHandler.setupBNPayments(BNPaymentBuilder);
 
 ### HTTP Responses
 
-**201 Created** 
-
+**201 Created**
 **403 Forbidden:** A valid API token is missing.
 
 <a name="androidcreditcardregistration"></a>
-## Credit Card registration
+
+# Native card registration
+
+Native credit card registration is done through a native registration form. The credit card details are then encrypted before being sent to our servers. The Native Payment SDK includes a default native credit card registration form that can be used out of the box. You also have the option of creating a customized form.
+
+## How to display the default native form
+
+This example shows you how to present the default credit card registration form using an activity.
+
+### Create a layout
+
+Start by creating a layout with a representative name (we'll use the name activity_native_card_registration in this guide). The example shows what the layout file needs to contain.
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.bambora.nativepayment.widget.CardRegistrationForm
+      android:id="@+id/registration_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</RelativeLayout>
+```
+
+### Create an activity
+
+Next, create an activity with a representative name (we'll use NativeCardRegistrationActivity in this guide). Then set the your newly created layout file (activity_native_card_registration) as the contentView for the activity, as the code example shows.
+
+```java
+@Override
+protected void onCreate(@Nullable Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_native_card_registration);
+}
+```
+
+### Listen to registration callbacks
+
+To receive callbacks when registration is completed, add a listener to the CardRegistrationForm. First make the activity implement ICardRegistrationCallback as in the code example.
+
+```java
+
+public class NativeCardRegistrationActivity extends AppCompatActivity implements ICardRegistrationCallback {
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_native_card_registration);
+    }
+
+    @Override
+    public void onRegistrationSuccess(CreditCard creditCard) {
+        // Card registration completed successfully
+    }
+
+    @Override
+    public void onRegistrationError() {
+        // Card registration failed
+    }
+}
+
+```
+
+Then, extend the onCreate method to set a registration result listener like in the code example.
+
+```java
+
+@Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_native_card_registration);
+        CardRegistrationFormLayout registrationForm = (CardRegistrationFormLayout) findViewById(R.id.registration_form);
+        registrationForm.setRegistrationResultListener(this);
+    }
+
+```
+
+### Display the form activity
+
+All that's left to show the native credit card registration form is to start the activity. The code example shows how to do it.
+
+```java
+
+Intent intent = new Intent(this, NativeCardRegistrationActivity.class);
+startActivity(intent);
+
+```
+
+## How to build your own native form
+You have the option of creating your own, fully customizable native credit card registration form. This requires a bit more effort compared to using the default form, but it also gives you control over the design.
+
+### GUI compontents
+
+The SDK contains bundled EditText classes that help out with input validation and formatting.
+
+`CardNumberEditText`, `ExpiryDateEditText` and `SecurityCodeEditText` are subclasses of `CardFormEditText` described below and add functionality for input formatting and automatic validation by using custom TextWatcher classes. Use these classes if you want to customise the look of the registration form but keep our standard formatting and validation of the input.
+
+The example shows how to add the GUI components in a layout file.
+
+```java
+<com.bambora.nativepayment.widget.edittext.CardNumberEditText
+  android:id="@+id/card_number_edit_text"
+  android:layout_width="match_parent"
+  android:layout_height="48dp" />
+
+<com.bambora.nativepayment.widget.edittext.ExpiryDateEditText
+    android:id="@+id/expiry_date_edit_text"
+    android:layout_width="match_parent"
+    android:layout_height="48dp" />
+
+<com.bambora.nativepayment.widget.edittext.SecurityCodeEditText
+    android:id="@+id/security_code_edit_text"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
+```
+
+### Manual formatting and validation
+
+`CardFormEditText` is an abstract subclass of EditText with extended functionality that helps out with input validation. `CardFormEditText` introduces three new instance variables and five new methods. Use this class if you want to have full control of formatting and validation.
+
+```java
+// Variables
+private Pattern validationPattern; // Pattern used for validating the EditText input.
+private Pattern formatPattern; // Pattern used for validating the format of the input in EditTest.
+private IOnValidationEventListener validationEventListener; // Interface used for validation callbacks.
+
+// Abstract methods
+public abstract Integer getMaxLength();
+public abstract String getDefaultHint();
+
+// Methods
+public void setValidationListener(IOnValidationEventListener validationListener);
+
+@Override
+public boolean isFormatted();
+
+@Override
+public boolean isValid();
+```
+
+### Handling user input and network requests
+
+Once you have your own shiny form set up, you need to encrypt the input from the form and send it to our back end for processing.
+
+### Making the request
+
+The exampe shows how to use the `registerCreditCard` method in `BNPaymentHandler` for encrypting and sending input data from your custom native credit card registration form to our back end for processing.
+
+```java
+BNPaymentHandler.getInstance().registerCreditCard(
+        getContext(),
+        "<CARD_NUMBER_FROM_YOUR_FORM>",
+        "<EXPIRY_MONTH_FROM_YOUR_FORM>",
+        "<EXPIRY_YEAR_FROM_YOUR_FORM>",
+        "<CVC_CODE_FROM_YOUR_FORM>",
+        resultListener);
+```
+
+> **NOTE:** *You are responsible for only sending the form data once since this network call is not idempotent.*
+
+### Callback
+
+The example shows how to create a listener in order to handle the result of an attempted credit card registration.
+
+```java
+ICardRegistrationCallback resultListener = new ICardRegistrationCallback() {
+  @Override
+  public void onRegistrationSuccess(CreditCard creditCard) {
+    // Handle success here.
+  }
+
+  @Override
+  public void onRegistrationError() {
+    // Handle error here.
+  }
+}
+```
+
+### HTTP Responses
+
+**200 OK:** Successful request.
+
+**201 Created:** Successful payment!
+
+**400 Bad Request:** The API request was not formatted correctly.
+
+**401 Unauthorized:** Your API key is wrong or the Authorization header was not set.
+
+**402 Cannot authorize:** The authorization request could not be performed.
+
+**404 Not Found:** Unknown path or resource was not found.
+
+**409 Payment operation blocked:** The payment was being modified by another request. The attempted operation could be retried again, or the payment could be queried to find out if its properties have changed.
+
+**422 Invalid payment state transition:** The state of the payment could not be changed in the way that the payment operation would require.
+
+**500 Internal Server Error:** We had a problem with our server. Try again later.
+
+## Web-based credit card registration
 
 Credit card registration is done through a secure web-based registration form, also known as a Hosted Payment Page, that you can easily include in your app as the code example shows.
 
 ```java
-public class RegisterCreditCardActivity extends AppCompatActivity 
+public class RegisterCreditCardActivity extends AppCompatActivity
   implements CreditCardRegistrationWebView.IStateChangeListener {
 
     private CreditCardRegistrationWebView myWebView;
     private static final String CSS_URL = "<CSS_URL>";
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+
         setContentView(R.layout.activity_register_credit_card);
         myWebView = (CreditCardRegistrationWebView) findViewById(R.id.register_credit_card_webview);
         myWebView.setStateChangeListener(this);
         myWebView.setCssUrl(CSS_URL);
     }
-    
+
     /* You can use these callback methods to manage the Hosted Payment Page: */
-    
+
     @Override
     public void onRegistrationStarted() {
         // Hosted Payment Page started loading.
     }
-    
+
     @Override
     public void onPageFinished() {
         // Hosted Payment Page finished loading.
@@ -150,7 +351,7 @@ public class RegisterCreditCardActivity extends AppCompatActivity
     public void onFailure(RegistrationFormError error) {
         // Credit card registration failed.
     }
-    
+
 }
 ```
 
@@ -244,11 +445,11 @@ input {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     -moz-tap-highlight-color: rgba(0,0,0,0);
     tap-highlight-color: rgba(0,0,0,0);
-    
+
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    
+
     color: #4f5355;
     font-size: 10pt;
     box-sizing: border-box;
@@ -316,15 +517,15 @@ BNPaymentHandler.getInstance().getRegisteredCreditCards(MainActivity.this, new C
   @Override
   public void onCreditCardRead(List<CreditCard> creditCards) {
     if (creditCards != null && creditCards.size() > 0) {
-      
-      /* The List object creditCards contains all of the CreditCard objects that have been stored on the device. 
+
+      /* The List object creditCards contains all of the CreditCard objects that have been stored on the device.
       Each CreditCard object contains a credit card token.
       You can print the creditCards list to the console log like this: */
       Log.d("CreditCardList", creditCards.toString());
-      
-      // How to get a specific credit card object:  
+
+      // How to get a specific credit card object:
       String creditCard = creditCards.get(0);
-      
+
     }
   }
 }
@@ -379,7 +580,7 @@ public void makeCreditCardPayment(CreditCard creditCard) {
   paymentSettings.amount = 100;
   paymentSettings.currency = "SEK";
   paymentSettings.creditCardToken = creditCard.getCreditCardToken();
-  
+
   // Make the transaction:
   BNPaymentHandler.getInstance().makeTransaction("<PAYMENT_ID>", paymentSettings, new ITransactionCallBack() {
     @Override
@@ -433,23 +634,23 @@ You can find a code example in the [Setup](#androidsetup) section above.
 
 ```
 VISA (Sweden)
-Card number: 4002 6200 0000 0005 
-Expiration (month/year): 05/17 
+Card number: 4002 6200 0000 0005
+Expiration (month/year): 05/17
 CVC: 000
 
-MasterCard (Sweden) 
-Card number: 5125 8600 0000 0006 
-Expiration (month/year): 05/17 
+MasterCard (Sweden)
+Card number: 5125 8600 0000 0006
+Expiration (month/year): 05/17
 CVC: 000
 
-VISA (Norway) 
-Card number: 4002 7700 0000 0008 
-Expiration (month/year): 05/17 
+VISA (Norway)
+Card number: 4002 7700 0000 0008
+Expiration (month/year): 05/17
 CVC: 000
 
-MasterCard (Norway) 
-Card number: 5206 8300 0000 0001 
-Expiration (month/year): 05/17 
+MasterCard (Norway)
+Card number: 5206 8300 0000 0001
+Expiration (month/year): 05/17
 CVC: 000
 ```
 
