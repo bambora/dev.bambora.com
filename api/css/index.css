@@ -2603,7 +2603,7 @@ output {
     background-color: #fff;
     background-image: none;
     border: 1px solid #ccc;
-    border-radius: 4px;
+    border-radius: 2px;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
     -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
@@ -15404,8 +15404,13 @@ header.site-header.site-header {
     background: #48256B;
     font-size: 14px;
     position: static;
-    box-shadow: 0px 2px 2px 2px #000000
 }
+header.site-header.site-header img{
+    width: 91px;
+    margin-top: 4px;
+    margin-left: 4px;
+}
+
 header.site-header.site-header.header-fixed {
     background: rgba(255,255,255,0.8);
     position: fixed;
@@ -15813,14 +15818,14 @@ a.btn {
     -ms-transition: background-color 0.2s ease;
     -o-transition: background-color 0.2s ease;
     transition: background-color 0.2s ease;
-    text-transform: uppercase;
-    letter-spacing: 2px;
     border: 0;
-    font-weight: bold;
+    font-weight: normal;
     border: 1px solid #d0d2d3;
-    padding-left: 15px;
-    padding-right: 15px;
-    border-radius: 3px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 2px;
 }
 .btn.btn-none,
 a.btn.btn-none {
@@ -15889,7 +15894,7 @@ a.btn.btn-danger {
 }
 .btn.btn-primary,
 a.btn.btn-primary {
-    background-color: #8A52B4;
+    background-color: #664c8e;
     border-color: transparent;
 }
 .btn.btn-primary:hover,
@@ -16019,6 +16024,136 @@ a.btn:active {
     color: #fff;
     background: #8A52B4;
 }
+@font-face {
+  font-family: 'Fakt Pro';
+  src: url('/fonts/FaktPro-Air.eot');
+  src: url('/fonts/FaktPro-Air.eot#iefix') format("embedded-opentype"), url('/fonts/FaktPro-Air.woff') format("woff");
+  font-weight: 100; }
+
+@font-face {
+  font-family: 'Fakt Pro';
+  src: url('/fonts/FaktPro-AirItalic.eot');
+  src: url('/fonts/FaktPro-AirItalic.eot#iefix') format("embedded-opentype"), url('/fonts/FaktPro-AirItalic.woff') format("woff");
+  font-weight: 100;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Fakt Pro';
+  src: url('/fonts/FaktPro-Black.eot');
+  src: url('/fonts/FaktPro-Black.eot#iefix') format("embedded-opentype"), url('/fonts/FaktPro-Black.woff') format("woff");
+  font-weight: 900; }
+
+@font-face {
+  font-family: 'Fakt Pro';
+  src: url('/fonts/FaktPro-BlackItalic.eot');
+  src: url('/fonts/FaktPro-BlackItalic.eot#iefix') format("embedded-opentype"), url('/fonts/FaktPro-BlackItalic.woff') format("woff");
+  font-weight: 900;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Fakt Pro';
+  src: url('/fonts/FaktPro-Blond.eot');
+  src: url('/fonts/FaktPro-Blond.eot#iefix') format("embedded-opentype"), url('/fonts/FaktPro-Blond.woff') format("woff");
+  font-weight: 250; }
+
+@font-face {
+  font-family: 'Fakt Pro';
+  src: url('/fonts/FaktPro-BlondItalic.eot');
+  src: url('/fonts/FaktPro-BlondItalic.eot#iefix') format("embedded-opentype"), url('/fonts/FaktPro-BlondItalic.woff') format("woff");
+  font-weight: 250;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Fakt Pro';
+  src: url('/fonts/FaktPro-Bold.eot');
+  src: url('/fonts/FaktPro-Bold.eot#iefix') format("embedded-opentype"), url('/fonts/FaktPro-Bold.woff') format("woff");
+  font-weight: 700; }
+
+@font-face {
+  font-family: 'Fakt Pro';
+  src: url('/fonts/FaktPro-BoldItalic.eot');
+  src: url('/fonts/FaktPro-BoldItalic.eot#iefix') format("embedded-opentype"), url('/fonts/FaktPro-BoldItalic.woff') format("woff");
+  font-weight: 700;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Fakt Pro';
+  src: url('/fonts/FaktPro-Hair.eot');
+  src: url('/fonts/FaktPro-Hair.eot#iefix') format("embedded-opentype"), url('/fonts/FaktPro-Hair.woff') format("woff");
+  font-weight: 150; }
+
+@font-face {
+  font-family: 'Fakt Pro';
+  src: url('/fonts/FaktPro-HairItalic.eot');
+  src: url('/fonts/FaktPro-HairItalic.eot#iefix') format("embedded-opentype"), url('/fonts/FaktPro-HairItalic.woff') format("woff");
+  font-weight: 150;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Fakt Pro';
+  src: url('/fonts/FaktPro-Light.eot');
+  src: url('/fonts/FaktPro-Light.eot#iefix') format("embedded-opentype"), url('/fonts/FaktPro-Light.woff') format("woff");
+  font-weight: 300; }
+
+@font-face {
+  font-family: 'Fakt Pro';
+  src: url('/fonts/FaktPro-LightItalic.eot');
+  src: url('/fonts/FaktPro-LightItalic.eot#iefix') format("embedded-opentype"), url('/fonts/FaktPro-LightItalic.woff') format("woff");
+  font-weight: 300;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Fakt Pro';
+  src: url('/fonts/FaktPro-Medium.eot');
+  src: url('/fonts/FaktPro-Medium.eot#iefix') format("embedded-opentype"), url('/fonts/FaktPro-Medium.woff') format("woff");
+  font-weight: 500; }
+
+@font-face {
+  font-family: 'Fakt Pro';
+  src: url('/fonts/FaktPro-MediumItalic.eot');
+  src: url('/fonts/FaktPro-MediumItalic.eot#iefix') format("embedded-opentype"), url('/fonts/FaktPro-MediumItalic.woff') format("woff");
+  font-weight: 500;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Fakt Pro';
+  src: url('/fonts/FaktPro-Normal.eot');
+  src: url('/fonts/FaktPro-Normal.eot#iefix') format("embedded-opentype"), url('/fonts/FaktPro-Normal.woff') format("woff");
+  font-weight: 400; }
+
+@font-face {
+  font-family: 'Fakt Pro';
+  src: url('/fonts/FaktPro-NormalItalic.eot');
+  src: url('/fonts/FaktPro-NormalItalic.eot#iefix') format("embedded-opentype"), url('/fonts/FaktPro-NormalItalic.woff') format("woff");
+  font-weight: 400;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Fakt Pro';
+  src: url('/fonts/FaktPro-SemiBold.eot');
+  src: url('/fonts/FaktPro-SemiBold.eot#iefix') format("embedded-opentype"), url('/fonts/FaktPro-SemiBold.woff') format("woff");
+  font-weight: 600; }
+
+@font-face {
+  font-family: 'Fakt Pro';
+  src: url('/fonts/FaktPro-SemiBoldItalic.eot');
+  src: url('/fonts/FaktPro-SemiBoldItalic.eot#iefix') format("embedded-opentype"), url('/fonts/FaktPro-SemiBoldItalic.woff') format("woff");
+  font-weight: 600;
+  font-style: italic; }
+
+@font-face {
+  font-family: 'Fakt Pro';
+  src: url('/fonts/FaktPro-Thin.eot');
+  src: url('/fonts/FaktPro-Thin.eot#iefix') format("embedded-opentype"), url('/fonts/FaktPro-Thin.woff') format("woff");
+  font-weight: 200; }
+
+@font-face {
+  font-family: 'Fakt Pro';
+  src: url('/fonts/FaktPro-ThinItalic.eot');
+  src: url('/fonts/FaktPro-ThinItalic.eot#iefix') format("embedded-opentype"), url('/fonts/FaktPro-ThinItalic.woff') format("woff");
+  font-weight: 200;
+  font-style: italic; }
+
 html {
     font-size: 14px;
 }
@@ -16026,8 +16161,9 @@ body {
     font-size: 14px;
     -webkit-font-smoothing: antialiased;
     -moz-font-smoothing: antialiased;
-    font-family: "proxima-nova", "Helvetica Neue", sans-serif;
-    color: #4d4d4d;
+    font-family: "Fakt Pro", "Helvetica Neue", sans-serif;
+    text-rendering: optimizeLegibility;
+    color: #4f5355;
 }
 h1,
 h2,
@@ -16035,7 +16171,7 @@ h3,
 h4,
 h5 {
     line-height: 1.5;
-    font-family: "proxima-nova", "Helvetica Neue", sans-serif;
+    font-family: "Fakt Pro", "Helvetica Neue", sans-serif;
     color: #000;
     font-weight: 400;
 }
