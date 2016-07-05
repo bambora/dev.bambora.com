@@ -15401,14 +15401,14 @@ Copyright (c) 2015 Daniel Eden
 
 header.site-header.site-header {
     z-index: 1000;
-    background: #48256B;
+    background: #1F2532;
     font-size: 14px;
     position: static;
 }
 header.site-header.site-header img{
-    width: 91px;
-    margin-top: 4px;
-    margin-left: 4px;
+    width: 129.67px;
+    margin-top: 8px;
+    margin-left: 0px;
 }
 
 header.site-header.site-header.header-fixed {
