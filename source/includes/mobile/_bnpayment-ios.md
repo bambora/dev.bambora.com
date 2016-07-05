@@ -152,7 +152,6 @@ NSError *error;
 **403 Forbidden:** A valid API token is missing.
 
 <a name="ioscreditcardregistration"></a>
-
 ## Native Card Registration
 
 *Make sure you've successfully [set up `Native Payment`](#iossetup) before implementing this functionality.*

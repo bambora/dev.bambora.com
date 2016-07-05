@@ -107,16 +107,15 @@ BNPaymentHandler.setupBNPayments(BNPaymentBuilder);
 **403 Forbidden:** A valid API token is missing.
 
 <a name="androidcreditcardregistration"></a>
-
-# Native card registration
+## Native Credit Card registration
 
 Native credit card registration is done through a native registration form. The credit card details are then encrypted before being sent to our servers. The Native Payment SDK includes a default native credit card registration form that can be used out of the box. You also have the option of creating a customized form.
 
-## How to display the default native form
+### How to display the default native form
 
 This example shows you how to present the default credit card registration form using an activity.
 
-### Create a layout
+#### Create a layout
 
 Start by creating a layout with a representative name (we'll use the name activity_native_card_registration in this guide). The example shows what the layout file needs to contain.
 
@@ -135,7 +134,7 @@ Start by creating a layout with a representative name (we'll use the name activi
 </RelativeLayout>
 ```
 
-### Create an activity
+#### Create an activity
 
 Next, create an activity with a representative name (we'll use NativeCardRegistrationActivity in this guide). Then set the your newly created layout file (activity_native_card_registration) as the contentView for the activity, as the code example shows.
 
@@ -147,7 +146,7 @@ protected void onCreate(@Nullable Bundle savedInstanceState) {
 }
 ```
 
-### Listen to registration callbacks
+#### Listen to registration callbacks
 
 To receive callbacks when registration is completed, add a listener to the CardRegistrationForm. First make the activity implement ICardRegistrationCallback as in the code example.
 
@@ -188,7 +187,7 @@ Then, extend the onCreate method to set a registration result listener like in t
 
 ```
 
-### Display the form activity
+#### Display the form activity
 
 All that's left to show the native credit card registration form is to start the activity. The code example shows how to do it.
 
@@ -199,10 +198,10 @@ startActivity(intent);
 
 ```
 
-## How to build your own native form
+### How to build your own native form
 You have the option of creating your own, fully customizable native credit card registration form. This requires a bit more effort compared to using the default form, but it also gives you control over the design.
 
-### GUI compontents
+#### GUI compontents
 
 The SDK contains bundled EditText classes that help out with input validation and formatting.
 
@@ -227,7 +226,7 @@ The example shows how to add the GUI components in a layout file.
     android:layout_height="match_parent" />
 ```
 
-### Manual formatting and validation
+#### Manual formatting and validation
 
 `CardFormEditText` is an abstract subclass of EditText with extended functionality that helps out with input validation. `CardFormEditText` introduces three new instance variables and five new methods. Use this class if you want to have full control of formatting and validation.
 
@@ -251,11 +250,11 @@ public boolean isFormatted();
 public boolean isValid();
 ```
 
-### Handling user input and network requests
+#### Handling user input and network requests
 
 Once you have your own shiny form set up, you need to encrypt the input from the form and send it to our back end for processing.
 
-### Making the request
+#### Making the request
 
 The exampe shows how to use the `registerCreditCard` method in `BNPaymentHandler` for encrypting and sending input data from your custom native credit card registration form to our back end for processing.
 
@@ -271,7 +270,7 @@ BNPaymentHandler.getInstance().registerCreditCard(
 
 > **NOTE:** *You are responsible for only sending the form data once since this network call is not idempotent.*
 
-### Callback
+#### Callback
 
 The example shows how to create a listener in order to handle the result of an attempted credit card registration.
 
