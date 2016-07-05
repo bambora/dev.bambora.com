@@ -262,10 +262,10 @@ The exampe shows how to use the `registerCreditCard` method in `BNPaymentHandler
 ```java
 BNPaymentHandler.getInstance().registerCreditCard(
         getContext(),
-        "[Card number from your form]",
-        "[Expiry month from your form]",
-        "[Expiry year from your form]",
-        "[CVC code from your form]",
+        "<CARD_NUMBER_FROM_YOUR_FORM>",
+        "<EXPIRY_MONTH_FROM_YOUR_FORM>",
+        "<EXPIRY_YEAR_FROM_YOUR_FORM>",
+        "<CVC_CODE_FROM_YOUR_FORM>",
         resultListener);
 ```
 
