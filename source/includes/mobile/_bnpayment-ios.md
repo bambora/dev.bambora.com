@@ -175,7 +175,7 @@ vc.completionBlock = ^(BNCCRegCompletion completion, BNAuthorizedCreditCard *car
 
 ### HTTP Responses
 
-**200 OK:** Successful request
+**200 OK:** Successful request.
 
 **201 Created:** Successful payment!
 
