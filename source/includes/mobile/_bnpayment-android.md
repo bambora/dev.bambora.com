@@ -110,7 +110,7 @@ BNPaymentHandler.setupBNPayments(BNPaymentBuilder);
 
 # Native card registration
 
-Native credit card registration is done through a native registration form. The credit card details are then encrypted before being sent to our servers. The Native Payment SDK includes a default native credit card registrationform that can be used out of the box. You also have the option of creating a customized form.
+Native credit card registration is done through a native registration form. The credit card details are then encrypted before being sent to our servers. The Native Payment SDK includes a default native credit card registration form that can be used out of the box. You also have the option of creating a customized form.
 
 ## How to display the default native form
 
