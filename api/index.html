@@ -37,7 +37,6 @@
             }
         })();
     </script>
-
     <script type="text/javascript">
         $(function () {
             var url = window.location.search.match(/url=([^&]+)/);
@@ -50,7 +49,7 @@
             window.swaggerUi = new SwaggerUi({
                 url: url,
                 dom_id: "swagger-ui-container",
-                supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
+                supportedSubmitMethods: [],
                 onComplete: function (swaggerApi, swaggerUi) {
                     if (typeof initOAuth == "function") {
 
@@ -76,6 +75,21 @@
                     $("[data-toggle='tooltip']").tooltip();
 
                     addApiKeyAuthorization();
+
+                    // Disable the base URL input field:
+                    $("#input_baseUrl").attr("disabled", "disabled");
+
+                    // Hide the "TOKEN" input field and button:
+                    $(".scope-selector").hide();
+
+                    // Hide the "Test this endpoint" headings:
+                    $('h4[data-target="#test-payments_query_payment"]').hide();
+                    $('h4[data-target="#test-payments_authorize_card_payment"]').hide();
+                    $('h4[data-target="#test-payments_authorize_token_payment"]').hide();
+                    $('h4[data-target="#test-payments_capture_payment"]').hide();
+
+                    // Hide the "Try" buttons:
+                    $('input[type="submit"]').hide();
                 },
                 onFailure: function (data) {
                     log("Unable to Load SwaggerUI");
