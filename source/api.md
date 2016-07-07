@@ -15,8 +15,10 @@ includes:
   - api/spec
   - api/authentication
   - api/make_payment
+  - api/cancel
   - api/capture
   - api/get_payment
+  - api/refund
   - api/errors
   
 toc_below:

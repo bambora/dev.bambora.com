@@ -27,20 +27,19 @@ response = requests.post(
 ```
 
 ```shell
-AMOUNT=<AMOUNT>
 PAYMENT_REFERENCE="<PAYMENT_REFERENCE>"
 MERCHANT_NUMBER="<MERCHANT_NUMBER>"
 MERCHANT_TOKEN="<MERCHANT_TOKEN>"
 MERCHANT_SECRET="<MERCHANT_SECRET>"
-​
+
 URL="https://api-beta.bambora.com/payments/${PAYMENT_REFERENCE}/capture/"
-AUTHORIZATION="Authorization: Basic "$(echo -n ${MERCHANT_TOKEN}@${MERCHANT_NUMBER}:${MERCHANT_SECRET} | base64)​
-​
+AUTHORIZATION="Authorization: Basic "$(echo -n ${MERCHANT_TOKEN}@${MERCHANT_NUMBER}:${MERCHANT_SECRET} | base64)
+
 curl \
     --header "${AUTHORIZATION}" \
     --header 'API-Version: 1' \
     --header 'Content-Type: application/json' \
-    --data '{"amount": ${AMOUNT}}' \
+    --data '{"amount": 1000}' \
     "${URL}"
 ```
 
@@ -62,22 +61,25 @@ The payment reference refers to the one that you are required set before making 
 
 We have created code examples showing how to capture a payment - one written in python and the other written in bash using cURL. Please note that each placeholder needs to be replaced with real data.
 
+**Please note:**
+While it is possible to make a capture operation both through the API and through the web-based admin tool ([https://merchant.bambora.com/](https://merchant.bambora.com/)), we strongly recommend that you only use one of these tools. The reason is that if you capture a payment in the merchant backend, it currently won’t be reflected in the API backend which can result in incorrect answers from the API.
+
 ## Response
 
 ```Response
 {
-  "region": "emea_0",
+  "region": "string",
   "merchant": "string",
   "payment": "string",
   "state": "Captured",
-  "currency": "SEK",
-  "amount": "integer",
+  "currency": "EUR",
+  "amount": 1000,
   "comment": "string"
   "captures": [
-  "capture"{
-    "amount": "integer",
-    "comment": "string" 
-  }]
+    "capture"{
+      "amount": 1000,
+      "comment": "string" 
+    }]
 }
 ```
 

@@ -8,7 +8,7 @@
 import requests
 
 PAYMENT_REFERENCE = '<PAYMENT_REFERENCE>'
-MERCHANT_ACCOUNT = '<MERCHANT_NUMBER>'
+MERCHANT_NUMBER = '<MERCHANT_NUMBER>'
 MERCHANT_TOKEN = '<MERCHANT_TOKEN>'
 MERCHANT_SECRET = '<MERCHANT_SECRET>'
 
@@ -29,7 +29,7 @@ MERCHANT_SECRET="<MERCHANT_SECRET>"
 
 URL="https://api-beta.bambora.com/payments/${PAYMENT_REFERENCE}/"
 AUTHORIZATION="Authorization: Basic "$(echo -n ${MERCHANT_TOKEN}@${MERCHANT_NUMBER}:${MERCHANT_SECRET} | base64)
-​
+
 curl \
     --header "${AUTHORIZATION}" \
     --header "API-Version: 1" \
@@ -57,22 +57,21 @@ We have created code examples showing how to query a payment - one written in py
 
 ## Response
 
-```Response
+```Response: 
 {
-  "region": "emea_0",
-  "merchant": "string",
-  "payment": "string",
-  "state": "None",
-  "currency": "EUR",
-  "amount": 0,
-  "comment": "string",
-  "captures": [
-    {
-      "amount": 1000,
-      "comment": "10 EUR capture"
-    }
-  ]
+  "currency": "EUR", 
+  "amount": 1000, 
+  "operationInProgress": False, 
+  "captures": [], 
+  "region": "string", 
+  "payment": "string", 
+  "operations": ["Cancel", "Capture"], 
+  "refunds": [], 
+  "state": "Authorized", 
+  "comment": "string", 
+  "merchant": "string"
 }
+
 ```
 
 If you receive an HTTP status code of 200 (OK) you will also find the payment object, in JSON format, in the response body. Any errors or problems will represent themselves as a non-200 status code. You can see those in the [standard error codes](./api.html#errors).

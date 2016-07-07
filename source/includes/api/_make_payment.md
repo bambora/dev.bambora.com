@@ -22,35 +22,32 @@ MERCHANT_SECRET="<MERCHANT_SECRET>"
 
 URL="https://api-beta.bambora.com/payments/${PAYMENT_REFERENCE}/card_token_authorization/"
 AUTHORIZATION="Authorization: Basic "$(echo -n ${MERCHANT_TOKEN}@${MERCHANT_NUMBER}:${MERCHANT_SECRET} | base64)
-​
+
 curl \
     --header "${AUTHORIZATION}" \
     --header "API-Version: 1" \
     --header "Content-Type: application/json" \
     --data '{"currency": "EUR",
-             "amount": 0,
-             "token": "${CARD_TOKEN}",
-             "comment": "string",
-             "merchant": "string"}' \
+             "amount": 1000,
+             "token": "'"${CARD_TOKEN}"'"}' \
     "${URL}"
 ```
 
 ```python
 import requests
 
+CARD_TOKEN = '<CARD_TOKEN>'
 PAYMENT_REFERENCE = '<PAYMENT_REFERENCE>'
-MERCHANT_ACCOUNT = '<MERCHANT_NUMBER>'
+MERCHANT_NUMBER = '<MERCHANT_NUMBER>'
 MERCHANT_TOKEN = '<MERCHANT_TOKEN>'
 MERCHANT_SECRET = '<MERCHANT_SECRET>'
 
 URL = 'https://api-beta.bambora.com/payments/{payment_reference}/card_token_authorization/'
 
 payload = {
-  "currency": "EUR",
-  "amount": 0,
-  "token": "string",
-  "comment": "string",
-  "merchant": "string"
+  "currency": 'EUR',
+  "amount": 1000,
+  "token": CARD_TOKEN
 }
 
 response = requests.post(
@@ -78,6 +75,23 @@ You need to set a unique payment reference in order to make a payment.
 
 We have created code examples showing how to query a payment - one written in python and the other written in bash using cURL. Please note that each placeholder needs to be replaced with real data.
 
+### Response
+
+```Response: 
+{
+  "merchant": "string", 
+  "comment": "N/A", 
+  "currency": "EUR", 
+  "amount": 1000, 
+  "region": "string", 
+  "state": "Authorized", 
+  "operationInProgress": False, 
+  "operations": ["Capture", "Cancel"], 
+  "captures": [], 
+  "payment": "string"
+}
+```
+
 ### Encrypted Cards
 
 ```shell
@@ -86,7 +100,7 @@ MERCHANT_NUMBER="<MERCHANT_NUMBER>"
 MERCHANT_TOKEN="<MERCHANT_TOKEN>"
 MERCHANT_SECRET="<MERCHANT_SECRET>"
 
-URL='https://api-beta.bambora.com/payments/'$PAYMENT_REFERENCE'/encrypted_card_authorization/'
+URL="https://api-beta.bambora.com/payments/${PAYMENT_REFERENCE}/encrypted_card_authorization/"
 AUTHORIZATION="Authorization: Basic "$(echo -n ${MERCHANT_TOKEN}@${MERCHANT_NUMBER}:${MERCHANT_SECRET} | base64)
 ​
 curl \
@@ -94,9 +108,7 @@ curl \
     --header "API-Version: 1" \
     --header "Content-Type: application/json" \
     --data '{"currency": "EUR",
-         "amount": 0,
-         "comment": "string",
-         "merchant": "string",
+         "amount": 1000,
          "encryptedSessionKeys": 
           [{"fingerprint": "string",
             "sessionKey": "string"}],
@@ -113,7 +125,7 @@ curl \
 import requests
 
 PAYMENT_REFERENCE = '<PAYMENT_REFERENCE>'
-MERCHANT_ACCOUNT = '<MERCHANT_NUMBER>'
+MERCHANT_NUMBER = '<MERCHANT_NUMBER>'
 MERCHANT_TOKEN = '<MERCHANT_TOKEN>'
 MERCHANT_SECRET = '<MERCHANT_SECRET>'
 
@@ -121,9 +133,7 @@ URL = 'https://api-beta.bambora.com/payments/{payment_reference}/encrypted_card_
 
 payload = {
   "currency": "EUR",
-  "amount": 0,
-  "comment": "string",
-  "merchant": "string",
+  "amount": 1000,
   "encryptedSessionKeys": [
     {
       "fingerprint": "string",
@@ -167,7 +177,7 @@ We have created code examples showing how to query a payment - one written in py
 
 ```Response
 {
-  "region": "emea_0",
+  "region": "string",
   "merchant": "string",
   "payment": "string",
   "state": "Authorized",
