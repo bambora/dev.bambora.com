@@ -5,7 +5,7 @@
         "title": "Bambora Payments API",
         "description": "The Bambora Payments API makes it possible to perform payment-related operations such as authorizing and capturing payments.\n\nIn order to use this API you need to sign up with Bambora. Please send an email to sales.ecom@bambora.com if you want to sign up.\n",
         "contact": {
-            "name": "sdk@bambora.com"
+            "name": "native.support@bambora.com"
         },
         "termsOfService": ""
     },
@@ -25,7 +25,7 @@
         "/{payment}/": {
             "get": {
                 "operationId": "query_payment",
-                "summary": "Retrieve payment information",
+                "summary": "Get payment",
                 "description": "Query the payment service for information on this payment. Returns payment details and status.\n",
                 "tags": [
                     "payments"
@@ -100,8 +100,8 @@
         "/{payment}/encrypted_card_authorization/": {
             "post": {
                 "operationId": "authorize_card_payment",
-                "summary": "Post payment with encrypted card details.",
-                "description": "This endpoint is used to set up a recurring payment.\n",
+                "summary": "Make payment using encrypted credit card",
+                "description": "Create a new authorized payment based on encrypted credit card details.\n",
                 "tags": [
                     "payments"
                 ],
@@ -219,8 +219,8 @@
         "/{payment}/card_token_authorization/": {
             "post": {
                 "operationId": "authorize_token_payment",
-                "summary": "Post payment with card token",
-                "description": "Create a new payment authorization using a tokenized payment card.\n",
+                "summary": "Make payment using credit card token",
+                "description": "Create a new authorized payment based on a credit card token.\n",
                 "tags": [
                     "payments"
                 ],
@@ -341,7 +341,8 @@
                 "tags": [
                     "payments"
                 ],
-                "description": "Capture all or a part of the amount specified in the payment.\n",
+                "summary": "Capture payment",
+                "description": "The capture operation withdraws the authorized amount, either in whole or in part. For example: If a debit card was used for the purchase, then money is withdrawn from the customer's bank account.\n",
                 "produces": [
                     "application/json"
                 ],
@@ -455,6 +456,233 @@
                     }
                 }
             }
+        },
+        "/{payment}/cancel/": {
+            "post": {
+                "operationId": "cancel_payment",
+                "tags": [
+                    "payments"
+                ],
+                "summary": "Cancel payment",
+                "description": "The Cancel operation interrupts a transaction before the authorized amount has been collected.\nThe Cancel operation can only be used on payments that have the Authorized status.\n",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "API-Version",
+                        "in": "header",
+                        "description": "Header to indicate which version of the API this client is using. Only changes when backwards-incompatible modifications are introduced.\n",
+                        "type": "integer",
+                        "required": true
+                    },
+                    {
+                        "name": "payment",
+                        "in": "path",
+                        "description": "The payment id of the pre-auth that will be captured.",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful cancel.",
+                        "schema": {
+                            "$ref": "#/definitions/PaymentResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "type": "about:blank",
+                                "title": "Cannot authorize",
+                                "detail": "The Authorization header was not set.",
+                                "status": 401
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "Cannot cancel.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "type": "http://api.bambora.com/definitions/payments/cannot_cancel",
+                                "title": "Cannot cancel",
+                                "detail": "",
+                                "status": 402
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Payment operation blocked.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "type": "http://api.bambora.com/definitions/payments/payment_operation_blocked",
+                                "title": "Payment operation blocked",
+                                "detail": "The payment was being modified by another request. The attempted operation could be retried again, or the payment could be queried to find out if its properties have changed.\n",
+                                "status": 409
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Invalid payment state transition.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "type": "http://api.bambora.com/definitions/payments/invalid_payment_state_transition",
+                                "title": "Invalid payment state transition",
+                                "detail": "",
+                                "status": 422
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
+        },
+        "/{payment}/refund/": {
+            "post": {
+                "operationId": "refund_payment",
+                "tags": [
+                    "payments"
+                ],
+                "summary": "Refund payment",
+                "description": "The Refund operation will return the captured amount, in part or in full, to the customer. Only captured payments can be refunded.\n",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "API-Version",
+                        "in": "header",
+                        "description": "Header to indicate which version of the API this client is using. Only changes when backwards-incompatible modifications are introduced.\n",
+                        "type": "integer",
+                        "required": true
+                    },
+                    {
+                        "name": "payment",
+                        "in": "path",
+                        "description": "The payment id of the payment that will be refunded.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "details",
+                        "in": "body",
+                        "description": "Refund details",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Refund"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful refund.",
+                        "schema": {
+                            "$ref": "#/definitions/PaymentResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "type": "about:blank",
+                                "title": "Bad Request",
+                                "detail": "'amount' is a required property",
+                                "status": 400
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "type": "about:blank",
+                                "title": "Cannot authorize",
+                                "detail": "The Authorization header was not set.",
+                                "status": 401
+                            }
+                        }
+                    },
+                    "402": {
+                        "description": "Cannot refund.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "type": "http://api.bambora.com/definitions/payments/cannot_refund",
+                                "title": "Cannot refund",
+                                "detail": "",
+                                "status": 402
+                            }
+                        }
+                    },
+                    "409": {
+                        "description": "Payment operation blocked.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "type": "http://api.bambora.com/definitions/payments/payment_operation_blocked",
+                                "title": "Payment operation blocked",
+                                "detail": "The payment was being modified by another request. The attempted operation could be retried again, or the payment could be queried to find out if its properties have changed.\n",
+                                "status": 409
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Invalid payment state transition.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "type": "http://api.bambora.com/definitions/payments/invalid_payment_state_transition",
+                                "title": "Invalid payment state transition",
+                                "detail": "",
+                                "status": 422
+                            }
+                        }
+                    },
+                    "default": {
+                        "description": "Unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -527,6 +755,7 @@
                 },
                 "encryptedSessionKeys": {
                     "type": "array",
+                    "minItems": 1,
                     "description": "An array containing details about an encrypted session key.\n",
                     "items": {
                         "type": "object",
@@ -641,6 +870,26 @@
                 "comment": "10 EUR capture"
             }
         },
+        "Refund": {
+            "type": "object",
+            "properties": {
+                "amount": {
+                    "type": "integer",
+                    "format": "int64",
+                    "minimum": 1,
+                    "description": "Amount to refund, in cents (or equivalent). If this is less than the amount of the payment, a partial refund will be performed. If this parameter is omitted, the entire amount of the payment will be refunded.\n"
+                },
+                "comment": {
+                    "type": "string",
+                    "maxLength": 256,
+                    "description": "256 characters of available space for a comment that will be saved on the payment.\n"
+                }
+            },
+            "example": {
+                "amount": 1000,
+                "comment": "10 EUR refund"
+            }
+        },
         "PaymentResponse": {
             "type": "object",
             "required": [
@@ -675,7 +924,9 @@
                         "Declined",
                         "Voided",
                         "Captured",
-                        "Settled"
+                        "Refunded",
+                        "Settled",
+                        "Canceled"
                     ]
                 },
                 "currency": {
@@ -745,6 +996,7 @@
                         "Declined",
                         "Voided",
                         "Captured",
+                        "Refunded",
                         "Settled"
                     ]
                 },
