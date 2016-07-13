@@ -520,6 +520,29 @@ NSString *paymentIdentifier = [NSString stringWithFormat:@"%u", arc4random_unifo
 The attempted operation could be retried again, or the payment
 could be queried to find out if its properties have changed.
 
+<a name="errorhandling"></a>
+## Error handling
+
+The SDK can receive a list of different errors from the back end. All payment related error codes will be of type `BNErrorResponse` and can be retrieved using the `NSError+BNError` category. The specific error is identidied by the type property, if no type is given the standard meaning of the HTTP error is applied. A tip is to use the types for localization keys in order to display messages depending on the type.
+
+### Standard HTTP error types
+
+* about:blank
+
+### Payment error types
+
+* <http://api.bambora.com/definitions/payments/payment_not_found>
+* <http://api.bambora.com/definitions/payments/invalid_payment_state_transition>
+* <http://api.bambora.com/definitions/payments/payment_operation_blocked>
+* <http://api.bambora.com/definitions/payments/cannot_authorize>
+* <http://api.bambora.com/definitions/payments/3d_secure_required>
+* <http://api.bambora.com/definitions/payments/card_type_not_accepted>
+* <http://api.bambora.com/definitions/payments/invalid_card_information>
+* <http://api.bambora.com/definitions/payments/invalid_card>
+* <http://api.bambora.com/definitions/payments/insufficient_funds>
+* <http://api.bambora.com/definitions/payments/expired_card>
+* <http://api.bambora.com/definitions/payments/currency_not_supported>
+
 <a name="iostestmode"></a>
 ## Test Mode
 
