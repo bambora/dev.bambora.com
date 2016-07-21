@@ -77,4 +77,4 @@ The Native Payment SDK is available under the [MIT license](https://opensource.o
 
 ## Contact info
 
-We welcome questions and feedback - you can reach us by sending an e-mail to [sdk@bambora.com](mailto:sdk@bambora.com)
+We welcome questions and feedback - you can reach us by sending an e-mail to [native.support@bambora.com](mailto:native.support@bambora.com)
