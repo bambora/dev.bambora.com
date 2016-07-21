@@ -104,7 +104,8 @@ BNPaymentHandler.setupBNPayments(BNPaymentBuilder);
 ### HTTP Responses
 
 **201 Created**
-**403 Forbidden:** A valid API token is missing.
+
+**403 Forbidden:** You are not authorized for this operation with the authentication you have provided.
 
 <a name="androidcreditcardregistration"></a>
 ## Native Credit Card registration
@@ -166,7 +167,7 @@ public class NativeCardRegistrationActivity extends AppCompatActivity implements
     }
 
     @Override
-    public void onRegistrationError() {
+    public void onRegistrationError(RequestError error) {
         // Card registration failed
     }
 }
@@ -282,15 +283,13 @@ ICardRegistrationCallback resultListener = new ICardRegistrationCallback() {
   }
 
   @Override
-  public void onRegistrationError() {
+  public void onRegistrationError(RequestError error) {
     // Handle error here.
   }
 }
 ```
 
 ### HTTP Responses
-
-**200 OK:** Successful request.
 
 **201 Created:** Successful payment!
 
@@ -299,6 +298,8 @@ ICardRegistrationCallback resultListener = new ICardRegistrationCallback() {
 **401 Unauthorized:** Your API key is wrong or the Authorization header was not set.
 
 **402 Cannot authorize:** The authorization request could not be performed.
+
+**403 Forbidden: You are not authorized for this operation with the authentication you have provided..**
 
 **404 Not Found:** Unknown path or resource was not found.
 
@@ -358,7 +359,7 @@ public class RegisterCreditCardActivity extends AppCompatActivity
 
 **200 OK:** A response body containing a session URL to the Hosted Payment Page is returned.
 
-**403 Forbidden:** Valid credentials are missing.
+**403 Forbidden:** You are not authorized for this operation with the authentication you have provided.
 
 ## How to customize the Hosted Payment Page
 
@@ -583,16 +584,13 @@ public void makeCreditCardPayment(CreditCard creditCard) {
   // Make the transaction:
   BNPaymentHandler.getInstance().makeTransaction("<PAYMENT_ID>", paymentSettings, new ITransactionCallBack() {
     @Override
-    public void onTransactionResult(TransactionResult result) {
-      switch (result) {
-        case TRANSACTION_RESULT_SUCCESS:
-          // Payment succeeded.
-          break;
+    public void onTransactionSuccess() {
+      // Handle payment success here.
+    }
 
-        default:
-          // Payment failed.
-          break;
-      }
+    @Override
+    public void onTransactionError(RequestError error) {
+      // Payment payment errors here.
     }
   });
 }
@@ -603,13 +601,41 @@ public void makeCreditCardPayment(CreditCard creditCard) {
 
 **201 Created: Payment successful**
 
-**400 Invalid payment state transition:** The state of the payment could not be changed in the way that the payment operation would require.
+**400 Bad Request: The API request was not formatted correctly.**
+
+**401 Unauthorized: Your API key is wrong or the Authorization header was not set.**
 
 **402 Payment required:** The payment could not be authorized.
 
 **409 Payment operation blocked:** The payment was being modified by another request.
 The attempted operation could be retried again, or the payment
 could be queried to find out if its properties have changed.
+
+**422 Invalid payment state transition:** The state of the payment could not be changed in the way that the payment operation would require.
+
+**500 Internal Server Error: We had a problem with our server. Try again later.**
+
+<a name="androiderrorhandling"></a>
+
+The SDK can receive a list of different errors from the back end. All payment related error responses will be of type `RequestResponse` and are visible from the error callbacks. If error is null then the error is undefined. The specific error is identified by the type property, if no type is given the standard meaning of the HTTP error is applied. A tip is to use the types for localization keys in order to display messages depending on the type.
+
+### Standard HTTP error types
+
+* about:blank
+
+### Payment error types
+
+* <http://api.bambora.com/definitions/payments/payment_not_found>
+* <http://api.bambora.com/definitions/payments/invalid_payment_state_transition>
+* <http://api.bambora.com/definitions/payments/payment_operation_blocked>
+* <http://api.bambora.com/definitions/payments/cannot_authorize>
+* <http://api.bambora.com/definitions/payments/3d_secure_required>
+* <http://api.bambora.com/definitions/payments/card_type_not_accepted>
+* <http://api.bambora.com/definitions/payments/invalid_card_information>
+* <http://api.bambora.com/definitions/payments/invalid_card>
+* <http://api.bambora.com/definitions/payments/insufficient_funds>
+* <http://api.bambora.com/definitions/payments/expired_card>
+* <http://api.bambora.com/definitions/payments/currency_not_supported>
 
 <a name="androidtestmode"></a>
 ## Test mode
