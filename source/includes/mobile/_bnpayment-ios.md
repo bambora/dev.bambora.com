@@ -115,13 +115,12 @@ Select `BNPayment-Example` and a simulator (or device) in the toolbar in Xcode a
 <a name="iossetup"></a>
 ## Setup
 
-An API token is required in order to communicate with Bambora’s backend through the SDK.
+<s>An API token is required in order to communicate with Bambora’s backend through the SDK.~</s>
+Only a Merchant Account is necessary to communicate with Bambora through the SDK. However, you will need an API token to perform server-side captures, cancels and refunds. [See here for more information](../api/authentication).
+If you already set up your app using the token, it's retrocompatible so there's no need to change.
 
-The API token has two purposes: it identifies you as a merchant and it determines whether the SDK should be connected to the test environment or to the production environment. Each environment requires a separate API token.
+After signing up for a SDK developer account, you will receive a test Merchant Account, you can use it to implement the setup code in the example.
 
-After signing up for a SDK developer account, you will receive an API token for the test environment. You can then decide to apply for an API token for the production environment.
-
-Once you have an API token, you can use it to implement the setup code in the example.
 
 ### Step 1: Import
 Import the SDK in AppDelegate.m:
@@ -133,13 +132,13 @@ Import the SDK in AppDelegate.m:
 ### Step 2: Setup
 Add the following setup code to `application:didFinishLaunchingWithOptions:` method in AppDelegate.m.
 
-If you provide a test API token, the SDK will enter test mode. If you provide a production API token, the SDK will enter production mode.
+If you provide a test Merchant Account, the SDK will enter test mode. If you provide a production Merchant Account, the SDK will enter production mode.
 
 The debug setting should be set to NO in live applications.
 
 ```objective_c
 NSError *error;
-[BNPaymentHandler setupWithApiToken:@"<API_TOKEN>" // Required.
+[BNPaymentHandler setupWithMerchantAccount:@"<MERCHANT_ACCOUNT>" // Required.
                             baseUrl:nil // Optional. Overrides the URL to the SDK backend.
                               debug:NO // Optional. Enables logging in Xcode when set to YES.
                               error:&error];
@@ -149,7 +148,7 @@ NSError *error;
 
 **201 Created**
 
-**403 Forbidden:** A valid API token is missing.
+**403 Forbidden:** A valid API token or Merchant Account is missing.
 
 <a name="ioscreditcardregistration"></a>
 ## Native Card Registration
@@ -180,7 +179,7 @@ vc.completionBlock = ^(BNCCRegCompletion completion, BNAuthorizedCreditCard *car
 
 **400 Bad Request:** The API request was not formatted correctly.
 
-**401 Unauthorized:** Your API key is wrong or the Authorization header was not set.
+**401 Unauthorized:** Your Merchant Account or the API key provided is wrong.
 
 **402 Cannot authorize:** The authorization request could not be performed.
 
@@ -554,9 +553,9 @@ The SDK can be used in one of two modes:
 
 ### Switch Modes
 
-To enable test mode, you need to use a test API token as the initial parameter in the setupWithApiToken: method of the BNPaymentHandler class.
+To enable test mode, you need to use a test Merchant Account as the initial parameter in the setupWithMerchantAccount: method of the BNPaymentHandler class.
 
-To enable production mode, you need to provide a production API token as the initial parameter in the setupWithApiToken: method of the BNPaymentHandler class.
+To enable production mode, you need to provide a production Merchant Account as the initial parameter in the setupWithMerchantAccount: method of the BNPaymentHandler class.
 
 You can find a code example in the [Setup section](#iossetup) above.
 
