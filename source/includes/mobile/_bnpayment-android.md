@@ -76,21 +76,19 @@ Add the following permission after the **manifest** tag in your **AndroidManifes
 <a name="androidsetup"></a>
 ## Setup
 
-An API token is required in order to communicate with Bambora’s backend through the SDK.
+<s>An API token is required in order to communicate with Bambora’s backend through the SDK.</s>
+Only a Merchant Account is necessary to communicate with Bambora through the SDK. However, you will need an API token to perform server-side captures, cancels and refunds. [See here for more information](../api/authentication).
+If you already set up your app using the token, it's retrocompatible so there's no need to change.
 
-The API token has two purposes: it identifies you as a merchant and it determines whether the SDK should be connected to the test environment or to the production environment. Each environment requires a separate API token.
-
-After signing up for a SDK developer account, you will receive an API token for the test environment. You can then decide to apply for an API token for the production environment.
-
-Once you have an API token, you can use it to implement the setup code in the example.
+After signing up for a SDK developer account, you will receive a test Merchant Account, you can use it to implement the setup code in the example.
 
 ### Register Handler
 
-Here you register a Handler by using the `BPSBaseLibHandlerBuilder` to build it for you using your API token.
+Here you register a Handler by using the `BPSBaseLibHandlerBuilder` to build it for you using your Merchant Account.
 
-Add the following code at the beginning of the `onCreate method` in the `MainActivity class`, and be sure to swap out `<API_TOKEN>` with your test API token.
+Add the following code at the beginning of the `onCreate method` in the `MainActivity class`, and be sure to swap out `<MERCHANT_ACCOUNT>` with your test Merchant Account.
 
-*Note that if you provide a test API token, the SDK will enter test mode. If you provide a production API token, the SDK will enter production mode.*
+*Note that if you provide a test Merchant Account, the SDK will enter test mode. If you provide a production Merchant Account, the SDK will enter production mode.*
 
 ```java
 BNPaymentBuilder BNPaymentBuilder = new BNPaymentBuilder(getApplicationContext(),
@@ -105,7 +103,7 @@ BNPaymentHandler.setupBNPayments(BNPaymentBuilder);
 
 **201 Created**
 
-**403 Forbidden:** You are not authorized for this operation with the authentication you have provided.
+**403 Forbidden:** A valid API token or Merchant Account is missing.
 
 <a name="androidcreditcardregistration"></a>
 ## Native Credit Card registration
@@ -295,7 +293,7 @@ ICardRegistrationCallback resultListener = new ICardRegistrationCallback() {
 
 **400 Bad Request:** The API request was not formatted correctly.
 
-**401 Unauthorized:** Your API key is wrong or the Authorization header was not set.
+**401 Unauthorized:** Your Merchant Account or the API key provided is wrong.
 
 **402 Cannot authorize:** The authorization request could not be performed.
 
@@ -649,9 +647,9 @@ The SDK can be used in one of two modes:
 
 **How to switch between test and production mode**
 
-To enable test mode, you need to supply a test API token when creating an instance of BPSBaseLibHandlerBuilder.
+To enable test mode, you need to supply a test Merchant Account when creating an instance of BPSBaseLibHandlerBuilder.
 
-To enable production mode, you need to supply a production API token when creating an instance of BPSBaseLibHandlerBuilder.
+To enable production mode, you need to supply a production Merchant Account when creating an instance of BPSBaseLibHandlerBuilder.
 
 You can find a code example in the [Setup](#androidsetup) section above.
 
