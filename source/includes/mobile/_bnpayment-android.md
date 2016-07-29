@@ -91,11 +91,9 @@ Add the following code at the beginning of the `onCreate method` in the `MainAct
 *Note that if you provide a test Merchant Account, the SDK will enter test mode. If you provide a production Merchant Account, the SDK will enter production mode.*
 
 ```java
-BNPaymentBuilder BNPaymentBuilder = new BNPaymentBuilder(getApplicationContext(),
-  API_TOKEN)
-  .debug(true);
-
-BNPaymentHandler.setupBNPayments(BNPaymentBuilder);
+BNPaymentBuilder BNPaymentBuilder = new BNPaymentBuilder(getApplicationContext())
+               .merchantAccount(MERCHANT_ACCOUNT)
+               .debug(true);
 ```
 > The debug setting enables logging through logcat if set to true (and disables logging if set to false). The debug setting should be set to false in live applications.
 
