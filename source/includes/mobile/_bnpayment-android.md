@@ -651,7 +651,7 @@ To enable production mode, you need to supply a production Merchant Account when
 
 You can find a code example in the [Setup](#androidsetup) section above.
 
-**Test credit cards**
+###Test credit cards
 
 ```
 VISA (Sweden)
