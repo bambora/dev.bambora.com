@@ -15,6 +15,7 @@ includes:
   - api/spec
   - api/authentication
   - api/make_payment
+  - api/test_cards
   - api/cancel
   - api/capture
   - api/get_payment

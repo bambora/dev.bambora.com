@@ -559,9 +559,7 @@ To enable production mode, you need to provide a production Merchant Account as 
 
 You can find a code example in the [Setup section](#iossetup) above.
 
-### Test credit cards
-
-You can use the following test credit cards for testing registration and purchasing when the SDK is running in test mode (no real money is charged when these test cards are used):
+###Test credit cards
 
 ```
 VISA (Sweden)
@@ -584,3 +582,5 @@ Card number: 5206 8300 0000 0001
 Expiration (month/year): 05/17
 CVC: 000
 ```
+
+You can use these test credit cards for testing registration and purchasing when the SDK is running in test mode (no real money is charged when these test cards are used):
