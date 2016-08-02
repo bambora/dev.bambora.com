@@ -5,8 +5,8 @@ $(document).ready(function () {
 	
 	bamboraGitHub.getLatestReleaseInfo("https://api.github.com/repos/bambora/checkout-woocommerce/releases/latest").then(function(release){
 	
-		$("#link").attr("href", release.downloadLink);
-		$(".info").text(release.info);
+		$("#lnkWooCommerce").attr("href", release.downloadLink);
+		$("#lnkWooCommerce").prop('title', release.info);
 	
 	});
 });
@@ -22,9 +22,9 @@ Bambora makes it easy for you as an online merchant using WooCommerce, to accept
 ## Install the Checkout plugin for WooCommerce
 
 ### Step 1: Download the plugin
-1. <a href="https://github.com/bambora/checkout-prestashop/releases/latest" id="link">Download the latest Checkout module for WooCommerce</a> by right clicking this link and click **Save as...**
+1. <a href="https://github.com/bambora/checkout-woocommerce/releases/latest" id="lnkWooCommerce">Download the latest Checkout plugin for WooCommerce</a> by right clicking this link and click **Save as...**
 
-2. Choose a destination and click **Save**
+2. Choose a destination folder and click **Save**
 
 
 ### Step 2: Log into WordPress
@@ -47,9 +47,9 @@ Bambora makes it easy for you as an online merchant using WooCommerce, to accept
 
 2. Click the tab **Checkout** and select **Bambora**
 
-3. Enter and adjust the settings which are described in the **Checkout settings** section.
+3. Enter and adjust the settings which are described in the **Settings** section.
 
-4. Click **Save Changes** when done and you are ready to use the Bambora Checkout
+4. Click **Save Changes** when done and you are ready to use Bambora Checkout
 
 
 ## Create an API user
@@ -73,7 +73,7 @@ To connect to Bambora your system must authenticate itself on your behalf. Using
 
 
 
-## Checkout settings
+## Settings
 ### Title
 The name of the payment option. This is the name your customers will see at checkout. Example “Pay with Bambora Checkout”.
 
@@ -98,7 +98,7 @@ Choose the payment window ID to use. Use this to set up different texts and logo
 Choose how to display the payment window. Either as an **overlay** on top of your website or in **full screen**.
 
 ### Instant capture
-Enable instant capture to capture the payment immediately. You may only use instant capture if your customers receive their products immediately, like digital goods as E-books and the like.
+Enable instant capture to capture the payment immediately. You may only use instant capture if your customers receive their products immediately, like digital goods as e-books and the like.
 
 
 
