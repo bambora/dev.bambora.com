@@ -27,7 +27,7 @@ Bambora makes it easy for you as an online merchant using PrestaShop, to accept 
 2. Choose a destination folder and click **Save**
 
 
-### Step 2: Log into PrestaShop
+### Step 2: Login to PrestaShop
 1. Go to your PrestaShop administration page and log in. Example url: http://www.yourshop.com/admin
 
 

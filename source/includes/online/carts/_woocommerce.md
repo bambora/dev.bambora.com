@@ -27,7 +27,7 @@ Bambora makes it easy for you as an online merchant using WooCommerce, to accept
 2. Choose a destination folder and click **Save**
 
 
-### Step 2: Log into WordPress
+### Step 2: Login to WordPress
 1. Go to your WordPress administration page and log in. Example url: http://www.yourshop.com/wp-admin
 
 ### Step 3: Install the plugin
