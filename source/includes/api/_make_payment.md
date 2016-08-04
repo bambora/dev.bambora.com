@@ -161,6 +161,10 @@ response = requests.post(
 
 > The Python code example requires that the [requests library for Python](https://github.com/kennethreitz/requests/) is installed on the computer that is running the code.
 
+*Please note:* The /encrypted_card_authorization/ endpoint is only intended for merchants that have a fully PCI compliant backend. If you fit that description, please contact us at native.support@bambora.com for more information.
+
+
+
 An encrypted card will usually be used the first time you make a payment, sending the encrypted card information, in return you will receive a tokenized card.
 
 You will need the following data in order to make the request:
