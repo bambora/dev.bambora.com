@@ -19,6 +19,29 @@ Bambora makes it easy for you as an online merchant using PrestaShop, to accept 
 
 **[Click](https://github.com/bambora/dev.bambora.com/blob/master/source/includes/online/carts/_prestashop.md) to edit this section.**
 
+
+## Create an API user
+To connect to Bambora your system must authenticate itself on your behalf. Using your Merchant number, Access token and Secret token allows Bambora to identify your system and grant it access to the Bambora Checkout.
+
+1. Go to the <a href="https://merchant.bambora.com" target="_blank">Bambora Backoffice</a> and login
+
+2. Select the Merchant number (test or production merchant number), in the top right corner, you want to create an API user for.
+
+3. Click **Settings** -> **<a href="https://merchant.bambora.com/apiusers" target="_blank">API users</a>** in the left menu
+
+4. Click **Create API user**
+
+5. Enter an e-mail address and a description
+
+6. Click **Create API user**
+
+7. The system will now display your **Access token** and **Secret token**.
+<br/>
+**IMPORTANT!** Take note of the **Secret token** as it will only be displayed once.
+
+
+
+
 ## Install the Checkout module for PrestaShop
 
 ### Step 1: Download the module
@@ -48,25 +71,6 @@ Bambora makes it easy for you as an online merchant using PrestaShop, to accept 
 
 8. Click **Save** when done and you are ready to use Bambora Checkout
 
-
-## Create an API user
-To connect to Bambora your system must authenticate itself on your behalf. Using your Merchant number, Access token and Secret token allows Bambora to identify your system and grant it access to the Bambora Checkout.
-
-1. Go to the <a href="https://merchant.bambora.com" target="_blank">Bambora Backoffice</a> and login
-
-2. Select the Merchant number (test or production merchant number), in the top right corner, you want to create an API user for.
-
-3. Click **Settings** -> **<a href="https://merchant.bambora.com/apiusers" target="_blank">API users</a>** in the left menu
-
-4. Click **Create API user**
-
-5. Enter an e-mail address and a description
-
-6. Click **Create API user**
-
-7. The system will now display your **Access token** and **Secret token**.
-<br/>
-**IMPORTANT!** Take note of the **Secret token** as it will only be displayed once.
 
 
 ## Settings

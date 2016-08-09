@@ -479,11 +479,13 @@ html, body {
     }
 
     tr:nth-child(odd)>td {
-      background-color: lighten($main-bg,4.2%);
+      //background-color: lighten($main-bg,4.2%);
+	  background-color: transparent;
     }
 
     tr:nth-child(even)>td {
-      background-color: lighten($main-bg,2.4%);
+      //background-color: lighten($main-bg,2.4%);
+	  background-color: transparent;
     }
   }
 
@@ -559,6 +561,27 @@ html, body {
     border: 1px solid #F7E633;
     background: linear-gradient(to top left, #F7E633 0%, #F1D32F 100%);
   }
+  
+  section{
+	margin-right: 50%;
+	background-color: silver;
+	padding: 28px;
+	
+	label{
+		display: inline-block;
+		margin: 24px 0 3px;
+	}
+	
+	input[type='text']{
+		width: 100% !important;
+		padding: 10px;
+		box-sizing: border-box;
+	}	
+  }
+  
+  .text{
+		word-wrap: break-word;
+	}
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -721,6 +744,7 @@ html, body {
   .form-group{
     input[type='text'] {
       width: 80%;
+	  padding: 6px;
     }
   }   
 }
