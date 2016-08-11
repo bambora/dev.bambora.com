@@ -399,6 +399,46 @@ event | Object | The mouse click event | null
 
 
 
+##Test credit cards
+```
+VISA (Sweden)
+Card number: 4002 6200 0000 0005
+Expiration (month/year): 05/17
+CVC: 000
+
+VISA (Norway)
+Card number: 4002 7700 0000 0008
+Expiration (month/year): 05/17
+CVC: 000
+
+VISA (Denmark)
+Card number: 4154 2100 0000 0001
+Expiration (month/year): 05/17
+CVC: 000
+
+
+MasterCard (Sweden)
+Card number: 5125 8600 0000 0006
+Expiration (month/year): 05/17
+CVC: 000
+
+MasterCard (Norway)
+Card number: 5206 8300 0000 0001
+Expiration (month/year): 05/17
+CVC: 000
+
+MasterCard (Denmark)
+Card number: 5156 2300 0000 0004
+Expiration (month/year): 05/17
+CVC: 000
+```
+
+To test the Bambora Checkout payment window you can use the test credit cards listed to the right, when using your test merchant number (Txxxxxxxxx). No real money is charged when using your test merchant number.
+
+**TIP!** As an alternative option the Bambora Checkout payment window has two hidden test credit cards built in for you to use. Press `Ctrl + q` on your keyboard to reveal the built in test credit cards and click one of them to fill out the credit card number, expiry and CVC input fields. For mobile devices without a keyboard you can "shake" your device to reveal the built in test credit cards.
+
+
+
 
 ##Recieve payment information
 When a payment has completed, Bambora will call the URLs you specified in the `callbacks` array in the `checkoutrequest` object, notifying your shop system of the transactions status. If an error occurs while calling your callbacks, for instance if your server is not responding or returns an error, Bambora will attempt to call the callback each hour within the next 24 hours.
