@@ -19,13 +19,21 @@ $(document).ready(function () {
 	
 });
 
-
 </script>
 
-# Checkout
-Bambora makes it easy for you as an online merchant to accept payments by following this simple guide.
 
-**[Click](https://github.com/bambora/dev.bambora.com/blob/master/source/includes/online/_checkout.md) to edit this section.**
+# Checkout
+Bambora makes it easy for you as an online merchant to accept payments in a user friendly payment window providing you with a high conversion rate. You can use the Checkout payment window by doing a manual integration using our Checkout API, but Bambora also provide merchants using Open Source webshops prebuilt integrations getting your business up and running fast.
+
+For more information on how to install the Bambora Checkout in your Open Source system choose the system you use:
+
+**<a href="http://dev.bambora.com/carts.html#woocommerce" target="_blank">WooCommerce with WordPress</a>**
+
+**<a href="http://dev.bambora.com/carts.html#prestashop" target="_blank">Prestashop</a>**
+
+**<a href="http://dev.bambora.com/carts.html#magento-v1" target="_blank">Magento v1</a>**
+
+
 
 
 ## Get a Bambora account
@@ -447,7 +455,7 @@ Appended to the callback URL is a series of parameters, describing the details o
 
 
 
-###Validate Callback
+###Validate callback
 
 The parameters supplied with the callback can be validated by using the MD5 key generated for the merchant number you are using.
 
@@ -465,6 +473,8 @@ The parameters supplied with the callback can be validated by using the MD5 key 
 
 7. The calculated hash value should be the same as the hash value provided in callback URL’s hash parameter. If your calculated value and the URL hash value do not match, you should never run any logic on your system for example updating an order.
 
+
+
 <aside class="notice text">
 An example MD5 key and callback URL may look like the following:<br><br>
 
@@ -476,6 +486,7 @@ https://yourshop.com/callback?txnid=58443393440303104&orderid=934315976&referenc
 <strong>Concatenated values without the hash and the MD5 key appended:</strong>
 58443393440303104934315976066799300800100208201603070212304415421XXXXXX000117MG8B4Rkw7pw510KB8gB3
 </aside>
+
 
 
 ###Callback parameters
