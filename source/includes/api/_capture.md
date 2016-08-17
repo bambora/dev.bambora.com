@@ -57,7 +57,10 @@ You will need the following data in order to make the request:
 
 You will get access to the merchant number, a merchant token and a merchant secret after registering with Bambora.
 
-The payment reference refers to the one that you are required set before making a payment. In order to capture a payment, you need to provide its unique payment reference.
+The payment reference refers to the one that you are required set
+before making a payment. In order to capture a payment, you need to
+provide its unique payment reference. The maximum length of the
+payment reference is 2,000 characters.
 
 We have created code examples showing how to capture a payment - one written in python and the other written in bash using cURL. Please note that each placeholder needs to be replaced with real data.
 

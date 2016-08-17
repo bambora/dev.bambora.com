@@ -43,7 +43,8 @@
                         "in": "path",
                         "description": "Merchant-specific identifier for the payment.",
                         "required": true,
-                        "type": "string"
+                        "type": "string",
+                        "maxLength": 2000
                     },
                     {
                         "name": "merchant",
@@ -60,6 +61,20 @@
                             "$ref": "#/definitions/PaymentResponse"
                         }
                     },
+                    "400": {
+                        "description": "Bad request",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "type": "about:blank",
+                                "title": "Bad Request",
+                                "detail": "'1111111111111...1' is too long",
+                                "status": 400
+                            }
+                        }
+                    },
                     "401": {
                         "description": "Unauthorized",
                         "schema": {
@@ -71,6 +86,20 @@
                                 "title": "Cannot authorize",
                                 "detail": "The Authorization header was not set.",
                                 "status": 401
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "type": "about:blank",
+                                "title": "Forbidden.",
+                                "detail": "You are not authorized for this operation with the authentication you have provided.\n",
+                                "status": 403
                             }
                         }
                     },
@@ -176,6 +205,20 @@
                                 "title": "Cannot authorize",
                                 "detail": "",
                                 "status": 402
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "type": "about:blank",
+                                "title": "Forbidden.",
+                                "detail": "You are not authorized for this operation with the authentication you have provided.\n",
+                                "status": 403
                             }
                         }
                     },
@@ -295,6 +338,20 @@
                                 "title": "Cannot authorize",
                                 "detail": "",
                                 "status": 402
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "type": "about:blank",
+                                "title": "Forbidden.",
+                                "detail": "You are not authorized for this operation with the authentication you have provided.\n",
+                                "status": 403
                             }
                         }
                     },
@@ -420,6 +477,20 @@
                             }
                         }
                     },
+                    "403": {
+                        "description": "Forbidden.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "type": "about:blank",
+                                "title": "Forbidden.",
+                                "detail": "You are not authorized for this operation with the authentication you have provided.\n",
+                                "status": 403
+                            }
+                        }
+                    },
                     "409": {
                         "description": "Payment operation blocked.",
                         "schema": {
@@ -522,6 +593,20 @@
                                 "title": "Cannot cancel",
                                 "detail": "",
                                 "status": 402
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Forbidden.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "type": "about:blank",
+                                "title": "Forbidden.",
+                                "detail": "You are not authorized for this operation with the authentication you have provided.\n",
+                                "status": 403
                             }
                         }
                     },
@@ -647,6 +732,20 @@
                             }
                         }
                     },
+                    "403": {
+                        "description": "Forbidden.",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        },
+                        "examples": {
+                            "application/json": {
+                                "type": "about:blank",
+                                "title": "Forbidden.",
+                                "detail": "You are not authorized for this operation with the authentication you have provided.\n",
+                                "status": 403
+                            }
+                        }
+                    },
                     "409": {
                         "description": "Payment operation blocked.",
                         "schema": {
@@ -727,16 +826,7 @@
                 "currency": {
                     "type": "string",
                     "description": "Values of: EUR, USD, CAD, GBP, SEK et c. Uses ISO-4217 currency codes.\n",
-                    "enum": [
-                        "EUR",
-                        "USD",
-                        "DKK",
-                        "CAD",
-                        "GBP",
-                        "SEK",
-                        "AUD",
-                        "NZD"
-                    ]
+                    "pattern": "^[A-Z]{3}$"
                 },
                 "amount": {
                     "type": "integer",
@@ -816,16 +906,7 @@
                 "currency": {
                     "type": "string",
                     "description": "Values of: EUR, USD, CAD, GBP, SEK et c. Uses ISO-4217 currency codes.\n",
-                    "enum": [
-                        "EUR",
-                        "USD",
-                        "DKK",
-                        "CAD",
-                        "GBP",
-                        "SEK",
-                        "AUD",
-                        "NZD"
-                    ]
+                    "pattern": "^[A-Z]{3}$"
                 },
                 "amount": {
                     "type": "integer",
@@ -912,7 +993,8 @@
                 },
                 "payment": {
                     "type": "string",
-                    "description": "Merchant-specific identifier for the payment."
+                    "description": "Merchant-specific identifier for the payment.",
+                    "maxLength": 2000
                 },
                 "state": {
                     "type": "string",
@@ -932,16 +1014,7 @@
                 "currency": {
                     "type": "string",
                     "description": "Values of: EUR, USD, DKK, CAD, GBP, SEK et c. Uses ISO-4217 currency codes.\n",
-                    "enum": [
-                        "EUR",
-                        "USD",
-                        "DKK",
-                        "CAD",
-                        "GBP",
-                        "SEK",
-                        "AUD",
-                        "NZD"
-                    ]
+                    "pattern": "^[A-Z]{3}$"
                 },
                 "amount": {
                     "type": "integer",
@@ -984,7 +1057,8 @@
                 },
                 "payment": {
                     "type": "string",
-                    "description": "Merchant-specific identifier for the payment."
+                    "description": "Merchant-specific identifier for the payment.",
+                    "maxLength": 2000
                 },
                 "state": {
                     "type": "string",
@@ -1003,16 +1077,7 @@
                 "currency": {
                     "type": "string",
                     "description": "Values of: EUR, USD, DKK, CAD, GBP, SEK et c. Uses ISO-4217 currency codes.\n",
-                    "enum": [
-                        "EUR",
-                        "USD",
-                        "DKK",
-                        "CAD",
-                        "GBP",
-                        "SEK",
-                        "AUD",
-                        "NZD"
-                    ]
+                    "pattern": "^[A-Z]{3}$"
                 },
                 "amount": {
                     "type": "integer",
