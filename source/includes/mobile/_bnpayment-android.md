@@ -76,11 +76,11 @@ Add the following permission after the **manifest** tag in your **AndroidManifes
 <a name="androidsetup"></a>
 ## Setup
 
-<s>An API token is required in order to communicate with Bambora’s backend through the SDK.</s>
-Only a Merchant Account is necessary to communicate with Bambora through the SDK. However, you will need an API token to perform server-side captures, cancels and refunds. [See here for more information](../api/authentication).
-If you already set up your app using the token, it's retrocompatible so there's no need to change.
+Only a merchant account number is necessary to communicate with Bambora through the SDK. However, you will need an API token to perform server-side captures, cancels and refunds. [See here for more information](api.html#authentication).
 
-After signing up for a SDK developer account, you will receive a test Merchant Account, you can use it to implement the setup code in the example.
+After signing up for a SDK developer account, you will receive a test merchant account number which you can use to implement the setup code in the example.
+
+The example application includes a test merchant number that can be used for testing Native Payment. Please replace this with your own merchant account number after signing up with Bambora.
 
 ### Register Handler
 
