@@ -99,7 +99,7 @@ Remember to keep your API key secret!
 ## Start a payment session
 To process a payment, you simply submit information about the purchase to Bambora and in return you will receive an URL to the payment window. Redirecting your customer to this URL allows her to enter credit card information or other data necessary to complete the purchase.
 You provide Bambora with information about the purchase in the form of a `checkoutrequest` object described below.
-The `checkoutrequest` object must contain all objects with all their properties, but only the properties marked in bold are required to have a value set.
+The `checkoutrequest` object must contain all objects with all their properties, but only the properties marked in bold are required to have a value set. If you don't have a value for a property set it to `null`.
 <br>
 **Note!** All property names are in lower case.
 
@@ -511,7 +511,7 @@ Property name | DataType | Description | Always returned |
 **expyear** | Number | Expire year 0-99. Only present when the payment created a subscription | No
 **subscriptionid** | Number | Only present when the payment created a subscription | No
 **eci** | String | Electronic Commerce Indicator | No
-**result** | Number | 0 (failed) or 1 (successful) | No
+**result** | Number | 0 (failed) or 1 (successful) | Yes
 **hash** | String | The hashed value of all parameters plus the MD5 key | Yes
 
 
