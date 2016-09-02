@@ -37,8 +37,9 @@ For more information on how to install the Bambora Checkout in your Open Source 
 
 
 ## Get a Bambora account
-This guide assumes that you have a test or live account with Bambora. If you do not have an account you can 
-**<a href="https://boarding.bambora.com/checkoutaccount-se" target="_blank">Get a free test account</a>**
+This guide assumes that you have a test or live account with Bambora. If you don't have one, get on right now.
+<br><br>
+**<a href="https://boarding.bambora.com/checkoutaccount-se" target="_blank" class="calltoaction">Get a free test account</a>**
 
 
 ## Create an API key
@@ -407,7 +408,7 @@ event | Object | The mouse click event | null
 
 
 
-##Test credit cards
+##Test payment cards
 ```
 VISA (Sweden)
 Card number: 4002 6200 0000 0005
@@ -443,7 +444,7 @@ CVC: 000
 
 To test the Bambora Checkout payment window you can use the test credit cards listed to the right, when using your test merchant number (Txxxxxxxxx). No real money is charged when using your test merchant number.
 
-**TIP!** As an alternative option the Bambora Checkout payment window has two hidden test credit cards built in for you to use. Press `Ctrl + q` on your keyboard to reveal the built in test credit cards and click one of them to fill out the credit card number, expiry and CVC input fields. For mobile devices without a keyboard you can "shake" your device to reveal the built in test credit cards.
+**TIP!** As an alternative option the Bambora Checkout payment window has two hidden test cards built in for you to use. Press `Ctrl + q` on your keyboard to reveal the built in test cards and click one of them to fill out the credit card number, expiry and CVC input fields. For mobile devices without a keyboard you can "shake" your device to reveal the built in test credit cards.
 
 
 
@@ -455,8 +456,9 @@ Appended to the callback URL is a series of parameters, describing the details o
 
 
 
-###Validate callback
 
+
+### Validate callback
 The parameters supplied with the callback can be validated by using the MD5 key generated for the merchant number you are using.
 
 1. Go to the <a href="https://merchant.bambora.com" target="_blank">Bambora Backoffice</a> and login
@@ -489,6 +491,7 @@ https://yourshop.com/callback?txnid=58443393440303104&orderid=934315976&referenc
 
 
 
+
 ###Callback parameters
 
 Property name | DataType | Description | Always returned |
@@ -512,8 +515,41 @@ Property name | DataType | Description | Always returned |
 **hash** | String | The hashed value of all parameters plus the MD5 key | Yes
 
 
+## FAQ - Frequently Asked Questions
+<section class="faq">
+<h3>Why don't I recieve callbacks?</h3>
 
+<ul>
+	<li>
+		Make sure that you listen for callbacks on either port 80 (Http) or 443 (Https).
+	</li>
 
+	<li>
+		Make sure that you listen for callbacks on the domain you registered for your account.
+	</li>
+
+	<li>
+		Make sure that you use the correct MD5 key to validate the callback parameters.
+	</li>
+
+	<li>
+		Make sure that your traffic is not redirected to another page, if for example your webshop is running in a "Opening soon" or "Maintenance" mode.
+	</li>
+</ul>
+
+</section>
+
+<section class="faq">
+<h3>Why don't my credit card work when testing?</h3>
+
+<ul>
+	<li>
+		Only test cards are accepted when using your Txxxxxxxxx merchant number (Test mode). Use these <a href="/online.html#test-payment-cards">test cards</a> or press "Ctrl + q"
+		to display test cards in the Checkout.
+	</li>
+</ul>
+
+</section>
 
 
 

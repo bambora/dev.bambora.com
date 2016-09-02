@@ -429,6 +429,21 @@ html, body {
     &:hover{
       color:#cbb7e7
     }
+	
+	&.calltoaction{
+		display: inline-block;
+		line-height: 30px;
+		border-radius: 30px;
+		padding: 6px 25px;
+		color: white;
+		background: #664c8e;
+		text-decoration: none;
+		
+		&:hover{
+			background: #8f73b0;
+			transition: all .18s ease;
+		}
+	}
   }
 
   // h2s right after h1s should bump right up
@@ -581,6 +596,18 @@ html, body {
   
   .text{
 		word-wrap: break-word;
+	}
+	
+	.faq{
+		background: #dcddde;
+		margin-bottom: 30px;
+		h3{
+			padding: 0;
+			margin-bottom: 20px;
+		}
+		li{
+			margin-bottom: 20px;
+		}
 	}
 }
 

@@ -107,5 +107,5 @@ Choose how to display the payment window. Either as an **overlay** on top of you
 
 
 
-<br/><br/>
-**[Click](https://github.com/bambora/dev.bambora.com/blob/master/source/includes/online/carts/_prestashop.md) to edit this section.**
+<br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br>
