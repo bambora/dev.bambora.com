@@ -94,6 +94,8 @@ Add the following code at the beginning of the `onCreate method` in the `MainAct
 BNPaymentBuilder BNPaymentBuilder = new BNPaymentBuilder(getApplicationContext())
                .merchantAccount(MERCHANT_ACCOUNT)
                .debug(true);
+
+BNPaymentHandler.setupBNPayments(BNPaymentBuilder);
 ```
 > The debug setting enables logging through logcat if set to true (and disables logging if set to false). The debug setting should be set to false in live applications.
 
