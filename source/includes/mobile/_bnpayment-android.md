@@ -123,7 +123,7 @@ Start by creating a layout with a representative name (we'll use the name activi
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.bambora.nativepayment.widget.CardRegistrationForm
+    <com.bambora.nativepayment.widget.CardRegistrationFormLayout
       android:id="@+id/registration_form"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
@@ -145,7 +145,7 @@ protected void onCreate(@Nullable Bundle savedInstanceState) {
 
 #### Listen to registration callbacks
 
-To receive callbacks when registration is completed, add a listener to the CardRegistrationForm. First make the activity implement ICardRegistrationCallback as in the code example.
+To receive callbacks when registration is completed, add a listener to the CardRegistrationFormLayout. First make the activity implement ICardRegistrationCallback as in the code example.
 
 ```java
 
