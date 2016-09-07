@@ -6,6 +6,7 @@ language_tabs:
 
 toc_above:
   - <a href='index.html'>Getting Started</a>
+  - <a href='mobile.html'>Mobile</a>
   - <a href='online.html'>Online</a>
   
 includes:
@@ -13,7 +14,6 @@ includes:
 
   
 toc_below:
-  - <a href='mobile.html'>Mobile</a>
   - <a href='api.html'>API</a>
   - <a href='carts.html'>Shopping Carts</a>
   
