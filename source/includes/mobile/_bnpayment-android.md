@@ -99,12 +99,6 @@ BNPaymentHandler.setupBNPayments(BNPaymentBuilder);
 ```
 > The debug setting enables logging through logcat if set to true (and disables logging if set to false). The debug setting should be set to false in live applications.
 
-### HTTP Responses
-
-**201 Created**
-
-**403 Forbidden:** A valid API token or Merchant Account is missing.
-
 <a name="androidcreditcardregistration"></a>
 ## Native Credit Card registration
 
