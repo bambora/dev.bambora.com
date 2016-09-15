@@ -13,6 +13,7 @@ includes:
   - online/carts/prestashop
   - online/carts/woocommerce
   - online/carts/magento
+  - online/carts/magento-two
 
   
 toc_below:

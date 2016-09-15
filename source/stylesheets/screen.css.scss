@@ -587,11 +587,75 @@ html, body {
 		margin: 24px 0 3px;
 	}
 	
-	input[type='text']{
+	input[type='text'], textarea{
 		width: 100% !important;
 		padding: 10px;
 		box-sizing: border-box;
-	}	
+	}
+	
+	
+	ul.alternatingList{
+		margin: 5px 0 0 0;
+		padding: 0;
+		clear: both;
+		overflow: auto;
+		
+		li{
+			list-style: none;
+			float: left;
+			margin-right: 3px;
+		}
+		
+		li:nth-child(odd){
+			font-weight: bold;
+		}
+	}
+	
+	ul.url-parameters{
+		margin: 5px 0 0 0;
+		padding: 0;
+		width: 100%;
+		clear: both;
+		overflow: auto;
+		
+		li{
+			float: left;
+			list-style: none;
+		}
+		li:nth-child(3n+1) {
+			font-weight: bold;
+			width: 25%;
+		}
+		li:nth-child(3n+2) {
+			width: 10%;
+			text-align: center;
+		}
+		li:nth-child(3n+3) {
+			width: 60%;
+		}
+	}
+	
+	.hash-comparison{
+		
+		.valid{
+			background: rgb(91,181,99);
+			transition: 0.5s;
+		}
+		.not-valid{
+			background: rgb(230,34,50);
+			color: silver;
+			transition: 0.5s;
+		}
+	}
+	.hash-comparison div span:first-child{
+		width: 130px;
+		display: inline-block;
+		margin-top: 5px;
+	}
+	.hash-comparison div span:nth-child(2){
+		padding: 4px 4px 1px 4px;
+	}
+
   }
   
   .text{
