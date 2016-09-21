@@ -25,6 +25,11 @@ $(document).ready(function () {
 # Checkout
 Bambora makes it easy for you as an online merchant to accept payments in a user friendly payment window providing you with a high conversion rate. You can use the Checkout payment window by doing a manual integration using our Checkout API, but Bambora also provide merchants using Open Source webshops prebuilt integrations getting your business up and running fast.
 
+The checkout window is a fully hosted payment page that you redirect the user to. There are two main steps to it:
+
+1. Obtain the Checkout window URL
+2. Redirect the user to the URL
+
 For more information on how to install the Bambora Checkout in your Open Source system choose the system you use:
 
 **<a href="http://dev.bambora.com/carts.html#woocommerce" target="_blank">WooCommerce with WordPress</a>**
@@ -36,17 +41,17 @@ For more information on how to install the Bambora Checkout in your Open Source 
 
 
 
-## Get a Bambora account
+## Step 1: Get a Bambora account
 This guide assumes that you have a test or live account with Bambora. If you don't have one, get on right now.
-<br><br>
+
 **<a href="https://boarding.bambora.com/checkoutaccount-se" target="_blank" class="calltoaction">Get a free test account</a>**
 
 
-## Create an API key
+## Step 2: Create an API key
 
 ```
-Before encoding: Basic accesstoken@merchantnumber:secrettoken
-After encoding: Basic YWNjZXNzdG9rZW5AbWVyY2hhbnRudW1iZXI6c2VjcmV0dG9rZW4=
+Before encoding: accesstoken@merchantnumber:secrettoken
+After encoding: YWNjZXNzdG9rZW5AbWVyY2hhbnRudW1iZXI6c2VjcmV0dG9rZW4=
 ```
 
 To connect to Bambora your system must authenticate itself on your behalf. Using your Merchant number, Access token and Secret token allows Bambora to identify your system and grant it access to the Bambora Checkout. To secure the communication with the Checkout, Bambora use Basic Authentication to verify your identity. Set the `Authorization` header to a Base64 encoded representation of your API key in the format `accesstoken@merchantnumber:secrettoken`. Follow these steps to create an encoded API key.
@@ -96,11 +101,14 @@ Remember to keep your API key secret!
 
 
 
-## Start a payment session
+## Step 3: Retrieve Redirect URL
+
+
 To process a payment, you simply submit information about the purchase to Bambora and in return you will receive an URL to the payment window. Redirecting your customer to this URL allows her to enter credit card information or other data necessary to complete the purchase.
+
 You provide Bambora with information about the purchase in the form of a `checkoutrequest` object described below.
 The `checkoutrequest` object must contain all objects with all their properties, but only the properties marked in bold are required to have a value set. If you don't have a value for a property set it to `null`.
-<br>
+
 **Note!** All property names are in lower case.
 
 
@@ -167,6 +175,8 @@ The `checkoutrequest` object must contain all objects with all their properties,
 }
 ```
 
+**URL: POST https://api.v1.checkout.bambora.com/checkout**
+
 Property name | Datatype | Description | Required |
 -------------- | -------------- | -------------- | :--------------:
 language | String | The culture and country code as ISO 639x ex. “da-DK” | No
@@ -179,7 +189,7 @@ paymentwindowid | Double | The ID of the payment window to display | No
 <small>Supported languages are sv-SE, da-DK, nb-NO, fi-FI and en-US. If the specified language is not supported the browsers language will be used to infer the language. If no match is found, en-US is used.</small>
 
 
-<br><br>Customer parameters
+Customer parameters
 
 Property name | Datatype | Description | Required |
 -------------- | -------------- | -------------- | :--------------:
@@ -189,7 +199,7 @@ Property name | Datatype | Description | Required |
 <small>If you have no customer information you can set the customer property on the checkoutrequst object to null. (checkoutrequest.customer = null;)</small>
 
 
-<br><br>Order parameters
+Order parameters
 
 Property name | Datatype | Description | Required |
 -------------- | -------------- | -------------- | :--------------:
@@ -202,7 +212,7 @@ billingaddress | Address | Address to send bill to | No
 **vatamount** | Long | The vat of the total amount in minor units to be paid | Yes
 
 
-<br><br>Address parameters
+Address parameters
 
 Property name | Datatype | Description | Required |
 -------------- | -------------- | -------------- | :--------------:
@@ -215,7 +225,7 @@ Property name | Datatype | Description | Required |
 **zip** | String | Max 255 characters | Yes
 
 
-<br><br>Orderline parameters
+Orderline parameters
 
 Property name | Datatype | Description | Required |
 -------------- | -------------- | -------------- | :--------------:
@@ -234,7 +244,7 @@ Property name | Datatype | Description | Required |
 **vat** | Double | The VAT percentage | Yes
 
 
-<br><br>Url parameters
+Url parameters
 
 Property name | Datatype | Description | Required |
 -------------- | -------------- | -------------- | :--------------:
@@ -246,6 +256,18 @@ Property name | Datatype | Description | Required |
 
 
 ###Send the request
+
+```
+POST https://api.v1.checkout.bambora.com/checkout
+-H "Authorization: Basic RGV2ZWxvcGVyTWVy..."
+```
+
+You will send the request as a `POST` to the Payments API, displayed on the right.
+
+You must supply an basic Authorization header with the base64 encoded access keys we discussed above.
+
+###Example C# Request
+
 ```c#
 using System;
 using System.Net.Http;
@@ -263,8 +285,8 @@ public class BamboraCheckout
 
     // Members
     private string _serviceEndPoint = "https://api.v1.checkout.bambora.com/checkout";
-    private string _apiKey = "Basic RGV2ZWxvcGVyTWVy... <replace with your api key>”;
-    private string _checkoutRequest = @"{... <information about the purchase> ... }”;
+    private string _apiKey = "RGV2ZWxvcGVyTWVy... <replace with your api key>";
+    private string _checkoutRequest = @"{... <information about the purchase> ... }";
 
 
     // Methods
@@ -276,8 +298,7 @@ public class BamboraCheckout
 		{
 			// Set header and API key
 			client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-			string apiKeyWithoutBasic = _apiKey.Replace("Basic", "").Trim();
-			client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", apiKeyWithoutBasic);
+			client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", _apiKey);
 
 
 			// Send the request
@@ -308,7 +329,7 @@ public class BamboraCheckout
 }
 ```
 
-Once you have created a `checkoutrequest`, containing information about the purchase being made, you will send it to Bambora. For this example, all the Bambora Checkout functionality is contained in the BamboraCheckout class, encapsulating key information about the API endpoint `_serviceEndPoint ` and the API key `_apiKey` along with the `_checkoutRequest`. This class also contains two methods, one private `CreateAndValidateRequest` and one public `StartPaymentSession`.
+Once you have created a `checkoutrequest`, containing information about the purchase being made, you will send it to Bambora. For this example, all the Bambora Checkout functionality is contained in a C# example in the BamboraCheckout class, encapsulating key information about the API endpoint `_serviceEndPoint ` and the API key `_apiKey` along with the `_checkoutRequest`. This class also contains two methods, one private `CreateAndValidateRequest` and one public `StartPaymentSession`.
 
 Before sending the `checkoutrequest` you should always validate that it is in a valid JSON format otherwise you will receive an error. Use the method `StartPaymentSession` to send the request and retrieve the URL to the payment window. Pass the URL to your front-end for it to display the payment window. This can be done by inserting the URL into a hidden field on your checkout page.
 
@@ -342,8 +363,8 @@ Upon recieving the response you should inspect the `result` property to check if
 The `url` property contains the URL to the payment window, which you will provide to your front-end to display the payment window.
 
 
-##Display the payment window
-Insert the Bambora Checkout Payment Window script right after the &lt;BODY&gt; tag. The script will provide you with the function `window.bam` to preload and open the payment window.
+## Step 4: Redirect to URL
+
 
 ```html
 <!-- Bambora Checkout Payment Window script -->
@@ -355,6 +376,9 @@ e = t.getElementsByTagName(i)[0]; f.async = 1; f.src = r; e.parentNode.insertBef
 </script>
 ```
 
+Insert the Bambora Checkout Payment Window script right after the &lt;BODY&gt; tag. The script will provide you with the function `window.bam` to preload and open the payment window. You just need to copy-paste this code, do not change it.
+
+### Perform redirect
 
 ```html
 <script type="text/javascript">
@@ -387,8 +411,12 @@ $(document).ready(function () {
 <input type="button" id="btnDisplayPaymentWindow" value="Pay now"/>
 ```
 
+The next step is to perform the actual redirect when the user clicks on the button with the ID `btnDisplayPaymentWindow`.
 
-<br><br>Bam parameters
+Once the user redirects and pays, the payment window will perform a callback to your site. We will go into this in the next few steps.
+
+
+Bam parameters
 
 Property name | Datatype | Description | Required |
 -------------- | -------------- | -------------- | :--------------:
@@ -397,7 +425,7 @@ url | String | The URL returned in the Bambora Checkout response | Yes
 options | Options | The display options | No
 
 
-<br><br>Options parameters
+Options parameters
 
 Property name | Datatype | Description | Default |
 -------------- | -------------- | -------------- | :--------------:
@@ -407,54 +435,11 @@ appendToElementId | String | The ID of the HTML element to put the payment windo
 event | Object | The mouse click event | null
 
 
+## Step 5: Recieve Callback
 
-##Test payment cards
-```
-VISA (Sweden)
-Card number: 4002 6200 0000 0005
-Expiration (month/year): 05/17
-CVC: 000
-
-VISA (Norway)
-Card number: 4002 7700 0000 0008
-Expiration (month/year): 05/17
-CVC: 000
-
-VISA (Denmark)
-Card number: 4154 2100 0000 0001
-Expiration (month/year): 05/17
-CVC: 000
-
-
-MasterCard (Sweden)
-Card number: 5125 8600 0000 0006
-Expiration (month/year): 05/17
-CVC: 000
-
-MasterCard (Norway)
-Card number: 5206 8300 0000 0001
-Expiration (month/year): 05/17
-CVC: 000
-
-MasterCard (Denmark)
-Card number: 5156 2300 0000 0004
-Expiration (month/year): 05/17
-CVC: 000
-```
-
-To test the Bambora Checkout payment window you can use the test credit cards listed to the right, when using your test merchant number (Txxxxxxxxx). No real money is charged when using your test merchant number.
-
-**TIP!** As an alternative option the Bambora Checkout payment window has two hidden test cards built in for you to use. Press `Ctrl + q` on your keyboard to reveal the built in test cards and click one of them to fill out the credit card number, expiry and CVC input fields. For mobile devices without a keyboard you can "shake" your device to reveal the built in test credit cards.
-
-
-
-
-##Recieve payment information
 When a payment has completed, Bambora will call the URLs you specified in the `callbacks` array in the `checkoutrequest` object, notifying your shop system of the transactions status. If an error occurs while calling your callbacks, for instance if your server is not responding or returns an error, Bambora will attempt to call the callback each hour within the next 24 hours.
 
 Appended to the callback URL is a series of parameters, describing the details of the transaction. A common example is to use this information to update an order to a "payment recieved" status. To prevent others from exploiting this feature, making a fraudulent attempt to set the status of a particular order, the parameters contain a hash value. You can use this hash value to verify that the callback is from Bambora.
-
-
 
 
 
@@ -643,7 +628,7 @@ $(document).ready(function () {
 
 
 
-###Callback parameters
+### Callback parameters
 
 Property name | DataType | Description | Always returned |
 -------------- | -------------- | -------------- | :--------------:
@@ -665,43 +650,66 @@ Property name | DataType | Description | Always returned |
 **hash** | String | The hashed value of all parameters plus the MD5 key | Yes
 
 
-## FAQ - Frequently Asked Questions
-<section class="faq">
-<h3>Why don't I recieve callbacks?</h3>
 
-<ul>
-	<li>
-		Make sure that you listen for callbacks on either port 80 (http) or 443 (https).
-	</li>
+## Test payment cards
 
-	<li>
-		Make sure that you listen for callbacks on the domain you registered for your account.
-	</li>
+```
+VISA (Sweden)
+Card number: 4002 6200 0000 0005
+Expiration (month/year): 05/17
+CVC: 000
 
-	<li>
-		Make sure that you use the correct MD5 key to <a href="/online.html#validate-callback">validate callback parameters</a>.
-	</li>
+VISA (Norway)
+Card number: 4002 7700 0000 0008
+Expiration (month/year): 05/17
+CVC: 000
 
-	<li>
-		Make sure that your traffic is not redirected to another page, if for example your webshop is running in a "Opening soon" or "Maintenance" mode.
-	</li>
-</ul>
-
-</section>
-
-<section class="faq">
-<h3>Why don't my credit card work when testing?</h3>
-
-<ul>
-	<li>
-		Only test cards are accepted when using your Txxxxxxxxx merchant number (Test mode). Use these <a href="/online.html#test-payment-cards">test cards</a> or press "Ctrl + q"
-		to display test cards in the Checkout.
-	</li>
-</ul>
-
-</section>
+VISA (Denmark)
+Card number: 4154 2100 0000 0001
+Expiration (month/year): 05/17
+CVC: 000
 
 
+MasterCard (Sweden)
+Card number: 5125 8600 0000 0006
+Expiration (month/year): 05/17
+CVC: 000
 
-<br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br>
+MasterCard (Norway)
+Card number: 5206 8300 0000 0001
+Expiration (month/year): 05/17
+CVC: 000
+
+MasterCard (Denmark)
+Card number: 5156 2300 0000 0004
+Expiration (month/year): 05/17
+CVC: 000
+```
+
+To test the Bambora Checkout payment window you can use the test credit cards listed to the right, when using your test merchant number (Txxxxxxxxx). No real money is charged when using your test merchant number.
+
+**TIP!** As an alternative option the Bambora Checkout payment window has two hidden test cards built in for you to use. Press `Ctrl + q` on your keyboard to reveal the built in test cards and click one of them to fill out the credit card number, expiry and CVC input fields. For mobile devices without a keyboard you can "shake" your device to reveal the built in test credit cards.
+
+
+## FAQ 
+
+Frequently Asked Questions
+
+
+### Why don't I recieve callbacks?
+
+* Make sure that you listen for callbacks on either port 80 (http) or 443 (https).
+* Make sure that you listen for callbacks on the domain you registered for your account.
+* Make sure that you use the correct MD5 key to <a href="/online.html#validate-callback">validate callback parameters</a>.
+* Make sure that your traffic is not redirected to another page, if for example your webshop is running in a "Opening soon" or "Maintenance" mode.
+
+
+
+
+### Why don't my credit card work when testing?
+
+
+* Only test cards are accepted when using your Txxxxxxxxx merchant number (Test mode). Use these <a href="/online.html#test-payment-cards">test cards</a> or press "Ctrl + q"
+ to display test cards in the Checkout.
+
+
