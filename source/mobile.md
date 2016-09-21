@@ -22,13 +22,13 @@ search: true
 
 The `Native Payment` SDK from Bambora makes it simple to accept credit card payments in your app.
 
-Specifically, by adding Native Payment to your project you can make it possible for the users of your app to:
+By adding Native Payment to your project you can make it possible for the users of your app to:
 
 * Register credit cards.
 
 * Make purchases using registered credit cards.
 
-The purpose of `Native Payment` is to save you time by providing you with an easy-to-use, up-to-date and actively maintained codebase for interacting with the Native Payment backend.
+Bambora Native Payments is here to save you time by providing you with an easy-to-use, up-to-date and actively maintained codebase for taking payments.
 
 **[Click](https://github.com/bambora/dev.bambora.com/blob/master/source/mobile.md) to edit this section.**
 
@@ -38,7 +38,7 @@ The purpose of `Native Payment` is to save you time by providing you with an eas
 
 ## How it works
 
-This is a brief overview of what Native Payment does. You can find implementation instructions with code samples in the guides for [Android](mobile.html#native-payment-android) and [iOS](mobile.html#native-payment-ios).
+At its core, Native Payments will present a screen to the user to enter in their credit card, save the details, and process a payment for you.
 
 ### Merchant registration
 
@@ -46,11 +46,11 @@ You need to sign up with Bambora to get an API token in order to use `Native Pay
 
 ### Setup and authentication
 
-Initially, the SDK connects to the SDK backend and sends in an API token. Based on that API token, the SDK backend identifies and authorizes the SDK. The SDK then registers itself with the SDK backend. After these steps, credit card registration and payment functionality is enabled in the app.
+Initially, the SDK connects to the SDK backend and sends in your merchant account number. Based on that merchant ID, the SDK backend identifies and authorizes the SDK. The SDK then registers itself with the SDK backend. After these steps, credit card registration and payment functionality is enabled in the app. This is all handled for you, you just need to supply the merchant account number that you received when you signed up.
 
 ### Registering Credit cards
 
-The user needs to register his/her credit card in the app in order to make a purchase. 
+When the payment window pops up and if it is the user's first time using the app, they will be requested to register his/her credit card in the app in order to make a purchase. If they have already registered a card they will not be presented with this and can move onto making a payment.
 
 Credit card registration can be done in two ways:
 
@@ -70,7 +70,7 @@ This is done by making a call to the SDK backend that includes the amount, curre
 
 **Note**: The amount should be expressed in cents (or equivalent). For example, to make a payment of 10 EUR you would write the amount as `amount=1000; currency='EUR'`, for 100 SEK you would write `amount=10000; currency='SEK'`, etc.
 
-When an SDK payment is successful, the payment amount becomes reserved in the customer's bank account. It is then up to you as a merchant to capture/withdraw the payment from the customer's bank account (which can be done either through the merchant backend interface or by making an API integration with the Native Payment backend).
+When an SDK payment is successful, the payment amount becomes reserved in the customer's bank account. It is then up to you, as a merchant, to capture/withdraw the payment from the customer's bank account (which can be done either through the merchant backend interface or by making an API integration with the Native Payment backend).
 
 ## License
 

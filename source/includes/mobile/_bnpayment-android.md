@@ -19,45 +19,18 @@ This section of the guide will walk you through how to add `Native Payment` to y
 
 Internet (android.permission.INTERNET)
 
-## Recommended IDE
+**Recommended IDE**
 
 [Android Studio](https://developer.android.com/sdk/index.html) with the [Android Plugin for Gradle](http://developer.android.com/tools/revisions/gradle-plugin.html).
 
-## Installation Via Source
+## Installation
+You can install the app either via Source or by JCenter.
 
-### Step 1: git clone repo
+### JCenter
 
-Type this command in a terminal window of your choice in the directory that you want to clone the SDK to. You will need to have Git installed on your system.
-
-```shell
-git clone https://github.com/bambora/BNPayment-Android
-```
-
-### Step 2: Copy Source to Your Project
-
-Place the cloned repository in your app project. You can then include the Payment module in your app project by including it in **settings.gradle**:
-
-```groovy
-include ':bn-payment'
-```
-
-### Step 3: Add Dependencies
-
-You can then add the Payment module as a dependency in your app module by adding it to the app module's **build.gradle** file:
-
-```groovy
-dependencies {
-    compile project(':bn-payment')
-}
-```
-
-A sample app is included in the cloned repository (BNPayment-Android/app).
-
-## Installation Via JCenter
+JCenter is the easiest method to install the SDK into your app.
 
 ### Step 1: Add Repository
-
-Add the following dependency under ‘dependencies’ in the app module's build.gradle file:
 
 ```groovy
 dependencies {
@@ -65,13 +38,52 @@ dependencies {
 }
 ```
 
-### Step 2: Set Permissions
+Add this dependency under ‘dependencies’ in the app module's build.gradle file:
 
-Add the following permission after the **manifest** tag in your **AndroidManifest.xml** file:
+
+### Step 2: Set Permissions
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
 ```
+
+Add the following permission after the **manifest** tag in your **AndroidManifest.xml** file:
+
+### Source
+
+Installing from the source lets you see the source code and make any customizations you may want.
+
+### Step 1: git clone repo
+
+```shell
+git clone https://github.com/bambora/BNPayment-Android
+```
+
+Type this command in a terminal window of your choice in the directory that you want to clone the SDK to. You will need to have Git installed on your system.
+
+
+### Step 2: Copy Source to Your Project
+
+```groovy
+include ':bn-payment'
+```
+
+Place the cloned repository in your app project. You can then include the Payment module in your app project by including it in **settings.gradle**:
+
+
+### Step 3: Add Dependencies
+
+```groovy
+dependencies {
+    compile project(':bn-payment')
+}
+```
+
+You can then add the Payment module as a dependency in your app module by adding it to the app module's **build.gradle** file:
+
+A sample app is included in the cloned repository (BNPayment-Android/app).
+
+
 
 <a name="androidsetup"></a>
 ## Setup
@@ -84,12 +96,6 @@ The example application includes a test merchant number that can be used for tes
 
 ### Register Handler
 
-Here you register a Handler by using the `BPSBaseLibHandlerBuilder` to build it for you using your Merchant Account.
-
-Add the following code at the beginning of the `onCreate method` in the `MainActivity class`, and be sure to swap out `<MERCHANT_ACCOUNT>` with your test Merchant Account.
-
-*Note that if you provide a test Merchant Account, the SDK will enter test mode. If you provide a production Merchant Account, the SDK will enter production mode.*
-
 ```java
 BNPaymentBuilder BNPaymentBuilder = new BNPaymentBuilder(getApplicationContext())
                .merchantAccount(MERCHANT_ACCOUNT)
@@ -97,20 +103,26 @@ BNPaymentBuilder BNPaymentBuilder = new BNPaymentBuilder(getApplicationContext()
 
 BNPaymentHandler.setupBNPayments(BNPaymentBuilder);
 ```
+
+Here you register a Handler by using the `BNPaymentBuilder` to build it for you using your Merchant Account.
+
+Add the following code at the beginning of the `onCreate method` in the `MainActivity class`, and be sure to swap out `<MERCHANT_ACCOUNT>` with your test Merchant Account ID. When you launch the app for production use your production Merchant Account ID.
+
 > The debug setting enables logging through logcat if set to true (and disables logging if set to false). The debug setting should be set to false in live applications.
 
-<a name="androidcreditcardregistration"></a>
-## Native Credit Card registration
+*Note that if you provide a test Merchant Account, the SDK will enter test mode. If you provide a production Merchant Account, the SDK will enter production mode.*
 
-Native credit card registration is done through a native registration form. The credit card details are then encrypted before being sent to our servers. The Native Payment SDK includes a default native credit card registration form that can be used out of the box. You also have the option of creating a customized form.
+
+<a name="androidcreditcardregistration"></a>
+## Credit Card registration
+
+Credit card registration is done through the registration form. This registration form is displayed if the user hasn't yet registered a card. The credit card details are automatically encrypted before being sent to our servers. You have the option of creating a customized form that we will go into detail below.
 
 ### How to display the default native form
 
 This example shows you how to present the default credit card registration form using an activity.
 
 #### Create a layout
-
-Start by creating a layout with a representative name (we'll use the name activity_native_card_registration in this guide). The example shows what the layout file needs to contain.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -127,21 +139,10 @@ Start by creating a layout with a representative name (we'll use the name activi
 </RelativeLayout>
 ```
 
+Start by creating a layout file with the name name `activity_native_card_registration`, or choose your own file name. The example shows what the layout file needs to contain. Here we add a `CardRegistrationFormLayout`.
+
+
 #### Create an activity
-
-Next, create an activity with a representative name (we'll use NativeCardRegistrationActivity in this guide). Then set the your newly created layout file (activity_native_card_registration) as the contentView for the activity, as the code example shows.
-
-```java
-@Override
-protected void onCreate(@Nullable Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_native_card_registration);
-}
-```
-
-#### Listen to registration callbacks
-
-To receive callbacks when registration is completed, add a listener to the CardRegistrationFormLayout. First make the activity implement ICardRegistrationCallback as in the code example.
 
 ```java
 
@@ -151,6 +152,8 @@ public class NativeCardRegistrationActivity extends AppCompatActivity implements
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_native_card_registration);
+        CardRegistrationFormLayout registrationForm = (CardRegistrationFormLayout) findViewById(R.id.registration_form);
+        registrationForm.setRegistrationResultListener(this);
     }
 
     @Override
@@ -166,23 +169,14 @@ public class NativeCardRegistrationActivity extends AppCompatActivity implements
 
 ```
 
-Then, extend the onCreate method to set a registration result listener like in the code example.
+Next, create an activity and name it `NativeCardRegistrationActivity`. 
 
-```java
+To receive callbacks when registration is completed we need to add a listener to the layout. To do this we have the activity implement `ICardRegistrationCallback` and extend the `onCreate` method to set a registration result listener.
 
-@Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_native_card_registration);
-        CardRegistrationFormLayout registrationForm = (CardRegistrationFormLayout) findViewById(R.id.registration_form);
-        registrationForm.setRegistrationResultListener(this);
-    }
+Then, in the same `onCreate` method, set the your newly created layout file (`activity_native_card_registration`) as the contentView for the activity, as the code example shows.
 
-```
 
 #### Display the form activity
-
-All that's left to show the native credit card registration form is to start the activity. The code example shows how to do it.
 
 ```java
 
@@ -191,16 +185,14 @@ startActivity(intent);
 
 ```
 
+All that's left to show the native credit card registration form is to start the activity. The code example shows how to do it.
+
+
+
 ### How to build your own native form
 You have the option of creating your own, fully customizable native credit card registration form. This requires a bit more effort compared to using the default form, but it also gives you control over the design.
 
 #### GUI compontents
-
-The SDK contains bundled EditText classes that help out with input validation and formatting.
-
-`CardNumberEditText`, `ExpiryDateEditText` and `SecurityCodeEditText` are subclasses of `CardFormEditText` described below and add functionality for input formatting and automatic validation by using custom TextWatcher classes. Use these classes if you want to customise the look of the registration form but keep our standard formatting and validation of the input.
-
-The example shows how to add the GUI components in a layout file.
 
 ```java
 <com.bambora.nativepayment.widget.edittext.CardNumberEditText
@@ -219,9 +211,15 @@ The example shows how to add the GUI components in a layout file.
     android:layout_height="match_parent" />
 ```
 
-#### Manual formatting and validation
+The SDK contains bundled EditText classes that help out with input validation and formatting.
 
-`CardFormEditText` is an abstract subclass of EditText with extended functionality that helps out with input validation. `CardFormEditText` introduces three new instance variables and five new methods. Use this class if you want to have full control of formatting and validation.
+`CardNumberEditText`, `ExpiryDateEditText` and `SecurityCodeEditText` are subclasses of `CardFormEditText`, described below, and add functionality for input formatting and automatic validation by using custom TextWatcher classes. Use these classes if you want to customise the look of the registration form but keep our standard formatting and validation of the input.
+
+The example shows how to add the GUI components in a layout file.
+
+
+
+#### Manual formatting and validation
 
 ```java
 // Variables
@@ -243,13 +241,15 @@ public boolean isFormatted();
 public boolean isValid();
 ```
 
+`CardFormEditText` is an abstract subclass of EditText with extended functionality that helps out with input validation. `CardFormEditText` introduces three new instance variables and five new methods. Use this class if you want to have full control of formatting and validation.
+
+
+
 #### Handling user input and network requests
 
 Once you have your own shiny form set up, you need to encrypt the input from the form and send it to our back end for processing.
 
 #### Making the request
-
-The exampe shows how to use the `registerCreditCard` method in `BNPaymentHandler` for encrypting and sending input data from your custom native credit card registration form to our back end for processing.
 
 ```java
 BNPaymentHandler.getInstance().registerCreditCard(
@@ -261,11 +261,13 @@ BNPaymentHandler.getInstance().registerCreditCard(
         resultListener);
 ```
 
+The exampe shows how to use the `registerCreditCard` method in `BNPaymentHandler` for encrypting and sending input data from your custom native credit card registration form to our back end for processing.
+
+
+
 > **NOTE:** *You are responsible for only sending the form data once since this network call is not idempotent.*
 
 #### Callback
-
-The example shows how to create a listener in order to handle the result of an attempted credit card registration.
 
 ```java
 ICardRegistrationCallback resultListener = new ICardRegistrationCallback() {
@@ -280,6 +282,10 @@ ICardRegistrationCallback resultListener = new ICardRegistrationCallback() {
   }
 }
 ```
+
+The example shows how to create a listener in order to handle the result of an attempted credit card registration.
+
+
 
 ### HTTP Responses
 
@@ -307,11 +313,13 @@ See the dedicated page concerning the [Hosted Payment Page](#hosted-payment-page
 
 ## Managing credit cards
 
-Here you can run standard read, update, and delete operations on the credit card tokens stored on the device.
+```java
+  BNPaymentHandler.getInstance()
+```
+
+You can run standard read, update, and delete operations on the credit card tokens stored on the device by accessing the `BNPaymentHandler.getInstance()` object.
 
 ### Get All Cards
-
-This code example will get all registered cards on the device and starts by checking if any credit cards have been selected and then proceeds to select the credit card that was registered first. The `getRegisteredCreditCards` function reads all stored credit card tokens from local storage asynchronously and notifies the IOnCreditCardRead listener of the result.
 
 ```java
 BNPaymentHandler.getInstance().getRegisteredCreditCards(MainActivity.this, new CreditCardManager.IOnCreditCardRead() {
@@ -332,9 +340,11 @@ BNPaymentHandler.getInstance().getRegisteredCreditCards(MainActivity.this, new C
 }
 ```
 
-### Get Card Details
+This code example will get all registered cards on the device and starts by checking if any credit cards have been selected and then proceeds to select the credit card that was registered first. The `getRegisteredCreditCards` function reads all stored credit card tokens from local storage asynchronously and notifies the IOnCreditCardRead listener of the result.
 
-Building on the above example, this code on the right shows how to read information from a credit card object.
+
+
+### Get Card Details
 
 ```java
 // Get credit card alias:
@@ -347,11 +357,10 @@ creditCard.getTruncatedCardNumber();
 creditCard.getCreditCardToken();
 ```
 
+Building on the above example, this code on the right shows how to read information from a credit card object.
+
+
 ### Delete Card Token
-
-When a credit card is registered, a credit card token is saved on the device. This token is necessary in order to make a payment, as the code example in the [Making payments](#androidmakingpayments) below shows. This section contains code examples showing how to get and remove credit card tokens from the device.
-
-The `getRegisteredCreditCards` function deletes a specific stored credit card token from local storage.
 
 ```java
 public void deleteCreditCard(CreditCard creditCard) {
@@ -366,12 +375,14 @@ public void deleteCreditCard(CreditCard creditCard) {
 }
 ```
 
+When a credit card is registered, a credit card token is saved on the device. This token is necessary in order to make a payment, as the code example in the [Making payments](#androidmakingpayments) below shows. This section contains code examples showing how to get and remove credit card tokens from the device.
+
+The `getRegisteredCreditCards` function deletes a specific stored credit card token from local storage.
+
+
 <a name="androidmakingpayments"></a>
+
 ## Making payments
-
-*Make sure you've successfully [set up Native Payment](#androidsetup) and implemented [Credit Card Registration](#androidcreditcardregistration) before continuing with this step.*
-
-Assuming a credit card token is registered on the device, it is possible to accept payments in the app. The code example shows how to configure and make a payment.
 
 ```java
 public void makeCreditCardPayment(CreditCard creditCard) {
@@ -396,6 +407,20 @@ public void makeCreditCardPayment(CreditCard creditCard) {
   });
 }
 ```
+
+*Make sure you've successfully [set up Native Payment](#androidsetup) and implemented [Credit Card Registration](#androidcreditcardregistration) before continuing with this step.*
+
+Assuming a credit card token is registered on the device, you can then use that card accept payments in your app. 
+All you need to do is create a `PaymentSettings` object and supply it the amount (in cents), the currency, and the card token. You can get the card token by first getting the credit card (using one of the above Managing Credit Cards operations) and then calling `getCreditCardToken()` on it.
+
+This payment settings object is then passed to `BNPaymentHandler.getInstance().makeTransaction`.
+
+If a payment fails for any reason, the **onTransactionError** callback method will be called.
+
+The code example shows how to configure and make a payment.
+
+
+
 > PAYMENT_ID is an identifier for the transaction. It is required and needs to be unique.
 
 ### HTTP Responses
@@ -450,9 +475,9 @@ The SDK can be used in one of two modes:
 
 **How to switch between test and production mode**
 
-To enable test mode, you need to supply a test Merchant Account when creating an instance of BPSBaseLibHandlerBuilder.
+To enable test mode, you need to supply a test Merchant Account when creating an instance of BNPaymentBuilder.
 
-To enable production mode, you need to supply a production Merchant Account when creating an instance of BPSBaseLibHandlerBuilder.
+To enable production mode, you need to supply a production Merchant Account when creating an instance of BNPaymentBuilder.
 
 You can find a code example in the [Setup](#androidsetup) section above.
 
