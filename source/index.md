@@ -8,15 +8,26 @@ toc_below:
   - <a href='mobile.html'>Mobile</a>
   - <a href='online.html'>Online</a>
   - <a href='api.html'>API</a>
+  - <a href='testcards.html'>Test Cards</a>
   - <a href='carts.html'>Shopping Carts</a>
 
 
 search: true
 ---
-# Welcome
-Welcome to Bambora's developer documentation. These pages will walk you through setting up your application with client-side and server-side code samples.
+# Quick Start
 
-To begin, select an item on the left to deep-dive into the docs.
+**[Payments in a Mobile App](/mobile.html)**
+
+Accept payments in your mobile app with Bambora Native Payments SDK for iOS and Android.
+
+**[Payments in a Website](/online.html)**
+
+Accept payments on your website using Bambora Checkout.
+
+**[API](/api.html)**
+
+Make payments from your web server, capture payments, return payments, and much more.
+
 
 # Contributing To The Docs
 

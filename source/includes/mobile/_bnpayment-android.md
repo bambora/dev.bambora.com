@@ -3,28 +3,18 @@
 
 This section of the guide will walk you through how to add `Native Payment` to your Android project.
 
+
+**Minimum OS Version:** [Android 2.3.3](http://developer.android.com/about/versions/android-2.3.3.html)
+
+**Minimum API Level:** 10
+
+**Recommended IDE:** [Android Studio](https://developer.android.com/sdk/index.html) with the [Android Plugin for Gradle](http://developer.android.com/tools/revisions/gradle-plugin.html).
+
 **[Click](https://github.com/bambora/dev.bambora.com/blob/master/source/includes/mobile/_bnpayment-android.md) to edit this section.**
 
-## Requirements
-
-**Minimum OS Version**
-
-[Android 2.3.3](http://developer.android.com/about/versions/android-2.3.3.html)
-
-**Minimum API Level**
-
-10
-
-**Required Permissions**
-
-Internet (android.permission.INTERNET)
-
-**Recommended IDE**
-
-[Android Studio](https://developer.android.com/sdk/index.html) with the [Android Plugin for Gradle](http://developer.android.com/tools/revisions/gradle-plugin.html).
 
 ## Installation
-You can install the app either via Source or by JCenter.
+You can install the app either via [JCenter](https://bintray.com/bambora-mobile/maven/bn-payment) or by [Source](https://github.com/bambora/BNPayment-Android).
 
 ### JCenter
 
@@ -116,9 +106,16 @@ Add the following code at the beginning of the `onCreate method` in the `MainAct
 <a name="androidcreditcardregistration"></a>
 ## Credit Card registration
 
-Credit card registration is done through the registration form. This registration form is displayed if the user hasn't yet registered a card. The credit card details are automatically encrypted before being sent to our servers. You have the option of creating a customized form that we will go into detail below.
+Credit card registration is done through the registration form. This registration form is displayed if the user hasn't yet registered a card. The credit card details are automatically encrypted before being sent to our servers, this is all done automatically for you. For registering the cards you have the option of:
 
-### How to display the default native form
+* [Using the default form](#display-the-default-native-form)
+* [Creating a customized form](#or-build-your-own-native-form)
+* [Using a hosted web-based form](#web-based-credit-card-registration)
+
+
+
+
+### Display the default native form
 
 This example shows you how to present the default credit card registration form using an activity.
 
@@ -189,7 +186,7 @@ All that's left to show the native credit card registration form is to start the
 
 
 
-### How to build your own native form
+### Or build your own native form
 You have the option of creating your own, fully customizable native credit card registration form. This requires a bit more effort compared to using the default form, but it also gives you control over the design.
 
 #### GUI compontents
@@ -244,11 +241,6 @@ public boolean isValid();
 `CardFormEditText` is an abstract subclass of EditText with extended functionality that helps out with input validation. `CardFormEditText` introduces three new instance variables and five new methods. Use this class if you want to have full control of formatting and validation.
 
 
-
-#### Handling user input and network requests
-
-Once you have your own shiny form set up, you need to encrypt the input from the form and send it to our back end for processing.
-
 #### Making the request
 
 ```java
@@ -286,30 +278,11 @@ ICardRegistrationCallback resultListener = new ICardRegistrationCallback() {
 The example shows how to create a listener in order to handle the result of an attempted credit card registration.
 
 
-
-### HTTP Responses
-
-**201 Created:** Successful payment!
-
-**400 Bad Request:** The API request was not formatted correctly.
-
-**401 Unauthorized:** Your Merchant Account or the API key provided is wrong.
-
-**402 Cannot authorize:** The authorization request could not be performed.
-
-**403 Forbidden: You are not authorized for this operation with the authentication you have provided..**
-
-**404 Not Found:** Unknown path or resource was not found.
-
-**409 Payment operation blocked:** The payment was being modified by another request. The attempted operation could be retried again, or the payment could be queried to find out if its properties have changed.
-
-**422 Invalid payment state transition:** The state of the payment could not be changed in the way that the payment operation would require.
-
-**500 Internal Server Error:** We had a problem with our server. Try again later.
-
-## Web-based credit card registration
+### Web-based credit card registration
 
 See the dedicated page concerning the [Hosted Payment Page](#hosted-payment-page)
+
+
 
 ## Managing credit cards
 
@@ -394,7 +367,7 @@ public void makeCreditCardPayment(CreditCard creditCard) {
   paymentSettings.creditCardToken = creditCard.getCreditCardToken();
 
   // Make the transaction:
-  BNPaymentHandler.getInstance().makeTransaction("<PAYMENT_ID>", paymentSettings, new ITransactionCallBack() {
+  BNPaymentHandler.getInstance().makeTransaction("A_UNIQUE_PAYMENT_ID", paymentSettings, new ITransactionCallBack() {
     @Override
     public void onTransactionSuccess() {
       // Handle payment success here.
@@ -408,46 +381,57 @@ public void makeCreditCardPayment(CreditCard creditCard) {
 }
 ```
 
-*Make sure you've successfully [set up Native Payment](#androidsetup) and implemented [Credit Card Registration](#androidcreditcardregistration) before continuing with this step.*
+*Make sure you've successfully [set up the SDK](#androidsetup) and implemented [Credit Card Registration](#androidcreditcardregistration) before continuing with this step.*
 
 Assuming a credit card token is registered on the device, you can then use that card accept payments in your app. 
 All you need to do is create a `PaymentSettings` object and supply it the amount (in cents), the currency, and the card token. You can get the card token by first getting the credit card (using one of the above Managing Credit Cards operations) and then calling `getCreditCardToken()` on it.
 
-This payment settings object is then passed to `BNPaymentHandler.getInstance().makeTransaction`.
+Once you have the settings you can now process the payment. This method requires three parameters:
 
-If a payment fails for any reason, the **onTransactionError** callback method will be called.
+* `Payment ID` *(String)*: This is a **unique** ID that you generate. It will help you identify and search for transactions later on. 
+* `Payment Settings` *(PaymentSettings)*: Your paymentSettings object you just created.
+* `Response Callback` *(ITransactionCallBack)*: This is where you handle successful and failed payments.
+
+Successful payments will trigger `onTransactionSuccess()` to be called.
+
+If a payment fails for any reason, the `onTransactionError()` callback method will be called. You can choose what message to show the user, be it a declined purchase or a network error, it is up to you.
 
 The code example shows how to configure and make a payment.
 
 
-
-> PAYMENT_ID is an identifier for the transaction. It is required and needs to be unique.
-
-### HTTP Responses
-
-**201 Created: Payment successful**
-
-**400 Bad Request: The API request was not formatted correctly.**
-
-**401 Unauthorized: Your API key is wrong or the Authorization header was not set.**
-
-**402 Payment required:** The payment could not be authorized.
-
-**409 Payment operation blocked:** The payment was being modified by another request.
-The attempted operation could be retried again, or the payment
-could be queried to find out if its properties have changed.
-
-**422 Invalid payment state transition:** The state of the payment could not be changed in the way that the payment operation would require.
-
-**500 Internal Server Error: We had a problem with our server. Try again later.**
-
 <a name="androiderrorhandling"></a>
+### RequestError
+```
+201 Created: 
+    Payment successful
 
-The SDK can receive a list of different errors from the back end. All payment related error responses will be of type `RequestResponse` and are visible from the error callbacks. If error is null then the error is undefined. The specific error is identified by the type property, if no type is given the standard meaning of the HTTP error is applied. A tip is to use the types for localization keys in order to display messages depending on the type.
+400 Bad Request: 
+    The API request was not formatted correctly.
 
-### Standard HTTP error types
+401 Unauthorized: 
+    Your API key is wrong or the Authorization header was not set.
 
-* about:blank
+402 Payment required: 
+    The payment could not be authorized.
+
+409 Payment operation blocked:
+    The payment was being modified by another request.
+    The attempted operation could be retried again, or the payment 
+      could be queried to find out if its properties have changed.
+
+422 Invalid payment state transition:
+    The state of the payment could not be changed in the way that the 
+      payment operation would require.
+
+500 Internal Server Error: 
+    We had a problem with our server. Try again later.
+```
+
+
+The SDK can receive a list of different errors from the back end. All payment related error responses will be of type `RequestResponse` and are visible from the error callbacks. If error is null then the error is undefined. 
+
+The specific error is identified by the type property, if no type is given the standard meaning of the HTTP error is applied. A tip is to use the types for localization keys in order to display messages depending on the type.
+
 
 ### Payment error types
 
@@ -480,29 +464,3 @@ To enable test mode, you need to supply a test Merchant Account when creating an
 To enable production mode, you need to supply a production Merchant Account when creating an instance of BNPaymentBuilder.
 
 You can find a code example in the [Setup](#androidsetup) section above.
-
-###Test credit cards
-
-```
-VISA (Sweden)
-Card number: 4002 6200 0000 0005
-Expiration (month/year): 05/17
-CVC: 000
-
-MasterCard (Sweden)
-Card number: 5125 8600 0000 0006
-Expiration (month/year): 05/17
-CVC: 000
-
-VISA (Norway)
-Card number: 4002 7700 0000 0008
-Expiration (month/year): 05/17
-CVC: 000
-
-MasterCard (Norway)
-Card number: 5206 8300 0000 0001
-Expiration (month/year): 05/17
-CVC: 000
-```
-
-You can use these test credit cards for testing registration and purchasing when the SDK is running in test mode (no real money is charged when these test cards are used):

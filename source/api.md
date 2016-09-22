@@ -23,6 +23,7 @@ includes:
   - api/errors
   
 toc_below:
+  - <a href='testcards.html'>Test Cards</a>
   - <a href='carts.html'>Shopping Carts</a>
   
 search: true
