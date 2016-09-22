@@ -2,7 +2,7 @@
 title: bambora Online
 
 language_tabs:
-  - javascript
+  
 
 toc_above:
   - <a href='index.html'>Getting Started</a>
