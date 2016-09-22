@@ -40,9 +40,9 @@ This is how the HPP looks with the default CSS:
 
 ## Web-based credit card registration
 
-*Make sure you've successfully [set up `Native Payment` (iOS)](#native-payment-ios) [(Android)](#native-payment-android) before implementing this functionality.*
+*Make sure you've successfully seu up Natice Payment for [iOS](#native-payment-ios) or [Android](#native-payment-android) before implementing this functionality.*
 
-Credit card registration is done through a secure web-based registration form, also known as a Hosted Payment Page, that you can easily include in your app as the code example shows.
+Credit card registration can be done through a secure web-based registration form, also known as a Hosted Payment Page, that you can easily include in your app as the code example shows. This is an alternate to using the registration form that comes with the SDKs.
 
 The code examples include callback methods that you can use to manage the Hosted Payment Page.
 

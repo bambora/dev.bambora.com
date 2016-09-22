@@ -407,6 +407,7 @@ html, body {
     font-size: 30px;
     padding-top: 2.5em;
     padding-bottom: 0.5em;
+    border-top: 8px solid lightgrey;
   }
 
   h1:first-child, div:first-child + h1 {
@@ -420,6 +421,7 @@ html, body {
     margin-bottom: 0;
     padding-top: 4em;
     padding-bottom: 1.2em;
+    border-top: 3px solid lightgrey;
   }
   
   a{

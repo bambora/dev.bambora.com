@@ -23,7 +23,7 @@ toc_below:
 search: true
 ---
 
-# Test Credit Cards
+# Credit Cards
 
 ```
 VISA (Sweden)
@@ -58,4 +58,4 @@ Expiration (month/year): 05/17
 CVC: 000
 ```
 
-You can use these test credit cards for testing registration and purchasing (no real money is charged when these test cards are used).
+You can use these test credit cards for testing card registration and purchasing (no real money is charged when these test cards are used).

@@ -283,7 +283,7 @@ The example shows how to create a listener in order to handle the result of an a
 See the dedicated page concerning the [Hosted Payment Page](#hosted-payment-page)
 
 
-
+<a name="androidmanagingcards"></a>
 ## Managing credit cards
 
 ```java

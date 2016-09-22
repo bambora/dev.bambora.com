@@ -595,7 +595,7 @@ $(document).ready(function () {
 	
 	<textarea id="txtCallback" rows="6">https://yourshop.com/callback?txnid=58443393440303104&orderid=934315976&reference=066799300800&amount=100&amp;currency=208&date=20160307&time=0212&feeid=3&txnfee=0&paymenttype=4&cardno=445421XXXXXX0001&hash=12e1195844402ae1ab5c77cb7870d4a6</textarea>
 	
-	<br><br><br>
+	<br>
 	<strong id="lblIsCallbackValid">Your callback is...</strong>
 	<div class="hash-comparison">
 		<div>
@@ -608,19 +608,18 @@ $(document).ready(function () {
 		</div>
 	</div>
 	
-	<br><br><br>
-    <small>Callback parameters and values</small>
-	<ul id="urlParameters" class="url-parameters">
-		<i>Copy and paste your MD5 key and the callback you recieved.</i>
-	</ul>
-	
-	
-	<br><br>
-    <small>Concatenated values with MD5 appended</small>
-	<ul id="lblValues" class="alternatingList">
-		<i>Copy and paste your MD5 key and the callback you recieved.</i>
-	</ul>
-	
+  <br>
+  <small id="callback-result1">Callback parameters and values:</small>
+  <ul id="urlParameters" class="url-parameters">
+    
+  </ul>
+  
+  
+  <br>
+  <small id="callback-result2">Concatenated values with MD5 appended:</small>
+  <ul id="lblValues" class="alternatingList">
+    
+  </ul>
 	
 
 </section>
@@ -629,6 +628,7 @@ $(document).ready(function () {
 
 
 ### Callback parameters
+
 
 Property name | DataType | Description | Always returned |
 -------------- | -------------- | -------------- | :--------------:
@@ -651,42 +651,9 @@ Property name | DataType | Description | Always returned |
 
 
 
-## Test payment cards
+## Testing Checkout
 
-```
-VISA (Sweden)
-Card number: 4002 6200 0000 0005
-Expiration (month/year): 05/17
-CVC: 000
-
-VISA (Norway)
-Card number: 4002 7700 0000 0008
-Expiration (month/year): 05/17
-CVC: 000
-
-VISA (Denmark)
-Card number: 4154 2100 0000 0001
-Expiration (month/year): 05/17
-CVC: 000
-
-
-MasterCard (Sweden)
-Card number: 5125 8600 0000 0006
-Expiration (month/year): 05/17
-CVC: 000
-
-MasterCard (Norway)
-Card number: 5206 8300 0000 0001
-Expiration (month/year): 05/17
-CVC: 000
-
-MasterCard (Denmark)
-Card number: 5156 2300 0000 0004
-Expiration (month/year): 05/17
-CVC: 000
-```
-
-To test the Bambora Checkout payment window you can use the test credit cards listed to the right, when using your test merchant number (Txxxxxxxxx). No real money is charged when using your test merchant number.
+To test the Bambora Checkout payment window you can use the [test credit cards](/testcards.html), when using your test merchant number (Txxxxxxxxx). No real money is charged when using your test merchant number.
 
 **TIP!** As an alternative option the Bambora Checkout payment window has two hidden test cards built in for you to use. Press `Ctrl + q` on your keyboard to reveal the built in test cards and click one of them to fill out the credit card number, expiry and CVC input fields. For mobile devices without a keyboard you can "shake" your device to reveal the built in test credit cards.
 
@@ -694,7 +661,6 @@ To test the Bambora Checkout payment window you can use the test credit cards li
 ## FAQ 
 
 Frequently Asked Questions
-
 
 ### Why don't I recieve callbacks?
 
@@ -704,10 +670,7 @@ Frequently Asked Questions
 * Make sure that your traffic is not redirected to another page, if for example your webshop is running in a "Opening soon" or "Maintenance" mode.
 
 
-
-
 ### Why don't my credit card work when testing?
-
 
 * Only test cards are accepted when using your Txxxxxxxxx merchant number (Test mode). Use these <a href="/online.html#test-payment-cards">test cards</a> or press "Ctrl + q"
  to display test cards in the Checkout.
