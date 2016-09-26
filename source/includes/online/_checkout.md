@@ -208,8 +208,12 @@ billingaddress | Address | Address to send bill to | No
 **lines** | Orderline array | A list of orderlines | Yes for invoice
 **ordernumber** | String | The order identifier. Must be unique | Yes
 **shippingaddress** | Address | Address to send goods to | Yes for invoice
-**total** | Long | The total amount to be paid in minor units | Yes
-**vatamount** | Long | The vat of the total amount in minor units to be paid | Yes
+**total** | Long | The total amount to be paid in minor units* | Yes
+**vatamount** | Long | The VAT of the total amount, not percentage, in minor units* to be paid | Yes
+
+<small>
+* The minor unit is defined by its relation to the major unit, which is the standard unit of currency for a country. The value of the minor unit is typically 1/100 or 1/1000 of the major unit. 1 euro (major unit) = 100 eurocents (minor unit).
+</small>
 
 
 Address parameters
@@ -251,7 +255,7 @@ Property name | Datatype | Description | Required |
 **accept** | String | The url to redirect the customer to when the payment is complete | Yes
 **decline** | String | The url to redirect the customer to if the she clicks cancel in fullscreen mode | Yes
 **callbacks** | Callback array | A list of url’s Bambora will call when the session ends either successfully or not | Yes
-**immediateredirecttoaccept** | Int | Currency code as ISO-4217. Ex. DKK, SEK | No
+**immediateredirecttoaccept** | Int | 1 = Auto redirect to accept URL.<br>0 = User clicks back button to redirect. | No
 
 
 
