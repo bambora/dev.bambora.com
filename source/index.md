@@ -24,4 +24,4 @@ We've made it easy for anyone to update the documentation. So if you see any doc
 
 
 # Support
-Running into issues? No problem, just send us an email at [native.support@bambora.com](mailto:native.support@bambora.com).
+Running into issues? No problem, just send us an email at [support@bambora.com](mailto:support@bambora.com).
