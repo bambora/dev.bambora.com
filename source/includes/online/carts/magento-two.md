@@ -3,21 +3,25 @@
 
 $(document).ready(function () {
 	
-	bamboraGitHub.getLatestReleaseInfo("https://api.github.com/repos/bambora/checkout-magento-v1.x/releases/latest").then(function(release){
+	/*
+	bamboraGitHub.getLatestReleaseInfo("https://api.github.com/repos/bambora/bambora-online-magento-v2.x/releases/latest").then(function(release){
 	
-		$("#lnkMagentoV1").attr("href", release.downloadLink);
-		$("#lnkMagentoV1").prop('title', release.info);
+		$("#lnkMagentoV2").attr("href", release.downloadLink);
+		$("#lnkMagentoV2").prop('title', release.info);
 	
 	});
+	*/
 });
 
 </script>
 
-# Magento v1
 
-Bambora makes it easy for you as an online merchant using Magento v1.x, to accept payments in your webshop by following this simple guide. This guide assumes that you have a running Magento v1.x site.
 
+
+# Magento v2
+Bambora makes it easy for you as an online merchant using Magento v2.x, to accept payments in your webshop by following this simple guide. This guide assumes that you have a running Magento v2.x site.
 **[Click](https://github.com/bambora/dev.bambora.com/blob/master/source/includes/online/carts/_magento.md) to edit this section.**
+
 
 
 
@@ -43,39 +47,32 @@ To connect to Bambora your system must authenticate itself on your behalf. Using
 
 
 
-## Install the Checkout Module for Magento v1.x
+## Install the Checkout Module for Magento v2.x
 
-### Step 1: Download the module
-1. <a href="https://github.com/bambora/checkout-magento-v1.x/releases/latest" id="lnkMagentoV1">Download the latest Checkout module for Magento v1.x</a> by right clicking this link and click **Save as...**
+### Step 1: Install using Composer
+1. Log into your Linux server terminal
 
-2. Choose a destination folder and click **Save**
+2. Navigate to your Magento 2 root folder
+
+3. Run the command `composer require bambora/module-payment-magento2`
+
+4. Run the command `php bin/magento setup:upgrade`
+
+5. Run the command `php bin/magento cache:flush`
 
 
 ### Step 2: Login to Magento
 1. Go to your Magento administration page and log in. Example url: http://www.yourshop.com/admin
 
 
-### Step 3: Install the module
-1. In the top menu click **System** -> **Magento Connect** -> **Magento Connect Manager**.
+### Step 3: Configure the module
+1. In the left menu click **Stores** -> **Configuration**
 
-2. In the **Direct package file upload** area click **Choose File** and browse to the folder where you saved the file from step 1. Select the file and click **Open**.
+2. Expand **Sales** and click **Payment Methods**
 
-3. Click **Upload**.
+2. Click the **Configure** button below the Bambora online logo
 
-4. When the installation has completed click **Return to Admin**
-
-
-### Step 4: Configure the module
-1. In the top menu click **System** -> **Configuration**.
-
-2. In the left menu under **Sales** click **Payment Methods**.
-
-3. Enter and adjust the settings which are described in the **Settings** section.
-
-4. Click **Save Config** when done and you are ready to use Bambora Checkout
-
-
-
+3. Enter and adjust the settings which are described in the Settings section.
 
 
 
@@ -106,13 +103,7 @@ Choose the payment window ID to use. Use this to set up different texts and logo
 ### Instant capture
 Enable instant capture to capture the payment immediately. You may only use instant capture if your customers receive their products immediately, like digital goods as e-books and the like.
 
-### Window state
-Choose how to display the payment window. Either as an **overlay** on top of your website or in **full screen**.
-
 ### Immediate Redirect
 Set to **YES** to redirect your customer to the order confirmation page when the payment is complete.<br>
 Set to **NO** to keep displaying the payment window allowing the customer to close it.
 
-
-
-<br><br><br><br><br><br><br>
