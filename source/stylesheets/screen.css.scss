@@ -165,7 +165,7 @@ html, body {
     a {
       color: $nav-text;
       text-decoration: none;
-
+      font-weight: bold;
       &:hover {
         text-decoration: underline;
       }

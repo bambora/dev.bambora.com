@@ -1,23 +1,9 @@
-# Native Payment - iOS
 
-This section of the guide will walk you through how to add Native Payment to your iOS project.
-
-**[Click](https://github.com/bambora/dev.bambora.com/blob/master/source/includes/mobile/_bnpayment-ios.md) to edit this section.**
-
-**Language and Requirements**
-
-The iOS Native Payment SDK is written in Objective-C.
-
-If you're interested in using `Native Payment` in a Swift-based app, please see [iOS Developer Library](https://developer.apple.com/library/ios/documentation/Swift/Conceptual/BuildingCocoaApps/MixandMatch.html) for details on how to use Objective-C and Swift together.
-
-**Minimum deployment target:** iOS 8.0
-
-
-<h2 id="ios-installation">Installation</h2>
+<h1 id="ios-installation">Installation</h1>
 
 To install the iOS Native Payment SDK, we recommend using either CocoaPods or Carthage.
 
-### CocoaPods
+## CocoaPods
 
 
 CocoaPods is a dependency manager for third-party libraries.
@@ -61,7 +47,7 @@ Install the pod by running this command in the OS X Terminal from the same folde
 ### Step 5: Load project
 Re-open the project through the newly created `.xcworkspace` file.
 
-### Carthage
+## Carthage
 
 Carthage is a is a dependency manager for third-party libraries. It is an alternative to using CocoaPods.
 
@@ -95,9 +81,9 @@ Open the newly created Cartfile in the text editor of your choice, and enter the
 carthage update
 ```
 
-Run the following command in the OS X Terminal:
+Run the `carthage update` command in the OS X Terminal.
 
-This will create a file called `BNPayment.framework` that you can find by going to Carthage/Build/iOS.
+This will create a file called `BNPayment.framework` that you can find by going to `Carthage/Build/iOS`.
 
 
 ### Step 5: Link Framework
@@ -118,14 +104,14 @@ Go to `Target -> Build Phase` in Xcode. Add a `New Run Script Phase` and then en
 $(SRCROOT)/Carthage/Build/iOS/BNPayment.framework
 ```
 
-Add the following line under `Input Files`:
+Add the `BNPayment.framework` line under `Input Files`:
 
 
 ### Step 8: Build
 Build and run the project in Xcode.
 
 
-<h2 id="iossetup">Setup</h2>
+# Setup
 
 Only a merchant account number is necessary to communicate with Bambora through the SDK. However, you will need an API token to perform server-side captures, cancels and refunds. [See here for more information](api.html#authentication).
 
@@ -133,17 +119,17 @@ After signing up for a SDK developer account, you will receive a test merchant a
 
 The example application includes a test merchant number that can be used for testing Native Payment. Please replace this with your own merchant account number after signing up with Bambora.
 
-### Step 1: Import
+## Step 1: Import
 
 ```objective_c
 #import <BNPayment/BNPayment.h>
 ```
 
-Import the SDK in AppDelegate.m:
+Create a file called [AppDelegate.m[(https://github.com/bambora/BNPayment-iOS/blob/master/Example/BNPayment-Example/AppDelegate.m) and import the SDK.
 
 
 
-### Step 2: Setup
+## Step 2: Setup
 
 ```objective_c
 NSError *error;
@@ -155,20 +141,20 @@ NSError *error;
 
 Add the following setup code to `application:didFinishLaunchingWithOptions:` method in AppDelegate.m.
 
-If you provide a test Merchant Account, the SDK will enter test mode. If you provide a production Merchant Account, the SDK will enter production mode.
+If you provide a test Merchant Account, the SDK will enter **test mode**. If you provide a production Merchant Account, the SDK will enter **production mode**.
 
 The debug setting should be set to NO in live applications.
 
-Any errors will be set to the `error` variable passed in.
+Any errors will be set to the `error` variable passed in. You can find a full example of [AppDelegate.m[(https://github.com/bambora/BNPayment-iOS/blob/master/Example/BNPayment-Example/AppDelegate.m) on our GitHub page.
 
 
-<h2 id="ios-card-registration">Credit Card Registration</h2>
+# Credit Card Registration
 
-*Make sure you've successfully set up the [`Native Payment SDK`](#iossetup) before implementing this functionality.*
+*Make sure you've successfully set up the [`Native Payment SDK`](#setup) before implementing this functionality.*
 
-Native credit card registration is done through a native registration form. You can either choose to use the default card registration form contained in `BNCreditCardRegistrationVC` or create your own. All credit card details will automatically be encrypted before they are sent to our servers.
+Native credit card registration is done through a native registration form. You can either choose to use the default card registration form contained in `BNCreditCardRegistrationVC` or [create your own](#customization). All credit card details will automatically be encrypted before they are sent to our servers and the app will use card Tokens to perform any payment processing.
 
-### Display the default native form
+## Display the default native form
 
 ```objective_c
 // Create an instance of `BNCreditCardRegistrationVC`
@@ -180,109 +166,12 @@ vc.completionBlock = ^(BNCCRegCompletion completion, BNAuthorizedCreditCard *car
 [self.navigationController pushViewController:vc animated:YES];
 ```
 
-This example shows you how to present the default card registration form.
-
-
-### Or build your own native form
-
-If you don't want to use the default card registration form provided in the SDK you are free to create your own custom form.
-
-#### GUI compontents
-
-```objective_c
-// This property lets us specify a regex used for validating the input text.
-@property (nonatomic, strong) NSString *validRegex;
-
-// This property lets us specify a regex used for
-// describing which type of input that is allowed.
-@property (nonatomic, strong) NSString *inputRegex;
-
-// This method checks if the text property matches the validRegex property.
-- (BOOL)hasValidInput;
-```
-
-The SDK contains bundled text fields that help you with input validation and formatting.
-
-**BNBaseTextField** is a subclass of `UITextField` with added functionality. You can either choose to use `BNBaseTextField` as is or make your own subclass. `BNBaseTextField` has two additional properties and a additional method compared to `UITextField`:
+The first step is to display the Card Registration form. This is done by creating a view controller using `BNCreditCardRegistrationVC `, as demonstrated in the sample code. Here is a full example of a [view controller](https://github.com/bambora/BNPayment-iOS/blob/master/Example/BNPayment-Example/ViewController.m).
 
 
 
-**BNCreditCardNumberTextField** is a subclass of `BNBaseTextField`. This textfield is tailored for handling credit card number formatting in the format `dddd dddd dddd dddd`. `BNBaseTextField` also contains automatic validation of the input triggered either by calling `hasValidInput` instance method or when the text field resigns first responder.
 
-**BNCreditCardExpiryTextField** is a subclass of `BNBaseTextField`. This textfield is tailored for handling card expiry input in the format `MM/YY"`. `BNBaseTextField` also contains automatic validation of the input triggered either by calling `hasValidInput` instance method or when the text field resigns first responder.
-
-#### How to handle input
-
-```objective_c
-// A method for applying default style to UITextField.
-- (void)applyStyle;
-
-/* A method for styling the textfield.
-An invalid textfield will have red text color.
-A valid textfield will have black text color. */
-- (void)setTextfieldValid:(BOOL)valid;
-
-// Validate card number according regex: ^(?:\\d[ -]*?){16}$
-- (BOOL)validCardNumber;
-
-// Validate card CVC according regex: ^[0-9]{3,4}$
-- (BOOL)validCVC;
-
-/* Validate card CVC according regex: ^(0[1-9]|1[0-2])\\/?([0-9]{4}|[0-9]{2})$.
-and that the date is in the future.*/
-- (BOOL)validExpiryDate;
-
-// Check if input is a Visa card.
-- (BOOL)isVisaCardNumber:(NSString *)cardNumber;
-
-// Check if input is a Visa card.
-- (BOOL)isMasterCardNumber:(NSString *)cardNumber;
-```
-
-When building your own card registration form you are responsible for handling and formatting the input yourself. We do however include a nifty category called `UITextField+BNCreditCard` which contains a few additional methods.
-
-
-
-#### Handle encryption
-
-```objective_c
-// Collect credit card information
-BNCreditCard *creditCard = [BNCreditCard new];
-creditCard.cardNumber = @"Your form input here";
-creditCard.expMonth = @"Your form input here";
-creditCard.expYear = @"Your form input here";
-creditCard.cvv = @"Your form input here";
-
-// Encrypt the credit card information
-BNRegisterCCParams *params = [[BNRegisterCCParams alloc] initWithCreditCard:creditCard];
-
-```
-
-In order to send the credit card information to our server you must encrypt the data. The code example shows how to do it.
-
-
-
-#### Handle the network request
-
-```objective_c
-[[BNPaymentHandler sharedInstance] registerCreditCard:params completion:^(BNAuthorizedCreditCard *card, NSError *error) {
-    if (self.completionBlock && card) {
-        self.completionBlock(BNCCRegCompletionDone, card);
-    }
-}];
-```
-
-In order to register you have to generate `BNRegisterCCParams` described in the section above. When you have your params see code example
-
-
-### Web-based credit card registration
-
-The other option you have is to use the fully hosted web site for registering cards.
-
-See the dedicated page concerning the [Hosted Payment Page](#hosted-payment-page)
-
-
-<h2 id="ios-managing-credit-cards"> Managing Credit Cards</h2>
+# Managing Credit Cards
 
 ```objective_c
 // Get a list of all registered credit cards
@@ -306,7 +195,7 @@ When a credit card is registered using `BNCCHostedRegistrationFormVC`, a credit 
 
 
 
-<h2 id="ios-making-payments">Making payments</h2>
+# Making payments
 
 ```objective_c
 // Get a list of all authorized credit card tokens
@@ -338,36 +227,36 @@ NSString *paymentIdentifier = [NSString stringWithFormat:@"%u", arc4random_unifo
 }
 ```
 
-*Make sure you've successfully [set up Native Payment](#iossetup) and implemented [Credit Card Registration](#ioscreditcardregistration) before continuing with this step.*
+*Make sure you've successfully implemented [Credit Card Registration](#credit-card-registration) before continuing with this step.*
 
 Assuming a credit card token is registered on the device, it is possible to accept payments in the app. The code example shows how to configure and make a payment.
 
 
 
-### HTTP Responses
+## HTTP Responses
 
 
-**201 Created: Payment successful**
+**201 Created:** Payment successful
 
 **400 Invalid payment state transition:** The state of the payment could not be changed in the way that the payment operation would require.
 
 **402 Payment required:** The payment could not be authorized.
 
 **409 Payment operation blocked:** The payment was being modified by another request.
+
 The attempted operation could be retried again, or the payment
 could be queried to find out if its properties have changed.
 
 
-## How to run the sample app
+# Sample app
 
 ```bash
 git clone https://github.com/bambora/BNPayment-iOS
 ```
 
-This repository contains a basic sample application. Using the sample app and inspecting its source code can be useful if you wish to try the features and get an overview of how `Native Payment` can be implemented.
+This repository contains a basic sample application. Using the sample app and inspecting its source code can be useful if you wish to try the features and get an overview of how Native Payment SDK can be implemented.
 
-Type the following command in a terminal window of your choice in the directory that you want to clone the repository to (Git needs to be installed on your computer for this to work):
-
+Use the `git clone` command in a terminal window of your choice in the directory that you want to clone the repository to (Git needs to be installed on your computer for this to work).
 
 
 Open the `BNPayment-iOS` folder on your computer and double-click the `BNPayment.xcworkspace` file. This will open the workspace in Xcode.
@@ -375,28 +264,28 @@ Open the `BNPayment-iOS` folder on your computer and double-click the `BNPayment
 Select `BNPayment-Example` and a simulator (or device) in the toolbar in Xcode and then use the Run command.
 
 
-<a name="errorhandling"></a>
-## Error handling
+
+# Error handling
 
 The SDK can receive a list of different errors from the back end. All payment related error codes will be of type `BNErrorResponse` and can be retrieved using the `NSError+BNError` category. The specific error is identidied by the type property, if no type is given the standard meaning of the HTTP error is applied. A tip is to use the types for localization keys in order to display messages depending on the type.
 
 
 
-<h2 id="ios-test-mode">Test Mode</h2>
+# Test Mode
 
 The SDK can be used in one of two modes:
 
 * Test mode allows you to register test cards and make test payments using those cards. Real credit cards cannot be registered in test mode.
-
 * Production mode allows the user to register real credit cards and to make real payments using those cards. Test credit cards cannot be used in production mode.
 
-### Switch Modes
+
+## Switch Modes
 
 To enable test mode, you need to use a test Merchant Account as the initial parameter in the setupWithMerchantAccount: method of the BNPaymentHandler class.
 
 To enable production mode, you need to provide a production Merchant Account as the initial parameter in the setupWithMerchantAccount: method of the BNPaymentHandler class.
 
-You can find a code example in the [Setup section](#iossetup) above.
+You can find a code example in the [Setup section](#step-2-setup) above.
 
 You can use the [Test Cards](testcards.html) for your testing.
 
