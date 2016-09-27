@@ -65,17 +65,17 @@ While it is possible to make a cancel operation both through the API and through
 
 ```Response: 
 {
-  "payment": "string", 
-  "currency": "EUR", 
-  "state": "Canceled", 
-  "operations": [], 
-  "region": "string", 
-  "merchant": "string", 
-  "comment": "string", 
-  "captures": [], 
-  "operationInProgress": False, 
-  "refunds": [], 
-  "amount": 100
+    "payment": "string",
+    "currency": "EUR",
+    "state": "Canceled",
+    "operations": [],
+    "region": "string",
+    "merchant": "string",
+    "comment": "string",
+    "captures": [],
+    "operationInProgress": false,
+    "refunds": [],
+    "amount": 100
 }
 ```
 
