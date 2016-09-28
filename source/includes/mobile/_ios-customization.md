@@ -24,13 +24,11 @@ Customizing the native SDK registration form directly is fairly straight forward
 
 The SDK contains bundled text fields that help you with input validation and formatting.
 
-**BNBaseTextField** is a subclass of `UITextField` with added functionality. You can either choose to use `BNBaseTextField` as is or make your own subclass. `BNBaseTextField` has two additional properties and a additional method compared to `UITextField`:
+**[BNBaseTextField](https://github.com/bambora/BNPayment-iOS/blob/master/BNPayment/UI/BNBaseTextField.h)** is a subclass of `UITextField` with added functionality. You can either choose to use `BNBaseTextField` as is or make your own subclass. `BNBaseTextField` has two additional properties and a additional method compared to `UITextField`:
 
+**[BNCreditCardNumberTextField](https://github.com/bambora/BNPayment-iOS/blob/master/BNPayment/UI/BNCreditCardNumberTextField.h)** is a subclass of `BNBaseTextField`. This textfield is tailored for handling credit card number formatting in the format `dddd dddd dddd dddd`. `BNBaseTextField` also contains automatic validation of the input triggered either by calling `hasValidInput` instance method or when the text field resigns first responder.
 
-
-**BNCreditCardNumberTextField** is a subclass of `BNBaseTextField`. This textfield is tailored for handling credit card number formatting in the format `dddd dddd dddd dddd`. `BNBaseTextField` also contains automatic validation of the input triggered either by calling `hasValidInput` instance method or when the text field resigns first responder.
-
-**BNCreditCardExpiryTextField** is a subclass of `BNBaseTextField`. This textfield is tailored for handling card expiry input in the format `MM/YY"`. `BNBaseTextField` also contains automatic validation of the input triggered either by calling `hasValidInput` instance method or when the text field resigns first responder.
+**[BNCreditCardExpiryTextField](https://github.com/bambora/BNPayment-iOS/blob/master/BNPayment/UI/BNCreditCardExpiryTextField.h)** is a subclass of `BNBaseTextField`. This textfield is tailored for handling card expiry input in the format `MM/YY"`. `BNBaseTextField` also contains automatic validation of the input triggered either by calling `hasValidInput` instance method or when the text field resigns first responder.
 
 ### How to handle input
 
