@@ -137,7 +137,7 @@ The default CSS can be used out of the box, but in case you wish to brand the HP
 
 This is how the hosted page looks with the default CSS:
 
-![HPP](/images/hpp.png)
+<img src="/images/hpp.png"/>
 
 
 

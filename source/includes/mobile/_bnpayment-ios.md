@@ -1,5 +1,5 @@
 
-<h1 id="ios-installation">Installation</h1>
+# Installation
 
 To install the iOS Native Payment SDK, we recommend using either CocoaPods or Carthage.
 
@@ -125,7 +125,7 @@ The example application includes a test merchant number that can be used for tes
 #import <BNPayment/BNPayment.h>
 ```
 
-Create a file called [AppDelegate.m[(https://github.com/bambora/BNPayment-iOS/blob/master/Example/BNPayment-Example/AppDelegate.m) and import the SDK.
+Create a file called [AppDelegate.m](https://github.com/bambora/BNPayment-iOS/blob/master/Example/BNPayment-Example/AppDelegate.m) and import the SDK.
 
 
 
@@ -145,14 +145,14 @@ If you provide a test Merchant Account, the SDK will enter **test mode**. If you
 
 The debug setting should be set to NO in live applications.
 
-Any errors will be set to the `error` variable passed in. You can find a full example of [AppDelegate.m[(https://github.com/bambora/BNPayment-iOS/blob/master/Example/BNPayment-Example/AppDelegate.m) on our GitHub page.
+Any errors will be set to the `error` variable passed in. You can find a full example of [AppDelegate.m](https://github.com/bambora/BNPayment-iOS/blob/master/Example/BNPayment-Example/AppDelegate.m) on our GitHub page.
 
 
 # Credit Card Registration
 
-*Make sure you've successfully set up the [`Native Payment SDK`](#setup) before implementing this functionality.*
+Once you have added the SDK to your project, you can begin to register cards.
 
-Native credit card registration is done through a native registration form. You can either choose to use the default card registration form contained in `BNCreditCardRegistrationVC` or [create your own](#customization). All credit card details will automatically be encrypted before they are sent to our servers and the app will use card Tokens to perform any payment processing.
+Credit card registration is done through a native registration form. You can either choose to use the default card registration form contained in `BNCreditCardRegistrationVC` or [create your own](#customization). All credit card details will automatically be encrypted before they are sent to our servers and the app will use card Tokens to perform any payment processing.
 
 ## Display the form
 
@@ -172,7 +172,7 @@ Displaying the default form is done by creating a view controller using `BNCredi
 
 When a credit card is successfully registered you will receive a [BNAuthorizedCreditCard](https://github.com/bambora/BNPayment-iOS/blob/master/BNPayment/Core/Models/BNAuthorizedCreditCard.h). From that you can retrieve a `creditCardToken` that can be used to [make a payment](#making-payments).
 
-The method `registerCreditCard` in the [example app](https://github.com/bambora/BNPayment-iOS/blob/master/Example/BNPayment-Example/ViewController.m)) shows how to handle card registration.
+The method `registerCreditCard` in the [example app](https://github.com/bambora/BNPayment-iOS/blob/master/Example/BNPayment-Example/ViewController.m) shows how to handle card registration.
 
 
 
@@ -196,7 +196,7 @@ BNPaymentHandler *paymentHandler = [BNPaymentHandler sharedInstance];
 
 ```
 
-With the SDK you can:
+With credit cards registered onto the device you can use the following operations to manage the cards:
 
 * get all cards
 * get a specific card
@@ -206,6 +206,7 @@ The example code here shows how to do all of those operations.
 
 You can also check out the example app and see what it does to [manage](https://github.com/bambora/BNPayment-iOS/blob/master/Example/BNPayment-Example/ViewController.m) the registered cards.
 
+The next step is to make a payment with the registered card.
 
 
 # Making payments
@@ -238,7 +239,7 @@ paymentSettings.comment = <COMMENT>; // Comment about the payment
 }
 ```
 
-Assuming you have already set up credit card registration in the previous step, and you have a credit card token is registered on the device, it is now time to make payments in your app.
+Assuming you have already set up credit card registration in the previous steps, and you have a credit card token is registered on the device, it is now time to make payments in your app.
 
 The first step is to build up a list of payment parameters in a [BNPaymentParams](https://github.com/bambora/BNPayment-iOS/blob/master/BNPayment/Core/Models/BNPaymentParams.h) object. Here are the parameters you must supply to it:
 
@@ -253,6 +254,7 @@ You will use `BNAuthorizedCreditCard.creditCardToken` as the card token identifi
 With the BNPaymentParams created you can pass it, along with a code block callback, to `makePaymentWithParams: result:`. The code block callback is where you will handle the result of the payment.
 
 A successful payment will set the `BNPaymentSuccess` parameter; a failed payment will set the `NSError` parameter.
+
 
 
 ## Error Responses
@@ -276,18 +278,20 @@ git clone https://github.com/bambora/BNPayment-iOS
 
 The SDK [repository](https://github.com/bambora/BNPayment-iOS/blob/master/Example/BNPayment-Example) contains a basic sample application. Using the sample app and inspecting its source code can be useful if you wish to try the features and get an overview of how Native Payment SDK can be implemented.
 
-Use the `git clone` command in a terminal window of your choice in the directory that you want to clone the repository to (Git needs to be installed on your computer for this to work).
-
+Use the `git clone` command in a terminal window of your choice in the directory that you want to clone the repository to. Git needs to be installed on your computer for this to work.
 
 Open the `BNPayment-iOS` folder on your computer and double-click the `BNPayment.xcworkspace` file. This will open the workspace in Xcode.
 
-Select `BNPayment-Example` and a simulator (or device) in the toolbar in Xcode and then use the Run command.
+Select `BNPayment-Example` and a simulator, or device, in the toolbar in Xcode and then use the Run command.
 
 
 
-# Error handling
+# Handling Errors
 
-The SDK can receive a list of different errors from the back end. All payment related error codes will be of type [BNErrorResponse](https://github.com/bambora/BNPayment-iOS/blob/master/BNPayment/Core/Models/BNErrorResponse.h) and can be retrieved using the `NSError+BNError` category. The specific error is identidied by the type property, if no type is given the standard meaning of the HTTP error is applied. A tip is to use the types for localization keys in order to display messages depending on the type.
+The SDK can receive a list of different errors from the back end. 
+
+All payment related error codes will be of type [BNErrorResponse](https://github.com/bambora/BNPayment-iOS/blob/master/BNPayment/Core/Models/BNErrorResponse.h) and can be retrieved using the `NSError+BNError` category. The specific error is identidied by the type property, if no type is given the standard meaning of the HTTP error is applied. A tip is to use the types for localization keys in order to display messages depending on the type.
+
 
 
 

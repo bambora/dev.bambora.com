@@ -14,6 +14,9 @@ toc_above:
   - <a href='payment-basics.html'>Charge Basics</a>
   - <a href='client-side.html'>Client-Side</a>
   - <a href='server-side.html'>Server-Side</a>
+  - <span>REFERENCES</span>
+  - <a href='api/index.html'>API</a>
+  - <a href='testcards.html'>Test Cards</a>
   
 includes:
   

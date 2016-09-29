@@ -135,7 +135,7 @@ The default CSS can be used out of the box, but in case you wish to brand the HP
 
 This is how the hosted page looks with the default CSS:
 
-![HPP](/images/hpp.png)
+<img src="/images/hpp.png"/>
 
 
 ## Create View Controller
@@ -185,6 +185,7 @@ BNCCHostedFormParams customizationSettings = [BNCCHostedFormParams hostedFormPar
 BNCCHostedRegistrationFormVC *ccHostedRegistrationVC =
   [[BNCCHostedRegistrationFormVC alloc] initWithHostedFormParams:customizationSettings];
 ```
+
 The code example shows how to specify a CSS file and how to set default placeholder values for the card registration text fields and the submit button in the Hosted Page:
 
 If no custom CSS file is used, the SDK will automatically use a default CSS file to style the Hosted Page.
