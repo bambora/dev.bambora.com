@@ -211,10 +211,7 @@ billingaddress | Address | Address to send bill to | No
 **total** | Long | The total amount to be paid in minor units* | Yes
 **vatamount** | Long | The VAT of the total amount, not percentage, in minor units* to be paid | Yes
 
-<small>
-* The minor unit is defined by its relation to the major unit, which is the standard unit of currency for a country. The value of the minor unit is typically 1/100 or 1/1000 of the major unit. 1 euro (major unit) = 100 eurocents (minor unit).
-</small>
-
+*&#42; The minor unit is defined by its relation to the major unit, which is the standard unit of currency for a country. The value of the minor unit is typically 1/100 or 1/1000 of the major unit. 1 euro (major unit) = 100 eurocents (minor unit).*
 
 Address parameters
 
@@ -255,7 +252,7 @@ Property name | Datatype | Description | Required |
 **accept** | String | The url to redirect the customer to when the payment is complete | Yes
 **decline** | String | The url to redirect the customer to if the she clicks cancel in fullscreen mode | Yes
 **callbacks** | Callback array | A list of url’s Bambora will call when the session ends either successfully or not | Yes
-**immediateredirecttoaccept** | Int | 1 = Auto redirect to accept URL.<br>0 = User clicks back button to redirect. | No
+**immediateredirecttoaccept** | Int | 1 = Auto redirect to accept URL. 0 = User clicks back button to redirect. | No
 
 
 
@@ -599,7 +596,7 @@ $(document).ready(function () {
 	
 	<textarea id="txtCallback" rows="6">https://yourshop.com/callback?txnid=58443393440303104&orderid=934315976&reference=066799300800&amount=100&amp;currency=208&date=20160307&time=0212&feeid=3&txnfee=0&paymenttype=4&cardno=445421XXXXXX0001&hash=12e1195844402ae1ab5c77cb7870d4a6</textarea>
 	
-	<br><br><br>
+	<br>
 	<strong id="lblIsCallbackValid">Your callback is...</strong>
 	<div class="hash-comparison">
 		<div>
@@ -612,19 +609,18 @@ $(document).ready(function () {
 		</div>
 	</div>
 	
-	<br><br><br>
-    <small>Callback parameters and values</small>
-	<ul id="urlParameters" class="url-parameters">
-		<i>Copy and paste your MD5 key and the callback you recieved.</i>
-	</ul>
-	
-	
-	<br><br>
-    <small>Concatenated values with MD5 appended</small>
-	<ul id="lblValues" class="alternatingList">
-		<i>Copy and paste your MD5 key and the callback you recieved.</i>
-	</ul>
-	
+  <br>
+  <small id="callback-result1">Callback parameters and values:</small>
+  <ul id="urlParameters" class="url-parameters">
+    
+  </ul>
+  
+  
+  <br>
+  <small id="callback-result2">Concatenated values with MD5 appended:</small>
+  <ul id="lblValues" class="alternatingList">
+    
+  </ul>
 	
 
 </section>
@@ -633,6 +629,7 @@ $(document).ready(function () {
 
 
 ### Callback parameters
+
 
 Property name | DataType | Description | Always returned |
 -------------- | -------------- | -------------- | :--------------:
@@ -655,42 +652,9 @@ Property name | DataType | Description | Always returned |
 
 
 
-## Test payment cards
+## Testing Checkout
 
-```
-VISA (Sweden)
-Card number: 4002 6200 0000 0005
-Expiration (month/year): 05/17
-CVC: 000
-
-VISA (Norway)
-Card number: 4002 7700 0000 0008
-Expiration (month/year): 05/17
-CVC: 000
-
-VISA (Denmark)
-Card number: 4154 2100 0000 0001
-Expiration (month/year): 05/17
-CVC: 000
-
-
-MasterCard (Sweden)
-Card number: 5125 8600 0000 0006
-Expiration (month/year): 05/17
-CVC: 000
-
-MasterCard (Norway)
-Card number: 5206 8300 0000 0001
-Expiration (month/year): 05/17
-CVC: 000
-
-MasterCard (Denmark)
-Card number: 5156 2300 0000 0004
-Expiration (month/year): 05/17
-CVC: 000
-```
-
-To test the Bambora Checkout payment window you can use the test credit cards listed to the right, when using your test merchant number (Txxxxxxxxx). No real money is charged when using your test merchant number.
+To test the Bambora Checkout payment window you can use the [test credit cards](/testcards.html), when using your test merchant number (Txxxxxxxxx). No real money is charged when using your test merchant number.
 
 **TIP!** As an alternative option the Bambora Checkout payment window has two hidden test cards built in for you to use. Press `Ctrl + q` on your keyboard to reveal the built in test cards and click one of them to fill out the credit card number, expiry and CVC input fields. For mobile devices without a keyboard you can "shake" your device to reveal the built in test credit cards.
 
@@ -698,7 +662,6 @@ To test the Bambora Checkout payment window you can use the test credit cards li
 ## FAQ 
 
 Frequently Asked Questions
-
 
 ### Why don't I recieve callbacks?
 
@@ -708,10 +671,7 @@ Frequently Asked Questions
 * Make sure that your traffic is not redirected to another page, if for example your webshop is running in a "Opening soon" or "Maintenance" mode.
 
 
-
-
 ### Why don't my credit card work when testing?
-
 
 * Only test cards are accepted when using your Txxxxxxxxx merchant number (Test mode). Use these <a href="/online.html#test-payment-cards">test cards</a> or press "Ctrl + q"
  to display test cards in the Checkout.

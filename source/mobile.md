@@ -14,6 +14,7 @@ includes:
 toc_below:
   - <a href='online.html'>Online</a>
   - <a href='api.html'>API</a>
+  - <a href='testcards.html'>Test Cards</a>
   - <a href='carts.html'>Shopping Carts</a>
 
 search: true
@@ -30,11 +31,10 @@ By adding Native Payment to your project you can make it possible for the users 
 
 Bambora Native Payments is here to save you time by providing you with an easy-to-use, up-to-date and actively maintained codebase for taking payments.
 
+`Native Payment` is currently available for [Android](mobile.html#native-payment-android) and [iOS](mobile.html#native-payment-ios).
+
 **[Click](https://github.com/bambora/dev.bambora.com/blob/master/source/mobile.md) to edit this section.**
 
-## Platform support
-
-`Native Payment` is currently available for [Android](mobile.html#native-payment-android) and [iOS](mobile.html#native-payment-ios).
 
 ## How it works
 
@@ -72,10 +72,11 @@ This is done by making a call to the SDK backend that includes the amount, curre
 
 When an SDK payment is successful, the payment amount becomes reserved in the customer's bank account. It is then up to you, as a merchant, to capture/withdraw the payment from the customer's bank account (which can be done either through the merchant backend interface or by making an API integration with the Native Payment backend).
 
-## License
 
-The Native Payment SDK is available under the [MIT license](https://opensource.org/licenses/MIT).
-
-## Contact info
+## Support
 
 We welcome questions and feedback - you can reach us by sending an e-mail to [native.support@bambora.com](mailto:native.support@bambora.com)
+
+**License**
+
+The Native Payment SDK is available under the [MIT license](https://opensource.org/licenses/MIT).

@@ -1,32 +1,9 @@
 
-# Native Payment - Android
 
-This section of the guide will walk you through how to add `Native Payment` to your Android project.
+# Installation
+You can install the app either via [JCenter](https://bintray.com/bambora-mobile/maven/bn-payment) or by [Source](https://github.com/bambora/BNPayment-Android).
 
-**[Click](https://github.com/bambora/dev.bambora.com/blob/master/source/includes/mobile/_bnpayment-android.md) to edit this section.**
-
-## Requirements
-
-**Minimum OS Version**
-
-[Android 2.3.3](http://developer.android.com/about/versions/android-2.3.3.html)
-
-**Minimum API Level**
-
-10
-
-**Required Permissions**
-
-Internet (android.permission.INTERNET)
-
-**Recommended IDE**
-
-[Android Studio](https://developer.android.com/sdk/index.html) with the [Android Plugin for Gradle](http://developer.android.com/tools/revisions/gradle-plugin.html).
-
-## Installation
-You can install the app either via Source or by JCenter.
-
-### JCenter
+## JCenter
 
 JCenter is the easiest method to install the SDK into your app.
 
@@ -49,7 +26,7 @@ Add this dependency under ‘dependencies’ in the app module's build.gradle fi
 
 Add the following permission after the **manifest** tag in your **AndroidManifest.xml** file:
 
-### Source
+## Source
 
 Installing from the source lets you see the source code and make any customizations you may want.
 
@@ -86,15 +63,15 @@ A sample app is included in the cloned repository (BNPayment-Android/app).
 
 
 <a name="androidsetup"></a>
-## Setup
+# Setup
 
-Only a merchant account number is necessary to communicate with Bambora through the SDK. However, you will need an API token to perform server-side captures, cancels and refunds. [See here for more information](api.html#authentication).
+Only a merchant account number is necessary to communicate with Bambora through the SDK. However, you will need an API token to perform server-side captures, cancels and refunds. [See here for more information](server-side.html#authentication).
 
 After signing up for a SDK developer account, you will receive a test merchant account number which you can use to implement the setup code in the example.
 
 The example application includes a test merchant number that can be used for testing Native Payment. Please replace this with your own merchant account number after signing up with Bambora.
 
-### Register Handler
+## Register Handler
 
 ```java
 BNPaymentBuilder BNPaymentBuilder = new BNPaymentBuilder(getApplicationContext())
@@ -114,15 +91,22 @@ Add the following code at the beginning of the `onCreate method` in the `MainAct
 
 
 <a name="androidcreditcardregistration"></a>
-## Credit Card registration
+# Credit Card registration
 
-Credit card registration is done through the registration form. This registration form is displayed if the user hasn't yet registered a card. The credit card details are automatically encrypted before being sent to our servers. You have the option of creating a customized form that we will go into detail below.
+Credit card registration is done through the registration form. This registration form is displayed if the user hasn't yet registered a card. The credit card details are automatically encrypted before being sent to our servers, this is all done automatically for you. For registering the cards you have the option of:
 
-### How to display the default native form
+* [Using the default form](#display-the-default-native-form)
+* [Creating a customized form](#or-build-your-own-native-form)
+* [Using a hosted web-based form](#web-based-credit-card-registration)
+
+
+
+
+## Display the default native form
 
 This example shows you how to present the default credit card registration form using an activity.
 
-#### Create a layout
+### Create a layout
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -142,7 +126,7 @@ This example shows you how to present the default credit card registration form 
 Start by creating a layout file with the name name `activity_native_card_registration`, or choose your own file name. The example shows what the layout file needs to contain. Here we add a `CardRegistrationFormLayout`.
 
 
-#### Create an activity
+### Create an activity
 
 ```java
 
@@ -176,7 +160,7 @@ To receive callbacks when registration is completed we need to add a listener to
 Then, in the same `onCreate` method, set the your newly created layout file (`activity_native_card_registration`) as the contentView for the activity, as the code example shows.
 
 
-#### Display the form activity
+### Display the form activity
 
 ```java
 
@@ -189,129 +173,10 @@ All that's left to show the native credit card registration form is to start the
 
 
 
-### How to build your own native form
-You have the option of creating your own, fully customizable native credit card registration form. This requires a bit more effort compared to using the default form, but it also gives you control over the design.
-
-#### GUI compontents
-
-```java
-<com.bambora.nativepayment.widget.edittext.CardNumberEditText
-  android:id="@+id/card_number_edit_text"
-  android:layout_width="match_parent"
-  android:layout_height="48dp" />
-
-<com.bambora.nativepayment.widget.edittext.ExpiryDateEditText
-    android:id="@+id/expiry_date_edit_text"
-    android:layout_width="match_parent"
-    android:layout_height="48dp" />
-
-<com.bambora.nativepayment.widget.edittext.SecurityCodeEditText
-    android:id="@+id/security_code_edit_text"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" />
-```
-
-The SDK contains bundled EditText classes that help out with input validation and formatting.
-
-`CardNumberEditText`, `ExpiryDateEditText` and `SecurityCodeEditText` are subclasses of `CardFormEditText`, described below, and add functionality for input formatting and automatic validation by using custom TextWatcher classes. Use these classes if you want to customise the look of the registration form but keep our standard formatting and validation of the input.
-
-The example shows how to add the GUI components in a layout file.
 
 
-
-#### Manual formatting and validation
-
-```java
-// Variables
-private Pattern validationPattern; // Pattern used for validating the EditText input.
-private Pattern formatPattern; // Pattern used for validating the format of the input in EditTest.
-private IOnValidationEventListener validationEventListener; // Interface used for validation callbacks.
-
-// Abstract methods
-public abstract Integer getMaxLength();
-public abstract String getDefaultHint();
-
-// Methods
-public void setValidationListener(IOnValidationEventListener validationListener);
-
-@Override
-public boolean isFormatted();
-
-@Override
-public boolean isValid();
-```
-
-`CardFormEditText` is an abstract subclass of EditText with extended functionality that helps out with input validation. `CardFormEditText` introduces three new instance variables and five new methods. Use this class if you want to have full control of formatting and validation.
-
-
-
-#### Handling user input and network requests
-
-Once you have your own shiny form set up, you need to encrypt the input from the form and send it to our back end for processing.
-
-#### Making the request
-
-```java
-BNPaymentHandler.getInstance().registerCreditCard(
-        getContext(),
-        "<CARD_NUMBER_FROM_YOUR_FORM>",
-        "<EXPIRY_MONTH_FROM_YOUR_FORM>",
-        "<EXPIRY_YEAR_FROM_YOUR_FORM>",
-        "<CVC_CODE_FROM_YOUR_FORM>",
-        resultListener);
-```
-
-The exampe shows how to use the `registerCreditCard` method in `BNPaymentHandler` for encrypting and sending input data from your custom native credit card registration form to our back end for processing.
-
-
-
-> **NOTE:** *You are responsible for only sending the form data once since this network call is not idempotent.*
-
-#### Callback
-
-```java
-ICardRegistrationCallback resultListener = new ICardRegistrationCallback() {
-  @Override
-  public void onRegistrationSuccess(CreditCard creditCard) {
-    // Handle success here.
-  }
-
-  @Override
-  public void onRegistrationError(RequestError error) {
-    // Handle error here.
-  }
-}
-```
-
-The example shows how to create a listener in order to handle the result of an attempted credit card registration.
-
-
-
-### HTTP Responses
-
-**201 Created:** Successful payment!
-
-**400 Bad Request:** The API request was not formatted correctly.
-
-**401 Unauthorized:** Your Merchant Account or the API key provided is wrong.
-
-**402 Cannot authorize:** The authorization request could not be performed.
-
-**403 Forbidden: You are not authorized for this operation with the authentication you have provided..**
-
-**404 Not Found:** Unknown path or resource was not found.
-
-**409 Payment operation blocked:** The payment was being modified by another request. The attempted operation could be retried again, or the payment could be queried to find out if its properties have changed.
-
-**422 Invalid payment state transition:** The state of the payment could not be changed in the way that the payment operation would require.
-
-**500 Internal Server Error:** We had a problem with our server. Try again later.
-
-## Web-based credit card registration
-
-See the dedicated page concerning the [Hosted Payment Page](#hosted-payment-page)
-
-## Managing credit cards
+<a name="androidmanagingcards"></a>
+# Managing credit cards
 
 ```java
   BNPaymentHandler.getInstance()
@@ -319,7 +184,7 @@ See the dedicated page concerning the [Hosted Payment Page](#hosted-payment-page
 
 You can run standard read, update, and delete operations on the credit card tokens stored on the device by accessing the `BNPaymentHandler.getInstance()` object.
 
-### Get All Cards
+## Get All Cards
 
 ```java
 BNPaymentHandler.getInstance().getRegisteredCreditCards(MainActivity.this, new CreditCardManager.IOnCreditCardRead() {
@@ -344,7 +209,7 @@ This code example will get all registered cards on the device and starts by chec
 
 
 
-### Get Card Details
+## Get Card Details
 
 ```java
 // Get credit card alias:
@@ -360,7 +225,7 @@ creditCard.getCreditCardToken();
 Building on the above example, this code on the right shows how to read information from a credit card object.
 
 
-### Delete Card Token
+## Delete Card Token
 
 ```java
 public void deleteCreditCard(CreditCard creditCard) {
@@ -382,7 +247,7 @@ The `getRegisteredCreditCards` function deletes a specific stored credit card to
 
 <a name="androidmakingpayments"></a>
 
-## Making payments
+# Making payments
 
 ```java
 public void makeCreditCardPayment(CreditCard creditCard) {
@@ -394,7 +259,7 @@ public void makeCreditCardPayment(CreditCard creditCard) {
   paymentSettings.creditCardToken = creditCard.getCreditCardToken();
 
   // Make the transaction:
-  BNPaymentHandler.getInstance().makeTransaction("<PAYMENT_ID>", paymentSettings, new ITransactionCallBack() {
+  BNPaymentHandler.getInstance().makeTransaction("A_UNIQUE_PAYMENT_ID", paymentSettings, new ITransactionCallBack() {
     @Override
     public void onTransactionSuccess() {
       // Handle payment success here.
@@ -408,63 +273,60 @@ public void makeCreditCardPayment(CreditCard creditCard) {
 }
 ```
 
-*Make sure you've successfully [set up Native Payment](#androidsetup) and implemented [Credit Card Registration](#androidcreditcardregistration) before continuing with this step.*
+Once you have set up card registration, from the previous section, and assuming a credit card token is on the device, you can then use that card make payments in your app. 
 
-Assuming a credit card token is registered on the device, you can then use that card accept payments in your app. 
-All you need to do is create a `PaymentSettings` object and supply it the amount (in cents), the currency, and the card token. You can get the card token by first getting the credit card (using one of the above Managing Credit Cards operations) and then calling `getCreditCardToken()` on it.
+All you need to do is create a `PaymentSettings` object and supply it the amount (in cents), the currency, and the card token. You can get the card token by first getting the [CreditCard](https://github.com/bambora/BNPayment-Android/blob/master/bn-payment/src/main/java/com/bambora/nativepayment/models/creditcard/CreditCard.java) (using one of the above Managing Credit Cards operations) and then calling `getCreditCardToken()` on it.
 
-This payment settings object is then passed to `BNPaymentHandler.getInstance().makeTransaction`.
+Once you have the settings you can now process the payment. This method requires three parameters:
 
-If a payment fails for any reason, the **onTransactionError** callback method will be called.
+* `Payment ID` *(String)*: This is a **unique** ID that you generate. It will help you identify and search for transactions later on. 
+* `Payment Settings` *(PaymentSettings)*: Your paymentSettings object you just created.
+* `Response Callback` *(ITransactionCallBack)*: This is where you handle successful and failed payments.
+
+Successful payments will trigger `onTransactionSuccess()` to be called.
+
+If a payment fails for any reason, the `onTransactionError()` callback method will be called. You can choose what message to show the user, be it a declined purchase or a network error, it is up to you.
 
 The code example shows how to configure and make a payment.
 
 
-
-> PAYMENT_ID is an identifier for the transaction. It is required and needs to be unique.
-
-### HTTP Responses
-
-**201 Created: Payment successful**
-
-**400 Bad Request: The API request was not formatted correctly.**
-
-**401 Unauthorized: Your API key is wrong or the Authorization header was not set.**
-
-**402 Payment required:** The payment could not be authorized.
-
-**409 Payment operation blocked:** The payment was being modified by another request.
-The attempted operation could be retried again, or the payment
-could be queried to find out if its properties have changed.
-
-**422 Invalid payment state transition:** The state of the payment could not be changed in the way that the payment operation would require.
-
-**500 Internal Server Error: We had a problem with our server. Try again later.**
-
 <a name="androiderrorhandling"></a>
+## RequestError
+```
+201 Created: 
+    Payment successful
 
-The SDK can receive a list of different errors from the back end. All payment related error responses will be of type `RequestResponse` and are visible from the error callbacks. If error is null then the error is undefined. The specific error is identified by the type property, if no type is given the standard meaning of the HTTP error is applied. A tip is to use the types for localization keys in order to display messages depending on the type.
+400 Bad Request: 
+    The API request was not formatted correctly.
 
-### Standard HTTP error types
+401 Unauthorized: 
+    Your API key is wrong or the Authorization header was not set.
 
-* about:blank
+402 Payment required: 
+    The payment could not be authorized.
 
-### Payment error types
+409 Payment operation blocked:
+    The payment was being modified by another request.
+    The attempted operation could be retried again, or the payment 
+      could be queried to find out if its properties have changed.
 
-* <http://api.bambora.com/definitions/payments/payment_not_found>
-* <http://api.bambora.com/definitions/payments/invalid_payment_state_transition>
-* <http://api.bambora.com/definitions/payments/payment_operation_blocked>
-* <http://api.bambora.com/definitions/payments/cannot_authorize>
-* <http://api.bambora.com/definitions/payments/3d_secure_required>
-* <http://api.bambora.com/definitions/payments/card_type_not_accepted>
-* <http://api.bambora.com/definitions/payments/invalid_card_information>
-* <http://api.bambora.com/definitions/payments/invalid_card>
-* <http://api.bambora.com/definitions/payments/insufficient_funds>
-* <http://api.bambora.com/definitions/payments/expired_card>
-* <http://api.bambora.com/definitions/payments/currency_not_supported>
+422 Invalid payment state transition:
+    The state of the payment could not be changed in the way that the 
+      payment operation would require.
+
+500 Internal Server Error: 
+    We had a problem with our server. Try again later.
+```
+
+
+The SDK can receive a list of different errors from the back end. All payment related error responses will be of type `RequestResponse` and are visible from the error callbacks. If error is null then the error is undefined. 
+
+The specific error is identified by the type property, if no type is given the standard meaning of the HTTP error is applied. A tip is to use the types for localization keys in order to display messages depending on the type.
+
+
 
 <a name="androidtestmode"></a>
-## Test mode
+# Test mode
 
 **Test mode vs Production mode**
 
@@ -481,28 +343,3 @@ To enable production mode, you need to supply a production Merchant Account when
 
 You can find a code example in the [Setup](#androidsetup) section above.
 
-###Test credit cards
-
-```
-VISA (Sweden)
-Card number: 4002 6200 0000 0005
-Expiration (month/year): 05/17
-CVC: 000
-
-MasterCard (Sweden)
-Card number: 5125 8600 0000 0006
-Expiration (month/year): 05/17
-CVC: 000
-
-VISA (Norway)
-Card number: 4002 7700 0000 0008
-Expiration (month/year): 05/17
-CVC: 000
-
-MasterCard (Norway)
-Card number: 5206 8300 0000 0001
-Expiration (month/year): 05/17
-CVC: 000
-```
-
-You can use these test credit cards for testing registration and purchasing when the SDK is running in test mode (no real money is charged when these test cards are used):

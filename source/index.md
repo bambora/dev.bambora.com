@@ -5,18 +5,40 @@ toc_above:
   - <a href='index.html'>Getting Started</a>
   
 toc_below:
-  - <a href='mobile.html'>Mobile</a>
+  - <span>COLLECT CARD DETAILS</span>
+  - <a href='ios.html'>iOS</a>
+  - <a href='android.html'>Android</a>
   - <a href='online.html'>Online</a>
-  - <a href='api.html'>API</a>
+  - <span>CHARGE CARDS</span>
+  - <a href='payment-basics.html'>Charge Basics</a>
+  - <a href='client-side.html'>Client-Side</a>
+  - <a href='server-side.html'>Server-Side</a>
+  - <span>REFERENCES</span>
+  - <a href='api/index.html'>API</a>
+  - <a href='testcards.html'>Test Cards</a>
+  - <span>TOOLS</span>
   - <a href='carts.html'>Shopping Carts</a>
 
 
-search: true
+search: false
 ---
-# Welcome
-Welcome to Bambora's developer documentation. These pages will walk you through setting up your application with client-side and server-side code samples.
+# Quick Start
 
-To begin, select an item on the left to deep-dive into the docs.
+Select how you want to accept payments:
+
+
+**Payments in [iOS](ios.html) or [Android](android.html)**
+
+Accept payments in your mobile app with Bambora Native Payments SDK for iOS and Android.
+
+**[Payments in a Website](/online.html)**
+
+Accept payments on your website using Bambora Checkout. You can also use one of our [Shopping Cart](carts.html) plugins.
+
+**[API](/server-side.html)**
+
+Make payments from your web server, capture payments, return payments, and much more.
+
 
 # Contributing To The Docs
 
@@ -24,4 +46,4 @@ We've made it easy for anyone to update the documentation. So if you see any doc
 
 
 # Support
-Running into issues? No problem, just send us an email at [support@bambora.com](mailto:support@bambora.com).
+Running into issues? No problem, just send us an email [support@bambora.com](mailto:support@bambora.com).
