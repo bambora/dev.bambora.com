@@ -93,7 +93,7 @@ Add the following code at the beginning of the `onCreate method` in the `MainAct
 <a name="androidcreditcardregistration"></a>
 # Credit Card registration
 
-Credit card registration is done through the registration form. This registration form is displayed if the user hasn't yet registered a card. The credit card details are automatically encrypted before being sent to our servers, this is all done automatically for you. For registering the cards you have the option of:
+Credit card registration is done through the registration form. This registration form is displayed if the user hasn't yet registered a card. The credit card details are automatically encrypted before being sent to our servers, this is all handled for you. For registering the cards you have the option of:
 
 * [Using the default form](#display-the-default-native-form)
 * [Creating a customized form](#custom-native-form)

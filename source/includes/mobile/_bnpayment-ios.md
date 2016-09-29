@@ -152,7 +152,11 @@ Any errors will be set to the `error` variable passed in. You can find a full ex
 
 Once you have added the SDK to your project, you can begin to register cards.
 
-Credit card registration is done through a native registration form. You can either choose to use the default card registration form contained in `BNCreditCardRegistrationVC` or [create your own](#customization). All credit card details will automatically be encrypted before they are sent to our servers and the app will use card Tokens to perform any payment processing.
+Credit card registration is done through a native registration form that comes with the SDK. All credit card details will automatically be encrypted before they are sent to our servers and the app will use card Tokens to perform any payment processing. For registering the cards you have the option of:
+
+* [Using the default form](#display-the-form)
+* [Creating a customized form](#custom-native-form)
+* [Using a hosted web-based form](#hosted-registration-page)
 
 ## Display the form
 
