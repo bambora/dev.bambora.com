@@ -2,6 +2,8 @@
 
 Making a payment is the most common operation you will want to perform. This is also called card "*Authorization*", where you reserve the amount to charge a customer. You can do this with an encrypted card, or a tokenized card. Following an authorization you will want to [capture the payment](./api.html#capture-payment).
 
+To tokenize a card you will want to use one of our client-side tools: [Android SDK](/android.html), [iOS SDK](/ios.html), or [Checkout](/online.html)
+
 **Note**: When making a payment request, the amount should be expressed in cents (or equivalent). For example, to make a payment of 10 EUR you would write the amount as `amount=1000`, for 100 SEK you would write `amount=10000`, etc.
 
 **[Click](https://github.com/bambora/dev.bambora.com/blob/master/source/includes/api/_make_payment.md) to edit this section.**
@@ -59,7 +61,7 @@ response = requests.post(
 ```
 > The Python code example requires that the [requests library for Python](https://github.com/kennethreitz/requests/) is installed on the computer that is running the code.
 
-A tokenized card is when you have already registered a card with us and you're just using the token you received back to pay with it
+A tokenized card is when you have already registered a card with us and you're just using the token you received back to pay with it.
 
 You will need the following data in order to make the request:
 

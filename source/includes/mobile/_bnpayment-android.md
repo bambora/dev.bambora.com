@@ -65,7 +65,7 @@ A sample app is included in the cloned repository (BNPayment-Android/app).
 <a name="androidsetup"></a>
 # Setup
 
-Only a merchant account number is necessary to communicate with Bambora through the SDK. However, you will need an API token to perform server-side captures, cancels and refunds. [See here for more information](api.html#authentication).
+Only a merchant account number is necessary to communicate with Bambora through the SDK. However, you will need an API token to perform server-side captures, cancels and refunds. [See here for more information](server-side.html#authentication).
 
 After signing up for a SDK developer account, you will receive a test merchant account number which you can use to implement the setup code in the example.
 
@@ -273,9 +273,8 @@ public void makeCreditCardPayment(CreditCard creditCard) {
 }
 ```
 
-*Make sure you've successfully set up the SDK and implemented Credit Card Registration, in the above steps, before continuing with this step.*
+Once you have set up card registration, from the previous section, and assuming a credit card token is on the device, you can then use that card make payments in your app. 
 
-Assuming a credit card token is on the device, you can then use that card accept payments in your app. 
 All you need to do is create a `PaymentSettings` object and supply it the amount (in cents), the currency, and the card token. You can get the card token by first getting the [CreditCard](https://github.com/bambora/BNPayment-Android/blob/master/bn-payment/src/main/java/com/bambora/nativepayment/models/creditcard/CreditCard.java) (using one of the above Managing Credit Cards operations) and then calling `getCreditCardToken()` on it.
 
 Once you have the settings you can now process the payment. This method requires three parameters:

@@ -113,7 +113,7 @@ Build and run the project in Xcode.
 
 # Setup
 
-Only a merchant account number is necessary to communicate with Bambora through the SDK. However, you will need an API token to perform server-side captures, cancels and refunds. [See here for more information](api.html#authentication).
+Only a merchant account number is necessary to communicate with Bambora through the SDK. However, you will need an API token to perform server-side captures, cancels and refunds. [See here for more information](server-side.html#authentication).
 
 After signing up for a SDK developer account, you will receive a test merchant account number which you can use to implement the setup code in the example.
 
@@ -238,19 +238,17 @@ paymentSettings.comment = <COMMENT>; // Comment about the payment
 }
 ```
 
-*Make sure you've successfully implemented [Credit Card Registration](#credit-card-registration) before continuing with this step.*
+Assuming you have already set up credit card registration in the previous step, and you have a credit card token is registered on the device, it is now time to make payments in your app.
 
-Assuming a credit card token is registered on the device, it is possible to accept payments in the app.
-
-The first step is to build up a list of payment parameters in a [BNPaymentParams](https://github.com/bambora/BNPayment-iOS/blob/master/BNPayment/Core/Models/BNPaymentParams.h). You will use `BNAuthorizedCreditCard.creditCardToken` as the card token identifier when making the payment. This is set in the `token` parameter of BNPaymentParams.
-
-Here are the parameters you must supply:
+The first step is to build up a list of payment parameters in a [BNPaymentParams](https://github.com/bambora/BNPayment-iOS/blob/master/BNPayment/Core/Models/BNPaymentParams.h) object. Here are the parameters you must supply to it:
 
 * `paymentIdentifier`: A unique ID string to identify the payment
 * `currency`: A currency code in ISO-4217 format.
-* `amount`: Payment amount expressed in cents. For example 100 SEK would be 100000.
+* `amount`: Payment amount expressed in cents. For example 100 SEK would be 10000.
 * `token`: The token from the [BNAuthorizedCreditCard](https://github.com/bambora/BNPayment-iOS/blob/master/BNPayment/Core/Models/BNAuthorizedCreditCard.h).
 * `comment`: A comment about the payment.
+
+You will use `BNAuthorizedCreditCard.creditCardToken` as the card token identifier when making the payment. This is set in the `token` parameter of BNPaymentParams.
 
 With the BNPaymentParams created you can pass it, along with a code block callback, to `makePaymentWithParams: result:`. The code block callback is where you will handle the result of the payment.
 
