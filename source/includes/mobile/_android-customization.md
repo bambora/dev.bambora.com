@@ -137,7 +137,7 @@ The default CSS can be used out of the box, but in case you wish to brand the HP
 
 This is how the hosted page looks with the default CSS:
 
-<img src="/images/hpp.png"/>
+<img src="/images/hpp.png"></img>
 
 
 
@@ -189,9 +189,9 @@ The first step to using the Hosted Page is to create a new Activity, set the con
 
 The code examples include callback methods that you can use to manage the Hosted Page.
 
-The callback `onRegistrationCompleted` is triggered when a credit card has been successfully registered. The method is supplied with a [`CreditCard`](https://github.com/bambora/BNPayment-Android/blob/master/bn-payment/src/main/java/com/bambora/nativepayment/models/creditcard/CreditCard.java) object that contains a token you can use to make a payment. To get the token just call `creditCard.getCreditCardToken()`.
+The callback `onRegistrationCompleted` is triggered when a credit card has been successfully registered. The method is supplied with a [CreditCard](https://github.com/bambora/BNPayment-Android/blob/master/bn-payment/src/main/java/com/bambora/nativepayment/models/creditcard/CreditCard.java) object that contains a token you can use to make a payment. To get the token just call `creditCard.getCreditCardToken()`.
 
-The callback `onFailure` is called if there is an error or if a credit card is invalid. It is supplied with a [`RegistrationFormError`](https://github.com/bambora/BNPayment-Android/blob/master/bn-payment/src/main/java/com/bambora/nativepayment/models/creditcard/RegistrationFormError.java) that is an enum of the error type that occurred:
+The callback `onFailure` is called if there is an error or if a credit card is invalid. It is supplied with a [RegistrationFormError](https://github.com/bambora/BNPayment-Android/blob/master/bn-payment/src/main/java/com/bambora/nativepayment/models/creditcard/RegistrationFormError.java) that is an enum of the error type that occurred:
 
 * PAGE_LOAD_ERROR
 * SUBMISSION_DECLINED

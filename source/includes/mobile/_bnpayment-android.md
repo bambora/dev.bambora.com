@@ -96,8 +96,8 @@ Add the following code at the beginning of the `onCreate method` in the `MainAct
 Credit card registration is done through the registration form. This registration form is displayed if the user hasn't yet registered a card. The credit card details are automatically encrypted before being sent to our servers, this is all done automatically for you. For registering the cards you have the option of:
 
 * [Using the default form](#display-the-default-native-form)
-* [Creating a customized form](#or-build-your-own-native-form)
-* [Using a hosted web-based form](#web-based-credit-card-registration)
+* [Creating a customized form](#custom-native-form)
+* [Using a hosted web-based form](#hosted-registration-page)
 
 
 

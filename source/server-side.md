@@ -1,6 +1,10 @@
 ---
 title: Server-Side
 
+language_tabs:
+  - shell: cURL
+  - python
+  
 toc_above:
   - <a href='index.html'>Getting Started</a>
   - <span>COLLECT CARDS</span>
@@ -29,6 +33,7 @@ toc_below:
   - <a href='testcards.html'>Test Cards</a>
   - <span>TOOLS</span>
   - <a href='carts.html'>Shopping Carts</a>
+  
 
 search: false
 ---

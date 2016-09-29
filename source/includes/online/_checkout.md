@@ -32,11 +32,11 @@ The checkout window is a fully hosted payment page that you redirect the user to
 
 For more information on how to install the Bambora Checkout in your Open Source system choose the system you use:
 
-**<a href="http://dev.bambora.com/carts.html#woocommerce" target="_blank">WooCommerce with WordPress</a>**
+**<a href="/carts.html#woocommerce" target="_blank">WooCommerce with WordPress</a>**
 
-**<a href="http://dev.bambora.com/carts.html#prestashop" target="_blank">Prestashop</a>**
+**<a href="/carts.html#prestashop" target="_blank">Prestashop</a>**
 
-**<a href="http://dev.bambora.com/carts.html#magento-v1" target="_blank">Magento v1</a>**
+**<a href="/carts.html#magento-v1" target="_blank">Magento v1</a>**
 
 
 
@@ -673,7 +673,7 @@ Frequently Asked Questions
 
 ### Why don't my credit card work when testing?
 
-* Only test cards are accepted when using your Txxxxxxxxx merchant number (Test mode). Use these <a href="/online.html#test-payment-cards">test cards</a> or press "Ctrl + q"
+* Only test cards are accepted when using your Txxxxxxxxx merchant number (Test mode). Use these [test cards](/testcards.html) or press "Ctrl + q"
  to display test cards in the Checkout.
 
 
