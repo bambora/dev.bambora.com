@@ -71,17 +71,18 @@ While it is possible to make a capture operation both through the API and throug
 
 ```Response
 {
-  "region": "string",
-  "merchant": "string",
-  "payment": "string",
-  "state": "Captured",
-  "currency": "EUR",
-  "amount": 1000,
-  "comment": "string"
-  "captures": [
-    "capture"{
-      "amount": 1000,
-      "comment": "string" 
+    "region": "string",
+    "merchant": "string",
+    "payment": "string",
+    "state": "Captured",
+    "currency": "EUR",
+    "amount": 1000,
+    "comment": "string",
+    "captures": [{
+        "capture": {
+            "amount": 1000,
+            "comment": "string"
+        }
     }]
 }
 ```

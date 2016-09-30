@@ -62,17 +62,17 @@ We have created code examples showing how to query a payment - one written in py
 
 ```Response:
 {
-  "currency": "EUR",
-  "amount": 1000,
-  "operationInProgress": False,
-  "captures": [],
-  "region": "string",
-  "payment": "string",
-  "operations": ["Cancel", "Capture"],
-  "refunds": [],
-  "state": "Authorized",
-  "comment": "string",
-  "merchant": "string"
+    "currency": "EUR",
+    "amount": 1000,
+    "operationInProgress": false,
+    "captures": [],
+    "region": "string",
+    "payment": "string",
+    "operations": ["Cancel", "Capture"],
+    "refunds": [],
+    "state": "Authorized",
+    "comment": "string",
+    "merchant": "string"
 }
 
 ```

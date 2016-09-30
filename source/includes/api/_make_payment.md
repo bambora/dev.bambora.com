@@ -83,16 +83,16 @@ We have created code examples showing how to query a payment - one written in py
 
 ```Response: 
 {
-  "merchant": "string", 
-  "comment": "N/A", 
-  "currency": "EUR", 
-  "amount": 1000, 
-  "region": "string", 
-  "state": "Authorized", 
-  "operationInProgress": False, 
-  "operations": ["Capture", "Cancel"], 
-  "captures": [], 
-  "payment": "string"
+    "merchant": "string",
+    "comment": "N/A",
+    "currency": "EUR",
+    "amount": 1000,
+    "region": "string",
+    "state": "Authorized",
+    "operationInProgress": false,
+    "operations": ["Capture", "Cancel"],
+    "captures": [],
+    "payment": "string"
 }
 ```
 
@@ -185,21 +185,21 @@ We have created code examples showing how to query a payment - one written in py
 
 ```Response
 {
-  "region": "string",
-  "merchant": "string",
-  "payment": "string",
-  "state": "Authorized",
-  "currency": "EUR",
-  "amount": 0,
-  "comment": "string",
-  #if token was set to "true"
-  "card": {
-    "token": "string",
-    "cardNumber": "string",
-    "cardType": "VISA",
-    "expiryMonth": 0,
-    "expiryYear": 0
-  }
+    "region": "string",
+    "merchant": "string",
+    "payment": "string",
+    "state": "Authorized",
+    "currency": "EUR",
+    "amount": 0,
+    "comment": "string",
+    # If token was set to true:
+    "card": {
+        "token": "string",
+        "cardNumber": "string",
+        "cardType": "VISA",
+        "expiryMonth": 0,
+        "expiryYear": 0
+    }
 }
 ```
 If the query was successful and you used the encrypted card method then you will receive a tokenized card in return as well (as seen in the example here, the "card" part). This is only the case if you set the "token" to "true" in the payload.

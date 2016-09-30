@@ -66,25 +66,21 @@ While it is possible to make a refund operation both through the API and through
 
 ```Response: 
 {
-  "region": "string", 
-  "state": 'Refunded', 
-  "operations": [], 
-  "amount": 1000, 
-  "operationInProgress': False, 
-  "currency": "string", 
-  "payment": "string", 
-  "refunds": [
-    {
-      "amount": 1000
-    }
-  ], 
-  "merchant": "string", 
-  "captures": [
-    {
-      "amount": 1000
-    }
-  ], 
-  "comment": "string"
+    "region": "string",
+    "state": "Refunded",
+    "operations": [],
+    "amount": 1000,
+    "operationInProgress": false,
+    "currency": "string",
+    "payment": "string",
+    "refunds": [{
+        "amount": 1000
+    }],
+    "merchant": "string",
+    "captures": [{
+        "amount": 1000
+    }],
+    "comment": "string"
 }
 ```
 
