@@ -5,19 +5,7 @@ Welcome to the bambora developer portal source site. Here you will find the sour
 ## Submit A Documentation Change
 If you want to make a change to the documentation on the developer portal, click on one of these following links to be taken to the markdown file that defines the page. Edit that file (in the browser if you wish) and submit a pull request. We will review it and if accepted, and automated build will deploy your change.
 
-* **Getting Started**: [dev.bambora.com/index.html](https://github.com/bambora/dev.bambora.com/blob/master/source/index.md)
-* **Web**: [dev.bambora.com/web.html](https://github.com/bambora/dev.bambora.com/blob/master/source/web.md)
-  * **Checkout**: [dev.bambora.com/web.html#checkout](https://github.com/bambora/dev.bambora.com/blob/master/source/includes/web/_checkout.md)
-* **Mobile**: [dev.bambora.com/mobile.html](https://github.com/bambora/dev.bambora.com/blob/master/source/mobile.md)
-  * **Checkout - Android**: [dev.bambora.com/web.html#checkout](https://github.com/bambora/dev.bambora.com/blob/master/source/includes/mobile/_checkout_android.md)
-  * **Checkout - iOS**: [dev.bambora.com/web.html#checkout](https://github.com/bambora/dev.bambora.com/blob/master/source/includes/mobile/_checkout_ios.md)
-* **API**: [dev.bambora.com/api.html](https://github.com/bambora/dev.bambora.com/blob/master/source/api.md)
-  * **API Spec**: [dev.bambora.com/api.html#api-spec](https://github.com/bambora/dev.bambora.com/blob/master/source/includes/api/_spec.md)
-  * **Authentication**: [dev.bambora.com/api.html#authentication](https://github.com/bambora/dev.bambora.com/blob/master/source/includes/api/_authentication.md)
-  * **Server-to-Server Integration**: [dev.bambora.com/api.html#server-side-integration](https://github.com/bambora/dev.bambora.com/blob/master/source/includes/api/_server.md)
-  * **Errors**: [dev.bambora.com/api.html#errors](https://github.com/bambora/dev.bambora.com/blob/master/source/includes/api/_errors.md)
-
-You can also define and import sub-pages in the top-level topics. Just add the markdown file to the includes section at the top of the file:
+You can define and import sub-pages in the top-level topics. Just add the markdown file to the includes section at the top of the file:
 ```
 includes:
   - web/checkout
