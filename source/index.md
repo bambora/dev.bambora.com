@@ -26,10 +26,21 @@ search: false
 
 Select how you want to accept payments:
 
-
 **Payments in [iOS](ios.html) or [Android](android.html)**
 
-Accept payments in your mobile app with Bambora Native Payments SDK for iOS and Android.
+Accept payments in your mobile app with Bambora Native Payment for iOS and Android.
+
+Bambora Native Payment is available in all of Europe. If you live in one of the following countries, you can sign up online:
+
+* [Denmark](https://boarding.bambora.com/nativetestaccount-dk)
+
+* [Finland](https://boarding.bambora.com/nativetestaccount-fi)
+
+* [Norway](https://boarding.bambora.com/nativetestaccount-no)
+
+* [Sweden](https://boarding.bambora.com/nativetestaccount-se)
+
+If you live in a European country that is not listed above, then please contact us by sending an email to [sales.ecom@bambora.com](mailto:sales.ecom@bambora.com).
 
 **[Payments in a Website](/online.html)**
 
@@ -46,4 +57,4 @@ We've made it easy for anyone to update the documentation. So if you see any doc
 
 
 # Support
-Running into issues? No problem, just send us an email [support@bambora.com](mailto:support@bambora.com).
+Running into issues? No problem, just send us an email to [support@bambora.com](mailto:support@bambora.com).
