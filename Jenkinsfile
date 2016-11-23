@@ -1,6 +1,6 @@
 #!groovy
 
-node('!master && amazon-linux-64bit-generic && docker') {
+node('docker-concurrent') {
     checkout scm
 
     stage 'parameters'
