@@ -3,7 +3,7 @@
     "info": {
         "version": "1.0.0",
         "title": "Bambora Payments API",
-        "description": "The Bambora Payments API makes it possible to perform payment-related operations such as authorizing and capturing payments.\n\nIn order to use this API you need to sign up with Bambora. Please send an email to sales.ecom@bambora.com if you want to sign up.\n",
+        "description": "The Bambora Payments API makes it possible to perform payment-related operations such as authorizing and capturing payments.\n\nIn order to use this API you need to sign up with Bambora. Please send an email to sales.ecom@bambora.com if you want to sign up.\n\nNote that this API cannot be used for processing payments made through the Online Checkout. To handle online payments refer to the <a href=\"https:\/\/transaction-v1.api.epay.eu/help\">Online Payment API documentation</a>.",
         "contact": {
             "name": "native.support@bambora.com"
         },
