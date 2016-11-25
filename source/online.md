@@ -2,7 +2,7 @@
 title: bambora Online
 
 language_tabs:
-  
+
 
 toc_above:
   - <a href='index.html'>Getting Started</a>
@@ -10,11 +10,11 @@ toc_above:
   - <a href='ios.html'>iOS</a>
   - <a href='android.html'>Android</a>
   - <a href='online.html'>Online</a>
-  
+
 includes:
   - online/checkout
 
-  
+
 toc_below:
   - <span>CHARGE CARDS</span>
   - <a href='client-side.html'>Client-Side</a>
@@ -24,9 +24,11 @@ toc_below:
   - <a href='testcards.html'>Test Cards</a>
   - <span>TOOLS</span>
   - <a href='carts.html'>Shopping Carts</a>
-  
-  
+
+
 search: false
 ---
 # Overview
 This guide will walk you through setting up payments in your website.
+
+For performing server-side operations such as capture and cancel on payments refer to the [Online Payment API documentation](https://transaction-v1.api.epay.eu/help).
