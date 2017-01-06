@@ -27,11 +27,14 @@ includes:
   - api/errors
 
 toc_below:
-
-  - <span>REFERENCES</span>
-  - <a href='api/index.html'>API</a>
-  - <a href='testcards.html'>Test Cards</a>
+  - <span>APIs</span>
+  - <a href='native-payments/index.html'>Payments</a>
+  - <a href='settlement/index.html'>Settlement</a>
+  - <a href='merchant/index.html'>Merchant</a>
+  - <a href='backoffice-reports/index.html'>Backoffice Reports</a>
+  - <a href='payment-depot/index.html'>Payment Depot</a>
   - <span>TOOLS</span>
+  - <a href='testcards.html'>Test Cards</a>
   - <a href='carts.html'>Shopping Carts</a>
 
 

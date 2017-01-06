@@ -261,6 +261,7 @@ this["Handlebars"]["templates"]["operation"] = Handlebars.template({"1":function
   stack1 = helpers['if'].call(depth0, (depth0 != null ? depth0.deprecated : depth0), {"name":"if","hash":{},"fn":this.program(1, data),"inverse":this.noop,"data":data});
   if (stack1 != null) { buffer += stack1; }
   buffer += "\">"
+    + data.root.basePath
     + escapeExpression(((helper = (helper = helpers.path || (depth0 != null ? depth0.path : depth0)) != null ? helper : helperMissing),(typeof helper === functionType ? helper.call(depth0, {"name":"path","hash":{},"data":data}) : helper)))
     + "</a>\n                    </span>\n                </h3>\n            </div>\n\n            <a href=\"javascript:;\" class=\"toggle-samples\" data-toggle=\"tooltip\" data-placement=\"left\"\n               data-original-title title>\n                <span class=\"text\">Show samples</span><span class=\"circle-icon\"></span>\n            </a>\n\n";
   stack1 = helpers['if'].call(depth0, (depth0 != null ? depth0.deprecated : depth0), {"name":"if","hash":{},"fn":this.program(3, data),"inverse":this.noop,"data":data});
