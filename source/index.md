@@ -1,5 +1,6 @@
 ---
 title: dev/bambora
+layout: funky
 
 toc_above:
   - <a href='index.html'>Getting Started</a>
