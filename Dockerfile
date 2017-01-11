@@ -1,4 +1,4 @@
-FROM ruby:onbuild
+FROM ruby:2.3-onbuild
 EXPOSE 4567
 
 RUN apt-get update && apt-get install -y git
