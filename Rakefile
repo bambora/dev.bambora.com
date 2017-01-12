@@ -1,4 +1,4 @@
-require 'middleman-gh-pages'
+#require 'middleman-gh-pages'
 require 'rake/clean'
 
 CLOBBER.include('build')
@@ -11,7 +11,12 @@ end
 
 task :copy_swagger do
   puts "copying swagger UI"
-  sh "cp -r api build/"
+  sh "cp -r swagger build/"
+  sh "cp -r native-payments build/"
+  sh "cp -r settlement build/"
+  sh "cp -r merchant build/"
+  sh "cp -r payment-depot build/"
+  sh "cp -r backoffice-reports build/"
 end
 
 task :run_server do

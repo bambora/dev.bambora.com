@@ -1,4 +1,9 @@
 @charset "UTF-8";
+.api_title {
+    font-size: 26px;
+    color: #fff;
+    vertical-align: bottom;
+}
 .color {
     background: #f00;
     border-radius: 3px;
@@ -4130,6 +4135,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 @media (min-width: 768px) {
     .navbar-header {
         float: left;
+        text-align: center;
     }
 }
 .navbar-collapse {
