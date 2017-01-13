@@ -42,16 +42,14 @@ under the License.
   </head>
 
   <body class="<%= page_classes %>">
-    <!--div class="nav-top">
-      <%= image_tag "bambora_logo_white.png" %>
-    </div-->
     <nav class="nav-pane">
       <div class="pull-left nav-links">
-        <a href="" class="logo">
+        <a href="http://bambora.com" class="logo">
+          <%= image_tag "svg/zebraffe-dev.svg" %>
         </a>
-        <a href="">Home</a>
-        <a href="">Transactions</a>
-        <a href="" class="active">Active/Hover</a>
+        <a href="">Quickstart</a>
+        <a href="">Tutorials</a>
+        <a href="">APIs</a>
       </div>
       <div class="pull-right">
         <div class="profile">
@@ -60,70 +58,19 @@ under the License.
       </div>
     </nav>
 
-    <div class="tocify-wrapper">
-      <% if language_tabs %>
-        <div class="lang-selector">
-          <% language_tabs.each do |lang| %>
-            <% if lang.is_a? Hash %>
-              <a href="#" data-language-name="<%= lang.keys.first %>"><%= lang.values.first %></a>
-            <% else %>
-              <a href="#" data-language-name="<%= lang %>"><%= lang %></a>
-            <% end %>
+    <div class="" style="max-width:900px; margin-right: auto; margin-left: auto">
+      <%= partial "side_nav" %>
+      
+
+      <div class="" style="position: relative; margin-left: 300px">
+        <div class="content js-toc-content">
+          <%= yield %>
+          <% current_page.data.includes && current_page.data.includes.each do |include| %>
+            <%= partial "includes/#{include}" %>
           <% end %>
         </div>
-      <% end %>
-      <% if current_page.data.search %>
-        <div class="search">
-          <input type="text" class="search" id="input-search" placeholder="Search">
-        </div>
-        <ul class="search-results"></ul>
-      <% end %>
-      <% if current_page.data.toc_above %>
-        <ul class="toc-nonfocus">
-          <% current_page.data.toc_above.each do |above| %>
-            <li><%= above %></li>
-          <% end %>
-        </ul>
-      <% end %>
-      <div class="js-toc">
       </div>
-      <% if current_page.data.toc_below %>
-        <ul class="toc-nonfocus">
-          <% current_page.data.toc_below.each do |below| %>
-            <li><%= below %></li>
-          <% end %>
-        </ul>
-      <% end %>
-      <div class="nav-bottom">
-      <% if current_page.data.toc_footers %>
-        <ul class="toc-footer">
-          <% current_page.data.toc_footers.each do |footer| %>
-            <li><%= footer %></li>
-          <% end %>
-        </ul>
-      <% end %>
-      </div>
-    </div>
-    <div class="page-wrapper">
-      <div class="content js-toc-content">
-        <%= yield %>
-        <% current_page.data.includes && current_page.data.includes.each do |include| %>
-          <%= partial "includes/#{include}" %>
-        <% end %>
-      </div>
-      <div class="dark-box">
-        <% if language_tabs %>
-          <div class="lang-selector">
-            <% language_tabs.each do |lang| %>
-              <% if lang.is_a? Hash %>
-                <a href="#" data-language-name="<%= lang.keys.first %>"><%= lang.values.first %></a>
-              <% else %>
-                <a href="#" data-language-name="<%= lang %>"><%= lang %></a>
-              <% end %>
-            <% end %>
-          </div>
-        <% end %>
-      </div>
+
     </div>
 
     <script>
@@ -140,6 +87,19 @@ under the License.
       // The sections that are hidden will open
       // and close as you scroll to headings within them.
       collapseDepth: 2,
+      // Main class to add to links.
+      linkClass: '',
+      // Extra classes to add to links.
+      extraLinkClasses: '',
+      // Class to add to active links,
+      // the link corresponding to the top most heading on the page.
+      activeLinkClass: '',
+      // Main class to add to lists.
+      listClass: 'nav-vertical',
+      // Extra classes to add to lists.
+      extraListClasses: '',
+      // Class to add to list items.
+      listItemClass: '',
     });
     </script>
 

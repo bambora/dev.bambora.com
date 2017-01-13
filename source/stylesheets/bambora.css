@@ -1180,7 +1180,7 @@ p a:not(.btn) {
     list-style: none;
     padding: 0;
     margin: 0;
-    height: 34px; }
+    min-height: 34px; }
     .nav-vertical li a {
       position: relative;
       color: rgba(90, 90, 90, 1);
