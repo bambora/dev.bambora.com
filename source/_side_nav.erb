@@ -1,7 +1,33 @@
-<div class="nav-vertical" style="position: fixed; margin-top: 30px">
+<%#
+  Left-hand navigation pane.
+
+  There are Top Categories and Sub-Categories.
+  Any Top Category listed can have zero or more Sub-Categories.
+  If a Category does not have any Sub-Categories then it is given a content-div that will be used as the ToC. This div will have a data tag to identify it. It is up to the markdown files to state what that data-nav-title is so the ToC can be generated there. TocBot will generate the ToC based on the Headings in the markdown file.
+
+  nav:  [
+          {file: "category1", title: "Category 1 Title", sub: 
+            [ 
+              {file: "category1_sub1", title: "Sub1 Title"}, 
+              {file: "category1_sub2", title: "Sub2 Title"},
+              {file: "some_name",      title: "Sub3 Title"} 
+            ] 
+          },
+          {file: "category2", title: "Category 2 Title"},
+          {file: "category3", title: "Category 3 Title"}
+        ]
+%>
+<div class="nav-vertical nav-sticky">
   <ul>
-    <li><a href="category2.html" data-nav="category_2">Category 2</a></li>
-    <li><a href="category3.html" data-nav="category_3">Category 3</a></li>
-    <li><a href="category4.html" data-nav="category_4">Category 4</a></li>
+    <li class="active">
+      <a href="category1.html" data-nav-title="category_1">Category 1</a>
+      <ul class="nav-sub">
+        <li><a href="category1_sub1.html">Sub Heading 1</a><div data-nav-title="category1_sub1" class="js-toc"></div></li>
+        <li><a href="category1_sub2.html">Sub Heading 2</a><div data-nav-title="category1_sub2"></div></li>
+        <li><a href="category1_sub3.html">Sub Heading 3</a><div data-nav-title="category1_sub3"></div></li>
+      </ul>
+    </li>
+    <li><a href="category2.html">Category 2</a><div data-nav-title="category2"></div></li>
+    <li><a href="category3.html">Category 3</a><div data-nav-title="category3"></div></li>
   </ul>
 </div>
