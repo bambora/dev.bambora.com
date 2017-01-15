@@ -17,17 +17,38 @@
           {file: "category3", title: "Category 3 Title"}
         ]
 %>
+
+<% if current_page.data.nav %>
+  <% nav = data["#{current_page.data.nav}"].toc %>
+<% else %>
+  <% nav = data.nav.toc %>
+<% end %>
+
+<% parent = current_page.data.parent %>
+
 <div class="nav-vertical nav-sticky">
   <ul>
+  <% nav.each do |category| %>
+    <li data-nav-title="<%= category.file %>" <% if parent && parent==category.file %>class="active"<% end %> >
+      <a href="<%= category.file %>.html"><%= category.title %></a>
+      <% if category.subs? %>
+        <ul class="nav-sub">
+        <% category.subs.each do |sub| %>
+          <li><a href="<%= sub.file %>.html"><%= sub.title %></a><div data-nav-title="<%= sub.file %>" class="js-toc"></div></li>
+        <% end %>
+        </ul>
+      <% end %>
+    </li>
+  <% end %>
+  </ul>
+
+  <!--ul>
     <li class="active">
       <a href="category1.html" data-nav-title="category_1">Category 1</a>
       <ul class="nav-sub">
         <li><a href="category1_sub1.html">Sub Heading 1</a><div data-nav-title="category1_sub1" class="js-toc"></div></li>
-        <li><a href="category1_sub2.html">Sub Heading 2</a><div data-nav-title="category1_sub2"></div></li>
-        <li><a href="category1_sub3.html">Sub Heading 3</a><div data-nav-title="category1_sub3"></div></li>
       </ul>
     </li>
     <li><a href="category2.html">Category 2</a><div data-nav-title="category2"></div></li>
-    <li><a href="category3.html">Category 3</a><div data-nav-title="category3"></div></li>
-  </ul>
+  </ul-->
 </div>

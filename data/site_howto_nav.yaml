@@ -1,0 +1,35 @@
+header:
+
+toc:
+- file: 'site_setup'
+  title: 'Setup'
+- file: 'site_deploy'
+  title: 'Deploy and Test'
+- file: 'site_guidelines'
+  title: 'Portal Guidelines'
+- file: 'site_customize'
+  title: 'Customize'
+  subs:
+    - file: 'site_architecture' 
+      title: 'Architecture'
+    - file: 'site_middleman' 
+      title: 'Middleman Basics'
+    - file: 'site_templates' 
+      title: 'Templates'
+    - file: 'site_data_files' 
+      title: 'Data Files'
+    - file: 'site_toc' 
+      title: 'Table of Contents'
+    - file: 'site_css' 
+      title: 'CSS'
+- file: 'site_content'
+  title: 'Writing Content'
+  subs:
+    - file: 'site_content_basics' 
+      title: 'Basics'
+    - file: 'site_tutorials' 
+      title: 'Tutorials'
+    - file: 'site_specs' 
+      title: 'API Specs'
+
+footer:
