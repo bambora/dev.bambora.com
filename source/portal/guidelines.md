@@ -10,7 +10,7 @@ search: false
 ---
 # Overview
 
-This page contains the rules and guidelines for creating a developer portal and the content within it.
+This page contains the rules and guidelines for creating a developer portal and the content within it. All bambora developer portals must adher to this design guide.
 
 # Tone
 
