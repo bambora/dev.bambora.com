@@ -1,25 +1,24 @@
+img {
+  display: block;
+  margin: auto;}
+
 .nav-sticky {
   position: fixed; 
   margin-top: 30px;
   overflow-y: scroll;
   height: 100%;}
 
-.nav-vertical {
+.nav-left {
   padding-bottom: 180px;
   margin: 0;
   max-width: 300px; }
-  .nav-vertical ul {
-    padding: 0;
-    margin: 0; }
-  .nav-vertical li {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    min-height: 34px; }
-    .nav-vertical li.active > ul {
-      color: rgba(120, 71, 181, 1);
-      border-left: 2px solid rgba(120, 71, 181, 1); }
-    .nav-vertical li > a {
+  .nav-left > ul > li {
+    min-height: 26px; 
+    padding-bottom: 14px;
+  }
+  .nav-left li {
+    list-style: none;}
+    .nav-left li a {
       position: relative;
       color: rgba(90, 90, 90, 1);
       display: block;
@@ -29,29 +28,47 @@
       border-left: 2px solid transparent;
       font-weight: 400;
       cursor: pointer;
-      padding-left: 0;
-      padding-top: 16px;
+      padding: 16px;
+      padding-top: 0;
       padding-bottom: 0;
-      transition: all 100ms ease-out; }
-      .nav-vertical li a:hover {
-        color: rgba(120, 71, 181, 1); }
-      .nav-vertical li.active a {
-        border-left: 0px; }
-  .nav-vertical .nav-sub {
+      transition: all 100ms ease-out;}
+    .nav-left li.active {
+      border-left: 2px solid rgba(120, 71, 181, 1);}
+  .nav-left li.nav-top-heading {
+    color: rgba(90, 90, 90, 1); }
+  .nav-left .active .nav-top-heading {
+    color: rgba(120, 71, 181, 1); }
+  
+
+  .nav-left .nav-subs {
     position: relative;}
-    .nav-vertical .nav-sub li { 
+    .nav-left .nav-subs ul {
+
+    }
+    .nav-left .nav-subs li { 
       list-style: none;
       padding-left: 16px;
       margin: 0;
       min-height: 26px; }
-      .nav-vertical .nav-sub li > a {
+      .nav-left .nav-subs li > a {
         font-size: 14px;
         position: relative;
         padding-top: 0;
         padding-bottom: 0;
         color: rgba(90, 90, 90, 1);}
-        .nav-vertical .nav-sub li > a:hover {
+        .nav-left .nav-subs li > a:hover {
         color: rgba(120, 71, 181, 1); }
+  .nav-left .active .nav-no-subs { 
+    list-style: none;
+    padding-left: 0px;
+    margin: 0;
+    min-height: 26px; }
+    .nav-left .active .nav-no-subs > div {
+      color: rgba(90, 90, 90, 1);
+      border-left: 2px solid rgba(120, 71, 181, 1); }
+    .nav-left .active .nav-no-subs a:hover {
+      color: rgba(120, 71, 181, 1); }
+
   
 
 .js-toc {

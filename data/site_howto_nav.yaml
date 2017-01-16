@@ -1,13 +1,22 @@
 header:
 
 toc:
-- file: 'site_setup'
+- file: '/portal/index'
   title: 'Setup'
-- file: 'site_deploy'
+- file: '/portal/deploy'
   title: 'Deploy and Test'
-- file: 'site_guidelines'
+- file: '/portal/guidelines'
   title: 'Portal Guidelines'
-- file: 'site_customize'
+- file: '/portal/content'
+  title: 'Writing Content'
+  subs:
+    - file: '/portal/writing_basics' 
+      title: 'Basics'
+    - file: '/portal/tutorials' 
+      title: 'Tutorials'
+    - file: '/portal/api_specs' 
+      title: 'API Specs'
+- file: '/portal/customize'
   title: 'Customize'
   subs:
     - file: 'site_architecture' 
@@ -22,14 +31,5 @@ toc:
       title: 'Table of Contents'
     - file: 'site_css' 
       title: 'CSS'
-- file: 'site_content'
-  title: 'Writing Content'
-  subs:
-    - file: 'site_content_basics' 
-      title: 'Basics'
-    - file: 'site_tutorials' 
-      title: 'Tutorials'
-    - file: 'site_specs' 
-      title: 'API Specs'
 
 footer:
