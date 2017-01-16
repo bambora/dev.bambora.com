@@ -26,7 +26,10 @@ under the License.
 
     <%= stylesheet_link_tag :bambora %>
     <%= stylesheet_link_tag :portal %>
+    <%= stylesheet_link_tag :tutorial %>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    
     <% if current_page.data.search %>
       <%= javascript_include_tag  "all" %>
     <% else %>
@@ -46,8 +49,8 @@ under the License.
 
     <%= partial "layouts/header" %>
 
-    <div class="" style="max-width:900px; margin-right: auto; margin-left: auto">
-      <%= partial "side_nav"%>
+    <div class="container">
+      <%= partial "side_nav" %>
 
       <div class="" style="position: relative; margin-left: 300px">
         <div class="content js-toc-content">
@@ -60,6 +63,9 @@ under the License.
       </div>
 
     </div>
+    
+    <%= partial "layouts/footer" %>
+
 
     <script>
     tocbot.init({
@@ -96,8 +102,6 @@ under the License.
       //listItemClass: '',
     });
     </script>
-
-    <%= partial "layouts/footer" %>
 
   </body>
 </html>
