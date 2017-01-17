@@ -8,6 +8,7 @@ footer {
 
 .jumbotron { 
     margin-top: 4em;
+    margin-bottom: 4em;
 
     h1 { 
         margin-bottom: 0px;
@@ -20,30 +21,43 @@ footer {
 
 .card-text {
     hr {
+        margin-top: 32px; 
         background: rgb(30, 30, 30);
     }
 }
 
+.cards .row > a { 
+    color: rgb(30, 30, 30);
+    text-decoration: none; 
+}
 
 .cards { 
-    margin-top: 128px;
+    margin-top: 32px;
 }
 
 .card {    
     height: 200px; 
-    padding: 45px;
+    padding: 25px 45px;
     position: relative;
     margin-bottom: 30px;
     z-index: 1;
 
     h3 { 
+        margin-top: 15px; 
         margin-bottom: 12px; 
+    }
+
+    p {
+        font-size: 14px; 
+    }
+    &:hover {
+        bottom: 10px; 
     }
 }
 
 .card:after { 
     content: '';
-    //display: block;
+    display: block;
     position: absolute;
     background: rgb(255, 255, 255);
     top: 0;
@@ -51,4 +65,10 @@ footer {
     left: 15px;
     right: 15px;
     z-index: -1;
+}
+
+.card .icon-bg {
+    padding: 10px 7px 5px;
+    color: white; 
+    border-radius: 4px;
 }
