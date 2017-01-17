@@ -3,7 +3,7 @@ body {
 }
 
 footer { 
-    background-color: white;
+    background-color: rgb(255, 255, 255);
 }
 
 .jumbotron { 
@@ -18,8 +18,37 @@ footer {
     }
 }
 
-.card { 
-    border: 1px solid rgb(140, 140, 140);
-    height: 100px; 
-    margin: 10px; 
+.card-text {
+    hr {
+        background: rgb(30, 30, 30);
+    }
+}
+
+
+.cards { 
+    margin-top: 128px;
+}
+
+.card {    
+    height: 200px; 
+    padding: 45px;
+    position: relative;
+    margin-bottom: 30px;
+    z-index: 1;
+
+    h3 { 
+        margin-bottom: 12px; 
+    }
+}
+
+.card:after { 
+    content: '';
+    //display: block;
+    position: absolute;
+    background: rgb(255, 255, 255);
+    top: 0;
+    bottom: 0;
+    left: 15px;
+    right: 15px;
+    z-index: -1;
 }
