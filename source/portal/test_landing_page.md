@@ -9,4 +9,4 @@ parent: /portal/test_landing_page
 search: false
 ---
 
-# Landing Page
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto nulla modi, corporis ab impedit quasi nisi fuga inventore aliquid, corrupti in fugiat harum. Sunt vel, numquam incidunt odio temporibus expedita.

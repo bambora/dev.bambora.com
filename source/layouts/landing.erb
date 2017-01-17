@@ -10,7 +10,7 @@
 
     <%= stylesheet_link_tag :bambora %>
     <%= stylesheet_link_tag :portal %>
-    <%= stylesheet_link_tag :tutorial %>
+    <%= stylesheet_link_tag :landing %>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     
@@ -26,7 +26,58 @@
     <%= partial "layouts/header" %>
 
     <div class="container">
-        <%= yield %>
+          
+      <div class="jumbotron">   
+        <h1>Build it with Bambora.</h1>
+        <p>Start accepting payments with code made by developers world wide.</p>
+      </div>
+
+      <div class="row">
+        <hr>
+        <div class="col-md-4">
+          <h2>Get Started.</h2>
+          <p>
+            Bambora makes it easy to accept payments in your app or website. 
+            Get integrated quickly using our guides and selecting from our 
+            range of SDKs.
+          </p>
+        </div>
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-md-4 card">card 1</div>
+            <div class="col-md-4 card">card 2</div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 card">card 3</div>
+            <div class="col-md-4 card">card 4</div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="row">
+        <hr>
+        <div class="col-md-4">
+          <h2>Upcoming Events.</h2>
+          <p>
+            Bambora makes it easy to accept payments in your app or website. 
+            Get integrated quickly using our guides and selecting from our 
+            range of SDKs.  
+          </p>
+        </div>
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-md-4 card">card 1</div>
+            <div class="col-md-4 card">card 2</div>
+          </div>
+          <div class="row">
+            <div class="col-md-4 card">card 3</div>
+            <div class="col-md-4 card">card 4</div>
+          </div>
+        </div>
+      </div>
+        
+        <%# yield %>
+
     </div>
     
     <%= partial "layouts/footer" %>
