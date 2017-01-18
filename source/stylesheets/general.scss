@@ -1,19 +1,27 @@
-// New CSS I've added that applies application wide.
+// ( New CSS I've added that applies on multiple pages )
 
-
+//
 // Variables (taken from Bambora UI): 
+//
+
 $muted: rgb(240, 240, 240);
 $lightest: rgb(255, 255, 255); 
 $contrast: rgb(140, 140, 140);
 $darkest: rgb(30, 30, 30); 
 
-.nav-left {
-    overflow:hidden;
-}
+// -----
+
+//
+// Nav menu styling:
+//
 
 // Breakpoint vars from Bambora UI: 
 $screen-md: 992px;
 $screen-sm: 767px; 
+ 
+.nav-left {
+    overflow:hidden;
+}
 
 // Re-position nav menu on smaller screens 
 @media only screen and (max-width: $screen-md) {
@@ -46,6 +54,11 @@ $screen-sm: 767px;
     }
 }
 
+// -----
+
+//
+// flex box cards 
+//
 
 // flex-box cards:
 .flex-row {
@@ -65,6 +78,7 @@ $screen-sm: 767px;
         flex-grow: 1;
         padding: 24px;
         margin-bottom: 30px;
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.04);
     }
 }
 
@@ -104,7 +118,11 @@ $screen-sm: 767px;
     }
 }
 
-/* Sticky footer */ 
+// -----
+
+// 
+// Sticky footer 
+//
 
 html {
     height: 100%;
@@ -117,13 +135,11 @@ body {
 }
 
 .container {
-    margin-top: 50px;
+    margin-top: 75px;
     flex: 1;
 }
 
-// ---
-
+// Note: I think this styling should be part of bambora ui
 footer { 
-    // Note: I think this styling should be part of bambora ui
     background-color: $lightest; 
 }

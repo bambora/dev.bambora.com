@@ -10,7 +10,6 @@ search: true
 
 # Card content: 
 # icons must be svg located in /source/images/svg/
-# colors from Bambora UI
 cards:
     -                
         title: Android test card
@@ -44,7 +43,6 @@ cards:
 
 ### Sub heading
 
-
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tempora excepturi 
 delectus tenetur a aspernatur sunt fuga iste fugiat ad nesciunt optio esse 
 quae nisi corrupti autem dolore, labore nulla. Labore.Praesentium, est, 
@@ -53,5 +51,3 @@ perferendis quas quidem rerum itaque quae, dicta mollitia alias voluptates
 sapiente hic distinctio possimus minus iste, tempora voluptatum, rem.
 Dolores, consequuntur, voluptate adipisci assumenda facere animi voluptas 
 sit praesentium nihil cumque alias rerum possimus nostrum sunt iusto. 
-Aliquid voluptatum veritatis optio error ea officiis, quia tempora tempore 
-iste perferendis.Sapiente rem nemo quod assumenda, ducimus aperiam impedit.

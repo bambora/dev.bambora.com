@@ -13,7 +13,6 @@ tag_line: Start accepting payments with code made by developers world wide.
 
 # Card content: 
 # icons must be svg located in /source/images/svg/
-# colors from Bambora UI
 card_sets:
     -  
         title: Get Started.
