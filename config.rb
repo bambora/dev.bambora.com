@@ -24,6 +24,16 @@ activate :autoprefixer do |config|
   config.inline   = true
 end
 
+# Helpers 
+helpers do 
+  def svg(name) 
+    root = Middleman::Application.root
+    file_path = "#{root}/source/images/svg/#{name}.svg"
+    return File.read(file_path) if File.exists?(file_path)
+    '(not found)'
+  end
+end
+
 # Github pages require relative links
 activate :relative_assets
 set :relative_links, true

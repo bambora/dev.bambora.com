@@ -33,7 +33,7 @@
       </div>
 
       <% current_page.data.card_sets.each do |card_set| %> 
-        <div class="row">
+        <div class="row"> 
           <div class="col-md-3 card-text">
             <hr>
             <h2><%= card_set.title %></h2>
@@ -41,67 +41,31 @@
               <%= card_set.description %>
             </p>
           </div>
+        
           <div class="col-md-8 col-md-offset-1 cards">
-            <div class="row">
-              
-              <a href="#"> 
-                <div class="col-md-6 card">
-                  <span class="icon-bg" style="background-color:rgb(203, 70, 112)">
-                    <svg class="fill-inherit" width="16" height="18" viewBox="0 0 16 18" xmlns="http://www.w3.org/2000/svg"><title>notification-active</title><g fill="#4F5355" fill-rule="evenodd"><path d="M14 10V6A6 6 0 0 0 2 6v4H0v2h16v-2h-2zM8 16c-1.103 0-2-.897-2-2H4a4 4 0 0 0 8 0h-2c0 1.103-.897 2-2 2"/></g></svg>
-                  </span>
-                  <h3><%= card_set.cards.card_1.title %></h3>
-                  <p>
-                    <%= card_set.cards.card_1.description %>
-                  </p>
-                </div>
-              </a>
-              
-              <a href="#">
-                <div class="col-md-6 card">
-                  <span class="icon-bg" style="background-color:rgb(0, 166, 153)">
-                    <svg class="fill-inherit" width="19" height="14" viewBox="0 0 19 14" xmlns="http://www.w3.org/2000/svg"><title>checkmark</title><path d="M16.619 0L5.47 10.936 1.593 7.132 0 8.762l4.674 4.585a1.135 1.135 0 0 0 1.593 0L18.213 1.63 16.619 0z" fill="#74797B" fill-rule="evenodd"/></svg>
-                  </span>
-                  <h3><%= card_set.cards.card_2.title %></h3>
-                  <p>
-                    <%= card_set.cards.card_2.description %>
-                  </p>
-                </div>
-              </a> 
-               
-            </div>
-            <div class="row">
-            
-            <a href="#">
-              <div class="col-md-6 card">
-                <span class="icon-bg" style="background-color:rgb(28, 145, 176)">
-                  <svg class="fill-inherit" width="19" height="14" viewBox="0 0 19 14" xmlns="http://www.w3.org/2000/svg"><title>list</title><path d="M7.968 2.28h10.245V0H7.968v2.28zM0 7.975h18.213v-2.28H0v2.28zm0 5.696h10.245v-2.278H0v2.278z" fill="#84898A" fill-rule="evenodd"/></svg>
-                </span>
-                <h3><%= card_set.cards.card_3.title %></h3>
-                <p>
-                  <%= card_set.cards.card_3.description %>
-                </p>
-              </div>
-            </a>
-            
-            <a href="#">
-              <div class="col-md-6 card">
-                <span class="icon-bg" style="background-color:rgb(252, 207, 120)">
-                  <svg class="fill-inherit" width="20" height="16" viewBox="0 0 20 16" xmlns="http://www.w3.org/2000/svg"><title>creditcard-outline</title><g fill="#4F5355" fill-rule="evenodd"><path d="M1 6h18V5H1z"/><path d="M18 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2m0 1c.552 0 1 .448 1 1v12c0 .552-.448 1-1 1H2c-.552 0-1-.448-1-1V2c0-.552.448-1 1-1h16"/></g></svg>
-                </span>
-                <h3><%= card_set.cards.card_4.title %></h3>
-                <p>
-                  <%= card_set.cards.card_4.description %>
-                </p>
-              </div>
-            </a>
+            <div class="flex-row row">
 
-          </div>
-          </div>
-        </div>
-      <% end %> 
+              <% card_set.cards.each do |card| %>
+                
+                <div class="col-md-6">
+                    <div class="card">
+                      <span class="icon-bg" style="background-color:<%= card.color %>">
+                        <%= svg card.icon %>
+                      </span>
+                      <h3><%= card.title %></h3>
+                      <p><%= card.description %></p>
+                    </div>
+                </div>
 
-    </div>
-    
+              <% end %>
+
+            </div> <!-- /.flex-row -->
+          </div> <!-- /.col -->
+        </div> <!-- /.row -->
+      <% end %>
+
+    </div> <!-- /.container  -->
+
     <%= partial "layouts/footer" %>
 
   </body>
