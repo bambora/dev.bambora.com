@@ -27,14 +27,14 @@
 
     <div class="container">
           
-      <div class="jumbotron">   
+      <div class="page-heading">   
         <h1><%= current_page.data.big_heading %></h1>
         <p><%= current_page.data.tag_line %></p>
       </div>
 
       <% current_page.data.card_sets.each do |card_set| %> 
-        <div class="row"> 
-          <div class="col-md-3 card-text">
+        <div class="row card-set"> 
+          <div class="col-md-3">
             <hr>
             <h2><%= card_set.title %></h2>
             <p>
@@ -42,16 +42,17 @@
             </p>
           </div>
         
-          <div class="col-md-8 col-md-offset-1 cards">
+          <div class="col-md-8 col-md-offset-1">
             <div class="flex-row row">
 
               <% card_set.cards.each do |card| %>
                 
                 <div class="col-md-6">
                     <div class="card">
-                      <span class="icon-bg" style="background-color:<%= card.color %>">
+                      <div class="icon-bg" style="background-color:<%= card.color %>">
                         <%= svg card.icon %>
-                      </span>
+                      </div>
+                      <span><%= card.tag.upcase if card.tag %></span>
                       <h3><%= card.title %></h3>
                       <p><%= card.description %></p>
                     </div>

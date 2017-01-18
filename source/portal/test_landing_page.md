@@ -29,6 +29,7 @@ card_sets:
                     iOS and android apps.
                 icon: notification-active
                 color: rgb(0, 166, 153)
+                tag: new
             -
                 title: Accept payments online  
                 description: > 
@@ -85,6 +86,7 @@ card_sets:
                     itaque delectus.
                 icon: comment
                 color: rgb(252, 207, 120)
+                tag: test-tag
     -
         title: Lots of Cards.
         description: >

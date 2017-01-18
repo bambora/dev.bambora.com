@@ -1,74 +1,81 @@
 
-// TODO: 
-// - clean up css 
-// - split out card stuff 
-// - cards should be links 
+// Variables (taken from Bambora UI): 
+$muted: rgb(240, 240, 240);
+$lightest: rgb(255, 255, 255); 
+$contrast: rgb(140, 140, 140);
+$darkest: rgb(30, 30, 30); 
 
 body { 
-    background-color: rgb(240, 240, 240);
+    background-color: $muted;
 }
 
-// Note: I think this should be part of bambora ui
 footer { 
-    background-color: rgb(255, 255, 255);
+    // Note: I think this styling should be part of bambora ui
+    background-color: $lightest; 
 }
 
-.jumbotron { 
-    margin-top: 4em;
-    margin-bottom: 4em;
+.page-heading { 
+    margin-top: 60px;
+    margin-bottom: 60px;
 
     h1 { 
         margin-bottom: 0px;
     }
 
     p {
-        color: rgb(140, 140, 140);
+        color: $contrast;
     }
 }
 
-.card-text {
+.card-set { 
+    margin-top: 32px; 
     hr {
-        margin-top: 32px; 
-        background: rgb(30, 30, 30);
-    }
-}
-
-.cards { 
-    margin-top: 32px;
-
-    .row > a { 
-        color: rgb(30, 30, 30);
-        text-decoration: none; 
+        margin-top: 0; 
+        background: $darkest; 
     }
 }
 
 
+// flex-box cards:
 .flex-row {
 	display: flex;
 	flex-wrap: wrap;
 }
+
 .flex-row > [class*='col-'] {
-	display: flex;
-	flex-direction: column;
-}
-
-.flex-row .thumbnail,
-.flex-row .caption {
-	flex-direction: column;
-	display: flex;
-	flex: 1 0 auto;
-	height: auto;
-	position: relative;
-}
-.flex-text {
-	flex-grow: 1;
-}
-
-.card, a {
-    background-color: white;
+ 	display: flex;
+ 	flex-direction: column;
     flex-grow: 1;
-    margin-bottom: 30px;
+}
+
+.card {
+    background-color: $lightest;
     padding: 24px;
+    margin-bottom: 30px;
+    flex-grow: 1;
+
+    .icon-bg {
+        display: inline-block;
+        width: 30px;
+        height: 30px; 
+        text-align: center;
+        line-height: 35px; 
+        border-radius: 4px;
+        
+        path { 
+            fill: $lightest; 
+        }
+    }
+
+    span {
+        display: block;
+        float: right;
+        background: rgb(202, 172, 223);
+        color: rgb(120, 71, 181);
+        border-radius: 4px; 
+        font-size: 10px; 
+        padding: 0px 15px;
+    }
 
     h3 { 
         margin-top: 15px; 
@@ -79,26 +86,4 @@ footer {
         font-size: 14px; 
         margin: 0px; 
     }
-
-    .icon-bg {
-        padding: 10px 7px 5px;
-        color: white; 
-        border-radius: 4px;
-
-        img {
-            display: inline;
-        }
-
-        path { 
-            fill: white; 
-        }
-    }
-}
-
-.col-md-6 { 
-    flex-grow: 1;
-}
-
-.flex-row.row a { 
-    all: unset; 
 }

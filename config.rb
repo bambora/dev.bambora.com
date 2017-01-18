@@ -26,6 +26,8 @@ end
 
 # Helpers 
 helpers do 
+  
+  # Helper method to display svg images inline
   def svg(name) 
     root = Middleman::Application.root
     file_path = "#{root}/source/images/svg/#{name}.svg"
