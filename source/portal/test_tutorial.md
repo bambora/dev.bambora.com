@@ -11,7 +11,7 @@ search: false
 
 # Test Tutorial
 
-<hr>
+---
 
 ## Tutorial Sub Heading
 
@@ -27,7 +27,7 @@ In dolorum ad odit nesciunt suscipit vitae est dolor doloribus tenetur minima te
 similique labore commodi. Explicabo, ad excepturi, debitis omnis cumque iusto odio nemo illo 
 quibusdam blanditiis, id!
 
-<hr>
+---
 
 ## Second Level Heading
 
@@ -95,7 +95,7 @@ tocbot.init({
 }); 
 ```
 
-<hr>
+---
 
 ## Another subheading 
 

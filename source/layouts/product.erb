@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    
+    <title>V2</title>
+
+    <%= stylesheet_link_tag :bambora %>
+    <%= stylesheet_link_tag :portal %>
+    <%= stylesheet_link_tag :landing %>
+    <%= stylesheet_link_tag :product %>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js">
+    </script>
+    
+    <% if current_page.data.search %>
+      <%= javascript_include_tag  "all" %>
+    <% else %>
+      <%= javascript_include_tag  "all_nosearch" %>
+    <% end %>
+  </head>
+
+  <body class="<%= page_classes %>">
+
+    <%= partial "layouts/header" %>
+
+    <div class="container">
+      
+      <%= partial "side_nav" %>
+
+      <div class="row">
+
+        <div class="col-md-9 col-md-offset-3">
+          <%= yield %>
+        </div>
+      </div>
+
+      <% current_page.data.card_sets.each do |card_set| %> 
+        <div class="row card-set">
+
+          <div class="col-md-9 col-md-offset-3">
+            <div class="flex-row row">
+
+              <!-- todo: Move to partial --> 
+              <% card_set.cards.each do |card| %>
+                
+                <div class="col-md-6">
+                    <a href="#">
+                    <div class="card">
+                      <div class="icon-bg" style="background-color:<%= card.color %>">
+                        <%= svg card.icon %>
+                      </div>
+                      <span><%= card.tag.upcase if card.tag %></span>
+                      <h3><%= card.title %></h3>
+                      <p><%= card.description %></p>
+                    </div>
+                    </a>
+                </div>
+
+              <% end %>
+
+            </div> <!-- /.flex-row -->
+          </div> <!-- /.col -->
+        </div> <!-- /.row -->
+      <% end %>
+
+    </div> <!-- /.container  -->
+
+    <%= partial "layouts/footer" %>
+
+    <script>
+    tocbot.init({
+      // Where to render the table of contents.
+      tocSelector: '.js-toc',
+      // Where to grab the headings to build the table of contents.
+      contentSelector: '.js-toc-content',
+      // Which headings to grab inside of the contentSelector element.
+      headingSelector: 'h1, h2, h3, h4, h5',
+      // How many heading levels should not be collpased.
+      // For example, number 6 will show everything since
+      // there are only 6 heading levels and number 0 will collpase them all.
+      // The sections that are hidden will open
+      // and close as you scroll to headings within them.
+
+      collapseDepth: 1,
+      // Main class to add to links.
+      //linkClass: '',
+
+      // Extra classes to add to links.
+      //extraLinkClasses: '',
+
+      // Class to add to active links,
+      // the link corresponding to the top most heading on the page.
+      //activeLinkClass: '',
+
+      // Main class to add to lists.
+      //listClass: 'nav-vertical',
+
+      // Extra classes to add to lists.
+      //extraListClasses: '',
+
+      // Class to add to list items.
+      //listItemClass: '',
+    });
+    </script>    
+
+  </body>
+</html>

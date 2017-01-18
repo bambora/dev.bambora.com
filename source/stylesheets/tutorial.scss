@@ -3,14 +3,8 @@
     overflow:hidden;
 }
 
-.container {
-    max-width:900px; 
-    margin-right: auto; 
-    margin-left: auto;
-}
-
-
 /* Sticky footer */ 
+// TODO: Find better way to do. 
 $footer-height: 66px;
 
 html, body {

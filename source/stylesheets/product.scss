@@ -1,0 +1,10 @@
+.nav-left {
+    overflow:hidden;
+    margin-top: 112px; 
+}
+
+@media only screen and (max-width : 991px) {
+    .nav-left {
+        display: none; 
+    }
+}

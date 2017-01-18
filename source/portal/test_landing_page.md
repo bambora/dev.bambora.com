@@ -8,12 +8,12 @@ parent: /portal/test_landing_page
 
 search: false
 
-# Page content: 
-# icons must be located in /source/images/svg/
-
 big_heading: Build it with Bambora
 tag_line: Start accepting payments with code made by developers world wide.
 
+# Card content: 
+# icons must be svg located in /source/images/svg/
+# colors from Bambora UI
 card_sets:
     -  
         title: Get Started.
