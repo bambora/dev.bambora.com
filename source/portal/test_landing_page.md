@@ -28,7 +28,6 @@ card_sets:
                     Use the Bambora native payments SDK to accept payments in 
                     iOS and android apps.
                 icon: notification-active
-                color: rgb(0, 166, 153)
                 tag: new
             -
                 title: Accept payments online  
@@ -36,21 +35,18 @@ card_sets:
                     Use Bambora checkout, or one of our Shopping Cart plugins, 
                     to accept payments on your website or online store.
                 icon: checkmark
-                color: rgb(28, 145, 176)
             -
                 title: Try our API 
                 description: >
                     Get up and running in minutes. Use the Bambora API to make 
                     payments and much more.
                 icon: list
-                color: rgb(203, 70, 112)
             -
                 title: Use a test card 
                 description: >
                     You can use these test cards for testing card registration and 
                     purchasing (no real money is charged when these cards are used).
                 icon: creditcard-outline
-                color: rgb(252, 207, 120)
     -
         title: Upcoming Events.
         description: >
@@ -63,21 +59,18 @@ card_sets:
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
                     Dolores officia incidunt sapiente molestiae totam quisquam.
                 icon: flag
-                color: rgb(0, 166, 153)
             -
                 title: Another test card
                 description: > 
                     Tempore corrupti, obcaecati voluptate nulla, repellat labore 
                     culpa, accusamus doloremque laudantium similique id molestiae.
                 icon: more
-                color: rgb(28, 145, 176)
             -
                 title: This is a test card
                 description: >
                     Beatae reprehenderit sunt, nulla sed, consequuntur nesciunt 
                     dolor eaque itaque qui fugiat.
                 icon: search
-                color: rgb(203, 70, 112)
             -
                 title: The fourth test card
                 description: >
@@ -85,7 +78,6 @@ card_sets:
                     molestiae et natus qui voluptas doloribus minus praesentium 
                     itaque delectus.
                 icon: comment
-                color: rgb(252, 207, 120)
                 tag: test-tag
     -
         title: Lots of Cards.
@@ -100,21 +92,18 @@ card_sets:
                     elit. Amet eligendi, iste voluptatibus minus, 
                     temporibus autem.
                 icon: flag
-                color: rgb(0, 166, 153)
             -
                 title: Another test card
                 description: > 
                     Tempore corrupti, obcaecati voluptate nulla, repellat labore 
                     culpa, accusamus doloremque laudantium similique id molestiae.
                 icon: more
-                color: rgb(28, 145, 176)
             -
                 title: This is a test card
                 description: >
                     Beatae reprehenderit sunt, nulla sed, consequuntur nesciunt 
                     dolor eaque itaque qui fugiat.
                 icon: search
-                color: rgb(203, 70, 112)
             -
                 title: The fourth test card
                 description: >
@@ -122,7 +111,6 @@ card_sets:
                     molestiae et natus qui voluptas doloribus minus praesentium 
                     itaque delectus.
                 icon: comment
-                color: rgb(252, 207, 120)
             -
                 title: This is a test card
                 description: >
@@ -132,7 +120,6 @@ card_sets:
                     molestiae et natus qui voluptas doloribus minus praesentium 
                     itaque delectus.
                 icon: search
-                color: rgb(203, 70, 112)
             -
                 title: The fourth test card
                 description: >
@@ -140,13 +127,11 @@ card_sets:
                     molestiae et natus qui voluptas doloribus minus praesentium 
                     itaque delectus.
                 icon: comment
-                color: rgb(252, 207, 120)
             -
                 title: The fourth test card
                 description: >
                     Beatae reprehenderit sunt, nulla sed, consequuntur nesciunt 
                     dolor eaque itaque qui fugiat.
                 icon: comment
-                color: rgb(252, 207, 120)
 
 ---

@@ -1,4 +1,3 @@
-
 // Variables (taken from Bambora UI): 
 $muted: rgb(240, 240, 240);
 $lightest: rgb(255, 255, 255); 
@@ -54,7 +53,6 @@ footer {
         flex-grow: 1;
         padding: 24px;
         margin-bottom: 30px;
-        flex-grow: 1; 
     }
 }
 
@@ -78,8 +76,9 @@ footer {
         background: rgb(202, 172, 223);
         color: rgb(120, 71, 181);
         border-radius: 4px; 
-        font-size: 10px; 
-        padding: 0px 15px;
+        font-size: 12px; 
+        padding: 0px 10px;
+        font-weight: bold;
     }
 
     h3 { 

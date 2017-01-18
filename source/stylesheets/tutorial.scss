@@ -3,6 +3,11 @@
     overflow:hidden;
 }
 
+.content {
+    position: relative;
+    margin-left: 300px; 
+}
+
 /* Sticky footer */ 
 // TODO: Find better way to do. 
 $footer-height: 66px;

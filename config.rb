@@ -27,12 +27,19 @@ end
 # Helpers 
 helpers do 
   
-  # Helper method to display svg images inline
+  # Display svg images inline
   def svg(name) 
     root = Middleman::Application.root
     file_path = "#{root}/source/images/svg/#{name}.svg"
     return File.read(file_path) if File.exists?(file_path)
     '(not found)'
+  end
+
+  # Return random color for card icon. 
+  # Names must exist in Bamora UI.
+  def get_random_icon_color()
+    ['green-light', 'raspberry', 'tabriz-blue', 
+      'green-powder', 'factory-yellow'].sample
   end
 end
 
