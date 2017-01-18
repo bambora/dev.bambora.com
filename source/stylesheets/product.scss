@@ -2,33 +2,3 @@
     margin-top: 75px; 
 }
 
-.nav-left {
-    overflow:hidden;
-}
-
-@media only screen and (max-width: 992px) {
-    .nav-sticky ul {
-        padding-left: 0;
-    }
-}
-
-// TODO: Should be the bootstrap grid breakpoint:
-@media only screen and (max-width : 767px) {
-    .nav-sticky {
-        position: static; 
-    }
-    .nav-left {
-        padding-bottom: 0;
-        margin-top: 50px;
-
-        ul {
-            padding-left: 0;
-        }
-    }
-    hr {
-        margin-top: 50px;
-    }
-    .container {
-        margin-top: 0px; 
-    }
-}

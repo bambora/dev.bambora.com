@@ -8,11 +8,6 @@ body {
     background-color: $muted;
 }
 
-footer { 
-    // Note: I think this styling should be part of bambora ui
-    background-color: $lightest; 
-}
-
 .page-heading { 
     margin-top: 60px;
     margin-bottom: 60px;
@@ -31,63 +26,5 @@ footer {
     hr {
         margin-top: 0; 
         background: $darkest; 
-    }
-}
-
-
-// flex-box cards:
-.flex-row {
-	display: flex;
-	flex-wrap: wrap;
-}
-
-.flex-row > [class*='col-'] {
- 	display: flex;
- 	flex-direction: column;
-    flex-grow: 1;
-
-    a {
-        background-color: $lightest;
-        color: $darkest; 
-        text-decoration: none;
-        flex-grow: 1;
-        padding: 24px;
-        margin-bottom: 30px;
-    }
-}
-
-.card {
-    .icon-bg {
-        display: inline-block;
-        width: 30px;
-        height: 30px; 
-        text-align: center;
-        line-height: 35px; 
-        border-radius: 4px;
-        
-        path { 
-            fill: $lightest; 
-        }
-    }
-
-    span {
-        display: block;
-        float: right;
-        background: rgb(202, 172, 223);
-        color: rgb(120, 71, 181);
-        border-radius: 4px; 
-        font-size: 12px; 
-        padding: 0px 10px;
-        font-weight: bold;
-    }
-
-    h3 { 
-        margin-top: 15px; 
-        margin-bottom: 12px; 
-    }
-
-    p {
-        font-size: 14px; 
-        margin: 0px; 
     }
 }

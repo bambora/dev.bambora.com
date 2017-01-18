@@ -1,26 +1,4 @@
-
-.nav-left {
-    overflow:hidden;
-}
-
 .content {
     position: relative;
     margin-left: 300px; 
-}
-
-/* Sticky footer */ 
-// TODO: Find better way to do. 
-$footer-height: 66px;
-
-html, body {
-	height: 100%;
-}
-
-.container {
-	min-height: 100%;
-	margin: 50px auto (-$footer-height);
-}
-
-.push {
-	height: $footer-height;
 }
