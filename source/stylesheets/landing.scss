@@ -46,14 +46,19 @@ footer {
  	display: flex;
  	flex-direction: column;
     flex-grow: 1;
+
+    a {
+        background-color: $lightest;
+        color: $darkest; 
+        text-decoration: none;
+        flex-grow: 1;
+        padding: 24px;
+        margin-bottom: 30px;
+        flex-grow: 1; 
+    }
 }
 
 .card {
-    background-color: $lightest;
-    padding: 24px;
-    margin-bottom: 30px;
-    flex-grow: 1;
-
     .icon-bg {
         display: inline-block;
         width: 30px;

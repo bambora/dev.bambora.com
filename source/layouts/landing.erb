@@ -48,6 +48,7 @@
               <% card_set.cards.each do |card| %>
                 
                 <div class="col-md-6">
+                    <a href="#">
                     <div class="card">
                       <div class="icon-bg" style="background-color:<%= card.color %>">
                         <%= svg card.icon %>
@@ -56,7 +57,9 @@
                       <h3><%= card.title %></h3>
                       <p><%= card.description %></p>
                     </div>
+                    </a>
                 </div>
+
 
               <% end %>
 
