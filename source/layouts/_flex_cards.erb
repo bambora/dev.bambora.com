@@ -1,0 +1,23 @@
+<%# 
+    Render the passed in set of cards with css flexbox 
+    styling so that they fill the containing column in 
+    pairs. 
+%> 
+<div class="flex-row row">
+    <% cards.each do |card| %>
+    
+    <div class="col-md-6">
+        <a href="#">
+        <div class="card">
+            <div class="icon-bg" style="background-color:<%= card.color %>">
+            <%= svg card.icon %>
+            </div>
+            <span><%= card.tag.upcase if card.tag %></span>
+            <h3><%= card.title %></h3>
+            <p><%= card.description %></p>
+        </div>
+        </a>
+    </div>
+
+    <% end %>
+</div>

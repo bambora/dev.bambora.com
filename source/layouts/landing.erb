@@ -43,29 +43,9 @@
           </div>
         
           <div class="col-md-8 col-md-offset-1">
-            <div class="flex-row row">
-
-              <% card_set.cards.each do |card| %>
-                
-                <div class="col-md-6">
-                    <a href="#">
-                    <div class="card">
-                      <div class="icon-bg" style="background-color:<%= card.color %>">
-                        <%= svg card.icon %>
-                      </div>
-                      <span><%= card.tag.upcase if card.tag %></span>
-                      <h3><%= card.title %></h3>
-                      <p><%= card.description %></p>
-                    </div>
-                    </a>
-                </div>
-
-
-              <% end %>
-
-            </div> <!-- /.flex-row -->
-          </div> <!-- /.col -->
-        </div> <!-- /.row -->
+            <%= partial("layouts/flex_cards", :locals => { :cards => card_set.cards }) %>
+          </div>
+        </div>
       <% end %>
 
     </div> <!-- /.container  -->

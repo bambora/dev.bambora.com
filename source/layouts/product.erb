@@ -24,15 +24,12 @@
   </head>
 
   <body class="<%= page_classes %>">
-
     <%= partial "layouts/header" %>
 
     <div class="container">
-      
       <%= partial "side_nav" %>
 
       <div class="row">
-
         <div class="col-md-9 col-md-offset-3">
           <%= yield %>
         </div>
@@ -40,31 +37,10 @@
 
       <% current_page.data.card_sets.each do |card_set| %> 
         <div class="row card-set">
-
           <div class="col-md-9 col-md-offset-3">
-            <div class="flex-row row">
-
-              <!-- todo: Move to partial --> 
-              <% card_set.cards.each do |card| %>
-                
-                <div class="col-md-6">
-                    <a href="#">
-                    <div class="card">
-                      <div class="icon-bg" style="background-color:<%= card.color %>">
-                        <%= svg card.icon %>
-                      </div>
-                      <span><%= card.tag.upcase if card.tag %></span>
-                      <h3><%= card.title %></h3>
-                      <p><%= card.description %></p>
-                    </div>
-                    </a>
-                </div>
-
-              <% end %>
-
-            </div> <!-- /.flex-row -->
-          </div> <!-- /.col -->
-        </div> <!-- /.row -->
+            <%= partial("layouts/flex_cards", :locals => { :cards => card_set.cards }) %>
+          </div>
+        </div> 
       <% end %>
 
     </div> <!-- /.container  -->
