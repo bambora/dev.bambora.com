@@ -11,10 +11,14 @@
       <%= partial "layouts/header" %>
 
         <div class="container">
-          <div class="page-heading">   
-            <h1><%= current_page.data.big_heading %></h1>
-            <p><%= current_page.data.tag_line %></p>
-            <a class="btn">Get Started</a>
+          <div class="row">
+            <div class="col-md-5 col-sm-8 col-xs-10">
+              <div class="page-heading">   
+                <h1><%= current_page.data.big_heading %></h1>
+                <p><%= current_page.data.tag_line %></p>
+                <a class="btn">Get Started</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -25,11 +29,13 @@
     <div class="container">
 
       <% unless current_page.data.hero_image %>
-          <div class="no-hero page-heading">   
+          <div class="row">
+          <div class="no-hero page-heading col-md-5 col-sm-8 col-xs-10">   
             <h1><%= current_page.data.big_heading %></h1>
             <p><%= current_page.data.tag_line %></p>
 
             <a class="btn">Get Started</a>
+          </div>
           </div>
       <% end %>
 

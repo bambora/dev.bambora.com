@@ -9,23 +9,14 @@ body > .container {
 //
 
 $muted: rgb(240, 240, 240);
+$muted-dark: rgb(200, 200, 200);
 $lightest: rgb(255, 255, 255); 
 $contrast: rgb(140, 140, 140);
+$contrast-light: rgb(163, 163, 163);
 $darkest: rgb(30, 30, 30); 
 $amethyst: rgb(69, 36, 89);
 
 // -----
-
-//
-// Top nav menu styling: 
-//
-.hero .nav-pane {
-    background-color: transparent;
-    a {
-        color: $lightest;
-    }
-}
-
 
 //
 // Nav side menu styling:
@@ -34,10 +25,6 @@ $amethyst: rgb(69, 36, 89);
 // Breakpoint vars from Bambora UI: 
 $screen-md: 992px;
 $screen-sm: 767px;
-
-.nav-left {
-    overflow:hidden;
-}
 
 // Re-position nav menu on smaller screens 
 @media only screen and (max-width: $screen-md) {

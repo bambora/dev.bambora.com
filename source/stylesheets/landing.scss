@@ -9,11 +9,9 @@ body {
 }
 
 .page-heading {
+    margin-bottom: 60px;
     h1 {
         margin-bottom: 0px; 
-    }
-    p {
-        width: 450px; // TODO: Put in a col? 
     }
 }
 
@@ -21,23 +19,36 @@ body {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
-    height: 65vh; 
     position: relative;
     margin-bottom: -40px; 
 
-    .page-heading {
-        position: absolute; 
-        bottom: 75px;
+    .nav-pane {
+        background-color: transparent;
+        a {
+            color: $lightest;
+        }
+    }
 
+    .page-heading {
+        margin-top: 15vw; 
         h1, p {
             color: $lightest;
         }
     }
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-image: linear-gradient(to bottom right, black, rgb(69, 36, 89));
+        opacity: .7;         
+    }
 }
 
 .no-hero.page-heading {
-    margin-bottom: 60px;
-
     p {
         color: $contrast;
     }
