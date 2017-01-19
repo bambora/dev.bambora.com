@@ -8,8 +8,11 @@ parent: /portal/test_landing_page
 
 search: false
 
-big_heading: Build it with Bambora
-tag_line: Start accepting payments with code made by developers world wide.
+big_heading: Build it with Bambora.
+tag_line:  > 
+    Start accepting payments today with code made by developers world wide.
+    Handy guides and libraries at reach.
+hero_image: shoal-1.png
 
 # Card content: 
 # icons must be svg located in /source/images/svg/

@@ -8,18 +8,41 @@ body {
     background-color: $muted;
 }
 
-.page-heading { 
+.page-heading {
+    h1 {
+        margin-bottom: 0px; 
+    }
+    p {
+        width: 450px; // TODO: Put in a col? 
+    }
+}
+
+.hero { 
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 60vh; 
+    position: relative;
+    margin-bottom: -40px; 
+
+    .page-heading {
+        position: absolute; 
+        bottom: 75px;
+
+        h1, p {
+            color: $lightest;
+        }
+    }
+}
+
+.no-hero.page-heading {
     margin-bottom: 60px;
 
-    h1 { 
-        margin-bottom: 0px;
-    }
-
     p {
-        font-size: 18px; 
         color: $contrast;
     }
 }
+
 
 .card-set { 
     margin-top: 32px; 
