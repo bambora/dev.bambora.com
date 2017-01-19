@@ -6,20 +6,21 @@
 
   <body class="<%= page_classes %>">
 
-    <%= partial "layouts/header" %>
-
     <% if current_page.data.hero_image %>
       <div class="hero" style="background-image: url('/images/<%= current_page.data.hero_image %>');">
+      <%= partial "layouts/header" %>
+
         <div class="container">
           <div class="page-heading">   
             <h1><%= current_page.data.big_heading %></h1>
             <p><%= current_page.data.tag_line %></p>
-
             <a class="btn">Get Started</a>
           </div>
         </div>
       </div>
-    <% end %> 
+    <% else %>
+      <%= partial "layouts/header" %>
+    <% end %>  
 
     <div class="container">
 

@@ -12,11 +12,23 @@ $muted: rgb(240, 240, 240);
 $lightest: rgb(255, 255, 255); 
 $contrast: rgb(140, 140, 140);
 $darkest: rgb(30, 30, 30); 
+$amethyst: rgb(69, 36, 89);
 
 // -----
 
 //
-// Nav menu styling:
+// Top nav menu styling: 
+//
+.hero .nav-pane {
+    background-color: transparent;
+    a {
+        color: $lightest;
+    }
+}
+
+
+//
+// Nav side menu styling:
 //
 
 // Breakpoint vars from Bambora UI: 

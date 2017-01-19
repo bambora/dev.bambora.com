@@ -1,7 +1,11 @@
 <nav class="nav-pane">
     <div class="pull-left nav-links">
     <a href="http://bambora.com" class="logo">
-        <%= image_tag "svg/zebraffe-dev.svg" %>
+        <% if current_page.data.hero_image %> 
+            <%= image_tag "svg/zebraffe-dev-white.svg" %>
+        <% else %> 
+            <%= image_tag "svg/zebraffe-dev.svg" %>
+        <% end %> 
     </a>
     <a href="">Quickstart</a>
     <a href="">Tutorials</a>
