@@ -1,4 +1,9 @@
-.content {
-    position: relative;
-    margin-left: 300px; 
+
+
+/* Sticky footer */ 
+$footer-height: 66px;
+
+
+.footer-buffer {
+	height: $footer-height;
 }

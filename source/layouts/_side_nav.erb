@@ -1,0 +1,54 @@
+<%#
+  Left-hand navigation pane.
+
+  There are Top Categories and Sub-Categories.
+  Any Top Category listed can have zero or more Sub-Categories.
+  If a Category does not have any Sub-Categories then the dynamic ToC is rendered under it. It is up to the markdown files to state what that 'parent' is so the ToC can be generated there. TocBot, the automated ToC tool, will generate the ToC based on the Headings in the markdown file.
+
+  Navigation is configured in yaml files in the data/ folder. The nav for a particular top-level markdown page is defined by the frontmatter variable 'nav'. The Side navigation ToC is defined by a varaible called 'toc'.
+
+Example .yaml file, located in data/, that renders the side menu.
+toc:
+- file: 'category1'
+  title: 'Category 1 Title'
+  subs:
+    - file: 'category1_sub1' 
+      title: 'Sub1 Title'
+    - file: 'category1_sub2' 
+      title: 'Sub2 Title'
+- file: 'category2'
+  title: 'Category 2 Title'
+  subs:
+    - file: 'category2_sub1' 
+      title: 'Sub1 Hello'
+%>
+
+<% if current_page.data.nav %>
+  <% nav = data["#{current_page.data.nav}"].toc %>
+<% else %>
+  <% nav = data.nav.toc %>
+<% end %>
+
+<% parent = current_page.data.parent %>
+
+<div class="nav-left nav-sticky">
+  <ul>
+  <% nav.each do |category| %>
+    <%# If this top-level category's file name matches the parent name of the markdown file then label this category as 'active' %>
+    <li data-nav-title="<%= category.file %>" <% if parent && parent==category.file %>class="active"<% end %> >
+      <a href="<%= category.file %>.html" class="nav-top-heading"><%= category.title %></a>
+      <% if category.subs && parent==category.file %>
+        <ul class="nav-subs">
+        <% category.subs.each do |sub| %>
+          <li><a href="<%= sub.file %>.html"><%= sub.title %></a><div data-nav-title="<%= sub.file %>" <% if current_page.data.name==sub.file%>class="js-toc"<%end%>></div></li>
+          <%# if this sub-section's file name matches the current pages 'name' param then the dynamic ToC will be generated here by setting the style js-toc. %>
+        <% end %>
+        </ul>
+      <% elsif !category.subs && parent==category.file %>
+        <div class="nav-no-subs js-toc"></div>
+      <% end %>
+    </li>
+  <% end %>
+  </ul>
+
+</div>

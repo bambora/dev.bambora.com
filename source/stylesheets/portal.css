@@ -2,14 +2,20 @@ img {
   display: block;
   margin: auto;}
 
+footer {
+  background-color: white;
+}
+
 .nav-sticky {
   position: fixed; 
   margin-top: 30px;
+  margin-bottom: 60px;
+  padding-bottom: 60px;
   overflow-y: scroll;
-  height: 100%;}
+  height: calc(100% - 140px);}
 
 .nav-left {
-  padding-bottom: 180px;
+  padding-bottom: 0px;
   margin: 0;
   max-width: 300px; }
   .nav-left > ul > li {
