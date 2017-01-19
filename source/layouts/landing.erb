@@ -6,39 +6,30 @@
 
   <body class="<%= page_classes %>">
 
-    <% if current_page.data.hero_image %>
-      <div class="hero" style="background-image: url('/images/<%= current_page.data.hero_image %>');">
-      <%= partial "layouts/header" %>
-
-        <div class="container">
-          <div class="row">
-            <div class="col-md-5 col-sm-8 col-xs-10">
-              <div class="page-heading">   
-                <h1><%= current_page.data.big_heading %></h1>
-                <p><%= current_page.data.tag_line %></p>
-                <a class="btn">Get Started</a>
-              </div>
-            </div>
+    <%# Render hero block with image if it has been specified %>
+    <% hero_image = current_page.data.hero_image %>
+    <% if hero_image = current_page.data.hero_image %>
+      <div class="hero hero-image" style="background-image: url('/images/<%= hero_image %>');">
+    <% else %> 
+      <div class="hero hero-no-image">
+    <% end %>
+      
+      <%= partial "layouts/header" %> 
+  
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-sm-8 col-xs-10">
+            <h1><%= current_page.data.big_heading %></h1>
+            <p><%= current_page.data.tag_line %></p>
+            <% if btn = current_page.data.button_link %> 
+              <a class="btn"><%= btn %></a>
+            <% end %>
           </div>
         </div>
       </div>
-    <% else %>
-      <%= partial "layouts/header" %>
-    <% end %>  
+    </div>
 
     <div class="container">
-
-      <% unless current_page.data.hero_image %>
-          <div class="row">
-          <div class="no-hero page-heading col-md-5 col-sm-8 col-xs-10">   
-            <h1><%= current_page.data.big_heading %></h1>
-            <p><%= current_page.data.tag_line %></p>
-
-            <a class="btn">Get Started</a>
-          </div>
-          </div>
-      <% end %>
-
       <% current_page.data.card_sets.each do |card_set| %> 
         <div class="row card-set"> 
           <div class="col-md-3">

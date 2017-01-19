@@ -8,28 +8,29 @@ body {
     background-color: $muted;
 }
 
-.page-heading {
-    margin-bottom: 60px;
+
+.hero {
     h1 {
-        margin-bottom: 0px; 
+        margin-bottom: 0;
+    } 
+}
+
+.hero-image .nav-pane {
+    background-color: transparent;
+    a {
+        color: $lightest;
     }
 }
 
-.hero { 
+.hero-image { 
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;
     position: relative;
-    margin-bottom: -40px; 
+    padding-bottom: 60px;
+    margin-bottom: 60px;
 
-    .nav-pane {
-        background-color: transparent;
-        a {
-            color: $lightest;
-        }
-    }
-
-    .page-heading {
+    .row {
         margin-top: 15vw; 
         h1, p {
             color: $lightest;
@@ -48,12 +49,13 @@ body {
     }
 }
 
-.no-hero.page-heading {
+.hero-no-image .row {
+    margin-top: 60px;
+    margin-bottom: 30px; 
     p {
         color: $contrast;
     }
 }
-
 
 .card-set { 
     margin-top: 32px; 
