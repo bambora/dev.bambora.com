@@ -9,6 +9,8 @@ parent: /portal/customize
 search: false
 ---
 
+<h1 class="js-toc-ignore">Regional Dev Portals</h1>
+
 Different regions in bambora might have their own developer portals. To handle this the portal is designed to hold the region-specific data outside of the core data and site configuration.
 
 These steps will describe how to create your own regional dev portal.
@@ -23,6 +25,8 @@ These steps will describe how to create your own regional dev portal.
 
 
 # Create Portal
+
+This will walk you through creating your own developer portal.
 
 ## Fork Repo
 
@@ -41,3 +45,8 @@ Let the DevOps team know, in Slack, that you would like a new sub-domain to host
 Regional content must live in a region-named folder within the `/source` folder. For instance the North American portal is located in `/source/north-am/`, and the help content for this site is located under `/source/portal`.
 
 You do not need to merge this folder from your fork back to the upstream origin. However you will want to fetch upstream changes to stay up to date with the latest styles and bug fixes.
+
+# Example Portal
+
+For an example regional portal take a look at the content under `/source/portal`. That is the content for this tutorial version of the site. Essentially it can be treated as a region on its own and copied to give you a head start on your site.
+

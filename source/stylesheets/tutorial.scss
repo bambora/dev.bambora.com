@@ -1,27 +1,9 @@
 
-.nav-left {
-    overflow:hidden;
-}
-
-.container {
-    max-width:900px; 
-    margin-right: auto; 
-    margin-left: auto;
-}
-
 
 /* Sticky footer */ 
 $footer-height: 66px;
 
-html, body {
-	height: 100%;
-}
 
-.container {
-	min-height: 100%;
-	margin: 50px auto (-$footer-height);
-}
-
-.push {
+.footer-buffer {
 	height: $footer-height;
 }

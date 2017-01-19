@@ -11,36 +11,36 @@ search: false
 
 <img src='/images/logo.jpg' />
 
-# Overview
+<h1 class="js-toc-ignore">Welcome</h1>
 
 Welcome to the developer portal setup and configuration guide. Use this space to learn how to modify the existing dev portals or create a new one.
 
-# Clone Repository
+This page will show you how to set up the Dev Portal on your machine.
 
-The first step is to clone the repository so you can test your changes locally.
+# 1. Git Clone
 
-`git clone https://github.com/bambora/dev.bambora.com.git`
+The dev portal is stored on GitHub. You can grab a copy by installing Git on your machine and cloning the repo:
+``` git clone https://github.com/bambora/dev-na.bambora.com.git
+```
 
-# Edit Content
+# 2. Install Ruby
 
-Next lets edit some of the portal content, save our changes, and see the content live in the site.
+The portal uses a Ruby tool called Middleman. To build it you will need ruby installed.
 
-## Edit Markdown
+It is best to use Ruby version **2.3**.
 
-Locate the /source/portal/index.md file and open it in your favorite text editor. Make a simple text change under the first heading, denoted with a Hash (`#`) symbol. Make sure the edit it done below the "Frontmatter" data that is located between the two sets of 3 dashes: `---`.
+# 3. Build Project
 
-Save the file.
+1. From the command line in the prject directory run:
+  - `bundle install`
+2. Now build the project:
+  - `bundle exec middleman build`
+3. Run middleman:
+  - `bundle exec middleman server`
 
-## Run Middleman
 
-Now that you have made a change lets fire up the server to see the content rendered.
+**Note:** If you are using Mac and making a lot of changes, Middleman has a race condition bug that can cause it to lock up. To avoid this, run middleman with the following command: `EXECJS_RUNTIME=Node bundle exec middleman server`
 
-At the command line run `bundle exec middleman server`. There are other ways to run the site that we will get into later.
+# 4. View Site
 
-## Check it out
-
-View the site at http://localhost:4567/portal/
-
-# Commit the Change
-
-If you want to commit the change, you will want to first branch your code using Git. Then push the branch to the origin repository on GitHub. There you can send a pull request to have your change integrated into the Master branch of code that will get deployed to the production server automatically.
+Check out the site at [http://localhost:4567/](http://localhost:4567/).

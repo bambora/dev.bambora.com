@@ -8,18 +8,18 @@ parent: /portal/content
 
 search: false
 ---
-# Dev Portal Editing
 
-There are two main ways you can contribute to the dev portal:
+<h1 class="js-toc-ignore">Writing Portal Content</h1>
 
- * Editing via GitHub
- * Edit the source directly on your machine
+Whether you want to edit some existing content or create a new documentation topic, this guide will walk you through how to do just that.
 
+Read these following tutorials on how to update dev portal content:
 
-## Via GitHub
+- [Editing Pages](/portal/editing_pages.html)
+- [Create a New Page](/portal/create_new_page.html)
+- [Content Structure](/portal/content_structure.html)
+- [Writing Tutorials](/portal/tutorials.html)
+- [Documenting APIs](/portal/api_specs.html)
+- [Navigation and ToC](/portal/navigation.html)
+- [Guidelines](/portal/guidelines.html) *(aka 'some rules')*
 
-Each page has an edit icon on it that links to its markdown file on GitHub. There you can click on the Pencil icon to edit the file. Once you are done editing, scroll to the bottom of the page and locate the Commit Changes button. 
-
-This will create a pull request that will be reviewed by one of the portal maintainers. If all is good they will merge your pull request and the change will be automatically deployed.
-
-## Locally Via Source

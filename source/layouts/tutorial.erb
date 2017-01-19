@@ -50,13 +50,13 @@ under the License.
     <%= partial "layouts/header" %>
 
     <div class="container">
-      <%= partial "side_nav" %>
+      <%= partial "layouts/side_nav" %>
 
       <div class="" style="position: relative; margin-left: 300px">
         <div class="content js-toc-content">
           <%= yield %>
           <% current_page.data.includes && current_page.data.includes.each do |include| %>
-            <%= partial "includes/#{include}" %>
+            <%= partial "#{current_page.data.includes_root}/includes/#{include}" %>
           <% end %>
         </div>
         
@@ -82,6 +82,10 @@ under the License.
       // and close as you scroll to headings within them.
 
       collapseDepth: 1,
+
+      // Headings that match the ignoreSelector will be skipped.
+      ignoreSelector: '.js-toc-ignore',
+
       // Main class to add to links.
       //linkClass: '',
 

@@ -1311,9 +1311,9 @@ ul {
 ol {
   counter-reset: ol-counter;
   list-style-type: decimal-leading-zero; }
-  ol li {
+  ol > li {
     list-style-type: none; }
-  ol li:before {
+  ol > li:before {
     content: counter(ol-counter, decimal-leading-zero);
     counter-increment: ol-counter;
     margin-right: 10px;
