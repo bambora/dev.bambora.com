@@ -18,10 +18,6 @@ $darkest: rgb(30, 30, 30);
 // Breakpoint vars from Bambora UI: 
 $screen-md: 992px;
 $screen-sm: 767px; 
- 
-.nav-left {
-    overflow:hidden;
-}
 
 // Re-position nav menu on smaller screens 
 @media only screen and (max-width: $screen-md) {
@@ -134,10 +130,7 @@ body {
     flex-direction: column;
 }
 
-.container {
-    margin-top: 75px;
-    flex: 1;
-}
+
 
 // Note: I think this styling should be part of bambora ui
 footer { 

@@ -3,6 +3,8 @@ header:
 toc:
 - file: '/portal/index'
   title: 'Setup'
+- file: '/portal/quickstart'
+  title: 'Quickstart'
 - file: '/portal/deploy'
   title: 'Deploy and Test'
 - file: '/portal/guidelines'
@@ -22,6 +24,10 @@ toc:
       title: 'API Specs'
     - file: '/portal/navigation' 
       title: 'Navigation'
+    - file: '/portal/product' 
+      title: 'Product Page'
+    - file: '/portal/landing' 
+      title: 'Landing Page'
 - file: '/portal/customize'
   title: 'Customize'
   subs:

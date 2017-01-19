@@ -2,11 +2,6 @@
 title: Landing Page
 layout: landing
 
-nav: test_landing_page
-name: /portal/test_landing_page
-parent: /portal/test_landing_page
-
-search: false
 
 big_heading: Build it with Bambora
 tag_line: Start accepting payments with code made by developers world wide.
