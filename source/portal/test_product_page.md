@@ -1,8 +1,8 @@
 ---
-title: Android
+title: Test Product Page
 layout: product
 
-nav: nav
+nav: site_howto_nav
 name: /portal/test_product_page
 parent: /portal/test_product_page
 

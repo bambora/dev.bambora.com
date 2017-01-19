@@ -20,7 +20,7 @@ $amethyst: rgb(69, 36, 89);
 
 // Breakpoint vars from Bambora UI: 
 $screen-md: 992px;
-$screen-sm: 767px;
+$screen-sm: 767px; 
 
 // Re-position nav menu on smaller screens 
 @media only screen and (max-width: $screen-md) {
