@@ -17,8 +17,8 @@ $darkest: rgb(30, 30, 30);
 
 // Breakpoint vars from Bambora UI: 
 $screen-md: 992px;
-$screen-sm: 767px; 
- 
+$screen-sm: 767px;
+
 .nav-left {
     overflow:hidden;
 }
@@ -46,11 +46,7 @@ $screen-sm: 767px;
         margin-top: 50px;
     }
     .container {
-        margin-top: 0px; 
-
-		div {
-			margin-left: 0 !important;
-		}
+        margin-top: 0px;
     }
 }
 
