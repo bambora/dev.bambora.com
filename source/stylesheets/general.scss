@@ -48,8 +48,8 @@ $screen-sm: 767px;
     .container {
         margin-top: 0px; 
 
-		.content {
-			margin-left: 0;
+		div {
+			margin-left: 0 !important;
 		}
     }
 }
