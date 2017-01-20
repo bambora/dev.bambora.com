@@ -36,7 +36,6 @@ cards:
             You can use these test cards for testing card registration and 
             purchasing (no real money is charged when these cards are used).
         icon: creditcard-outline
-
 ---
 
 # Android 

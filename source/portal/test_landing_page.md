@@ -2,7 +2,6 @@
 title: Landing Page
 layout: landing
 
-
 big_heading: Build it with Bambora.
 tag_line:  > 
     Start accepting payments today with code made by developers world wide.
