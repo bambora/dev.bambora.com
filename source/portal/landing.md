@@ -45,8 +45,15 @@ Parameter | Description | Example Value
 ----------|-------------|--------------
 `big_heading` | The large page header. | *Build it with Bambora.* |
 `tag_line` | Smaller text below the `big_heading`. | *Start acecepting payments today...* 
-`button_link` | A button styled link below the `tag_line` (optional). | *Get Started* 
 `hero_image` | A background image for the Hero Unit (optional). | *shoal-1.png* 
+`button` | A button object below the `tag_line` (optional). | See below. 
+
+#### Button Parameters
+
+Parameter | Description | Example Value 
+----------|-------------|--------------
+`text` | The text value  of the button | *Get Started*
+`link` | The link destination of the button | */portal/quickstart.html* 
 
 The style of the landing page will change depending on if a `hero_image:` has been specified. The image should be located in the `/source/images/` folder and large enough to work as a background image on all screen sizes. The image should be dark enough that white text will be visible on top of it. 
 
@@ -102,24 +109,26 @@ Here's a full example frontmatter for a Landing Page:
 
 ```
 ---
-title: Example Landing Page
+title: Landing Page
 layout: landing
 
-hero_unit: 
-    big_heading: Build it with Bambora. 
-    tag_line: > 
+hero_unit:
+    hero_image: shoal-1.png
+    big_heading: Build it with Bambora.
+    tag_line:  > 
         Start accepting payments today with code made by developers world wide.
         Handy guides and libraries at reach.
-    button_link: Get Started
-    hero_image: shoal-1.png
+    button: 
+        text: Get Started
+        link: /portal/quickstart.html
 
-card_sets: 
-    -
-        title: Get Started. 
+card_sets:
+    -  
+        title: Get Started.
         description: >
             Bambora makes it easy to accept payments in your app or website.
             Get integrated quickly using our guides and selecting from our 
-            range of SDKS.   
+            range of SDKS.
         cards:
             -                
                 title: Accept payments in-app
@@ -145,7 +154,7 @@ card_sets:
                 description: >
                     You can use these test cards for testing card registration and 
                     purchasing (no real money is charged when these cards are used).
-                icon: creditcard-outline 
+                icon: creditcard-outline
     -
         title: Upcoming Events.
         description: >

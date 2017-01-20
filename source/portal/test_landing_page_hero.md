@@ -2,15 +2,16 @@
 title: Landing Page
 layout: landing
 
-big_heading: Build it with Bambora.
-tag_line:  > 
-    Start accepting payments today with code made by developers world wide.
-    Handy guides and libraries at reach.
-button_link: Get Started
-hero_image: shoal-1.png
+hero_unit:
+    hero_image: shoal-1.png
+    big_heading: Build it with Bambora.
+    tag_line:  > 
+        Start accepting payments today with code made by developers world wide.
+        Handy guides and libraries at reach.
+    button: 
+        text: Get Started
+        link: /portal/quickstart.html
 
-# Card content: 
-# icons must be svg located in /source/images/svg/
 card_sets:
     -  
         title: Get Started.
@@ -130,5 +131,4 @@ card_sets:
                     Beatae reprehenderit sunt, nulla sed, consequuntur nesciunt 
                     dolor eaque itaque qui fugiat.
                 icon: comment
-
 ---

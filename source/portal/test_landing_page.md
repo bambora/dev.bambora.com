@@ -2,12 +2,11 @@
 title: Landing Page
 layout: landing
 
-big_heading: Build it with Bambora.
-tag_line:  > 
-    Start accepting payments today with code made by developers world wide.
+hero_unit: 
+    big_heading: Build it with Bambora.
+    tag_line:  > 
+        Start accepting payments today with code made by developers world wide.
 
-# Card content: 
-# icons must be svg located in /source/images/svg/
 card_sets:
     -  
         title: Get Started.
