@@ -45,7 +45,8 @@ Parameter | Description | Example
 
 Parameter | Description | Example Value
 ----------|-------------|--------
-`title` | The heading of the card. | *Try our API* 
+`link` | The destination link of the card. | */portal/quickstart.html*
+`title` | The heading of the card. | *Try our API*
 `description` | The body of the card. | *Get up and running in minutes...*
 `icon` | The name of a [Bambora UI]() icon. | *checkmark*  
 `tag` | A tag for the card (optional). | *New* 
@@ -53,22 +54,22 @@ Parameter | Description | Example Value
 ### Example Card
 
 <div class="row">
-    <div class="col-md-6">
-        <div class="flex-row row">
-            <div class="col-md-6 col-sm-6">
-                <a href="#">
-                    <div class="card">
-                        <div class="icon-bg bg-raspberry">
-                            <svg width="19" height="14" viewBox="0 0 19 14" xmlns="http://www.w3.org/2000/svg"><title>checkmark</title><path d="M16.619 0L5.47 10.936 1.593 7.132 0 8.762l4.674 4.585a1.135 1.135 0 0 0 1.593 0L18.213 1.63 16.619 0z" fill="#74797B" fill-rule="evenodd"/></svg>
-                        </div>
-                        <span>NEW</span>
-                        <h3>Try our API</h3>
-                        <p>Get up and running in minutes. Use the Bambora API to make payments and much more.</p>
-                    </div>
-                </a>
+<div class="col-md-6">
+<div class="flex-row row">
+<div class="col-md-6 col-sm-6">
+    <a href="#">
+        <div class="card">
+            <div class="icon-bg bg-raspberry">
+                <svg width="19" height="14" viewBox="0 0 19 14" xmlns="http://www.w3.org/2000/svg"><title>checkmark</title><path d="M16.619 0L5.47 10.936 1.593 7.132 0 8.762l4.674 4.585a1.135 1.135 0 0 0 1.593 0L18.213 1.63 16.619 0z" fill="#74797B" fill-rule="evenodd"/></svg>
             </div>
+            <span>NEW</span>
+            <h3>Try our API</h3>
+            <p>Get up and running in minutes. Use the Bambora API to make payments and much more.</p>
         </div>
-    </div>
+    </a>
+</div>
+</div>
+</div>
 </div>
 
 ## Frontmatter Example
@@ -114,8 +115,6 @@ cards:
         icon: creditcard-outline
 ---
 ```
-
-
 
 # Content
 

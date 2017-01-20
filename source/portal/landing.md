@@ -23,7 +23,6 @@ The landing page has no navigation header. If you want a page that looks similar
 
 # Config
 
-
 The landing page is configured by editing the frontmatter at the top of the markdown file, between the three dashes. The frontmatter uses the [YAML](https://en.wikipedia.org/wiki/YAML) format. The Landing Page has the following parameters to set: 
 
 ## Parameters 
@@ -77,6 +76,7 @@ Parameter | Description | Example Value
 
 Parameter | Description | Example Value
 ----------|-------------|--------
+`link` | The destination link of the card. | */portal/quickstart.html*
 `title` | The heading of the card. | *Try our API* 
 `description` | The body of the card. | *Get up and running in minutes...*
 `icon` | The name of a [Bambora UI]() icon. | *checkmark*  
@@ -85,22 +85,22 @@ Parameter | Description | Example Value
 #### Example Card
 
 <div class="row">
-    <div class="col-md-6">
-        <div class="flex-row row">
-            <div class="col-md-6 col-sm-6">
-                <a href="#">
-                    <div class="card">
-                        <div class="icon-bg bg-raspberry">
-                            <svg width="19" height="14" viewBox="0 0 19 14" xmlns="http://www.w3.org/2000/svg"><title>checkmark</title><path d="M16.619 0L5.47 10.936 1.593 7.132 0 8.762l4.674 4.585a1.135 1.135 0 0 0 1.593 0L18.213 1.63 16.619 0z" fill="#74797B" fill-rule="evenodd"/></svg>
-                        </div>
-                        <span>NEW</span>
-                        <h3>Try our API</h3>
-                        <p>Get up and running in minutes. Use the Bambora API to make payments and much more.</p>
-                    </div>
-                </a>
+<div class="col-md-6">
+<div class="flex-row row">
+<div class="col-md-12">
+    <a href="/portal/quickstart.html">
+        <div class="card">
+            <div class="icon-bg bg-raspberry">
+                <svg width="19" height="14" viewBox="0 0 19 14" xmlns="http://www.w3.org/2000/svg"><title>checkmark</title><path d="M16.619 0L5.47 10.936 1.593 7.132 0 8.762l4.674 4.585a1.135 1.135 0 0 0 1.593 0L18.213 1.63 16.619 0z" fill="#74797B" fill-rule="evenodd"/></svg>
             </div>
+            <span>NEW</span>
+            <h3>Try our API</h3>
+            <p>Get up and running in minutes. Use the Bambora API to make payments and much more.</p>
         </div>
-    </div>
+    </a>
+</div>
+</div>
+</div>
 </div>
 
 ## Frontmatter Example 
@@ -130,7 +130,8 @@ card_sets:
             Get integrated quickly using our guides and selecting from our 
             range of SDKS.
         cards:
-            -                
+            -           
+                link: '/portal/quickstart.html'     
                 title: Accept payments in-app
                 description: > 
                     Use the Bambora native payments SDK to accept payments in 
@@ -138,18 +139,21 @@ card_sets:
                 icon: notification-active
                 tag: new
             -
+                link: '/portal/quickstart.html'
                 title: Accept payments online  
                 description: > 
                     Use Bambora checkout, or one of our Shopping Cart plugins, 
                     to accept payments on your website or online store.
                 icon: checkmark
             -
+                link: '/portal/quickstart.html'
                 title: Try our API 
                 description: >
                     Get up and running in minutes. Use the Bambora API to make 
                     payments and much more.
                 icon: list
             -
+                link: '/portal/quickstart.html'
                 title: Use a test card 
                 description: >
                     You can use these test cards for testing card registration and 
@@ -162,12 +166,14 @@ card_sets:
             yaml file and then rendered in the template.
         cards:
             - 
+                link: '/portal/quickstart.html'
                 title: A test card
                 description: > 
                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
                     Dolores officia incidunt sapiente molestiae totam quisquam.
                 icon: flag
             -
+                link: '/portal/quickstart.html'
                 title: Another test card
                 description: > 
                     Tempore corrupti, obcaecati voluptate nulla, repellat labore 
