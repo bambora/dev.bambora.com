@@ -22,24 +22,28 @@ card_sets:
                     iOS and android apps.
                 icon: notification-active
                 tag: new
+                link: '/portal/quickstart.html'
             -
                 title: Accept payments online  
                 description: > 
                     Use Bambora checkout, or one of our Shopping Cart plugins, 
                     to accept payments on your website or online store.
                 icon: checkmark
+                link: '/portal/quickstart.html'
             -
                 title: Try our API 
                 description: >
                     Get up and running in minutes. Use the Bambora API to make 
                     payments and much more.
                 icon: list
+                link: '/portal/quickstart.html'
             -
                 title: Use a test card 
                 description: >
                     You can use these test cards for testing card registration and 
                     purchasing (no real money is charged when these cards are used).
                 icon: creditcard-outline
+                link: '/portal/quickstart.html'
     -
         title: Upcoming Events.
         description: >

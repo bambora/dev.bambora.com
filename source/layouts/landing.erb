@@ -6,11 +6,11 @@
 
   <body class="<%= page_classes %>">
 
-    <%# Render hero block with image if it has been specified %>
     <% hero_image = current_page.data.hero_image %>
+    <%# Open hero block div with image if it has been specified %>
     <% if hero_image = current_page.data.hero_unit.hero_image %>
       <div class="hero hero-image" style="background-image: url('/images/<%= hero_image %>');">
-    <% else %> 
+    <% else %> <%# otherwise div without image %>
       <div class="hero hero-no-image">
     <% end %>
       
