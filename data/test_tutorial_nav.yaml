@@ -1,4 +1,15 @@
-header: 
+header:
+  logo_link: / # Root 
+  links:
+    - file: '/portal/index'
+      title: Link 1
+    - file: '/portal/index'
+      title: Link 2
+    - file: '/portal/index'
+      title: Link 3
+    - file: '/portal/index'
+      title: Link 4
+  buttons: # none
 
 toc:
 - file: '/portal/test_tutorial'

@@ -1,4 +1,15 @@
 header:
+  logo_link: /
+  links: 
+    - file: / 
+      title: Quickstart
+    - file: / 
+      title: Tutorials
+    - file: /
+      title: APIs
+  buttons:
+    - file: /
+      title: Test Payment
 
 toc:
 - file: 'category1'

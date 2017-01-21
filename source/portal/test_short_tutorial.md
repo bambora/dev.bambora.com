@@ -11,8 +11,6 @@ search: false
 
 # A short Tutorial 
 
-<hr>
-
 ## Subheading for the tutorial
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non dolorem 
