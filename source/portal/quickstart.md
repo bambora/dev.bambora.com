@@ -18,18 +18,21 @@ First up is to get the site and set it up:
 
 
 ```
-git clone https://github.com/bambora/dev.bambora.com.git
+> git clone https://github.com/bambora/dev.bambora.com.git
 
-cd dev.bambora.com
+> cd dev.bambora.com
 
-git branch my_branch
+> git branch my_branch
 
-bundle install
+> git checkout my_branch
 
-bundle exec middleman build
+> bundle install
 
-bundle exec middleman server
+> bundle exec middleman build
+
+> bundle exec middleman server
 ```
+
 View the site at [http://localhost:4567/](http://localhost:4567/).
 
 Next you want to edit some files. Change a markdown file in /source.
@@ -41,11 +44,11 @@ Head back to the command line and exit middleman with cmd+C.
 Now let's publish the changes:
 
 ```
-git add -u
+> git add -u
 
-git commit -m "my first edit"
+> git commit -m "my first edit"
 
-git push -u origin my_branch
+> git push -u origin my_branch
 ```
 
 Head to [GitHub](https://github.com/bambora/dev.bambora.com) and the repository for your dev portal. On the Code tab, select the **Branch** button drop down and choose your branch you just pushed.

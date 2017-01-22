@@ -9,8 +9,8 @@ parent: /portal/index
 search: false
 ---
 
-<img src='/images/logo.jpg' />
-
+<img src='/images/svg/zebraffe-dev.svg' height="200px"/>
+<br> <br>
 <h1 class="js-toc-ignore">Welcome</h1>
 
 Welcome to the developer portal setup and configuration guide. Use this space to learn how to modify the existing dev portals or create a new one.
@@ -20,7 +20,9 @@ This page will show you how to set up the Dev Portal on your machine.
 # 1. Git Clone
 
 The dev portal is stored on GitHub. You can grab a copy by installing Git on your machine and cloning the repo:
-``` git clone https://github.com/bambora/dev-na.bambora.com.git
+
+```
+> git clone https://github.com/bambora/dev.bambora.com.git
 ```
 
 # 2. Install Ruby
@@ -29,9 +31,20 @@ The portal uses a Ruby tool called Middleman. To build it you will need ruby ins
 
 It is best to use Ruby version **2.3**.
 
-# 3. Build Project
+# 3. Branch Project
 
-1. From the command line in the prject directory run:
+You will want to branch the project so your changes can be easily reviewed and merged into the Master branch.
+
+It is very easy to branch using Git:
+
+```
+> git branch my_branch
+> git checkout my_branch
+```
+
+# 4. Build Project
+
+1. From the command line in the project directory run:
   - `bundle install`
 2. Now build the project:
   - `bundle exec middleman build`
@@ -41,6 +54,10 @@ It is best to use Ruby version **2.3**.
 
 **Note:** If you are using Mac and making a lot of changes, Middleman has a race condition bug that can cause it to lock up. To avoid this, run middleman with the following command: `EXECJS_RUNTIME=Node bundle exec middleman server`
 
-# 4. View Site
+# 5. View Site
 
 Check out the site at [http://localhost:4567/](http://localhost:4567/).
+
+## Deploy
+
+To learn how to deploy the site, head on over to the [Deploy](/portal/deploy.html) tutorial.
