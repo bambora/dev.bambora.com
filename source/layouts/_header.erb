@@ -1,20 +1,29 @@
+<%# Get page defined nav %> 
+<% if current_page.data.nav %>
+    <% nav = data["#{current_page.data.nav}"].header %>
+<% else %>
+    <% nav = data.nav.header %>
+<% end %> 
+
 <nav class="nav-pane">
     <div class="pull-left nav-links">
-    <a href="http://bambora.com" class="logo">
-        <% if current_page.data.hero_unit and current_page.dat.hero_unit.hero_image %> 
+    <a href="<%= nav.logo_link %>" class="logo">
+        <%# set logo version based on hero image %> 
+        <% if current_page.data.hero_unit and current_page.data.hero_unit.hero_image %> 
             <%= image_tag "svg/zebraffe-dev-white.svg" %>
         <% else %> 
             <%= image_tag "svg/zebraffe-dev.svg" %>
         <% end %>
     </a>
-    <a href="">Quickstart</a>
-    <a href="">Tutorials</a>
-    <a href="">APIs</a>
+
+    <% nav.links and nav.links.each do |link| %>
+        <a href="<%= link.file %>.html"><%= link.title %></a>
+    <% end %>
+
     </div>
     <div class="pull-right">
-        <div class="profile">
-            <span class="bambora-icon"></span>
-        </div>
-        <a href="" class="btn btn-small">Test Payment</a>
+        <% nav.buttons and nav.buttons.each do |btn| %>
+            <a href="<%= btn.file %>.html" class="btn btn-small"><%= btn.title %></a>
+        <% end %>
     </div>
 </nav>

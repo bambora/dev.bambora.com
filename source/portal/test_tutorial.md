@@ -11,8 +11,6 @@ search: false
 
 # Test Tutorial
 
----
-
 ## Tutorial Sub Heading
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis tenetur 
@@ -26,8 +24,6 @@ laborum quae dolores necessitatibus eius maxime earum nostrum. Quia?
 In dolorum ad odit nesciunt suscipit vitae est dolor doloribus tenetur minima temporibus hic, 
 similique labore commodi. Explicabo, ad excepturi, debitis omnis cumque iusto odio nemo illo 
 quibusdam blanditiis, id!
-
----
 
 ## Second Level Heading
 
@@ -94,8 +90,6 @@ tocbot.init({
     //listItemClass: '',
 }); 
 ```
-
----
 
 ## Another subheading 
 
