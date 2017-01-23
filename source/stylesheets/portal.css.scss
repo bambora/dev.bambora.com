@@ -1,3 +1,5 @@
+@import 'syntax'; // syntax highlighting for code blocks
+
 /* Variables (taken from Bambora UI) */ 
 
 $muted: rgb(240, 240, 240);
@@ -37,6 +39,11 @@ table {
 
 td,th {
   padding: 6px;
+}
+
+pre {
+  padding: 20px 25px; 
+  border-radius: 6px; 
 }
 
 
