@@ -1,20 +1,20 @@
 header:
   logo_link: /
   links: 
-    - file: / 
+    - file: /portal/quickstart
       title: Quickstart
-    - file: / 
+    - file: /portal/index 
       title: Tutorials
-    - file: /
+    - file: /portal/index
       title: APIs
   buttons:
-    - file: /
+    - file: /portal/index
       title: Test Payment
 
 toc:
 - file: 'category1'
   title: 'Category 1 Title'
-  subs:
+  subs: 
     - file: 'category1_sub1' 
       title: 'Sub1 Title'
     - file: 'category1_sub2' 

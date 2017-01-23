@@ -10,6 +10,8 @@ header:
     - file: '/portal/index'
       title: Link 4
   buttons: # none
+    - file:  '/'
+      title: 'Button'
 
 toc:
 - file: '/portal/test_tutorial'

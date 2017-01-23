@@ -14,16 +14,12 @@ search: false
 ## Tutorial Sub Heading
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis tenetur 
-inventore asperiores similique quo. Excepturi animi consectetur saepe nam exercitationem 
-beatae! Sunt omnis itaque, doloremque officia dolorum, tenetur reprehenderit ipsam!
+inventore asperiores similique quo. Excepturi animi consectetur saepe nam exercitationem beatae! Sunt omnis itaque, doloremque officia dolorum, tenetur reprehenderit ipsam!
 
 Suscipit obcaecati sequi maxime ut iste recusandae sint unde ratione! Dignissimos, 
-atque repudiandae! Aliquid, dignissimos assumenda molestiae ipsa dolore doloremque nobis 
-laborum quae dolores necessitatibus eius maxime earum nostrum. Quia?
+atque repudiandae! Aliquid, dignissimos assumenda molestiae ipsa dolore doloremque nobis laborum quae dolores necessitatibus eius maxime earum nostrum. Quia?
 
-In dolorum ad odit nesciunt suscipit vitae est dolor doloribus tenetur minima temporibus hic, 
-similique labore commodi. Explicabo, ad excepturi, debitis omnis cumque iusto odio nemo illo 
-quibusdam blanditiis, id!
+In dolorum ad odit nesciunt suscipit vitae est dolor doloribus tenetur minima temporibus hic, similique labore commodi. Explicabo, ad excepturi, debitis omnis cumque iusto odio nemo illo quibusdam blanditiis, id!
 
 ## Second Level Heading
 
@@ -33,11 +29,9 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident nobis autem 
 magnam sapiente, eaque beatae ipsum, dolorum veritatis temporibus, maxime reiciendis 
 sed! Eaque culpa dolores, sapiente eum nisi amet.
 
-Molestias dolore labore, esse odit quis quisquam, voluptas exercitationem! Nisi numquam 
-et natus doloribus quas rem minima quos dolorem tenetur esse eaque nostrum, harum, ipsa 
-pariatur quidem, inventore modi quae.
+Molestias dolore labore, esse odit quis quisquam, voluptas exercitationem! Nisi numquam et natus doloribus quas rem minima quos dolorem tenetur esse eaque nostrum, harum, ipsa pariatur quidem, inventore modi quae.
 
-```
+```ruby
 <% if current_page.data.nav %>
   <% nav = data["#{current_page.data.nav}"].toc %>
 <% else %>
@@ -55,7 +49,7 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, nam reicie
 non assumenda, officia veritatis deleniti delectus id atque tempore, aliquid recusandae 
 et consequuntur. Maiores doloribus consectetur sit laudantium obcaecati.
 
-```
+```javascript
 tocbot.init({
     // Where to render the table of contents.
     tocSelector: '.js-toc',
@@ -88,7 +82,7 @@ tocbot.init({
 
     // Class to add to list items.
     //listItemClass: '',
-}); 
+});
 ```
 
 ## Another subheading 
@@ -106,5 +100,4 @@ delectus eveniet, adipisci iure tempore impedit sunt nulla! Porro perspiciatis
 quisquam eos nihil enim, veritatis explicabo unde quibusdam, quaerat, rerum vitae.
 
 Voluptas eos, veniam omnis, ad eius repellat voluptates atque repellendus sapiente
- id sed! Adipisci a sunt ex perferendis optio aspernatur ullam fugiat voluptate officia, 
- tenetur! Vitae eum odit consequatur dolorem?
+id sed! Adipisci a sunt ex perferendis optio aspernatur ullam fugiat voluptate officia, tenetur! Vitae eum odit consequatur dolorem?

@@ -1,15 +1,14 @@
 header:
   logo_link: /
-  logo_link: /
   links: 
-    - file: / 
+    - file: /portal/quickstart
       title: Quickstart
-    - file: / 
+    - file: /portal/index
       title: Tutorials
-    - file: /
+    - file: /portal/index
       title: APIs
   buttons:
-    - file: /
+    - file: index
       title: Test Payment
 
 toc:

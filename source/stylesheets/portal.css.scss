@@ -9,7 +9,7 @@ $darkest: rgb(30, 30, 30);
 $amethyst: rgb(69, 36, 89);
 
 $screen-md: 992px;
-$screen-sm: 767px; 
+$screen-sm: 767px;
 
 /* general */
 
@@ -30,6 +30,10 @@ footer {
   margin-top: 30px;
 }
 
+table {
+  display:block;
+  overflow:auto; 
+}
 
 td,th {
   padding: 6px;
@@ -182,6 +186,11 @@ color: rgba(120, 71, 181, 1);
 }
 
 @media only screen and (max-width : $screen-sm) {
+
+    .container {
+      width: 100%; // wrap code blocks and tables on small screen
+    }
+
     .nav-sticky {
         position: static; 
     }
@@ -222,6 +231,14 @@ color: rgba(120, 71, 181, 1);
         padding: 24px;
         margin-bottom: 30px;
         box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.04);
+        position: relative;
+        bottom: 0px; 
+        transition: bottom 0.1s;
+
+        &:hover {
+          position: relative;
+          bottom: 15px;
+        }
     }
 }
 

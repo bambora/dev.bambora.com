@@ -15,17 +15,17 @@ A Product Page is a mix between documentation and flash. It should look nice yet
 
 There should always be a Quickstart card.
 
-# Template
+## Template
 
 The product page is rendered with `/source/layouts/product.erb`. If you would like to modify the product page design, please create a new layout file and copy the content.
 
 Unlike the Landing Page, the Product Page has a left-hand navigation menu.
 
-# Config
+## Config
 
  The product page is configured by editing the frontmatter at the top of the markdown file, between the 3 dashes. The frontmatter uses the [YAML](https://en.wikipedia.org/wiki/YAML) format. The Product Page has the following parameters to set. 
 
-## Parameters
+### Parameters
 
 Parameter | Description | Example
 ----------|-------------|--------
@@ -34,24 +34,23 @@ Parameter | Description | Example
 `nav` | What nav menu to use, located in /data.| *nav.yaml*
 `name` | File name and path used for the nav menu. | */apac/ihpp*
 `parent` | Parent entry in the nav menu. | */apac/payments*
-`search` | ... | ...
-`cards` | A list of Cards to be displayed. | See below
+`cards` | A **list** of Cards to be displayed. | See below
 
-## Cards 
+### Cards 
 
 `cards` contains a list of Cards to be displayed on the Product Page. A Card is a descriptive link to another page in the portal. A Card has three required parameters and one optional one. All the Cards for a product page are put into a list in `cards`.
 
-### Card parameters
+#### Card parameters
 
 Parameter | Description | Example Value
 ----------|-------------|--------
 `link` | The destination link of the card. | */portal/quickstart.html*
 `title` | The heading of the card. | *Try our API*
 `description` | The body of the card. | *Get up and running in minutes...*
-`icon` | The name of a [Bambora UI]() icon. | *checkmark*  
+`icon` | The name of a [Bambora UI](https://bambora.github.io/ui.bambora.com/#icons) icon. | *checkmark*  
 `tag` | A tag for the card (optional). | *New* 
 
-### Example Card
+#### Example Card
 
 <div class="row">
 <div class="col-md-6">
@@ -72,7 +71,7 @@ Parameter | Description | Example Value
 </div>
 </div>
 
-## Frontmatter Example
+### Frontmatter Example
 
 Here's an example frontmatter for a product page: 
 
@@ -116,10 +115,10 @@ cards:
 ---
 ```
 
-# Content
+## Content
 
 Content from the markdown file will be rendered on the Product Page, above the cards. Try to limit how much content is displayed.
 
-# Example
+## Example
 
 [Here's](/portal/test_product_page.html) an example of a product page.
