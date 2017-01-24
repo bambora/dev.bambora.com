@@ -24,6 +24,22 @@ activate :autoprefixer do |config|
   config.inline   = true
 end
 
+# Active middleman-search
+activate :search do |search|
+  search.language = 'es'
+  search.resources = ['portal/']
+  search.fields = {
+    title:   {boost: 100, store: true, required: true},
+    content: {boost: 50},
+    url:     {index: false, store: true}
+  }
+end
+
+# Activate asset hash and enable for .json (search index)
+# activate :asset_hash do |asset_hash| 
+#   asset_hash.exts << '.json'
+# end
+
 # Helpers 
 helpers do 
   
