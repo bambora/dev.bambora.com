@@ -8,8 +8,6 @@ parent: /portal/test_product_page
 
 search: true
 
-# Card content: 
-# icons must be svg located in /source/images/svg/
 cards:
     -                
         title: Android test card

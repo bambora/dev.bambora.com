@@ -11,7 +11,7 @@ includes_root: portal
 search: false
 ---
 
-<h1 class="js-toc-ignore">Content Structure</h1>
+# Content Structure
 
 The dev portal is broken down into 4 different types of pages:
 

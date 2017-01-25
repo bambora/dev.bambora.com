@@ -9,7 +9,7 @@ parent: /portal/customize
 search: false
 ---
 
-<h1 class="js-toc-ignore">Regional Dev Portals</h1>
+# Regional Dev Portals
 
 Different regions in bambora might have their own developer portals. To handle this the portal is designed to hold the region-specific data outside of the core data and site configuration.
 

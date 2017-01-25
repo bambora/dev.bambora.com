@@ -13,7 +13,7 @@ includes:
 search: false
 ---
 
-<h1 class="js-toc-ignore">Dev Portal Design Guide</h1>
+# Dev Portal Design Guide
 
 This page contains the rules and guidelines for creating a developer portal and the content within it. All bambora developer portals must adher to this design guide.
 

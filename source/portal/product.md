@@ -9,7 +9,7 @@ parent: /portal/content
 search: false
 ---
 
-<h1 class="js-toc-ignore">Product Pages</h1>
+# Product Pages
 
 A Product Page is a mix between documentation and flash. It should look nice yet provide a clear avenue to the important documentation. Use the cards in the layout to direct users to the most important information.
 
@@ -75,7 +75,7 @@ Parameter | Description | Example Value
 
 Here's an example frontmatter for a product page: 
 
-```
+```yaml
 ---
 title: Example Product Page
 layout: product

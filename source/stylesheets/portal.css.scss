@@ -1,7 +1,6 @@
 @import 'syntax'; // syntax highlighting for code blocks
 
 /* Variables (taken from Bambora UI) */ 
-
 $muted: rgb(240, 240, 240);
 $muted-dark: rgb(200, 200, 200);
 $lightest: rgb(255, 255, 255); 
@@ -9,6 +8,7 @@ $contrast: rgb(140, 140, 140);
 $contrast-light: rgb(163, 163, 163);
 $darkest: rgb(30, 30, 30); 
 $amethyst: rgb(69, 36, 89);
+$primary: rgb(120, 71, 181);
 
 $screen-md: 992px;
 $screen-sm: 767px;
@@ -350,7 +350,7 @@ table tbody tr:last-child td {
 .nav-pane a {
   &:hover {
     path {
-      fill: $contrast-light;
+      fill: $primary;
     }   
   }
 }
@@ -370,11 +370,12 @@ table tbody tr:last-child td {
 
   p {
     color: $lightest;
-  } 
+    text-align: center;
+  }
 
   a {
     color: $lightest;
-    text-decoration: none; 
+    text-decoration: none;
 
     &:visited {
       color: $contrast-light;

@@ -8,7 +8,8 @@ parent: /portal/quickstart
 
 search: false
 ---
-<h1 class="js-toc-ignore">Quickstart</h1>
+
+# Quickstart
 
 This will guide you through quickly setting up the portal on your machine, editing some docs, and deploying the change.
 

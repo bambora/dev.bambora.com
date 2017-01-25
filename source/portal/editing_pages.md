@@ -8,7 +8,8 @@ parent: /portal/content
 
 search: false
 ---
-<h1 class="js-toc-ignore">Dev Portal Editing</h1>
+
+#Dev Portal Editing
 
 There are two main ways you can contribute to the dev portal:
 

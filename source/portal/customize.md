@@ -8,7 +8,7 @@ parent: /portal/customize
 
 search: false
 ---
-# Capabilities
+## Capabilities
 
 The dev portal provides many different avenues for customization.
 
@@ -26,13 +26,13 @@ With a little more work you can:
  - Create a custom Table of Contents
  - Fork and clone the portal
 
-# Toolset
+## Toolset
 
 The dev portal uses a tool called Middleman. This is a static site generator that utilizes layout templates and markdown files to render content. It is very flexible and quite popular. Middleman is built on Ruby.
 
 It is worth giving a quick read up on [Middleman](./middleman.html).
 
-# Modify the Site
+## Modify the Site
 
 If you want to modify the site, clone it, refactor it, the first step is to understand the [Architecture](./architecture.html). After that take a look at one of the following topics:
 

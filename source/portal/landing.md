@@ -9,7 +9,7 @@ parent: /portal/content
 search: false
 ---
 
-<h1 class="js-toc-ignore">Landing Page Template</h1>
+# Landing Page Template
 
 The landing page is the front of the dev portal. It has no navigation menu so it must be especially skilled at directing users to the products and information they need.
 
@@ -107,7 +107,7 @@ Parameter | Description | Example Value
 
 Here's a full example frontmatter for a Landing Page:
 
-```
+```yaml
 ---
 title: Landing Page
 layout: landing

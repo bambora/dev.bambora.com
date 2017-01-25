@@ -8,11 +8,11 @@ parent: /portal/deploy
 
 search: false
 ---
-# Local
+## Local
 
 Local deployment is performed with Middleman.
 
-# Public
+## Public
 
 
 

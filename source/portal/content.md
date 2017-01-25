@@ -9,7 +9,7 @@ parent: /portal/content
 search: false
 ---
 
-<h1 class="js-toc-ignore">Writing Portal Content</h1>
+# Writing Portal Content
 
 Whether you want to edit some existing content or create a new documentation topic, this guide will walk you through how to do just that.
 

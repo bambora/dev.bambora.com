@@ -11,7 +11,7 @@ includes_root: portal
 search: false
 ---
 
-<h1 class="js-toc-ignore">Create a New Page</h1>
+# Create a New Page
 
 
 The first step to creating a new page is to select location where the file will live. In the project folder you will see a sub-folder called `/source`. In that folder will be your region's folder. That is where you will place your file.

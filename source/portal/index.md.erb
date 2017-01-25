@@ -9,9 +9,9 @@ parent: /portal/index
 search: false
 ---
 
-<%= image_tag "svg/zebraffe-dev.svg", :height => '200px' %>
+<%= image_tag "svg/zebraffe-dev.svg", :width => '100%', :style => 'max-height: 200px;' %>
 
-<h1 class="js-toc-ignore">Welcome</h1>
+# Welcome
 
 Welcome to the developer portal setup and configuration guide. Use this space to learn how to modify the existing dev portals or create a new one.
 
@@ -21,7 +21,7 @@ This page will show you how to set up the Dev Portal on your machine.
 
 The dev portal is stored on GitHub. You can grab a copy by installing Git on your machine and cloning the repo:
 
-```
+```shell
 > git clone https://github.com/bambora/dev.bambora.com.git
 ```
 
@@ -37,7 +37,7 @@ You will want to branch the project so your changes can be easily reviewed and m
 
 It is very easy to branch using Git:
 
-```
+```shell
 > git branch my_branch
 > git checkout my_branch
 ```

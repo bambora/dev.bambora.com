@@ -8,6 +8,6 @@ parent: /portal/content
 
 search: false
 ---
-# Swagger
+## Swagger
 
 All APIs should be definable in swagger markdown.
