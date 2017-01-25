@@ -10,8 +10,6 @@ header:
   buttons:
     - file: /portal/index
       title: Test Payment
-    - file: /portal/index
-      title: Test Button
 
 toc:
 - file: 'category1'

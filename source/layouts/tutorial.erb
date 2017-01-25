@@ -9,9 +9,10 @@
 
     <div class="container">
       <%= partial "layouts/side_nav" %>
-
+  
       <div class="row">
         <div class="col-md-9 col-md-offset-3 js-toc-content">
+            
           <%= yield %> 
           
           <% current_page.data.includes && current_page.data.includes.each do |include| %>

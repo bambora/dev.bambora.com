@@ -3,7 +3,7 @@ var lunrData  = null;
 
 // Download index data
 $.ajax({
-  url: "../search.json",
+  url: "/search.json",
   cache: true,
   method: 'GET',
   success: function(data) {
@@ -17,6 +17,7 @@ $(document).ready(function () {
   $('#search-button').click(function() {
     $('#search-overlay').fadeIn("fast"); 
     $('#search-overlay input').focus();
+    $('#search-overlay input').val("");
   });
 
   $('#close-search-overlay').click(function() {
@@ -32,24 +33,24 @@ $(document).ready(function () {
     var searchresults = $('.search-results');
     var resultcount = $('#result-count');
     if (result.length === 0) {
+      
       // Hide results
       searchresults.hide();
       resultcount.hide();
 
     } else {
       // Show results
-      resultcount.html('results: ' + result.length);
+      resultcount.html(result.length + " results");
       searchresults.empty();
       for (var item in result) {
         // A result only gives us a reference to a document
         var ref = result[item].ref;
         // Using the reference get the document
         var doc = lunrData.docs[ref];
-        // Get the section of the site
-        //var group = " <span class='badge'>" + doc.group + '</span>';
-        var searchitem = '<li><a class="list-group-item" href="' + doc.url + '">' + doc.title + '</a></li>';
+        var searchitem = '<li><span>' + doc.parent + ' > </span><a class="list-group-item" href="' + doc.url + '">' + doc.title + '</a></li>';
         searchresults.append(searchitem);
       }
+      resultcount.show();
       searchresults.show();
     }
   });

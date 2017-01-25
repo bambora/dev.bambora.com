@@ -31,7 +31,8 @@ activate :search do |search|
   search.fields = {
     title:   {boost: 100, store: true, required: true},
     content: {boost: 50},
-    url:     {index: false, store: true}
+    url:     {index: false, store: true},
+    parent:  {boost: 25, store: true}
   }
 end
 
@@ -39,6 +40,10 @@ end
 # activate :asset_hash do |asset_hash| 
 #   asset_hash.exts << '.json'
 # end
+
+# Github variables 
+set :github_repo_url, "https://github.com/bambora/dev.bambora.com"
+set :github_branch, "v2"
 
 # Helpers 
 helpers do 
@@ -56,6 +61,11 @@ helpers do
   def get_random_icon_color()
     ['green-light', 'raspberry', 'tabriz-blue', 
       'green-powder', 'factory-yellow'].sample
+  end
+
+  def github_edit_link(source_file)
+    path = source_file.split('/source/', 2)[1]
+    "#{github_repo_url}/edit/#{github_branch}/source/#{path}"
   end
 end
 
