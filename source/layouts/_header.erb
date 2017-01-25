@@ -28,6 +28,8 @@
         <% nav.buttons and nav.buttons.each do |btn| %>
             <a href="<%= btn.file %>.html" class="btn btn-small"><%= btn.title %></a>
         <% end %>
+
+        <%= partial "layouts/edit_on_github" %> 
     </div>
 </nav>
 
