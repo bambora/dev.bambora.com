@@ -19,11 +19,19 @@
     <% nav.links and nav.links.each do |link| %>
         <a href="<%= link.file %>.html"><%= link.title %></a>
     <% end %>
-
     </div>
+
     <div class="pull-right">
+        
+        <a id="search-button" href="#"><%= svg "search" %></a>
+        
         <% nav.buttons and nav.buttons.each do |btn| %>
             <a href="<%= btn.file %>.html" class="btn btn-small"><%= btn.title %></a>
         <% end %>
     </div>
 </nav>
+
+
+<div id="search-overlay">
+    <%= partial "layouts/search_overlay" %>
+</div>

@@ -4,7 +4,7 @@ var lunrData  = null;
 // Download index data
 $.ajax({
   url: "../search.json",
-  //cache: true,
+  cache: true,
   method: 'GET',
   success: function(data) {
     lunrData = data;
@@ -12,7 +12,16 @@ $.ajax({
   }
 });
 
-$(document).ready(function () {
+$(document).ready(function () { 
+
+  $('#search-button').click(function() {
+    $('#search-overlay').fadeIn("fast"); 
+    $('#search-overlay input').focus();
+  });
+
+  $('#close-search-overlay').click(function() {
+    $('#search-overlay').fadeOut("fast");
+  });
 
   $('input#search').on('keyup', function () {
     // Get query
