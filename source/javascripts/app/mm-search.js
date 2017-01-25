@@ -17,6 +17,7 @@ $(document).ready(function () {
   $('#search-button').click(function() {
     $('#search-overlay').fadeIn("fast"); 
     $('#search-overlay input').focus();
+    $('#search-overlay input').val("");
   });
 
   $('#close-search-overlay').click(function() {

@@ -16,17 +16,17 @@
       
       <%= partial "layouts/header" %> 
   
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-sm-8 col-xs-10">
-            <h1><%= current_page.data.hero_unit.big_heading %></h1>
-            <p><%= current_page.data.hero_unit.tag_line %></p>
-            <% if btn = current_page.data.hero_unit.button %> 
-              <a href="<%= btn.link %>" class="btn"><%= btn.text %></a>
-            <% end %>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-sm-8 col-xs-10">
+              <h1><%= current_page.data.hero_unit.big_heading %></h1>
+              <p><%= current_page.data.hero_unit.tag_line %></p>
+              <% if btn = current_page.data.hero_unit.button %> 
+                <a href="<%= btn.link %>" class="btn"><%= btn.text %></a>
+              <% end %>
+            </div>
           </div>
         </div>
-      </div>
     </div>
 
     <div class="container">
