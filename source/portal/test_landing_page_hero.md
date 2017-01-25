@@ -7,7 +7,7 @@ hero_unit:
     big_heading: Build it with Bambora.
     tag_line:  > 
         Start accepting payments today with code made by developers world wide.
-        Handy guides and libraries at reach.
+        Handy guides and libraries at reach. Test add content through GitHub button. 
     button: 
         text: Get Started
         link: /portal/quickstart.html
