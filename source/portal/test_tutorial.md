@@ -1,6 +1,8 @@
 ---
-title: Tutorial
+title: Test Tutorial
 layout: tutorial
+
+summary: A test tutorial with dummy content added. 
 
 nav: test_tutorial_nav
 name: /portal/test_tutorial

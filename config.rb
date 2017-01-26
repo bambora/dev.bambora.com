@@ -32,7 +32,7 @@ activate :search do |search|
     title:   {boost: 100, store: true, required: true},
     content: {boost: 50},
     url:     {index: false, store: true},
-    parent:  {boost: 25, store: true}
+    summary: {boost: 25, store: true}
   }
 end
 

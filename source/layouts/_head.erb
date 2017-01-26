@@ -17,12 +17,3 @@
 <% else %>
     <%= javascript_include_tag  "all_nosearch" %>
 <% end %>
-
-<% language_tabs = current_page.data.language_tabs %>
-<% if language_tabs %>
-    <script>
-    $(function() {
-        setupLanguages(<%= language_tabs.map{ |lang| lang.is_a?(Hash) ? lang.keys.first : lang }.to_json %>);
-    });
-    </script>
-<% end %>

@@ -2,6 +2,8 @@
 title: Tutorial
 layout: tutorial
 
+summary: A shorter test tutorial. 
+
 nav: test_tutorial_nav
 name: /portal/test_short_tutorial
 parent: /portal/test_short_tutorial

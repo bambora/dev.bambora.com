@@ -18,6 +18,7 @@ $(document).ready(function () {
     $('#search-overlay').fadeIn("fast"); 
     $('#search-overlay input').focus();
     $('#search-overlay input').val("");
+    $('body').addClass('no-scroll');
   });
 
   $('#close-search-overlay').click(function() {
@@ -47,7 +48,15 @@ $(document).ready(function () {
         var ref = result[item].ref;
         // Using the reference get the document
         var doc = lunrData.docs[ref];
-        var searchitem = '<li><span>' + doc.parent + ' > </span><a class="list-group-item" href="' + doc.url + '">' + doc.title + '</a></li>';
+
+        if(!doc.summary) {
+          var summary = "<p class='summary'><em>Page has no summary </em></p>"; 
+        } else {
+          var summary = "<p class='summary'>" + doc.summary + "</p>";
+        }
+
+        var searchitem = "<div class='search-result'><p><a href='" + doc.url + "'>" + doc.title + "</a>" + summary;
+
         searchresults.append(searchitem);
       }
       resultcount.show();
