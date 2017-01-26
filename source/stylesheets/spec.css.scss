@@ -28,7 +28,8 @@ nav {
 }
 
 .tocify-wrapper {
-    top: 100px; 
+    top: 100px;
+    padding-left: 30px;
 }
 
 .dark-box  {
@@ -49,4 +50,8 @@ padding: 0;
 
 pre {
     border-radius: 0;
+}
+
+h1 {
+    padding-top: 30px !important; 
 }

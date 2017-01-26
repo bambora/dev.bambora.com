@@ -50,8 +50,8 @@ $color-seperator: #ccc;
 ////////////////////
 $main-text: #4f5355; // main content text color, contrast-dark
 $nav-text: #4f5355; // contrast-dark
-$nav-active-text: #4f5355; // contrast-dark
-$nav-header: #9ba3a7;
+$nav-active-text: $primary; // contrast-dark
+$nav-header: $darkest;
 $lang-select-text: #fff; // color of unselected language tab text
 $lang-select-active-text: #fff; // color of selected language tab text
 $lang-select-pressed-text: #fff; // color of language tab text when mouse is pressed
