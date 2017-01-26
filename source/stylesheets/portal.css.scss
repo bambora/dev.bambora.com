@@ -366,6 +366,7 @@ table tbody tr:last-child td {
   height: 100%; 
   background-color: rgba(0, 0, 0, 0.9);
   z-index: 10;
+  overflow: auto;
 
   svg {
     margin: 30px; 
@@ -378,18 +379,18 @@ table tbody tr:last-child td {
   }
 
   a {
-    color: $lightest;
-    text-decoration: none;
+    font-size: 20px; 
+    color: $muted-dark;
 
     &:hover {
-      text-decoration: underline;
-    }
-
-    &:visited {
       color: $lightest;
     }
   }
 
+  .form-group {
+    margin-bottom: 0;
+  }
+  
   #result-count {
     font-size: 24px; 
     color: $primary; 
@@ -404,23 +405,21 @@ table tbody tr:last-child td {
     border: none;
   }
 
-  ul {
-    list-style-type: none; 
-    li {
-      margin: 10px; 
-      margin-bottom: 20px;
+  .search-result {
+    margin-bottom: 50px;
 
-      span {
-        color: $contrast-dark;
-      }
+    p {
+      padding: 0;
+      margin: 0;
+    }
+
+    .summary {
+      margin-top: 10px; 
+      color: $lightest;
     }
   }
 }
 
-/* edit on github link */
-
-.edit-on-github {
-  position: fixed; 
-  right: 10px;
-  top: 70px; 
+.no-scroll {
+  overflow: hidden; 
 }

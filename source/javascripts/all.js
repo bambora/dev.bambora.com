@@ -4,7 +4,7 @@
 //= require ./app/_bambora-github.js
 //= require ./app/_crypto-js.min.js
 //= require ./app/_tocbot
-//= require ./app/mm-search.js
+//= require ./app/site-search.js
 //= require lunr.min
 //= require lunr.stemmer.support
 //= require lunr.es
