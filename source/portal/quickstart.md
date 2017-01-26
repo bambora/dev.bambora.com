@@ -18,7 +18,7 @@ To get going, you will need to install Ruby v2.3 and [Bundler](http://bundler.io
 First up is to get the site and set it up:
 
 
-```
+```shell
 > git clone https://github.com/bambora/dev.bambora.com.git
 
 > cd dev.bambora.com
@@ -44,7 +44,7 @@ Head back to the command line and exit middleman with cmd+C.
 
 Now let's publish the changes:
 
-```
+```shell
 > git add -u
 
 > git commit -m "my first edit"
