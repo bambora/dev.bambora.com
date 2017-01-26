@@ -25,17 +25,18 @@ under the License.
 ////////////////////
 
 // colors from https://bambora.github.io/ui.bambora.com/#colors
+@import 'bambora_ui_variables';
 
 $nav-bg: #fff;
 $top-nav-bg: #1F2532; // same as logo
 $bottom-nav-bg: #000000; 
-$examples-bg: #dcddde; // muted 
+$examples-bg: $muted; // muted 
 $code-bg: #232323; // darkest
 $nav-gradient: #151414; 
 $code-annotation-bg: #4f5355; // contrast-dark
 $nav-subitem-bg: #fff;
 $nav-active-bg: #fff;
-$lang-select-bg: #dcddde; // muted 
+$lang-select-bg: $muted; // muted 
 $lang-select-pressed-bg: #111; // color of language tab bg when mouse is pressed
 $main-bg: #fff;
 $aside-notice-bg: #8fbcd4; 

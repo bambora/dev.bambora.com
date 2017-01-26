@@ -1,5 +1,6 @@
 ---
 title: Android
+layout: spec
 
 toc_above:
   - <a href='index.html'>Getting Started</a>
@@ -28,10 +29,6 @@ toc_below:
   - <a href='carts.html'>Shopping Carts</a>
 
 search: false
-
-language_tabs: 
-  - python
-  - ruby
 ---
 
 # Android SDK

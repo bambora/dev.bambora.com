@@ -1,0 +1,52 @@
+@import 'bambora_ui_variables';
+
+html {
+    background-color: $lightest;
+}
+
+body {
+    display: block;
+    background-color: $lightest;
+}
+
+nav {
+    z-index: 100; 
+}
+
+.fixed-header {
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+}
+
+.nav-push{
+    box-sizing: content-box;
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 66px;
+}
+
+.tocify-wrapper {
+    top: 100px; 
+}
+
+.dark-box  {
+    box-shadow: inset 0 0 20px 0 rgba(0, 0, 0, 0.06);
+}
+
+code {
+background-color: rgba(0,0,0,0.05);
+padding: 3px;
+border-radius: 3px;
+}
+
+pre>code {
+border-radius: 0;
+background-color: transparent;
+padding: 0;
+}
+
+pre {
+    border-radius: 0;
+}

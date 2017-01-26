@@ -22,7 +22,7 @@ Create a new file, in that region folder, with the `.md` file extension. This st
 
 The top of each file has some configuration called **front matter**. This is YAML code contained within three dashes:
 
-```
+```yaml
 ---
 title: Example
 layout: tutorial
@@ -59,13 +59,13 @@ Let's go over what each of those parameters means.
 **Each parameter is required unless otherwise specified.**
 
 
-# Landing Page Layout
+## Landing Page Layout
 
 The landing page is the very front of the developer portal for a specific region. It uses the **landing** layout template: `layout: landing`.
 
 This page is the root page on the navigation menu that you define as the first item in the `toc:` variable in your `nav.yaml` file:
 
-```
+```yaml
 toc:
 - file: '/region/index'
   title: 'Landing Page'
@@ -81,7 +81,7 @@ A landing page contains no markdown and very minimal text.
 All of the content of the page is defined in the **frontmatter** (the code at the top of the markdown file located between 3 dashes).
 
  
-# Product Page Layout
+## Product Page Layout
 
 The product page is similar to the landing page. In fact it uses an almost identical layout template. The difference here is that the Portal's Table of Contents navigation menu is now present. It uses the **product** layout template: `layout: product`.
 
@@ -101,12 +101,12 @@ All of the content of the page is defined in the **frontmatter** (the code at th
 Try to include one or more screenshots for the product, if it is a visual product.
 
 
-# Tutorial Layout
+## Tutorial Layout
 
 Tutorials are the meat of the dev portal. They are context-specific and compliment Spec pages.
 
 Tutorials are often sequential with a defined goal. They use the **tutorial** layout template: `layout: tutorial`.
 
-# Spec Layout
+## Spec Layout
 
 Specs (specifications) are incredibly details pages that server as the *source of truth* for a product or API. Tutorials should refer to these pages as much as possible so content doesn't have to be changed in many places around the site.
