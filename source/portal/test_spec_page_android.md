@@ -2,33 +2,15 @@
 title: Android
 layout: spec
 
-toc_above:
-  - <a href='index.html'>Getting Started</a>
-  - <span>COLLECT CARDS</span>
-  - <a href='ios.html'>iOS</a>
-  - <a href='android.html'>Android</a>
+nav: test_tutorial_nav
+name: /portal/test_spec_page_android
+parent: /portal/test_spec_page_android
 
 includes:
-  - mobile/bnpayment-android
-  - mobile/how-to-capture-payments
-  - mobile/android-customization
+  - mobile/_bnpayment-android
+  - mobile/_how-to-capture-payments
+  - mobile/_android-customization
 
-toc_below:
-  - <a href='online.html'>Online</a>
-  - <span>CHARGE CARDS</span>
-  - <a href='client-side.html'>Client-Side</a>
-  - <a href='server-side.html'>Server-Side</a>
-  - <span>APIs</span>
-  - <a href='native-payments/index.html'>Payments</a>
-  - <a href='settlement/index.html'>Settlement</a>
-  - <a href='merchant/index.html'>Merchant</a>
-  - <a href='backoffice-reports/index.html'>Backoffice Reports</a>
-  - <a href='payment-depot/index.html'>Payment Depot</a>
-  - <span>TOOLS</span>
-  - <a href='testcards.html'>Test Cards</a>
-  - <a href='carts.html'>Shopping Carts</a>
-
-search: false
 ---
 
 # Android SDK

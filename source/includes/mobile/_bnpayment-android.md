@@ -1,13 +1,13 @@
 
 
-# Installation
+## Installation
 You can install the app either via [JCenter](https://bintray.com/bambora-mobile/maven/bn-payment) or by [Source](https://github.com/bambora/BNPayment-Android).
 
-## JCenter
+### JCenter
 
 JCenter is the easiest method to install the SDK into your app.
 
-### Step 1: Add Repository
+#### Step 1: Add Repository
 
 ```groovy
 dependencies {
@@ -18,7 +18,7 @@ dependencies {
 Add this dependency under ‘dependencies’ in the app module's build.gradle file:
 
 
-### Step 2: Set Permissions
+#### Step 2: Set Permissions
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
@@ -26,11 +26,11 @@ Add this dependency under ‘dependencies’ in the app module's build.gradle fi
 
 Add the following permission after the **manifest** tag in your **AndroidManifest.xml** file:
 
-## Source
+### Source
 
 Installing from the source lets you see the source code and make any customizations you may want.
 
-### Step 1: git clone repo
+#### Step 1: git clone repo
 
 ```shell
 git clone https://github.com/bambora/BNPayment-Android
@@ -39,7 +39,7 @@ git clone https://github.com/bambora/BNPayment-Android
 Type this command in a terminal window of your choice in the directory that you want to clone the SDK to. You will need to have Git installed on your system.
 
 
-### Step 2: Copy Source to Your Project
+#### Step 2: Copy Source to Your Project
 
 ```groovy
 include ':bn-payment'
@@ -48,7 +48,7 @@ include ':bn-payment'
 Place the cloned repository in your app project. You can then include the Payment module in your app project by including it in **settings.gradle**:
 
 
-### Step 3: Add Dependencies
+#### Step 3: Add Dependencies
 
 ```groovy
 dependencies {
@@ -60,10 +60,7 @@ You can then add the Payment module as a dependency in your app module by adding
 
 A sample app is included in the cloned repository (BNPayment-Android/app).
 
-
-
-<a name="androidsetup"></a>
-# Setup
+## Setup
 
 Only a merchant account number is necessary to communicate with Bambora through the SDK. However, you will need an API token to perform server-side captures, cancels and refunds. [See here for more information](server-side.html#authentication).
 
@@ -71,7 +68,7 @@ After signing up for a SDK developer account, you will receive a test merchant a
 
 The example application includes a test merchant number that can be used for testing Native Payment. Please replace this with your own merchant account number after signing up with Bambora.
 
-## Register Handler
+### Register Handler
 
 ```java
 BNPaymentBuilder BNPaymentBuilder = new BNPaymentBuilder(getApplicationContext())
@@ -90,8 +87,7 @@ Add the following code at the beginning of the `onCreate method` in the `MainAct
 *Note that if you provide a test Merchant Account, the SDK will enter test mode. If you provide a production Merchant Account, the SDK will enter production mode.*
 
 
-<a name="androidcreditcardregistration"></a>
-# Credit Card registration
+## Credit Card registration
 
 Credit card registration is done through the registration form. This registration form is displayed if the user hasn't yet registered a card. The credit card details are automatically encrypted before being sent to our servers, this is all handled for you. For registering the cards you have the option of:
 
@@ -102,11 +98,11 @@ Credit card registration is done through the registration form. This registratio
 
 
 
-## Display the default native form
+### Display the default native form
 
 This example shows you how to present the default credit card registration form using an activity.
 
-### Create a layout
+#### Create a layout
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -126,7 +122,7 @@ This example shows you how to present the default credit card registration form 
 Start by creating a layout file with the name name `activity_native_card_registration`, or choose your own file name. The example shows what the layout file needs to contain. Here we add a `CardRegistrationFormLayout`.
 
 
-### Create an activity
+#### Create an activity
 
 ```java
 
@@ -160,7 +156,7 @@ To receive callbacks when registration is completed we need to add a listener to
 Then, in the same `onCreate` method, set the your newly created layout file (`activity_native_card_registration`) as the contentView for the activity, as the code example shows.
 
 
-### Display the form activity
+#### Display the form activity
 
 ```java
 
@@ -172,11 +168,7 @@ startActivity(intent);
 All that's left to show the native credit card registration form is to start the activity. The code example shows how to do it.
 
 
-
-
-
-<a name="androidmanagingcards"></a>
-# Managing credit cards
+## Managing credit cards
 
 ```java
   BNPaymentHandler.getInstance()
@@ -184,7 +176,7 @@ All that's left to show the native credit card registration form is to start the
 
 You can run standard read, update, and delete operations on the credit card tokens stored on the device by accessing the `BNPaymentHandler.getInstance()` object.
 
-## Get All Cards
+### Get All Cards
 
 ```java
 BNPaymentHandler.getInstance().getRegisteredCreditCards(MainActivity.this, new CreditCardManager.IOnCreditCardRead() {
@@ -209,7 +201,7 @@ This code example will get all registered cards on the device and starts by chec
 
 
 
-## Get Card Details
+### Get Card Details
 
 ```java
 // Get credit card alias:
@@ -225,7 +217,7 @@ creditCard.getCreditCardToken();
 Building on the above example, this code on the right shows how to read information from a credit card object.
 
 
-## Delete Card Token
+### Delete Card Token
 
 ```java
 public void deleteCreditCard(CreditCard creditCard) {
@@ -245,9 +237,7 @@ When a credit card is registered, a credit card token is saved on the device. Th
 The `getRegisteredCreditCards` function deletes a specific stored credit card token from local storage.
 
 
-<a name="androidmakingpayments"></a>
-
-# Making payments
+## Making payments
 
 ```java
 public void makeCreditCardPayment(CreditCard creditCard) {
@@ -290,8 +280,8 @@ If a payment fails for any reason, the `onTransactionError()` callback method wi
 The code example shows how to configure and make a payment.
 
 
-<a name="androiderrorhandling"></a>
-## RequestError
+### RequestError
+
 ```
 201 Created: 
     Payment successful
@@ -325,8 +315,7 @@ The specific error is identified by the type property, if no type is given the s
 
 
 
-<a name="androidtestmode"></a>
-# Test mode
+## Test mode
 
 **Test mode vs Production mode**
 

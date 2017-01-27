@@ -30,16 +30,16 @@
         <% end %>
 
         <% if not current_page.data.includes %>
-            <a class="btn btn-small" href="<%= github_edit_link current_page.source_file %>">Edit this page</a> 
+            <a class="btn btn-small" href="<%= github_edit_link current_page.source_file %>" target="_blank">Improve this page</a> 
         <% else %>
             <div class="dropdown-nav dropdown-open-on-hover" role="navigation">
-                Edit on Github
+                Improve this page
                 <ul role="menu">
 
-                    <li role="menuitem"><a href="<%= github_edit_link current_page.source_file %>">Source file</a></li>
+                    <li role="menuitem"><a href="<%= github_edit_link current_page.source_file %>" target="_blank"><strong><%= current_page.source_file.split('/').last %></strong></a></li>
 
                     <% current_page.data.includes.each do |include| %>
-                        <li role="menuitem"><a href="<%= github_edit_include_link include %>"><%= include %></a></li>
+                        <li role="menuitem"><a href="<%= github_edit_include_link include %>" target="_blank"><%= include.split('/').last %>.md</a></li>
                     <% end %>
                 </ul>
             </div>        

@@ -18,5 +18,7 @@ toc:
   title: 'Test Short Tutorial'
 - file: '/portal/test_spec_page'
   title: 'Test Spec Page'
+- file: '/portal/test_spec_page_android'
+  title: 'Android Spec'
 
 footer:
