@@ -2,6 +2,8 @@
 title: Create Page
 layout: tutorial
 
+summary: Describes how to create a new page in the dev portal.
+
 nav: site_howto_nav
 name: /portal/create_new_page
 parent: /portal/content
