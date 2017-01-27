@@ -1,3 +1,7 @@
+//= require lunr.min
+//= require lunr.stemmer.support
+//= require lunr.es
+
 var lunrIndex = null;
 var lunrData  = null;
 
@@ -13,15 +17,17 @@ $.ajax({
 });
 
 $(document).ready(function () { 
-
-  $('#search-button').click(function() {
+  
+  $('#search-button').click(function(event) {
+    event.preventDefault();
     $('#search-overlay').fadeIn("fast"); 
     $('#search-overlay input').focus();
     $('#search-overlay input').val("");
     $('body').addClass('no-scroll');
   });
 
-  $('#close-search-overlay').click(function() {
+  $('#close-search-overlay').click(function(event) {
+    event.preventDefault();
     $('body').removeClass('no-scroll');
     $('#search-overlay').fadeOut("fast");
   });

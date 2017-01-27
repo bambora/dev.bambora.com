@@ -31,3 +31,7 @@ tocbot.init({
     // Class to add to list items.
     //listItemClass: '',
 });
+
+$('#nav-link').click(function() {
+    $(".nav-left").toggleClass("show");
+});

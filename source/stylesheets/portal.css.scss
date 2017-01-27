@@ -173,36 +173,36 @@ color: rgba(120, 71, 181, 1);
   font-weight: 600;
 }
 
-// Re-position nav menu on smaller screens 
-@media only screen and (max-width: $screen-md) {
-    .nav-sticky ul {
-        padding-left: 0;
-    }
+#nav-link {
+  position: fixed;
+  top: 80px;
+  left: 15px;
+  background-color: $contrast-dark;
+  padding: 7px;
+  padding-bottom: 2px;
+  border-radius: 3px;
+  display: none;  
+  path {
+    fill: $lightest;
+  }
 }
 
-@media only screen and (max-width : $screen-sm) {
+@media (max-width : 992px) {
+  .nav-left {
+    transition: left 0.5s;
+    left: -200px;
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 100;
+    border-radius: 5px;
 
-    .container {
-      width: 100%; // wrap code blocks and tables on small screen
+    &.show {
+      left: 0;
     }
+  }
 
-    .nav-sticky {
-        position: static; 
-    }
-    .nav-left {
-        padding-bottom: 0;
-        margin-top: 50px;
-
-        ul {
-            padding-left: 0;
-        }
-    }
-    hr {
-        margin-top: 50px;
-    }
-    .container {
-        margin-top: 0px;
-    }
+  #nav-link {
+    display: block;
+  }
 }
 
 
