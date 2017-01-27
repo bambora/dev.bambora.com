@@ -18,7 +18,6 @@ These steps will describe how to create your own regional dev portal.
 # Design Guide
 
 <div class="message row">
-    
     <div class="col-md-2"><img src="/images/svg/zebraffe-dark.svg" style="height: 60px;"/></div>
     <div class="col-md-10"><strong>Portal Design Guide</strong><p>Regional dev portals <strong>must</strong> adhere to the <a href="./guidelines.html">Portal Design Guide</a>!</p></div>
 </div>

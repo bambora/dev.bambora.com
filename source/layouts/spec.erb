@@ -23,7 +23,6 @@ under the License.
 
     <%= partial "layouts/head" %>
 
-
     <% if language_tabs %>
       <script>
         $(function() {
@@ -46,7 +45,8 @@ under the License.
       <div class="dark-box"></div>
       <div class="content js-toc-content">
         <%= yield %>
-        <% current_page.data.includes && current_page.data.includes.each do |include| %>
+        <% current_page.data.includes && 
+            current_page.data.includes.each do |include| %>
           <%= partial "includes/#{include}" %>
         <% end %>
       </div>

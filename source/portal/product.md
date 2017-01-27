@@ -6,9 +6,8 @@ nav: site_howto_nav
 name: /portal/product
 parent: /portal/content
 
-search: false
-
-summary: An overview of the Product Page template.
+summary: > 
+    An overview of the Product Page template.
 ---
 
 # Product Pages

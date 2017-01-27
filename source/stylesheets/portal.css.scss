@@ -355,8 +355,9 @@ table tbody tr:last-child td {
   overflow: auto;
 
   svg {
-    margin: 30px; 
-    float: right;
+    position: fixed;
+    right: 30px;
+    top: 30px;
   }
 
   p {

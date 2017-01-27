@@ -50,17 +50,17 @@ Feel free to show the full range of our personality. Our brand is filled with pa
 
 ### Copy examples
 
-In-app greeting
+#### In-app greeting
 Hi Alex! This is your home for transaction details, settled payments, and most importantly — peace of mind.   
 
 
-Success feedback
+#### Success feedback
 Another epic year in the books. You set records for total revenue, total transactions, and total visitors. Running a business is hard, but you make it look easy. Congrats!  
 
 
-Error feedback
+#### Error feedback
 Sorry, our support staff are not available at the moment.   
 
 
-Forgot password
+#### Forgot password
 Forgot your password? No worries. Contact us to reset it.
