@@ -7,6 +7,8 @@ name: /portal/landing
 parent: /portal/content
 
 search: false
+
+summary: An overview of the Landing Page template. 
 ---
 
 # Landing Page Template
@@ -188,4 +190,4 @@ Any markdown that exists outside of the frontmatter will not be displayed on a L
 
 ## Examples
 
-[Here's](/portal/test_landing_page.html) and example of a landing page without a Hero Unit background image, and [here's](/portal/test_landing_page_hero.html) an example of one with a background image.  
+[Here's](/portal/test_landing_page.html) an example of a Landing Page without a Hero Unit background image, and [here's](/portal/test_landing_page_hero.html) an example of one with a background image.  

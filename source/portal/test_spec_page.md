@@ -2,23 +2,14 @@
 title: Test Spec Page
 layout: spec
 
-toc_above: 
-  - <span>DEV PORTAL</span>
-  - <a href="index.html">Setup</a>
-  - <a href="quickstart.html">Quickstart</a>
-  - <a href="deploy.html">Deploy and Test</a>
-  - <a href="guidelines.html">Portal Guidelines</a>
-  - <a href="content.html">Writing Content</a>
-  - <a href="customize.html">Customize</a>
-  - <span>Example Pages</span>
+summary: An example Spec Page implementation.
 
-toc_below:
-
+nav: test_tutorial_nav
+name: /portal/test_spec_page
+parent: /portal/test_spec_page
 
 includes:
-  - test/test-include
-
-search: false
+  - test/_test-include
 
 language_tabs: 
   - ruby 
@@ -40,6 +31,5 @@ This section of the guide will walk you through how to take payments in your And
 
 **Recommended IDE:** [Android Studio](https://developer.android.com/sdk/index.html) with the [Android Plugin for Gradle](http://developer.android.com/tools/revisions/gradle-plugin.html).
 
-**[Click](https://github.com/bambora/dev.bambora.com/blob/master/source/includes/mobile/_bnpayment-android.md) to edit this section.**
 
 

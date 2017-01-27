@@ -7,6 +7,8 @@ name: /portal/product
 parent: /portal/content
 
 search: false
+
+summary: An overview of the Product Page template.
 ---
 
 # Product Pages

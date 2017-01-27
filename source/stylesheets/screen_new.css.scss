@@ -439,12 +439,12 @@ html, body {
   }
   
   a{
-    color: #664c8e;
-    text-decoration: underline;
-    transition: all 100ms ease-out;    
-    &:hover{
-      color:#cbb7e7
-    }
+    //color: #664c8e;
+    //text-decoration: underline;
+    //transition: all 100ms ease-out;    
+    //&:hover{
+    //  color:#cbb7e7
+    //}
 	
 	&.calltoaction{
 		display: inline-block;
@@ -543,7 +543,7 @@ html, body {
     padding: 3px;
     border-radius: 3px;
     @extend %break-words;
-    @extend %code-font;
+    //@extend %code-font;
   }
 
   pre>code {
@@ -723,7 +723,7 @@ html, body {
   }
 
   pre {
-    @extend %code-font;
+    //@extend %code-font;
   }
 
   blockquote {

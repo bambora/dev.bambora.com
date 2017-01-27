@@ -39,6 +39,8 @@ toc:
       title: 'Product Page'
     - file: '/portal/landing' 
       title: 'Landing Page'
+    - file: '/portal/spec'
+      title: 'Spec Page'
 - file: '/portal/customize'
   title: 'Customize'
   subs:

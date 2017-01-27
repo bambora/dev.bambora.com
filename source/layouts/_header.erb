@@ -29,7 +29,21 @@
             <a href="<%= btn.file %>.html" class="btn btn-small"><%= btn.title %></a>
         <% end %>
 
-        <%= partial "layouts/edit_on_github" %> 
+        <% if not current_page.data.includes %>
+            <a class="btn btn-small" href="<%= github_edit_link current_page.source_file %>">Edit this page</a> 
+        <% else %>
+            <div class="dropdown-nav dropdown-open-on-hover" role="navigation">
+                Edit on Github
+                <ul role="menu">
+
+                    <li role="menuitem"><a href="<%= github_edit_link current_page.source_file %>">Source file</a></li>
+
+                    <% current_page.data.includes.each do |include| %>
+                        <li role="menuitem"><a href="<%= github_edit_include_link include %>"><%= include %></a></li>
+                    <% end %>
+                </ul>
+            </div>        
+        <% end %>
     </div>
 </nav>
 

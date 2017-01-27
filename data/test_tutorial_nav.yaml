@@ -1,20 +1,22 @@
 header:
-  logo_link: / # Root 
-  links:
-    - file: '/portal/index'
-      title: Link 1
-    - file: '/portal/index'
-      title: Link 2
-    - file: '/portal/index'
-      title: Link 3
-    - file: '/portal/index'
-      title: Link 4
-  buttons: # none
+  logo_link: /
+  links: 
+    - file: /portal/quickstart
+      title: Quickstart
+    - file: /portal/index
+      title: Tutorials
+    - file: /portal/index
+      title: APIs
+  buttons:
+    - file: index
+      title: Test Payment
 
 toc:
 - file: '/portal/test_tutorial'
   title: 'Test Tutorial'
 - file: '/portal/test_short_tutorial'
   title: 'Test Short Tutorial'
+- file: '/portal/test_spec_page'
+  title: 'Test Spec Page'
 
 footer:

@@ -67,6 +67,10 @@ helpers do
     path = source_file.split('/source/', 2)[1]
     "#{github_repo_url}/edit/#{github_branch}/source/#{path}"
   end
+
+  def github_edit_include_link(partial)
+    "#{github_repo_url}/edit/#{github_branch}/source/includes/#{partial}.md"
+  end
 end
 
 # Github pages require relative links

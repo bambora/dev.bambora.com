@@ -19,7 +19,7 @@ nav {
     z-index: 100;
 }
 
-.nav-push{
+.nav-push {
     box-sizing: content-box;
     display: block;
     position: relative;
@@ -54,4 +54,21 @@ pre {
 
 h1 {
     padding-top: 100px !important; 
+}
+
+.lang-selector {
+    background: transparent;
+}
+
+footer {
+    position: relative;
+    z-index: 100;
+}
+
+.form-group {
+    padding: 0;
+}
+
+.nav-left {
+    margin-top: 84px;
 }

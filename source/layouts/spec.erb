@@ -40,11 +40,11 @@ under the License.
     </div>
     <div class="nav-push"></div>
 
-    <%= partial "layouts/tocify_toc", :locals => { :language_tabs => language_tabs } %>
+    <%= partial "layouts/side_nav" %>
 
     <div class="page-wrapper">
       <div class="dark-box"></div>
-      <div class="content">
+      <div class="content js-toc-content">
         <%= yield %>
         <% current_page.data.includes && current_page.data.includes.each do |include| %>
           <%= partial "includes/#{include}" %>
@@ -67,6 +67,8 @@ under the License.
     </div>
 
     <%= partial "layouts/footer" %>
+
+    <%= javascript_include_tag "tocbot_init_script" %>
 
   </body>
 </html>

@@ -7,6 +7,10 @@ name: /portal/quickstart
 parent: /portal/quickstart
 
 search: false
+
+summary: > 
+    This will guide you through quickly setting up the portal on your machine, editing some docs, and deploying the change.
+
 ---
 
 # Quickstart
