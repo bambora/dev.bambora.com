@@ -4,12 +4,18 @@ header:
     - file: /portal/quickstart
       title: Quickstart
     - file: /portal/index
-      title: Tutorials
+      title: API Reference
     - file: /portal/index
-      title: APIs
+      title: SDK Rerefence
+    - file: /portal/index
+      title: Guides
+    - file: /portal/index
+      title: Tutorials
   buttons:
-    - file: index
-      title: Test Payment
+    - file: /portal/index
+      title: Sign Up
+    - file: /portal/index
+      title: Login
 
 toc:
 - file: '/portal/index'

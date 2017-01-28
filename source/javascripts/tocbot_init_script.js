@@ -35,3 +35,8 @@ tocbot.init({
 $('#nav-link').click(function() {
     $(".nav-left").toggleClass("show");
 });
+
+$('#nav-close').click(function(event) {
+    event.preventDefault();
+    $(".nav-left").toggleClass("show");
+});

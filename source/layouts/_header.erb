@@ -30,10 +30,10 @@
         <% end %>
 
         <% if not current_page.data.includes %>
-            <a class="btn btn-small" href="<%= github_edit_link current_page.source_file %>" target="_blank">Improve this page</a> 
+            <a class="" href="<%= github_edit_link current_page.source_file %>" target="_blank"><%= svg :comment %></a> 
         <% else %>
             <div class="dropdown-nav dropdown-open-on-hover" role="navigation">
-                Improve this page
+                <%= svg :comment %>
                 <ul role="menu">
 
                     <li role="menuitem"><a href="<%= github_edit_link current_page.source_file %>" target="_blank"><strong><%= current_page.source_file.split('/').last %></strong></a></li>

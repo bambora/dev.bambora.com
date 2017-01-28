@@ -9,7 +9,7 @@ parent: /portal/index
 search: false
 ---
 
-<%= image_tag "svg/zebraffe-dev.svg", :width => '100%', :style => 'max-height: 200px;' %>
+<img src="/images/svg/zebraffe-dev.svg" alt="bambora-logo" style="width:100%" >
 
 # Welcome
 

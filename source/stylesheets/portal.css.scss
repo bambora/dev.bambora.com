@@ -3,16 +3,13 @@
 
 /* general */
 
-body {
-  background-color: $lightest;
-}
-
 img {
   display: block;
   margin: auto;
+  max-width: 720px; 
 }
 
-footer {
+footer { // NOTE: Should be part of Bambora UI. 
   background-color: $lightest;
 }
 
@@ -173,27 +170,38 @@ color: rgba(120, 71, 181, 1);
   font-weight: 600;
 }
 
+/* left nav on mobile screens */
+
 #nav-link {
   position: fixed;
   top: 80px;
   left: 15px;
-  background-color: $contrast-dark;
-  padding: 7px;
-  padding-bottom: 2px;
-  border-radius: 3px;
   display: none;  
   path {
-    fill: $lightest;
+    fill: $primary;
   }
+}
+
+#nav-close {
+  display:none; 
 }
 
 @media (max-width : 992px) {
   .nav-left {
     transition: left 0.5s;
     left: -200px;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: $lightest;
     z-index: 100;
-    border-radius: 5px;
+    height: 100%;
+    top: 0;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.04);
+    position: fixed;
+
+    ul {
+      margin-top: 50px;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
 
     &.show {
       left: 0;
@@ -203,8 +211,17 @@ color: rgba(120, 71, 181, 1);
   #nav-link {
     display: block;
   }
-}
 
+  #nav-close {
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    path {
+      fill: $primary; 
+    }
+  }
+}
 
 /* flex box cards */
 
@@ -335,6 +352,12 @@ table tbody tr:last-child td {
 
 /* top nav */
 
+nav {
+  svg {
+    margin-top: 10px;
+  }
+}
+
 .nav-pane a {
   &:hover {
     path {
@@ -371,6 +394,10 @@ table tbody tr:last-child td {
 
     &:hover {
       color: $lightest;
+
+      path {
+        fill: $lightest;
+      }
     }
   }
 

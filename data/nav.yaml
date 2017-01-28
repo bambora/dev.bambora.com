@@ -1,6 +1,8 @@
 header:
   logo_link: /
   links: 
+    - file: /
+      title: Bambora.com
     - file: /portal/quickstart
       title: Quickstart
     - file: /portal/index 

@@ -32,6 +32,7 @@ toc:
 <% parent = current_page.data.parent %>
 
 <div class="nav-left nav-sticky">
+  <a id="nav-close" href="#"><%= svg :close %></a>
   <ul>
   <% nav.each do |category| %>
     <%# If this top-level category's file name matches the parent name of the markdown file then label this category as 'active' %>
