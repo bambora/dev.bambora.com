@@ -4,6 +4,7 @@
 @import 'side-nav';
 
 /* general */
+
 img {
   display: block;
   margin: auto;
@@ -30,7 +31,14 @@ td,th {
 pre {
   padding: 20px 25px; 
   border-radius: 6px; 
+  text-overflow: ellipsis;
+  overflow-x: auto;
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: pre-wrap; 
 }
+
+
 
 /* flex box cards */
 
@@ -98,7 +106,6 @@ pre {
         margin: 0px; 
     }
 }
-
 
 /* sticky footer */
 
@@ -250,3 +257,7 @@ nav {
 .no-scroll {
   overflow: hidden; 
 }
+
+
+/* code blocks */
+

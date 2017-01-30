@@ -50,11 +50,7 @@ wrap.on("scroll", function(e) {
 });
 
 // Hamburger menu on mobile screen
-$('#show-nav-link').click(function() {
-    $(".nav-left").toggleClass("show");
-});
-
-$('#nav-close').click(function(event) {
+$('#show-nav-link, #nav-close').click(function(event) {
     event.preventDefault();
     $(".nav-left").toggleClass("show");
 });
