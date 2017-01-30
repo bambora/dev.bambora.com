@@ -32,7 +32,25 @@ tocbot.init({
     //listItemClass: '',
 });
 
-$('#nav-link').click(function() {
+
+// Position left nav nicely on scroll 
+wrap = $(window);
+nav = $('.nav-left');
+nav_link = $('#show-nav-link');
+nav_offset = 75; // hard-coded pixel height of padding above nav
+
+wrap.on("scroll", function(e) {
+  if(wrap.scrollTop() > nav_offset) {
+    nav.addClass('nav-left-fixed');
+    nav_link.addClass('nav-left-fixed');
+  } else {
+    nav.removeClass('nav-left-fixed');
+    nav_link.removeClass('nav-left-fixed');
+  }
+});
+
+// Hamburger menu on mobile screen
+$('#show-nav-link').click(function() {
     $(".nav-left").toggleClass("show");
 });
 
@@ -40,3 +58,4 @@ $('#nav-close').click(function(event) {
     event.preventDefault();
     $(".nav-left").toggleClass("show");
 });
+

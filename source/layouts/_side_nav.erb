@@ -33,6 +33,23 @@ toc:
 
 <div class="nav-left nav-sticky">
   <a id="nav-close" href="#"><%= svg :close %></a>
+  
+  <% language_tabs = current_page.data.language_tabs %>
+  <% if language_tabs %>
+  <div class="lang-selector">
+      <ul>
+      <% language_tabs.each do |lang| %>
+      <% if lang.is_a? Hash %>
+          <li><a href="#" data-language-name="<%= lang.keys.first %>"><%= lang.values.first %></a></li>
+      <% else %>
+          <li><a href="#" data-language-name="<%= lang %>"><%= lang %></a></li>
+      <% end %>
+      <% end %>
+      </ul>
+  </div>
+  <% end %>  
+  
+  
   <ul>
   <% nav.each do |category| %>
     <%# If this top-level category's file name matches the parent name of the markdown file then label this category as 'active' %>
@@ -53,4 +70,4 @@ toc:
   </ul>
 </div>
 
-<a id="nav-link" href="#"><%= svg "list" %></a>
+<a id="show-nav-link" href="#"><%= svg "list" %></a>

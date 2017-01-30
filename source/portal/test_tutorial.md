@@ -104,27 +104,187 @@ quisquam eos nihil enim, veritatis explicabo unde quibusdam, quaerat, rerum vita
 Voluptas eos, veniam omnis, ad eius repellat voluptates atque repellendus sapiente
 id sed! Adipisci a sunt ex perferendis optio aspernatur ullam fugiat voluptate officia, tenetur! Vitae eum odit consequatur dolorem? 
 
-## Tabbed code test 
+## Code Block
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos deleniti odit veniam totam maxime, neque soluta distinctio dolore quia quae sed ullam facilis autem, qui quasi, unde aut. Aperiam, esse?
+A long code block: 
 
-```python
-  print "hello world"
+```css
+/* side nav/toc */ 
+.nav-left {
+  position: absolute; 
+  overflow-y: auto;
+  max-width: 240px;
+  max-height: calc(100% - 66px - 66px);
+}
+
+.nav-left-fixed {
+  position: fixed;
+  top: 66px;
+}
+
+.nav-left > ul > li {
+  min-height: 26px; 
+  padding-bottom: 14px;
+}
+
+.nav-left li {
+  list-style: none;
+}
+
+.nav-left li a {
+  position: relative;
+  color: rgba(90, 90, 90, 1);
+  display: block;
+  font-size: 16px;
+  text-decoration: none;
+  border: 0;
+  border-left: 2px solid transparent;
+  font-weight: 400;
+  cursor: pointer;
+  padding: 16px;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: all 100ms ease-out;
+}
+
+.nav-left li.active {
+  border-left: 2px solid rgba(120, 71, 181, 1);
+}
+
+.nav-left .nav-top-heading {
+  color: rgba(90, 90, 90, 1);
+}
+
+.nav-left .active .nav-top-heading {
+  color: rgba(120, 71, 181, 1); 
+}
+
+.nav-left a.nav-top-heading:hover {
+  color: rgba(120, 71, 181, 1); 
+}
+  
+.nav-left .nav-subs {
+  position: relative;
+}
+
+.nav-left ul.nav-subs {
+  padding-left: 16px;
+} 
+
+.nav-left .nav-subs > li { 
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  min-height: 26px; 
+}
+
+.nav-left .nav-subs > li > a {
+  font-size: 16px;
+  position: relative;
+  padding-top: 0;
+  padding-bottom: 0;
+  color: rgba(90, 90, 90, 1);
+}
+
+.nav-left .nav-subs li > a:hover {
+color: rgba(120, 71, 181, 1); 
+}
+
+.js-toc .toc-list {
+  margin: 0;
+  padding-left: 10px;
+}
+
+.js-toc a.toc-link {
+  color: currentColor;
+  height: 100%;
+}
+
+.js-toc .toc-link.node-name--H2 {
+  font-size: 12px;
+  min-height: 12px;
+}
+
+.js-toc .toc-link.node-name--H3 {
+  font-size: 12px;
+  color: rgba(120, 120, 120, 1);
+}
+
+.js-toc .toc-link.node-name--H4 {
+  font-size: 12px;
+  color: rgba(90, 90, 90, 1);
+}
+
+.js-toc .is-collapsible {
+  max-height: 1000px;
+  overflow: hidden;
+  transition: all 300ms ease-in-out;
+}
+
+.js-toc .is-collapsed {
+  max-height: 0;
+}
+
+.js-toc .is-position-fixed {
+  position: fixed !important;
+  top: 0;
+}
+
+.js-toc .is-active-link {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* Nav collapse on mobile screens */
+
+#nav-link {
+  position: fixed;
+  top: 80px;
+  left: 15px;
+  display: none;  
+  path {
+    fill: $primary;
+  }
+}
+
+#nav-close {
+  display:none; 
+}
+
+@media (max-width : 992px) {
+  .nav-left {
+    transition: left 0.5s;
+    left: -200px;
+    background-color: $lightest;
+    z-index: 100;
+    height: 100%;
+    top: 0;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.04);
+    position: fixed;
+
+    ul {
+      margin-top: 50px;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    &.show {
+      left: 0;
+    }
+  }
+
+  #nav-link {
+    display: block;
+  }
+
+  #nav-close {
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    path {
+      fill: $primary; 
+    }
+  }
+}
 ```
-
-```ruby 
- puts "Hello, world"
-```
-
-```shell
- #!/bin/sh
- echo hello, world
-```
-
-```java
- public class Hello {
-  	public static void main(String []args) {
- 		System.out.println("Hello World");
-  	}
- }
- ```

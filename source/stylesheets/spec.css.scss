@@ -58,6 +58,18 @@ h1 {
 
 .lang-selector {
     background: transparent;
+
+    a {
+        padding: 5px;
+        background-color: $contrast;
+        margin-left: 10px;
+        color: $lightest;
+
+        &.active {
+            background-color: $contrast-dark;
+            color: $lightest;
+        }
+    }
 }
 
 footer {
@@ -71,4 +83,18 @@ footer {
 
 .nav-left {
     margin-top: 84px;
+}
+
+/* tabs in left menu */
+
+.nav-left .lang-selector a {
+    display: none; 
+    margin-top: 10px;
+    padding: 5px;  
+}
+
+@media (max-width: $screen-sm) {
+    .nav-left .lang-selector a {
+        display: inline;
+    }
 }
