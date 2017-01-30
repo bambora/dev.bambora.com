@@ -1,4 +1,5 @@
 @import 'bambora_ui_variables';
+@import 'z-index';
 
 html {
     background-color: $lightest;
@@ -10,13 +11,13 @@ body {
 }
 
 nav {
-    z-index: 100; 
+    z-index: $zIndexSideNav; 
 }
 
 .fixed-header {
     position: fixed;
     width: 100%;
-    z-index: 100;
+    z-index: $zIndexHeader;
 }
 
 .nav-push {
@@ -74,7 +75,8 @@ h1 {
 
 footer {
     position: relative;
-    z-index: 100;
+    z-index: $zIndexBody;
+    margin-top: 0;
 }
 
 .form-group {

@@ -6,8 +6,6 @@ nav: site_howto_nav
 name: /portal/test_product_page
 parent: /portal/test_product_page
 
-search: true
-
 cards:
     -                
         title: Android test card

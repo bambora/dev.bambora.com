@@ -5,6 +5,8 @@
 @import 'variables';
 @import 'syntax';
 @import 'icon-font';
+@import 'bambora_ui_variables';
+@import 'z-index';
 
 /*
 Copyright 2008-2013 Concur Technologies, Inc.
@@ -32,7 +34,6 @@ html, body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  @extend %default-font;
   background-color: $main-bg;
   height: 100%;
   -webkit-text-size-adjust: none; /* Never autoresize text */
@@ -63,7 +64,7 @@ html, body {
   overflow-y: auto;
   overflow-x: hidden;
   position: fixed;
-  z-index: 30;
+  z-index: $zIndexSideNav;
   top: $header-height;
   left: 0;
   bottom: 0;
@@ -174,11 +175,11 @@ html, body {
       &:hover {
         text-decoration: none;
       }
-      @extend %default-font;
+      //@extend %default-font;
       color: $nav-header;
       text-decoration: none;
       font-weight: none;
-      font-size: 13px;
+      //font-size: 13px;
       padding-top: 20px;
       padding-bottom: -0.25em;
     }
@@ -239,7 +240,7 @@ html, body {
     box-shadow: 0px -5px 5px 1px #000000;
 
     li,a {
-      @extend %footer-font;
+      //@extend %footer-font;
     }
 
     a:hover {
@@ -247,7 +248,7 @@ html, body {
     }
 
     li {
-      font-size: 0.8em;
+      //font-size: 0.8em;
       line-height: 1.7;
       text-decoration: none;
     }
@@ -260,7 +261,7 @@ html, body {
   position: fixed;
   background-color: $top-nav-bg;
   width: 100%;
-  z-index: 100;
+  z-index: $zIndexHeader;
   img{
     margin-top: 8px;
     margin-left: 0px;
@@ -297,7 +298,7 @@ html, body {
   position: fixed;
   top: $header-height;
   left: 0;
-  z-index: 100;
+  z-index: $zIndexSideNav;
   color: #000;
   text-decoration: none;
   font-weight: bold;
@@ -321,8 +322,9 @@ html, body {
 
 .page-wrapper {
   margin-left: $nav-width;
+  //margin-right: $nav-width;
   position: relative;
-  z-index: 10;
+  z-index: $zIndexBody;
   background-color: $main-bg;
   min-height: 100%;
 
@@ -344,7 +346,7 @@ html, body {
 
   .lang-selector {
     position: fixed;
-    z-index: 50;
+    z-index: $zIndexBody;
     padding:15px;
   }
 }
@@ -390,7 +392,7 @@ html, body {
 .content {
   // to place content above the dark box
   position: relative;
-  z-index: 30;
+  z-index: $zIndexBody;
 
   &:after {
     content: '';
@@ -416,11 +418,11 @@ html, body {
   }
 
   h1 {
-    @extend %header-font;
-    font-size: 30px;
+    //@extend %header-font;
+    //font-size: 30px;
     padding-top: 2.5em;
     padding-bottom: 0.5em;
-    border-top: 8px solid lightgrey;
+    //border-top: 8px solid lightgrey;
   }
 
   h1:first-child, div:first-child + h1 {
@@ -429,21 +431,21 @@ html, body {
   }
 
   h2 {
-    @extend %header-font;
-    font-size: 20px;
+    //@extend %header-font;
+    //font-size: 20px;
     margin-bottom: 0;
     padding-top: 4em;
     padding-bottom: 1.2em;
-    border-top: 3px solid lightgrey;
+    //border-top: 3px solid lightgrey;
   }
   
   a{
-    color: #664c8e;
-    text-decoration: underline;
-    transition: all 100ms ease-out;    
-    &:hover{
-      color:#cbb7e7
-    }
+    //color: #664c8e;
+    //text-decoration: underline;
+    //transition: all 100ms ease-out;    
+    //&:hover{
+    //  color:#cbb7e7
+    //}
 	
 	&.calltoaction{
 		display: inline-block;
@@ -469,14 +471,14 @@ html, body {
   }
 
   h3, h4, h5, h6 {
-    @extend %header-font;
-    font-size: 15px;
+    //@extend %header-font;
+    //font-size: 15px;
     padding-top: 4em;
     margin-bottom: 0.8em;
   }
 
   h4, h5, h6 {
-    font-size: 10px;
+    //font-size: 10px;
     clear: both;
   }
 
@@ -542,7 +544,7 @@ html, body {
     padding: 3px;
     border-radius: 3px;
     @extend %break-words;
-    @extend %code-font;
+    //@extend %code-font;
   }
 
   pre>code {
@@ -722,7 +724,7 @@ html, body {
   }
 
   pre {
-    @extend %code-font;
+    //@extend %code-font;
   }
 
   blockquote {

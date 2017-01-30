@@ -42,16 +42,15 @@ nav_offset = 75; // hard-coded pixel height of padding above nav
 wrap.on("scroll", function(e) {
   if(wrap.scrollTop() > nav_offset) {
     nav.addClass('nav-left-fixed');
-    nav_link.addClass('nav-left-fixed');
   } else {
     nav.removeClass('nav-left-fixed');
-    nav_link.removeClass('nav-left-fixed');
   }
 });
 
 // Hamburger menu on mobile screen
 $('#show-nav-link, #nav-close').click(function(event) {
     event.preventDefault();
+    $("#show-nav-link").toggle();
     $(".nav-left").toggleClass("show");
 });
 
