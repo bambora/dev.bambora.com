@@ -5,8 +5,7 @@ layout: tutorial
 nav: site_howto_nav
 name: /portal/landing
 parent: /portal/content
-
-search: false
+nav_category: Guides
 
 summary: An overview of the Landing Page template. 
 ---

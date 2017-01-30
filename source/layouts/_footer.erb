@@ -1,14 +1,25 @@
 <div class="footer-buffer"></div>
 <footer>
-    © 2016 Bambora Group
+
+    <% if current_page.data.nav %>
+        <% footer = data["#{current_page.data.nav}"].footer %>
+    <% else %> 
+        <% footer = data.nav.footer %>
+    <% end %>
+
+    <% if footer.copyright %>
+        <%= "© " + footer.copyright %>
+    <% end %>
+
     <div class="links">
-        <a href="#">Careers</a>
-        <a href="#">Privacy</a>
-        <a href="#">Terms & Conditions</a>
+        <% footer.left_links and footer.left_links.each do |link| %>
+            <a href="<%= link.link %>"><%= link.title %></a>
+        <% end %>
     </div>
+    
     <div class="pull-right">
-        <a href="#">Facebook</a>
-        <a href="#">Twitter</a>
-        <a href="#">Medium</a>
+        <% footer.right_links and footer.right_links.each do |link| %>
+            <a href="<%= link.link %>"><%= link.title %></a>
+        <% end %> 
     </div>
 </footer>
