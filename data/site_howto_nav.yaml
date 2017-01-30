@@ -1,5 +1,5 @@
 header:
-  logo_link: /
+  logo_link: /portal
   links: 
     - file: /portal/quickstart
       title: Quickstart
@@ -18,7 +18,7 @@ header:
       title: Login
 
 toc:
-- file: '/portal/index'
+- file: '/portal/setup'
   title: 'Setup'
 - file: '/portal/quickstart'
   title: 'Quickstart'

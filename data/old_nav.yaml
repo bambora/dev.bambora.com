@@ -18,33 +18,33 @@ header:
       title: Login
 
 toc:
-    - file: /index
+    - file: index
       title: Getting Started
-    - file: /ios
+    - file: ios
       title: iOS
-    - file: /android
+    - file: android
       title: Android
-    - file: /
+    - file: /na
       title: Quick Start
-    - file: /online
+    - file: online
       title: Online
-    - file: /client-side
+    - file: client-side
       title: Client-Side 
-    - file: /server-side 
+    - file: server-side 
       title: Server-Side   
-    - file: /native-payments/index.html
+    - file: native-payments/index.html
       title: Payments
-    - file: /settlement/index 
+    - file: settlement/index 
       title: Settlement
-    - file: /merchant/index
+    - file: merchant/index
       title: Merchant 
-    - file: /backoffice-reports/index 
+    - file: backoffice-reports/index 
       title: Backoffice Reports 
-    - file: /payment-depo/index 
+    - file: payment-depo/index 
       title: Payment Depo 
-    - file: /testcards 
+    - file: testcards 
       title: Test Cards 
-    - file: /carts 
+    - file: carts 
       title: Shopping Carts 
 
 footer:

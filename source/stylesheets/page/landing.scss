@@ -1,13 +1,8 @@
-// Variables (taken from Bambora UI): 
-$muted: rgb(240, 240, 240);
-$lightest: rgb(255, 255, 255); 
-$contrast: rgb(140, 140, 140);
-$darkest: rgb(30, 30, 30); 
+@import 'bambora_ui_variables';
 
 body { 
     background-color: $muted;
 }
-
 
 .hero {
     h1 {
@@ -19,7 +14,15 @@ body {
     background-color: transparent;
     a {
         color: $lightest;
+
+        path {
+            fill: $lightest;
+        }
     }
+}
+
+body > .container {
+    margin-top: 0;
 }
 
 .hero-image { 
@@ -63,4 +66,8 @@ body {
         margin-top: 0; 
         background: $darkest; 
     }
+}
+
+#search-overlay .row {
+    margin-top: 0;
 }

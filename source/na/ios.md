@@ -1,40 +1,21 @@
 ---
 title: Mobile
 
-toc_above:
-  - <a href='index.html'>Getting Started</a>
-  - <span>COLLECT CARDS</span>
-  - <a href='ios.html'>iOS</a>
-
 includes:
   - mobile/bnpayment-ios
   - mobile/how-to-capture-payments
   - mobile/ios-customization
 
-toc_below:
-  - <a href='android.html'>Android</a>
-  - <a href='online.html'>Online</a>
-  - <span>CHARGE CARDS</span>
-  - <a href='client-side.html'>Client-Side</a>
-  - <a href='server-side.html'>Server-Side</a>
-  - <span>APIs</span>
-  - <a href='native-payments/index.html'>Payments</a>
-  - <a href='settlement/index.html'>Settlement</a>
-  - <a href='merchant/index.html'>Merchant</a>
-  - <a href='backoffice-reports/index.html'>Backoffice Reports</a>
-  - <a href='payment-depot/index.html'>Payment Depot</a>
-  - <span>TOOLS</span>
-  - <a href='testcards.html'>Test Cards</a>
-  - <a href='carts.html'>Shopping Carts</a>
+nav: old_nav
+name: ios
+parent: ios
 
-search: false
+layout: tutorial
 ---
-
 
 # iOS SDK
 
 This section of the guide will walk you through how to take payments in your iOS project.
-
 
 **Language and Requirements**
 
