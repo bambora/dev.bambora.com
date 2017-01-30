@@ -1,32 +1,15 @@
 ---
 title: dev/bambora
+layout: tutorial
 
-toc_above:
-  - <a href='index.html'>Getting Started</a>
-  
-toc_below:
-  - <span>COLLECT CARD DETAILS</span>
-  - <a href='ios.html'>iOS</a>
-  - <a href='android.html'>Android</a>
-  - <a href='online.html'>Online</a>
-  - <span>CHARGE CARDS</span>
-  - <a href='payment-basics.html'>Charge Basics</a>
-  - <a href='client-side.html'>Client-Side</a>
-  - <a href='server-side.html'>Server-Side</a>
-  - <span>APIs</span>
-  - <a href='native-payments/index.html'>Payments</a>
-  - <a href='settlement/index.html'>Settlement</a>
-  - <a href='merchant/index.html'>Merchant</a>
-  - <a href='backoffice-reports/index.html'>Backoffice Reports</a>
-  - <a href='payment-depot/index.html'>Payment Depot</a>
-  - <span>TOOLS</span>
-  - <a href='testcards.html'>Test Cards</a>
-  - <a href='carts.html'>Shopping Carts</a>
+nav: old_nav
+name: /index 
+parent: /index
 
-
-search: false
 ---
 # Quick Start
+
+[Go to the new portal here](/portal)
 
 Select how you want to accept payments:
 
@@ -55,10 +38,11 @@ Accept payments on your website using Bambora Checkout. You can also use one of 
 Make payments from your web server, capture payments, return payments, and much more.
 
 
-# Contributing To The Docs
+## Contributing To The Docs
 
 We've made it easy for anyone to update the documentation. So if you see any docs in error or sections that could use improvement simply look for the **Update Docs** link at the top of every page. It will send you to the GitHub page where you can make the change.
 
 
-# Support
+## Support
+
 Running into issues? No problem, just send us an email to [support@bambora.com](mailto:support@bambora.com).

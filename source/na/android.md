@@ -1,5 +1,6 @@
 ---
 title: Android
+layout: spec
 
 toc_above:
   - <a href='index.html'>Getting Started</a>
