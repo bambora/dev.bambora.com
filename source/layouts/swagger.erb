@@ -12,10 +12,41 @@
             <%= partial "layouts/side_nav" %>
 
             <div class="row">
-                <div class="col-md-9 col-md-offset-3 js-toc-content">
+                <div class="col-md-9 col-md-offset-3">
                     <%= yield %>
                 </div>
+            </div> <!-- /.row --> 
+
+            <div class="row">
+                <div class="col-md-9 col-md-offset-3 js-toc-content">
+                
+                <% swagger = data.petstore %>
+                
+                <!-- Summary Block --> 
+                <% info = swagger.info %>
+                <h2><%= info.title %></h2>
+                <p><%= info.description %></p>
+
+                <!-- Paths --> 
+                <% paths = swagger.paths %>
+                <% paths.each do |path| %>
+                    <% path_name = path.first %>
+                    <h3><%= path_name %></h3>
+
+                    <!-- Methods --> 
+                    <% methods = path[1] %> 
+                    <% methods.each do |method| %> 
+                        <% method_name = method.first %>
+                        <% method_body = method[1] %>
+                        <h4><%= method_name %> <%= path_name %></h4>
+                        <p><strong><%= method_body.summary %></strong></p>
+
+                    <% end %> <!-- methods.each -->
+                <br>
+                <% end %> <!-- paths.each -->
+                </div>
             </div>
+
         </div> <!-- /.container -->
 
         <%= partial "layouts/footer" %>
