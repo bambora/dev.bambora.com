@@ -4,7 +4,7 @@ layout: tutorial
 
 summary: A test tutorial with dummy content added. 
 
-nav: test_tutorial_nav
+nav: example_nav
 name: /portal/test_tutorial
 parent: /portal/test_tutorial
 

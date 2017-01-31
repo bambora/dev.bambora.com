@@ -10,7 +10,6 @@ includes_root: portal
 includes: 
 - tone
 
-search: false
 ---
 
 # Dev Portal Design Guide

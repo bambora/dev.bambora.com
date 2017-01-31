@@ -7,7 +7,7 @@ var lunrData  = null;
 
 // Download index data
 $.ajax({
-  url: "../../search.json", // TODO: Fix, ugly. 
+  url: "/search.json", // TODO: Fix, ugly. 
   cache: true,
   method: 'GET',
   success: function(data) {
