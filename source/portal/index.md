@@ -90,4 +90,10 @@ card_sets:
                     Code for multiple languages can be displayed and selected between. 
                 icon: list
                 link: '/portal/example_pages/example_spec_page.html'
+            - 
+                title: Swagger Page
+                description: >
+                    A page for rendering Swagger files. 
+                icon: list 
+                link: '/portal/example_pages/example_swagger_page.html' 
 ---

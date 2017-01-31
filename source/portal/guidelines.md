@@ -8,8 +8,7 @@ parent: /portal/guidelines
 
 includes_root: portal
 includes: 
-- tone
-
+    - tone
 ---
 
 # Dev Portal Design Guide

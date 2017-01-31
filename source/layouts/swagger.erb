@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <%= partial "layouts/head" %>
+    </head>
+
+    <body class="<%= page_classes %>">
+        
+        <%= partial "layouts/header" %>
+
+        <div class="container">
+            <%= partial "layouts/side_nav" %>
+
+            <div class="row">
+                <div class="col-md-9 col-md-offset-3 js-toc-content">
+                    <%= yield %>
+                </div>
+            </div>
+        </div> <!-- /.container -->
+
+        <%= partial "layouts/footer" %>
+
+        <%= javascript_include_tag "page/tocbot_init_script" %>
+    </body>
+</html>
