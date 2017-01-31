@@ -1,56 +1,138 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <%= partial "layouts/head" %>
-    </head>
+  <head>
+    <%= partial "layouts/head" %>
+  </head>
 
-    <body class="<%= page_classes %>">
-        
-        <%= partial "layouts/header" %>
+  <body class="<%= page_classes %>">
+      
+    <%= partial "layouts/header" %>
 
-        <div class="container">
-            <%= partial "layouts/side_nav" %>
+    <div class="container">
+      <%= partial "layouts/side_nav" %>
 
-            <div class="row">
-                <div class="col-md-9 col-md-offset-3">
-                    <%= yield %>
-                </div>
-            </div> <!-- /.row --> 
+      <div class="row">
+        <div class="col-md-9 col-md-offset-3">
+          <%= yield %>
+        </div>
+    </div> <!-- /.row --> 
 
-            <div class="row">
-                <div class="col-md-9 col-md-offset-3 js-toc-content">
-                
-                <% swagger = data.petstore %>
-                
-                <!-- Summary Block --> 
-                <% info = swagger.info %>
-                <h2><%= info.title %></h2>
-                <p><%= info.description %></p>
+    <div class="row">
+      <div class="col-md-9 col-md-offset-3 js-toc-content">
+      
+      <% swagger = data.petstore %>
+      
+      <!-- Summary Block --> 
+      <% info = swagger.info %>
+      <h2><%= info.title %></h2>
+      <p><%= info.description %></p>
 
-                <!-- Paths --> 
-                <% paths = swagger.paths %>
-                <% paths.each do |path| %>
-                    <% path_name = path.first %>
-                    <h3><%= path_name %></h3>
+      <p><strong>Version:</strong> <%= info.version %></p>
+      <p><strong>Contact:</strong> <%= info.contact.email %></p>
+      <p><strong>Terms of Service:</strong> <a href="<%= info.termsOfService %>"><%= info.termsOfService %></a></p>
+      <p><strong>License:</strong> <a href="<%= info.license.url %>"><%= info.license.name %></a></p>
 
-                    <!-- Methods --> 
-                    <% methods = path[1] %> 
-                    <% methods.each do |method| %> 
-                        <% method_name = method.first %>
-                        <% method_body = method[1] %>
-                        <h4><%= method_name %> <%= path_name %></h4>
-                        <p><strong><%= method_body.summary %></strong></p>
+      <!-- Paths --> 
+      <h2>Paths</h2>
+      <% paths = swagger.paths %>
+      <% paths.each do |path| %>
+        <% path_name = path.first %>
+        <h3><%= path_name %></h3>
 
-                    <% end %> <!-- methods.each -->
-                <br>
-                <% end %> <!-- paths.each -->
-                </div>
-            </div>
+        <!-- Operations --> 
+        <% operations = path[1] %> 
+        <% operations.each do |op| %> 
+          <% op_name = op[0] %>
+          <% op_obj = op[1] %>
+          
+          <div class="operation-heading">
+            <h4>
+              <span class="operation <%= op_name %>"><%= op_name.upcase %></span> 
+              <%= path_name %>
+            </h4>
+            
+            <span class="summary"><%= op_obj.summary %></span>
+          </div>
 
-        </div> <!-- /.container -->
+          <div class="operation-content">
 
-        <%= partial "layouts/footer" %>
+            <!-- Tags -->
+            <% tags = op_obj.tags %> 
+            <% if not tags.empty? %>
+              <h5>Tags</h5>
+              <% tags.each do |tag| %> 
+                <span class="label"><%= tag %></span>
+              <% end %>
+            <% end %> 
 
-        <%= javascript_include_tag "page/tocbot_init_script" %>
-    </body>
+            <!-- Description -->
+            <% if op_obj.description and op_obj.description != "" %>
+              <h5>Description</h5> 
+              <p><%= op_obj.description %></p>
+            <% end %>
+
+            <!-- Parameters table -->
+            <% params = op_obj.parameters %>
+            <% if params %> 
+            <h5>Parameters</h5>
+            <table class="table table-highlight">
+              <thead>
+                <tr> 
+                  <th>In</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Required</th>
+                  <th>Schema</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% params.each do |param| %>   
+                  <tr>
+                    <td><%= param.in %></td>
+                    <td><%= param.name %></td>
+                    <td><%= param.description %></td>
+                    <td><%= param.required %></td>
+                    <td><%= param.schema %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+            <% end %>
+
+            <!-- Responses table -->
+            <% responses = op_obj.responses %> 
+            <% if responses %>
+            <h5>Responses</h5>
+            <table class="table table-highlight">
+            <thead>
+              <tr>
+                <th>Code</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% responses.each do |response| %>
+                <tr>
+                  <td><%= response[0] %></td>
+                  <td><%= response[1].description %></td>
+                </tr>
+              <% end %>
+            </tbody>
+            </table>
+            <% end %> 
+
+          </div> <!-- /.operation-content -->
+
+          <% end %> <!-- methods.each -->
+        <br>
+        <% end %> <!-- paths.each -->
+        </div>
+      </div>
+    </div> <!-- /.container -->
+
+    <%= partial "layouts/footer" %>
+
+    <%= javascript_include_tag "page/swagger" %>
+    <%= javascript_include_tag "page/tocbot_init_script" %>
+  </body>
 </html>

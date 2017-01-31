@@ -1,1 +1,60 @@
 // custom styles for the swagger template...
+@import 'bambora_ui_variables';
+
+.operation-heading {
+    border: solid $contrast 1px; 
+    border-radius: 6px;
+    cursor: pointer;
+    padding: 0px; 
+    margin: 15px 0; 
+
+    h4 {
+        display: inline;
+        .operation {
+            background-color: $muted;
+            display: inline-block;
+            height: 100%;
+            padding: 15px;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            width: 100px;
+            margin-right: 15px;
+            border-right: 1px solid $contrast;
+            text-align: center;
+            color: $lightest;
+
+            &.post {
+                background-color: $green-light;
+            }
+
+            &.put {
+                background-color: $factory-yellow;
+            }
+
+            &.get {
+                background-color: $tabriz-blue;
+            }
+
+            &.delete {
+                background-color: $danger;
+            }
+
+
+        }
+    } 
+
+    span.summary {
+        float: right;
+        padding: 20px;
+        color: $contrast;
+    }
+}
+
+.operation-content {
+    display: none;
+    margin-bottom: 100px; 
+}
+
+.label {
+    margin-bottom: 15px; 
+}
