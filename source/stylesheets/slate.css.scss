@@ -73,19 +73,6 @@ html, body {
   background-color: $nav-bg;
   font-size: 13px;
 
-  // // language selector for mobile devices
-  // .lang-selector {
-  //   display: none;
-  //   background-color: transparent;
-  //   padding: 5px;
-  //   a {
-  //     padding-top: 0.5em;
-  //     padding-bottom: 0.5em;
-  //     text-decoration: none;
-  //   }
-  // }
-
-  //
   a {
       text-decoration: none;
 
@@ -344,45 +331,8 @@ html, body {
     bottom: 0;
   }
 
-  // .lang-selector {
-  //   position: fixed;
-  //   z-index: $zIndexBody;
-  //   padding:15px;
-  // }
 }
 
-// .lang-selector {
-//   background-color: $lang-select-bg;
-//   width: 100%;
-//   // font-weight: bold;
-//   a {
-//     border-radius:2px;
-//     display: block;
-//     float:left;
-//     color: #4f5355;
-//     text-decoration: none;
-//     padding: 15px 20px;
-//     line-height: 15px;
-//     outline: 0;
-//     border: 1px solid transparent;
-
-//     &:active, &:focus {
-//       border: 1px solid #787d81;
-//       color: #4f5355;
-//     }
-
-//     &.active {
-//       border: 1px solid #787d81;
-//       color: #4f5355;
-//     }
-//   }
-
-//   &:after {
-//     content: '';
-//     clear: both;
-//     display: block;
-//   }
-// }
 
 ////////////////////////////////////////////////////////////////////////////////
 // CONTENT STYLES

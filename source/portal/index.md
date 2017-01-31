@@ -15,6 +15,39 @@ hero_unit:
         link: /portal/setup.html
 
 card_sets:
+    -
+        title: Portal Documentation.
+        description: >
+            In addition to the example pages, this portal also contains documentation 
+            for using and extended the templates, navigation, and more. 
+        cards:
+            - 
+                title: Quickstart
+                description: > 
+                    The fastest way to get up and running with the portal. 
+                icon: flag
+                link: /portal/quickstart.html
+            -
+                title: Style guide 
+                description: > 
+                    Tempore corrupti, obcaecati voluptate nulla, repellat labore 
+                    culpa, accusamus doloremque laudantium similique id molestiae.
+                icon: more
+                link: /portal/guidelines.html
+            -
+                title: Editing the docs in browser
+                description: >
+                    Easily make pull-requests to any page (or partial) in the 
+                    documentation from the browser.
+                icon: comment
+                link: /portal/
+            -
+                title: Customization
+                description: >
+                    Extend the portal to add more templates, new styling, new 
+                    navigation, and more. 
+                icon: comment
+                link: /portal/customize.html
     -  
         title: Example Templates.
         description: >
@@ -51,37 +84,4 @@ card_sets:
                     Code for multiple languages can be displayed and selected between. 
                 icon: list
                 link: '/portal/test_spec_page.html'
-    -
-        title: Portal Documentation.
-        description: >
-            In addition to the example pages, this portal also contains documentation 
-            for using and extended the templates, navigation, and more. 
-        cards:
-            - 
-                title: Quickstart
-                description: > 
-                    The fastest way to get up and running with the portal. 
-                icon: flag
-                link: /portal/quickstart.html
-            -
-                title: Style guide 
-                description: > 
-                    Tempore corrupti, obcaecati voluptate nulla, repellat labore 
-                    culpa, accusamus doloremque laudantium similique id molestiae.
-                icon: more
-                link: /portal/guidelines.html
-            -
-                title: Editing the docs in browser
-                description: >
-                    Easily make pull-requests to any page (or partial) in the 
-                    documentation from the browser.
-                icon: comment
-                link: /portal/
-            -
-                title: Customization
-                description: >
-                    Extend the portal to add more templates, new styling, new 
-                    navigation, and more. 
-                icon: comment
-                link: /portal/customize.html
 ---
