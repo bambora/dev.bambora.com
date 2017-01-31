@@ -24,9 +24,9 @@ toc:
 %>
 
 <% if current_page.data.nav %>
-  <% nav = data["#{current_page.data.nav}"].toc %>
+  <% toc = data["#{current_page.data.nav}"].toc %>
 <% else %>
-  <% nav = data.nav.toc %>
+  <% toc = data.nav.toc %>
 <% end %>
 
 <% parent = current_page.data.parent %>
@@ -49,24 +49,27 @@ toc:
   </div>
   <% end %>  
   
-  <ul>
-  <% nav.each do |category| %>
-    <%# If this top-level category's file name matches the parent name of the markdown file then label this category as 'active' %>
-    <li data-nav-title="<%= category.file %>" <% if parent && parent==category.file %>class="active"<% end %> >
-      <a href="<%= category.file %>.html" class="nav-top-heading"><%= category.title %></a>
-      <% if category.subs && parent==category.file %>
-        <ul class="nav-subs">
-        <% category.subs.each do |sub| %>
-          <li><a href="<%= sub.file %>.html"><%= sub.title %></a><div data-nav-title="<%= sub.file %>" <% if current_page.data.name==sub.file%>class="js-toc"<%end%>></div></li>
-          <%# if this sub-section's file name matches the current pages 'name' param then the dynamic ToC will be generated here by setting the style js-toc. %>
+  <% if toc %>
+    <ul>
+    <% toc.each do |category| %>
+      <%# If this top-level category's file name matches the parent name of the markdown file then label this category as 'active' %>
+      <li data-nav-title="<%= category.file %>" <% if parent && parent==category.file %>class="active"<% end %> >
+        <a href="<%= category.file %>.html" class="nav-top-heading"><%= category.title %></a>
+        <% if category.subs && parent==category.file %>
+          <ul class="nav-subs">
+          <% category.subs.each do |sub| %>
+            <li><a href="<%= sub.file %>.html"><%= sub.title %></a><div data-nav-title="<%= sub.file %>" <% if current_page.data.name==sub.file%>class="js-toc"<%end%>></div></li>
+            <%# if this sub-section's file name matches the current pages 'name' param then the dynamic ToC will be generated here by setting the style js-toc. %>
+          <% end %>
+          </ul>
+        <% elsif !category.subs && parent==category.file %>
+          <div class="nav-no-subs js-toc"></div>
         <% end %>
-        </ul>
-      <% elsif !category.subs && parent==category.file %>
-        <div class="nav-no-subs js-toc"></div>
-      <% end %>
-    </li>
+      </li>
+    <% end %>
+    </ul>
+    
   <% end %>
-  </ul>
 </div>
 
 <a id="show-nav-link" href="#"><%= svg "list" %></a>

@@ -1,19 +1,21 @@
 ---
-title: Landing Page
+title: Example Landing Page
 layout: landing
 
+nav: example_nav
+
 hero_unit: 
-    big_heading: Build it with Bambora.
+    big_heading: Example landing page.
     tag_line:  > 
-        Start accepting payments today with code made by developers world wide.
+        This is a demo of the landing page template without a hero image.
 
 card_sets:
     -  
         title: Get Started.
         description: >
-            Bambora makes it easy to accept payments in your app or website.
-            Get integrated quickly using our guides and selecting from our 
-            range of SDKS.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+            Numquam sunt commodi, aperiam. Nisi explicabo consectetur 
+            incidunt ullam, cupiditate itaque consequatur eos. 
         cards:
             -                
                 title: Accept payments in-app
@@ -22,33 +24,31 @@ card_sets:
                     iOS and android apps.
                 icon: notification-active
                 tag: new
-                link: '/portal/quickstart.html'
             -
                 title: Accept payments online  
                 description: > 
                     Use Bambora checkout, or one of our Shopping Cart plugins, 
                     to accept payments on your website or online store.
                 icon: checkmark
-                link: '/portal/quickstart.html'
             -
                 title: Try our API 
                 description: >
                     Get up and running in minutes. Use the Bambora API to make 
                     payments and much more.
                 icon: list
-                link: '/portal/quickstart.html'
             -
                 title: Use a test card 
                 description: >
                     You can use these test cards for testing card registration and 
                     purchasing (no real money is charged when these cards are used).
                 icon: creditcard-outline
-                link: '/portal/quickstart.html'
     -
         title: Upcoming Events.
         description: >
-            The titles and descriptions of these card sets are set in the 
-            yaml file and then rendered in the template.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+            Error laudantium ex velit qui harum quo omnis, exercitationem 
+            repellendus pariatur, provident fugiat, id nisi ipsam, est 
+            obcaecati dolore soluta totam corrupti.
         cards:
             - 
                 title: A test card

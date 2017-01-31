@@ -13,7 +13,6 @@ hero_unit:
     button: 
         text: Get Started
         link: /portal/setup.html
-
 card_sets:
     -
         title: Portal Documentation.
@@ -62,26 +61,33 @@ card_sets:
                     and links. 
                 icon: list
                 tag: new
-                link: '/portal/test_landing_page_hero.html'
+                link: '/portal/example_pages/example_landing_page_hero.html'
+            -
+                title: Landing Page
+                description: > 
+                    A landing page without a hero image. The content is moved 
+                    further up the page. 
+                icon: list
+                link: '/portal/example_pages/example_landing_page.html'
             -
                 title: Product Page
                 description: > 
                     A page for displaying information about a product that has a 
                     table of contents style navigation and a number cards. 
                 icon: list
-                link: '/portal/test_product_page.html'
+                link: '/portal/example_pages/example_product_page.html'
             -
                 title: Tutorial Page
                 description: >
                     A simple page for displaying markdown-formatted text. Equally suited 
                     to prose or code.
                 icon: list
-                link: '/portal/test_tutorial.html'
+                link: '/portal/example_pages/example_tutorial.html'
             -
                 title: Spec Page 
                 description: >
                     A page for code heavy content that splits the screen in two. 
                     Code for multiple languages can be displayed and selected between. 
                 icon: list
-                link: '/portal/test_spec_page.html'
+                link: '/portal/example_pages/example_spec_page.html'
 ---

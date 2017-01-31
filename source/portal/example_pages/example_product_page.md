@@ -1,10 +1,8 @@
 ---
-title: Test Product Page
+title: Example Product Page
 layout: product
 
-nav: site_howto_nav
-name: /portal/test_product_page
-parent: /portal/test_product_page
+nav: example_nav
 
 cards:
     -                
@@ -32,9 +30,10 @@ cards:
             You can use these test cards for testing card registration and 
             purchasing (no real money is charged when these cards are used).
         icon: creditcard-outline
+        
 ---
 
-# Android 
+# Example Product Page
 
 ### Sub heading
 
