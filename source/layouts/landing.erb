@@ -49,5 +49,9 @@
 
     <%= partial "layouts/footer" %>
 
+    <% if current_page.data.hero_unit and current_page.data.hero_unit.hero_image %>
+      <%= javascript_include_tag "page/landing_page_header" %>
+    <% end %>
+
   </body>
 </html>

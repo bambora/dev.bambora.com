@@ -17,17 +17,9 @@ footer {
 }
 
 .container {
-  margin-top: 75px;
+  //margin-top: 75px; // If nav static 
+  margin-top: 141px; // If nav fixed
 }
-
-// table {
-//   display:block;
-//   overflow:auto; 
-// }
-
-// td,th {
-//   padding: 6px;
-// }
 
 table {
   margin-bottom: 24px;
@@ -42,7 +34,6 @@ pre {
   word-break: break-all;
   white-space: pre-wrap; 
 }
-
 
 
 /* flex box cards */
@@ -178,6 +169,12 @@ table tbody tr:last-child td {
 
 /* top nav */
 
+.nav-fixed {
+  position: fixed;
+  width: 100%;
+  z-index: $zIndexHeader;
+}
+
 .nav-pane a {
   &:hover {
     path {
@@ -196,6 +193,10 @@ table tbody tr:last-child td {
   background-color: rgba(0, 0, 0, 0.9);
   z-index: $zIndexSearch;
   overflow: auto;
+
+  .container {
+    margin-top: 48px;
+  }
 
   svg {
     position: fixed;

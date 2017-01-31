@@ -6,7 +6,7 @@
     border-radius: 6px;
     cursor: pointer;
     padding: 0px; 
-    margin: 15px 0; 
+    margin-top: 15px; 
 
     h4 {
         display: inline;
@@ -38,8 +38,6 @@
             &.delete {
                 background-color: $danger;
             }
-
-
         }
     } 
 
@@ -50,9 +48,24 @@
     }
 }
 
+h3 {
+    padding-top: 24px;
+
+    &:first-of-type {
+        padding-top: 0;
+    }
+}
+
 .operation-content {
     display: none;
-    margin-bottom: 100px; 
+    border: solid $contrast 1px;
+    border-top: none; 
+    padding: 20px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    width: 100%;
+    position: relative;
+    top: -10px;
 }
 
 .label {
