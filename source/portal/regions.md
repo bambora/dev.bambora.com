@@ -6,6 +6,11 @@ nav: site_howto_nav
 name: /portal/regions
 parent: /portal/customize
 
+summary: >
+        Different regions in bambora might have their own developer portals. 
+        To handle this the portal is designed to hold the region-specific 
+        data outside of the core data and site configuration.
+
 ---
 
 # Regional Dev Portals

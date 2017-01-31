@@ -57,20 +57,8 @@ h1 {
     padding-top: 100px !important; 
 }
 
-.lang-selector {
-    background: transparent;
-
-    a {
-        padding: 5px;
-        background-color: $contrast;
-        margin-left: 10px;
-        color: $lightest;
-
-        &.active {
-            background-color: $contrast-dark;
-            color: $lightest;
-        }
-    }
+.tabs {
+    z-index: $zIndexLangSelector;
 }
 
 footer {

@@ -6,7 +6,10 @@ nav: site_howto_nav
 name: /portal/editing_pages
 parent: /portal/content
 
-search: false
+summary:  >
+    There are two main ways you can contribute to the dev portal. Edit
+    via Github or edit the source directly on your machine. 
+
 ---
 
 #Dev Portal Editing

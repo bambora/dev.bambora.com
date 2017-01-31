@@ -26,7 +26,7 @@ end
 
 # Active middleman-search
 activate :search do |search|
-  search.language = 'es'
+  search.language = 'es' # TODO: Fix
   search.resources = ['portal/']
   search.fields = {
     title:   {boost: 100, store: true, required: true},

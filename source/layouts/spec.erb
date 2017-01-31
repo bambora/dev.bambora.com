@@ -51,17 +51,23 @@ under the License.
       </div>
       
       <div class="dark-box">
-        <% if language_tabs %>
-          <div class="lang-selector">
+
+        <% if language_tabs %> 
+          <div class="tabs lang-selector">
             <% language_tabs.each do |lang| %>
               <% if lang.is_a? Hash %>
-                <a href="#" data-language-name="<%= lang.keys.first %>"><%= lang.values.first %></a>
-              <% else %>
-                <a href="#" data-language-name="<%= lang %>"><%= lang %></a>
+                <a href="#" data-language-name="<%= lang.keys.first %>">
+                  lang.values.first %>
+                </a>
+              <% else %> 
+                <a href="#" data-language-name="<%= lang %>"> 
+                  <%= lang %>
+                </a>
               <% end %>
             <% end %>
           </div>
         <% end %>
+        
       </div>
     </div>
 
