@@ -4,7 +4,13 @@
     <% nav = data.nav.header %>
 <% end %>
 
+<% using_hero_image = current_page.data.hero_unit and current_page.data.hero_unit.hero_image %>
+
+<% if using_hero_image %>
+<nav class="nav-pane nav-fixed nav-pane-transparent">
+<% else %>
 <nav class="nav-pane nav-fixed">
+<% end %>
     <div class="pull-left nav-links">
     <a href="<%= nav.logo_link %>" class="logo">
         <%# set logo version based on hero image %> 

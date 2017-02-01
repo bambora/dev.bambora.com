@@ -1,14 +1,12 @@
-wrap = $(window);
-header = $('nav');
+$w = $(window);
+$nav = $('nav');
 
-header.addClass('nav-pane-transparent');
-
-wrap.on("scroll", function(e) {
-    if(wrap.scrollTop() > 0) {
-        header.addClass('nav-pane-dark');
-        header.removeClass('nav-pane-transparent');
+$w.on("scroll", function(e) {
+    if($w.scrollTop() > 0) {
+        $nav.addClass('nav-pane-dark');
+        $nav.removeClass('nav-pane-transparent');
     } else {
-        header.removeClass('nav-pane-dark');
-        header.addClass('nav-pane-transparent');
+        $nav.removeClass('nav-pane-dark');
+        $nav.addClass('nav-pane-transparent');
     }
 });

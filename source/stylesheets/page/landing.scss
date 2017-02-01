@@ -20,6 +20,10 @@ body {
     }
 }
 
+nav {
+    transition: background-color 1s ease;
+}
+
 .nav-pane-transparent {
     background-color: transparent;  
 }
