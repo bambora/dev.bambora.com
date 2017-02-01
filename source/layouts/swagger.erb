@@ -15,13 +15,15 @@
         <div class="col-md-9 col-md-offset-3">
           <%= yield %>
         </div>
-      </div> <!-- /.row --> 
+      </div> <!-- /.row -->
 
       <div class="row">
         <div class="col-md-9 col-md-offset-3 js-toc-content">
         
-        <% swagger = data.petstore_deref %>
-        
+        <%# swagger = data.petstore_deref %>
+        <% swagger = data.petstore %>
+        <% definitions = swagger.definitions %>
+
         <!-- Summary Block --> 
         <% info = swagger.info %>
         <h2><%= info.title %></h2>
@@ -45,13 +47,19 @@
             <% op_name = op[0] %>
             <% op_obj = op[1] %>
             
+            <!-- Collapsed heading --> 
             <div class="operation-heading">
               <h4>
-                <span class="operation <%= op_name %>"><%= op_name.upcase %></span> 
+                <span class="operation <%= op_name %>">
+                  <%= op_name.upcase %>
+                </span> 
                 <%= path_name %>
               </h4>
               
-              <span class="summary"><%= op_obj.summary %></span>
+              <span class="heading-body">
+                <span class="summary"><%= op_obj.summary %></span>
+                <span class="more"><%= svg :more %></span>
+              </span>
             </div>
 
             <div class="operation-content">
@@ -63,32 +71,9 @@
               <% end %>
 
               <!-- Parameters table -->
-              <% params = op_obj.parameters %>
-              <% if not params.empty? %>
-              <h5>Parameters</h5>
-              <table class="table table-highlight">
-                <thead>
-                  <tr> 
-                    <th>In</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Required</th>
-                    <th>Schema</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <% params.each do |param| %>   
-                    <tr>
-                      <td><%= param.in %></td>
-                      <td><%= param.name %></td>
-                      <td><%= param.description %></td>
-                      <td><%= param.required %></td>
-                      <td><pre class="highlight"><code><%= param.schema %></code></pre></td>
-                    </tr>
-                  <% end %>
-                </tbody>
-              </table>
-              <% end %>
+              <%= partial "layouts/_swagger/parameters", 
+                  :locals => { :params => op_obj.parameters, 
+                                :definitions => definitions }  %>
 
               <!-- Responses table -->
               <% responses = op_obj.responses %> 

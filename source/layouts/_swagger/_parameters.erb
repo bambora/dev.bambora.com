@@ -1,0 +1,37 @@
+<% if not params.empty? %>
+
+<h5>Parameters</h5>
+<table class="table table-highlight">
+<thead>
+    <tr> 
+    <th>In</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Required</th>
+    <th>Schema</th>
+    </tr>
+</thead>
+<tbody>
+    <% schemas = [] %> 
+    <% params.each do |param| %>   
+    <% schema = param.schema.to_h["$ref"] %> 
+    <% if not schema.blank? then schemas << schema end %>
+    <tr>
+        <td><%= param.in %></td>
+        <td><%= param.name %></td>
+        <td><%= param.description %></td>
+        <td><%= param.required %></td>
+        <%# NOTE: Unsure why this needs :to_h, :to_s to be called 
+        on it. No other values do. Seems like a weird bug. %>
+        <td><a href="#"><%= schema.to_s.split('/').last %></a></td>
+    </tr>
+    <% end %>
+</tbody>
+</table>
+
+<% schemas.each do |schema| %>
+    <h6><%= schema.to_s.split('/').last %></h6>
+    <pre class="highlight"><code><%= definitions["#{schema.to_s.split('/').last}"] %></code></pre>
+<% end %>
+
+<% end %>
