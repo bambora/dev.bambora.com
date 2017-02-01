@@ -6,11 +6,11 @@ on it. No other values do. Seems like a weird bug? %>
 <table class="table table-highlight">
 <thead>
     <tr> 
-    <th>In</th>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Required</th>
-    <th>Type</th>
+        <th>In</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Required</th>
+        <th>Type</th>
     </tr>
 </thead>
 <tbody>
@@ -28,16 +28,16 @@ on it. No other values do. Seems like a weird bug? %>
         <td><%= param.name %></td>
         <td><%= param.description %></td>
         <td><%= param.required %></td>
-        <td><%= get_swagger_param_type_html(param) %></td>
+        <td><%= get_swagger_param_type_html(path, operation, param) %></td>
     </tr>
     <% end %>
 </tbody>
 </table>
 
 <% schemas.each do |schema| %>
-    <a class="schema-link" id="<%= schema %>-link" href="#"><h6><%= schema %></h6></a>
+    <a class="schema-link" id="<%= "#{path}-#{operation}-#{schema}" %>-link" href="#"><h6><%= schema %></h6></a>
 
-    <div class="schema" id="<%= schema %>-link-code">
+    <div class="schema" id="<%= "#{path}-#{operation}-#{schema}" %>-link-code">
     <p class="obj"><%= schema %> {</p>
     <% definitions["#{schema}"].properties.each do |prop| %>
         <p class="property">
@@ -48,7 +48,7 @@ on it. No other values do. Seems like a weird bug? %>
             <% else %>
                 <% schema = prop[1].to_h["$ref"].to_s.split('/').last %>
                 <% schemas << schema %>
-                <span class="desc"><a class="schema-link" id="<%= schema %>-link" href="#"><%= schema %></a></span>
+                <span class="desc"><a class="schema-link" id="<%= "#{path}-#{operation}-#{schema}" %>-link" href="#"><%= schema %></a></span>
             <% end %>
         </p>
     <% end %>

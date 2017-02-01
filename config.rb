@@ -73,17 +73,20 @@ helpers do
     "#{github_repo_url}/edit/#{github_branch}/source/includes/#{partial}.md"
   end
 
-  def get_swagger_param_type_html(param)
+  # Returns the html for a param type for use in the 
+  # parameters table in the swagger template.
+  # TODO: Clean up, move back into erb file.  
+  def get_swagger_param_type_html(path, oper, param)
     if param.key?("schema")
       # Param has a schema object definition
-      if param.schema.key?("type") 
+      if param.schema.key?("type")
         # Param is a collection of objects 
         schema = param.schema.items.to_h["$ref"].to_s.split('/').last 
-        return "<a class='schema-link' id='#{schema}-link' href='#'>" + param.schema.type + " of " + schema + "</a>"
-      else 
+        return "<a class='schema-link' id='#{path}-#{oper}-#{schema}-link' href='#'>" + param.schema.type + " of " + schema + "</a>"
+      else
         # Param is just a single object 
         schema = param.schema.to_h["$ref"].to_s.split('/').last 
-        return "<a class='schema-link' id='#{schema}-link' href='#'>" + schema + "</a>" 
+        return "<a class='schema-link' id='#{path}-#{oper}-#{schema}-link' href='#'>" + schema + "</a>" 
       end
     else
       # Param is a 'regular' type 
