@@ -46,6 +46,7 @@ set :github_repo_url, "https://github.com/bambora/dev.bambora.com"
 set :github_branch, "v2"
 
 # Helpers 
+# TODO: Move these into their own file. 
 helpers do 
   
   # Display svg images inline
@@ -57,7 +58,7 @@ helpers do
   end
 
   # Return random color for card icon. 
-  # Names must exist in Bamora UI.
+  # Names must exist in Bamora UI as classes.
   def get_random_icon_color()
     ['green-light', 'raspberry', 'tabriz-blue', 
       'green-powder', 'factory-yellow'].sample
@@ -70,6 +71,28 @@ helpers do
 
   def github_edit_include_link(partial)
     "#{github_repo_url}/edit/#{github_branch}/source/includes/#{partial}.md"
+  end
+
+  def get_swagger_param_type_html(param)
+    if param.key?("schema")
+      # Param has a schema object definition
+      if param.schema.key?("type") 
+        # Param is a collection of objects 
+        schema = param.schema.items.to_h["$ref"].to_s.split('/').last 
+        return "<a class='schema-link' id='#{schema}-link' href='#'>" + param.schema.type + " of " + schema + "</a>"
+      else 
+        # Param is just a single object 
+        schema = param.schema.to_h["$ref"].to_s.split('/').last 
+        return "<a class='schema-link' id='#{schema}-link' href='#'>" + schema + "</a>" 
+      end
+    else
+      # Param is a 'regular' type 
+      if param.type == "array" 
+        return "array of " + param.items.type 
+      else 
+        return param.type 
+      end
+    end
   end
 end
 

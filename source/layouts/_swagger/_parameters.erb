@@ -17,19 +17,10 @@ on it. No other values do. Seems like a weird bug? %>
     <% schemas = [] %> 
     <% params.each do |param| %>
     <% if param.key?("schema") %>
-        <%# schema def %>
         <% if param.schema.key?("type") %>
-            <% schema = param.schema.items.to_h["$ref"] %>
-            <% the_type = param.schema.type + " of " + schema.to_s.split('/').last %>
+            <% schemas << param.schema.items.to_h["$ref"].to_s.split('/').last %>
         <% else %>
-            <% schema = param.schema.to_h["$ref"] %>
-            <% the_type = "<a href='#'>" + schema.to_s.split('/').last + "</a>" %>
-        <% end %>
-        <% schemas << schema %>
-    <% else %>
-        <%= the_type = param.type %>
-        <% if the_type == "array" %>
-            <% the_type += " of " + param.items.type %>
+            <% schemas << param.schema.to_h["$ref"].to_s.split('/').last %>
         <% end %>
     <% end %>
     <tr>
@@ -37,18 +28,18 @@ on it. No other values do. Seems like a weird bug? %>
         <td><%= param.name %></td>
         <td><%= param.description %></td>
         <td><%= param.required %></td>
-        <td><%= the_type %></td>
+        <td><%= get_swagger_param_type_html(param) %></td>
     </tr>
     <% end %>
 </tbody>
 </table>
 
 <% schemas.each do |schema| %>
-    <a href="#"><h6><%= schema.to_s.split('/').last %></h6></a>
+    <a class="schema-link" id="<%= schema %>-link" href="#"><h6><%= schema %></h6></a>
 
-    <div class="schema">
-    <p class="obj"><%= schema.to_s.split('/').last %> {</p>
-    <% definitions["#{schema.to_s.split('/').last}"].properties.each do |prop| %>
+    <div class="schema" id="<%= schema %>-link-code">
+    <p class="obj"><%= schema %> {</p>
+    <% definitions["#{schema}"].properties.each do |prop| %>
         <p class="property">
             <span class="name"><%= prop[0] %></span> 
             <span class="obj">:</span>
@@ -57,7 +48,7 @@ on it. No other values do. Seems like a weird bug? %>
             <% else %>
                 <% schema = prop[1].to_h["$ref"].to_s.split('/').last %>
                 <% schemas << schema %>
-                <span class="desc"><%= schema %></span>
+                <span class="desc"><a class="schema-link" id="<%= schema %>-link" href="#"><%= schema %></a></span>
             <% end %>
         </p>
     <% end %>
