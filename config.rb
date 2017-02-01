@@ -85,5 +85,5 @@ configure :build do
   # activate :asset_hash
   # activate :gzip
   
-  set :http_prefix, '/dev-na.bambora.com'
+  set :http_prefix, '/dev.na.bambora.com'
 end

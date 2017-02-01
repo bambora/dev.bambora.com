@@ -1,5 +1,6 @@
 <% if not params.empty? %>
 
+<div class="parameters">
 <h5>Parameters</h5>
 <table class="table table-highlight">
 <thead>
@@ -23,7 +24,7 @@
         <td><%= param.required %></td>
         <%# NOTE: Unsure why this needs :to_h, :to_s to be called 
         on it. No other values do. Seems like a weird bug. %>
-        <td><a href="#"><%= schema.to_s.split('/').last %></a></td>
+        <td><%= schema.to_s.split('/').last %></td>
     </tr>
     <% end %>
 </tbody>
@@ -31,7 +32,23 @@
 
 <% schemas.each do |schema| %>
     <h6><%= schema.to_s.split('/').last %></h6>
+
+    <div class="schema">
+    <p class="obj"><%= schema.to_s.split('/').last %> {</p>
+    <% definitions["#{schema.to_s.split('/').last}"].properties.each do |prop| %>
+        <p class="property">
+            <span class="name"><%= prop[0] %></span> 
+            <span class="obj">:</span>
+            <span class="desc"><%= prop[1].type %></span>
+        </p>
+    <% end %>
+    <p class="obj">}</p>
+    </div> <!-- ./schema -->    
+    
+    <!-- 
     <pre class="highlight"><code><%= definitions["#{schema.to_s.split('/').last}"] %></code></pre>
+    -->
 <% end %>
 
+</div> <!-- ./parameters -->
 <% end %>

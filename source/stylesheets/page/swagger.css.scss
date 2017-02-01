@@ -75,6 +75,44 @@ h3 {
     width: 100%;
     position: relative;
     top: -10px;
+
+    .parameters {
+        .schema {
+            margin-bottom: 25px;
+            font-family: monospace;
+            background-color: $darkest;
+            color: $lightest;
+            padding: 20px 25px; 
+            border-radius: 6px; 
+            text-overflow: ellipsis;
+            overflow-x: auto;
+            word-wrap: break-word;
+            word-break: break-all;
+
+            p {
+                margin: 0;
+                padding: 0;
+            }
+
+            .obj {
+                color: $contrast;
+            }
+            
+            p.property {
+                margin-left: 25px;
+                
+
+
+                .name {
+                    color: $tabriz-blue;
+                }
+
+                .desc {
+                    color: $green-light;
+                }
+            }
+        }
+    }
 }
 
 .label {
