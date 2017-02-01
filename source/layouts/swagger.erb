@@ -20,7 +20,7 @@
       <div class="row">
         <div class="col-md-9 col-md-offset-3 js-toc-content">
         
-        <% swagger = data.petstore %>
+        <% swagger = data.petstore_deref %>
         
         <!-- Summary Block --> 
         <% info = swagger.info %>
@@ -56,15 +56,6 @@
 
             <div class="operation-content">
 
-              <!-- Tags -->
-              <% tags = op_obj.tags %> 
-              <% if not tags.empty? %>
-                <h5>Tags</h5>
-                <% tags.each do |tag| %> 
-                  <span class="label"><%= tag %></span>
-                <% end %>
-              <% end %> 
-
               <!-- Description -->
               <% if op_obj.description and op_obj.description != "" %>
                 <h5>Description</h5> 
@@ -92,7 +83,7 @@
                       <td><%= param.name %></td>
                       <td><%= param.description %></td>
                       <td><%= param.required %></td>
-                      <td><%= param.schema %></td>
+                      <td><pre class="highlight"><code><%= param.schema %></code></pre></td>
                     </tr>
                   <% end %>
                 </tbody>
