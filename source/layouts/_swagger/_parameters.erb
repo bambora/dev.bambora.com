@@ -1,7 +1,8 @@
-<% if not params.empty? %>
+<%# NOTE: Unsure why $ref value needs :to_h, :to_s to be called 
+on it. No other values do. Seems like a weird bug? %>
 
 <div class="parameters">
-<h5>Parameters</h5>
+
 <table class="table table-highlight">
 <thead>
     <tr> 
@@ -9,29 +10,41 @@
     <th>Name</th>
     <th>Description</th>
     <th>Required</th>
-    <th>Schema</th>
+    <th>Type</th>
     </tr>
 </thead>
 <tbody>
     <% schemas = [] %> 
-    <% params.each do |param| %>   
-    <% schema = param.schema.to_h["$ref"] %> 
-    <% if not schema.blank? then schemas << schema end %>
+    <% params.each do |param| %>
+    <% if param.key?("schema") %>
+        <%# schema def %>
+        <% if param.schema.key?("type") %>
+            <% schema = param.schema.items.to_h["$ref"] %>
+            <% the_type = param.schema.type + " of " + schema.to_s.split('/').last %>
+        <% else %>
+            <% schema = param.schema.to_h["$ref"] %>
+            <% the_type = "<a href='#'>" + schema.to_s.split('/').last + "</a>" %>
+        <% end %>
+        <% schemas << schema %>
+    <% else %>
+        <%= the_type = param.type %>
+        <% if the_type == "array" %>
+            <% the_type += " of " + param.items.type %>
+        <% end %>
+    <% end %>
     <tr>
         <td><%= param.in %></td>
         <td><%= param.name %></td>
         <td><%= param.description %></td>
         <td><%= param.required %></td>
-        <%# NOTE: Unsure why this needs :to_h, :to_s to be called 
-        on it. No other values do. Seems like a weird bug. %>
-        <td><%= schema.to_s.split('/').last %></td>
+        <td><%= the_type %></td>
     </tr>
     <% end %>
 </tbody>
 </table>
 
 <% schemas.each do |schema| %>
-    <h6><%= schema.to_s.split('/').last %></h6>
+    <a href="#"><h6><%= schema.to_s.split('/').last %></h6></a>
 
     <div class="schema">
     <p class="obj"><%= schema.to_s.split('/').last %> {</p>
@@ -39,16 +52,18 @@
         <p class="property">
             <span class="name"><%= prop[0] %></span> 
             <span class="obj">:</span>
-            <span class="desc"><%= prop[1].type %></span>
+            <% if prop[1].key?("type") %>
+                <span class="desc"><%= prop[1].type %></span>
+            <% else %>
+                <% schema = prop[1].to_h["$ref"].to_s.split('/').last %>
+                <% schemas << schema %>
+                <span class="desc"><%= schema %></span>
+            <% end %>
         </p>
     <% end %>
     <p class="obj">}</p>
     </div> <!-- ./schema -->    
     
-    <!-- 
-    <pre class="highlight"><code><%= definitions["#{schema.to_s.split('/').last}"] %></code></pre>
-    -->
 <% end %>
 
 </div> <!-- ./parameters -->
-<% end %>
