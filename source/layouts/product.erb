@@ -8,16 +8,15 @@
     <%= partial "layouts/header" %>
 
     <div class="container">
-      <%= partial "layouts/side_nav" %>
-
+    
       <div class="row">
-        <div class="col-md-9 col-md-offset-3 col-sm-9 col-sm-offset-3">
+        <div class="col-md-8 col-md-offset-2"> 
           <%= yield %>
         </div>
       </div>
 
       <div class="row card-set">
-        <div class="col-md-9 col-md-offset-3 col-sm-9 col-sm-offset-3">
+        <div class="col-md-8 col-md-offset-2">
           <%= partial("layouts/flex_cards", 
                 :locals => { :cards => current_page.data.cards }) %>
         </div>

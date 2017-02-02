@@ -4,7 +4,7 @@
     <% nav = data.nav.header %>
 <% end %>
 
-<% using_hero_image = current_page.data.hero_unit and current_page.data.hero_unit.hero_image %>
+<% using_hero_image = (current_page.data.hero_unit and current_page.data.hero_unit.hero_image) %>
 
 <% if using_hero_image %>
 <nav class="nav-pane nav-fixed nav-pane-transparent">
@@ -34,7 +34,15 @@
         
         <a id="search-button" href="#"><%= svg "search" %></a>
         <% nav.buttons and nav.buttons.each do |btn| %>
-            <a href="<%= btn.file %>.html" class="btn btn-small"><%= btn.title %></a>
+            <% if not btn.secondary %> 
+                <a href="<%= btn.file %>.html" class="btn btn-small">
+                    <%= btn.title %>
+                </a>
+            <% else %> 
+                <a href="<%= btn.file %>.html" class="btn btn-small btn-secondary">
+                    <%= btn.title %>
+                </a>
+            <% end %>
         <% end %>
 
         <% if not current_page.data.includes %>
