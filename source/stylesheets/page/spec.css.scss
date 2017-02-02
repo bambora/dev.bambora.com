@@ -73,6 +73,7 @@ footer {
 
 .nav-left {
     margin-top: 84px;
+    margin-left: 20px;
 }
 
 .dark-box .lang-selector {
@@ -81,6 +82,10 @@ footer {
 
 /* tabs in left menu */
 
+.nav-left .lang-selector {
+    display: none;
+}
+
 .nav-left .lang-selector a {
     display: none; 
     margin-top: 10px;
@@ -88,6 +93,11 @@ footer {
 }
 
 @media (max-width: $screen-sm) {
+
+    .nav-left .lang-selector {
+        display: border-box;
+    }
+
     .nav-left .lang-selector a {
         display: inline;
     }

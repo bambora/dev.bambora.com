@@ -59,9 +59,19 @@ module CustomHelpers
   end
 
   def get_breadcrumbs(path)
-    paths = path.split('/')
-    paths.pop
-    paths
+    result = {}
+    path_list = path.split('/')
+    if path_list.last == "index.html"
+      path_list = path_list[0...-2]
+    else 
+      path_list = path_list[0...-1]
+    end
+    path_list.each_with_index do |path, index| 
+      link = "/" + path_list[0..index].join('/') + '/'
+      name = path 
+      result[link] = name 
+    end
+    result 
   end
 
 end
