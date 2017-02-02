@@ -91,6 +91,33 @@ h3 {
     top: -10px;
 
     .parameters {
+
+        a.schema-link {
+            display: block;
+            text-decoration: none;
+
+            h6 {
+                display: inline;
+            }
+
+            .more-icon {
+                display: inline-block;
+            }
+
+            .rotate-180 {
+                position: relative;
+                top: 6px;
+            }
+
+            svg {
+                position: relative;
+                top: 8px;
+                path {
+                    fill: $primary;
+                }
+            }
+        }
+
         .schema {
             margin-bottom: 25px;
             font-family: monospace;
@@ -103,6 +130,10 @@ h3 {
             word-wrap: break-word;
             word-break: break-all;
             display: none;
+
+            .schema-link {
+                display: inline;
+            }
 
             p {
                 margin: 0;

@@ -9,4 +9,5 @@ $('.schema-link').click(function(event) {
     event.preventDefault();
     link_id = $(this).attr('id');
     $('#' + link_id + "-code").slideToggle('fast');
+    $(this).find('.more-icon').toggleClass('rotate-180');
 });
