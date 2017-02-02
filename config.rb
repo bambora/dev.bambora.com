@@ -50,11 +50,19 @@ set :github_branch, "v2"
 helpers do 
   
   # Display svg images inline
-  def svg(name) 
+  def svg(name, classes: [])
     root = Middleman::Application.root
     file_path = "#{root}/source/images/svg/#{name}.svg"
-    return File.read(file_path) if File.exists?(file_path)
-    '(not found)'
+    if File.exists?(file_path)
+      f = File.read(file_path)
+      if classes.any? 
+        return f.gsub('<svg ', "<svg class='#{classes.join(' ')}'")
+      else 
+        return f
+      end
+    else
+      return '(not found)'
+    end
   end
 
   # Return random color for card icon. 
@@ -76,24 +84,25 @@ helpers do
   # Returns the html for a param type for use in the 
   # parameters table in the swagger template.
   # TODO: Clean up, move back into erb file.  
-  def get_swagger_param_type_html(path, oper, param)
+  def get_swagger_param_type_html(path, op, param)
     if param.key?("schema")
       # Param has a schema object definition
       if param.schema.key?("type")
         # Param is a collection of objects 
         schema = param.schema.items.to_h["$ref"].to_s.split('/').last 
-        return "<a class='schema-link' id='#{path}-#{oper}-#{schema}-link' href='#'>" + param.schema.type + " of " + schema + "</a>"
+        link_text = param.schema.type + " of " + schema
       else
         # Param is just a single object 
         schema = param.schema.to_h["$ref"].to_s.split('/').last 
-        return "<a class='schema-link' id='#{path}-#{oper}-#{schema}-link' href='#'>" + schema + "</a>" 
+        link_text = schema
       end
+      "<a class='schema-link' id='#{path}-#{op}-#{schema}-link' href='#'>" + link_text + "</a>" 
     else
       # Param is a 'regular' type 
       if param.type == "array" 
-        return "array of " + param.items.type 
+        "array of " + param.items.type 
       else 
-        return param.type 
+        param.type 
       end
     end
   end

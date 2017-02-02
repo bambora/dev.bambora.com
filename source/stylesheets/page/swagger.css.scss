@@ -40,19 +40,33 @@
                 background-color: $danger;
             }
         }
+        
     } 
 
     span.heading-body {
         float: right;
-        padding: 20px;
+        padding: 10px;
+        padding-right: 20px;
         color: $contrast;
         position: relative;
 
-        svg {
-            margin-left: 20px;
-            path {
-                fill: $contrast;
+        div.more-icon {
+            display: inline-block;
+            margin: 0;
+            padding: 0;
+            position: relative; 
+            top: 8px;
+            left: 10px;
+
+            svg {
+                path {
+                    fill: $contrast;
+                }
             }
+        }
+
+        .rotate-180 {
+            top: 0 !important;
         }
     }
 }
