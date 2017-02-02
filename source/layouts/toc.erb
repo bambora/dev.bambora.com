@@ -1,0 +1,33 @@
+<% if current_page.data.nav %>
+    <% toc = data["#{current_page.data.nav}"].toc %>
+<% else %>
+    <% toc = data.nav.toc %>
+<% end %>
+
+
+<nav class="nav-left nav-sticky nav-vertical">
+    <a href="#" id="nav-close"><%= svg :close %></a>
+
+    <% language_tabs = current_page.data.language_tabs %>
+    <% if language_tabs %>
+    <div class="lang-selector">
+        <ul>
+      <% language_tabs.each do |lang| %>
+        <% if lang.is_a? Hash %>
+            <li><a href="#" data-language-name="<%= lang.keys.first %>">
+                <%= lang.values.first %>
+            </a></li>
+        <% else %>
+            <li><a href="#" data-language-name="<%= lang %>"><%= lang %></a></li>
+        <% end %>
+      <% end %>
+        </ul>
+    </div>
+    <% end %> 
+
+    <% if toc %> 
+        <div class="js-toc"></div>
+    <% end %> 
+</nav>
+
+<a href="#" id="show-nav-link"><%= svg :list %></a>
