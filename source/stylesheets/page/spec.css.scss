@@ -54,7 +54,7 @@ pre {
 }
 
 h1 {
-    padding-top: 100px !important; 
+    padding-top: 0px !important; 
 }
 
 .tabs {
@@ -74,6 +74,10 @@ footer {
 .nav-left {
     margin-top: 84px;
     margin-left: 20px;
+}
+
+.nav-left-fixed {
+    margin-top: 0;
 }
 
 .dark-box .lang-selector {
@@ -101,4 +105,10 @@ footer {
     .nav-left .lang-selector a {
         display: inline;
     }
+}
+
+
+.breadcrumb-trail {
+    margin-left: 28px;
+    display: inline-block;
 }

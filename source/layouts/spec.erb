@@ -43,6 +43,9 @@ under the License.
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content js-toc-content">
+
+        <%= partial "layouts/breadcrumb_trail" %>
+
         <%= yield %>
         <% current_page.data.includes && 
             current_page.data.includes.each do |include| %>
