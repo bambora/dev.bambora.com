@@ -58,4 +58,10 @@ module CustomHelpers
     end
   end
 
+  def get_breadcrumbs(path)
+    paths = path.split('/')
+    paths.pop
+    paths
+  end
+
 end
