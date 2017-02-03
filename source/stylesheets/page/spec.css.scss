@@ -121,7 +121,7 @@ footer {
 
 
 table {
-    width: auto;
+    display: table !important;
+    width: calc(50% - 28px) !important;
     overflow-x: auto;
-    margin-right: calc(50% + 28px) !important;
 }
