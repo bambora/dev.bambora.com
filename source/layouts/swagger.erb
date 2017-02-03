@@ -30,8 +30,8 @@
         <!-- Summary Block --> 
         <% info = swagger.info %>
         <h2><%= info.title %></h2>
-        <p><%= info.description %></p>
-
+        <%= render_markdown info.description %>
+        
         <p><strong>Version:</strong> <%= info.version %></p>
         <p><strong>Contact:</strong> <%= info.contact.email %></p>
         <p><strong>Terms of Service:</strong> <a href="<%= info.termsOfService %>"><%= info.termsOfService %></a></p>

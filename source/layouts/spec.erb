@@ -42,15 +42,15 @@ under the License.
 
     <div class="page-wrapper">
       <div class="dark-box"></div>
-      <div class="content js-toc-content">
+      <div class="content js-toc-content markdown">
 
         <%= partial "layouts/breadcrumb_trail" %>
 
-        <%= yield %>
-        <% current_page.data.includes && 
-            current_page.data.includes.each do |include| %>
-          <%= partial "includes/#{include}" %>
-        <% end %>
+          <%= yield %>
+          <% current_page.data.includes && 
+              current_page.data.includes.each do |include| %>
+            <%= partial "includes/#{include}" %>
+          <% end %>
       </div>
       
       <div class="dark-box">

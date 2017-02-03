@@ -49,7 +49,6 @@ set :github_branch, "v2"
 require "lib/custom_helpers"
 helpers CustomHelpers
 
-
 # Github pages require relative links
 activate :relative_assets
 set :relative_links, true

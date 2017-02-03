@@ -34,6 +34,28 @@ pre {
   white-space: pre-wrap; 
 }
 
+.markdown {
+  li a:not(.btn) {    // link styling in markdown lists
+    color: rgba(120, 71, 181, 1);
+    text-decoration: none;
+    display: inline-block;
+    border-bottom: rgba(120, 71, 181, 1) 1px solid;
+    line-height: 1.1em;
+    cursor: pointer;
+    transition: all 100ms ease-out; 
+  }
+
+  li a:not(.btn):visited {
+      color: rgba(120, 71, 181, 1); 
+  }
+
+  li a:not(.btn):hover {
+      color: rgba(202, 172, 223, 1);
+      border-bottom: rgba(202, 172, 223, 1) 1px solid; 
+  }
+}
+
+
 
 /* flex box cards */
 
