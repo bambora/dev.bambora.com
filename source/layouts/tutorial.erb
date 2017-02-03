@@ -12,8 +12,12 @@
       
       <%= partial "layouts/breadcrumb_trail" %> 
 
-      <%= partial "layouts/toc" %>
-  
+      <% if current_page.data.in_page_toc %>
+        <%= partial "layouts/toc" %>
+      <% else %> 
+        <%= partial "layouts/side_nav" %>
+      <% end %> 
+
       <div class="row">
         <div class="col-md-9 col-md-offset-3 js-toc-content">
 

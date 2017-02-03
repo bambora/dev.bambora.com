@@ -36,7 +36,7 @@ on it. No other values do. Seems like a weird bug? %>
 
 <% schemas.each do |schema| %>
     <a class="schema-link" id="<%= "#{path}-#{operation}-#{schema}" %>-link" href="#">
-        <h6><%= schema %></h6>
+        <h6><%= schema %> Schema</h6>
         <span class="more-icon"><%= svg :drop %></span>
     </a>
 
@@ -50,8 +50,20 @@ on it. No other values do. Seems like a weird bug? %>
                 <span class="desc"><%= prop[1].type %></span>
             <% else %>
                 <% schema = prop[1].to_h["$ref"].to_s.split('/').last %>
-                <% schemas << schema %>
-                <span class="desc"><a class="schema-link" id="<%= "#{path}-#{operation}-#{schema}" %>-link" href="#"><%= schema %></a></span>
+                <%# schemas << schema %>
+                <span class="desc"><a class="schema-link" id="<%= "#{path}-#{operation}-#{schema}" %>-link" href="#"><%= schema %><%= svg :drop %></a>
+                
+                <!-- nested properties -->
+                <div class="nested-property">
+                    <% definitions["#{schema}"].properties.each do |prop| %>
+                        <p class="property">
+                            <span class="name"><%= prop[0] %></span>
+                            <span class="obj">:</span>
+                            <span class="desc"><%= prop[1].type %></span>
+                        </p>
+                    <% end %>
+                </div>
+                </span>
             <% end %>
         </p>
     <% end %>

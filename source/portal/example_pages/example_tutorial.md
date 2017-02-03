@@ -5,8 +5,7 @@ layout: tutorial
 summary: A test tutorial with dummy content added. 
 
 nav: example_nav
-name: /portal/test_tutorial
-parent: /portal/test_tutorial
+in_page_toc: true
 
 search: false
 ---

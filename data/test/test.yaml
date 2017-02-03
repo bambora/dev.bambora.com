@@ -1,0 +1,44 @@
+header:
+  logo_link: '#'
+  links: 
+    - file: '#'
+      title: Example Nav
+    - file: '#'
+      title: Link 1
+    - file: '#'
+      title: Link 2
+    - file: '#'
+      title: Link 3
+  buttons:
+    - file: '#'
+      title: Log in
+    - file: '#'
+      title: Sign up
+      secondary: true
+
+toc:
+- file: '#'
+  title: 'Category 1 Link'
+- file: '#'
+  title: 'Category 2 Link'
+- file: '#'
+  title: 'Category 3 Link'
+- file: '#'
+  title: 'Category 4 Link'
+
+footer: 
+  copyright: Copyright 2016
+  left_links: 
+    - link: '#'
+      title: 'Link 1'
+    - link: '#'
+      title: 'Link 2'
+    - link: '#'
+      title: 'Link 3'
+  right_links:
+    - link: '#'
+      title: 'Link 4'
+    - link: '#'
+      title: 'Link 5'
+    - link: '#'
+      title: 'Link 6'

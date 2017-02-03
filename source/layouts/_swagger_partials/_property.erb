@@ -1,0 +1,15 @@
+<p class="property">
+    <span class="name"><%= prop[0] %></span>
+    <span class="obj">:</span>
+    <% if prop[1].key?("type") %>
+        <span class="desc"><%= prop[1].type %></span>
+    <% else %>
+        <% schema = prop[1].to_h["$ref"].to_s.split('/').last %>
+        <span class="desc">
+            <a href="#" class="schema-link">
+                <%= schema %> <%= svg :drop %>
+            </a>
+
+            <%= partial "/layouts/_swagger_partials/property" %>
+        </span>
+</p>
