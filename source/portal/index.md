@@ -12,7 +12,7 @@ hero_unit:
         project, as well as documentation for how to use and extend the portal. 
     button: 
         text: Get Started
-        link: /portal/setup.html
+        link: /portal/setup/
 card_sets:
     -
         title: Portal Documentation.
@@ -25,14 +25,14 @@ card_sets:
                 description: > 
                     The fastest way to get up and running with the portal. 
                 icon: flag
-                link: /portal/quickstart.html
+                link: /portal/quickstart/
             -
                 title: Style guide 
                 description: > 
                     Tempore corrupti, obcaecati voluptate nulla, repellat labore 
                     culpa, accusamus doloremque laudantium similique id molestiae.
                 icon: more
-                link: /portal/guidelines.html
+                link: /portal/guidelines/
             -
                 title: Editing the docs in browser
                 description: >
@@ -46,7 +46,7 @@ card_sets:
                     Extend the portal to add more templates, new styling, new 
                     navigation, and more. 
                 icon: comment
-                link: /portal/customize.html
+                link: /portal/customize/
     -  
         title: Example Templates.
         description: >
@@ -61,39 +61,39 @@ card_sets:
                     and links. 
                 icon: list
                 tag: new
-                link: '/portal/example_pages/example_landing_page_hero.html'
+                link: /portal/example_pages/example_landing_page_hero/
             -
                 title: Landing Page
                 description: > 
                     A landing page without a hero image. The content is moved 
                     further up the page. 
                 icon: list
-                link: '/portal/example_pages/example_landing_page.html'
+                link: /portal/example_pages/example_landing_page/
             -
                 title: Product Page
                 description: > 
                     A page for displaying information about a product that has a 
                     table of contents style navigation and a number cards. 
                 icon: list
-                link: '/portal/example_pages/example_product_page.html'
+                link: /portal/example_pages/example_product_page/
             -
                 title: Tutorial Page
                 description: >
                     A simple page for displaying markdown-formatted text. Equally suited 
                     to prose or code.
                 icon: list
-                link: '/portal/example_pages/example_tutorial.html'
+                link: /portal/example_pages/example_tutorial/
             -
                 title: Spec Page 
                 description: >
                     A page for code heavy content that splits the screen in two. 
                     Code for multiple languages can be displayed and selected between. 
                 icon: list
-                link: '/portal/example_pages/example_spec_page.html'
+                link: /portal/example_pages/example_spec_page/
             - 
                 title: Swagger Page
                 description: >
                     A page for rendering Swagger files. 
                 icon: list 
-                link: '/portal/example_pages/example_swagger_page.html' 
+                link: /portal/example_pages/example_swagger_page/ 
 ---

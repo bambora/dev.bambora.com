@@ -5,8 +5,8 @@ layout: tutorial
 summary: Describes how to create a new page in the dev portal.
 
 nav: site_howto_nav
-name: /portal/create_new_page
-parent: /portal/content
+name: /portal/create_new_page/
+parent: /portal/content/
 
 includes_root: portal
 
@@ -18,7 +18,7 @@ search: false
 
 The first step to creating a new page is to select location where the file will live. In the project folder you will see a sub-folder called `/source`. In that folder will be your region's folder. That is where you will place your file.
 
-Create a new file, in that region folder, with the `.md` file extension. This stands for "Markdown". Markdown is a simple format for writing content that avoids having to use HTML. The [Basics](/portal/basics.html) page describes what the format looks like.
+Create a new file, in that region folder, with the `.md` file extension. This stands for "Markdown". Markdown is a simple format for writing content that avoids having to use HTML. The [Basics](/portal/basics/) page describes what the format looks like.
 
 ## Configure the Page
 
@@ -48,7 +48,7 @@ Let's go over what each of those parameters means.
 - `layout`
  - This is the layout template file to use. They are described in deltail below.
 - `nav`
- - Defines what nav menu data to use. This will control the header, footer, and Table of Contents (ToC). The nav files are data files located in `/data`. More info on configuring nav files can be found in [Navigation](/portal/navigation).
+ - Defines what nav menu data to use. This will control the header, footer, and Table of Contents (ToC). The nav files are data files located in `/data`. More info on configuring nav files can be found in [Navigation](/portal/navigation/).
 - `name`
  - The file name of this file. This is used to identify where in the ToC it should expand and show the local content.
 - `parent`

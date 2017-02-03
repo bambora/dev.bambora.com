@@ -3,8 +3,8 @@ title: Structure
 layout: tutorial
 
 nav: site_howto_nav
-name: /portal/content_structure
-parent: /portal/content
+name: /portal/content_structure/
+parent: /portal/content/
 
 includes_root: portal
 
@@ -20,7 +20,7 @@ The dev portal is broken down into 4 different types of pages:
 3. Tutorial
 4. Spec
 
-Each of these page types is rendered differently and has slightly different configuration called **front matter**. For more detail on configuring what type of page you will render check out the [Crete New Page](/portal/create_new_page.html) section.
+Each of these page types is rendered differently and has slightly different configuration called **front matter**. For more detail on configuring what type of page you will render check out the [Crete New Page](/portal/create_new_page/) section.
 
 
 The structure of the portal is largely defined in the Table of Contents left navigation area. Top-level items are either Products or a specific category group.
@@ -47,4 +47,4 @@ The 'Checkout' item would be the product page. It can contain screenshots as wel
 
 The first sub-section, 'Getting Started', will use the Tutorial layout. 'Configuration' will use the Spec layout. And the following topics will use the Tutorial layout.
 
-The individual markdown files do not need to be structured in the source directory the same way they are in the ToC. For information on configuring the Table of Contents, head to the [ToC](/portal/toc.html) doc.
+The individual markdown files do not need to be structured in the source directory the same way they are in the ToC. For information on configuring the Table of Contents, head to the [ToC](/portal/toc/) doc.

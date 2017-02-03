@@ -3,8 +3,8 @@ title: Spec Page
 layout: tutorial
 
 nav: site_howto_nav
-name: /portal/spec 
-parent: /portal/content
+name: /portal/spec/
+parent: /portal/content/
 
 summary: > 
     An overview of the Spec Page template. 
@@ -71,4 +71,4 @@ Blocks of code will be rendered on the right hand side of the page, and text on 
 
 ## Examples 
 
-[Here's](/portal/test_spec_page.html) an example of a Spec Page. [Here's](/portal/test_spec_page_android.html) another example of a longer Spec Page.
+[Here's](/portal/example_pages/example_spec_page/) an example of a Spec Page. 

@@ -3,8 +3,8 @@ title: Landing Page
 layout: tutorial
 
 nav: site_howto_nav
-name: /portal/landing
-parent: /portal/content
+name: /portal/landing/
+parent: /portal/content/
 nav_category: Guides
 
 summary: An overview of the Landing Page template. 
@@ -189,4 +189,4 @@ Any markdown that exists outside of the frontmatter will not be displayed on a L
 
 ## Examples
 
-[Here's](/portal/test_landing_page.html) an example of a Landing Page without a Hero Unit background image, and [here's](/portal/test_landing_page_hero.html) an example of one with a background image.  
+[Here's](/portal/example_pages/example_landing_page) an example of a Landing Page without a Hero Unit background image, and [here's](/portal/example_pages/example_landing_page_hero/) an example of one with a background image.  

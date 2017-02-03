@@ -3,8 +3,8 @@ title: Product Page
 layout: tutorial
 
 nav: site_howto_nav
-name: /portal/product
-parent: /portal/content
+name: /portal/product/
+parent: /portal/content/
 
 summary: > 
     An overview of the Product Page template.
@@ -122,4 +122,4 @@ Content from the markdown file will be rendered on the Product Page, above the c
 
 ## Example
 
-[Here's](/portal/test_product_page.html) an example of a product page.
+[Here's](/portal/example_pages/example_product_page/) an example of a product page.

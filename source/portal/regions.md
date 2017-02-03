@@ -3,8 +3,8 @@ title: Regions
 layout: tutorial
 
 nav: site_howto_nav
-name: /portal/regions
-parent: /portal/customize
+name: /portal/regions/
+parent: /portal/customize/
 
 summary: >
         Different regions in bambora might have their own developer portals. 

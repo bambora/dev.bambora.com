@@ -3,8 +3,8 @@ title: Dev Portal
 layout: tutorial
 
 nav: site_howto_nav
-name: /portal/setup
-parent: /portal/setup
+name: /portal/setup/
+parent: /portal/setup/
 nav_category: Quickstart
 in_page_toc: false
 

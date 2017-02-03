@@ -3,10 +3,8 @@ title: Tutorial
 layout: tutorial
 
 nav: site_howto_nav
-name: /portal/tutorials
-parent: /portal/content
-
-search: false
+name: /portal/tutorials/
+parent: /portal/content/
 
 summary: This describes how to write tutorials.
 ---

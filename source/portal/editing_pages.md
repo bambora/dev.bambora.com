@@ -3,8 +3,8 @@ title: Editing
 layout: tutorial
 
 nav: site_howto_nav
-name: /portal/editing_pages
-parent: /portal/content
+name: /portal/editing_pages/
+parent: /portal/content/
 
 summary:  >
     There are two main ways you can contribute to the dev portal. Edit

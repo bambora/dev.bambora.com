@@ -3,8 +3,8 @@ title: Quickstart
 layout: tutorial
 
 nav: site_howto_nav
-name: /portal/quickstart
-parent: /portal/quickstart
+name: /portal/quickstart/
+parent: /portal/quickstart/
 
 search: false
 
@@ -66,4 +66,4 @@ A site admin will review the change and accept it, automatically deploying the s
 
 That's it!
 
-For more options on setting up the site and running middleman visit [Setup](/portal/index.html).
+For more options on setting up the site and running middleman visit [Setup](/portal/setup/).

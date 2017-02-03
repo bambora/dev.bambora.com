@@ -3,8 +3,8 @@ title: Deploy
 layout: tutorial
 
 nav: site_howto_nav
-name: /portal/deploy
-parent: /portal/deploy
+name: /portal/deploy/
+parent: /portal/deploy/
 
 search: false
 ---

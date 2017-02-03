@@ -3,8 +3,8 @@ title: Tutorial
 layout: tutorial
 
 nav: site_howto_nav
-name: /portal/content
-parent: /portal/content
+name: /portal/content/
+parent: /portal/content/
 
 search: false
 ---

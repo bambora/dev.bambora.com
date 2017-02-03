@@ -18,6 +18,9 @@ set :fonts_dir, 'fonts'
 # Activate the syntax highlighter
 activate :syntax 
 
+# Activate directory style pretty urls 
+activate :directory_indexes
+
 activate :autoprefixer do |config|
   config.browsers = ['last 2 version', 'Firefox ESR']
   config.cascade  = false
