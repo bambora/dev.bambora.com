@@ -6,6 +6,7 @@ nav: site_howto_nav
 name: /portal/setup
 parent: /portal/setup
 nav_category: Quickstart
+in_page_toc: false
 
 summary: This page will show you how to set up the Dev Portal on your machine.
 ---

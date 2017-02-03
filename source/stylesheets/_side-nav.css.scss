@@ -44,7 +44,6 @@
 .js-toc .is-active-link {
   color: rgba(120, 71, 181, 1);
   border-left: 2px solid rgba(120, 71, 181, 1);
-
 }
 
 .toc-list-item {
@@ -188,11 +187,16 @@ color: rgba(120, 71, 181, 1);
 }
 
 .js-toc a.toc-link {
-  color: currentColor;
+  //color: currentColor;
   height: 100%;
 }
 
 .js-toc .toc-link.node-name--H2 {
-  font-size: 12px;
-  min-height: 12px;
+  //font-size: 12px;
+  //min-height: 12px;
+}
+
+
+li.active a {
+  border-left: none !important;
 }
