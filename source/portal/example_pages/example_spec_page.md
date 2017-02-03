@@ -32,5 +32,8 @@ This section of the guide will walk you through how to take payments in your And
 
 **Recommended IDE:** [Android Studio](https://developer.android.com/sdk/index.html) with the [Android Plugin for Gradle](http://developer.android.com/tools/revisions/gradle-plugin.html).
 
-
+| header 1 | header 2 | header 3 | header 4 | header 5 |
+| -------- | -------- |----------|----------|----------|
+| cell 1   | cell 2   | cell 3   | cell 4   |  cell 5  | 
+| cell 3   | cell 4   | cell 6   | cell 7   | cell 8   |
 

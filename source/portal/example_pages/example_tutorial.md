@@ -22,6 +22,11 @@ atque repudiandae! Aliquid, dignissimos assumenda molestiae ipsa dolore doloremq
 
 In dolorum ad odit nesciunt suscipit vitae est dolor doloribus tenetur minima temporibus hic, similique labore commodi. Explicabo, ad excepturi, debitis omnis cumque iusto odio nemo illo quibusdam blanditiis, id!
 
+| header 1 | header 2 |
+| -------- | -------- |
+| cell 1   | cell 2   |
+| cell 3   | cell 4   |
+
 ## Second Level Heading
 
 ### Sub sub sub heading 

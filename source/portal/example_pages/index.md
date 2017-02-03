@@ -1,6 +1,8 @@
 ---
 title: Example Pages 
-layout: tutorial 
+layout: tutorial
+
+nav: example_nav
 ---
 
 # Example Pages 
