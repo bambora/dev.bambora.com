@@ -59,6 +59,10 @@ h1 {
 
 .tabs {
     z-index: $zIndexLangSelector;
+
+    &.lang-selector {
+        background-color: $muted;
+    }
 }
 
 footer {
