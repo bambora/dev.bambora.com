@@ -6,7 +6,6 @@ nav: site_howto_nav
 name: /portal/content/
 parent: /portal/content/
 
-search: false
 ---
 
 # Writing Portal Content
@@ -15,11 +14,11 @@ Whether you want to edit some existing content or create a new documentation top
 
 Read these following tutorials on how to update dev portal content:
 
-- [Editing Pages](/portal/editing_pages.html)
-- [Create a New Page](/portal/create_new_page.html)
-- [Content Structure](/portal/content_structure.html)
-- [Writing Tutorials](/portal/tutorials.html)
-- [Documenting APIs](/portal/api_specs.html)
-- [Navigation and ToC](/portal/navigation.html)
-- [Guidelines](/portal/guidelines.html) *(aka 'some rules')*
+- [Editing Pages](/portal/editing_pages)
+- [Create a New Page](/portal/create_new_page)
+- [Content Structure](/portal/content_structure)
+- [Writing Tutorials](/portal/tutorials)
+- [Documenting APIs](/portal/api_specs)
+- [Navigation and ToC](/portal/navigation)
+- [Guidelines](/portal/guidelines) *(aka 'some rules')*
 

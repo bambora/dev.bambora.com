@@ -285,6 +285,7 @@ table tbody tr:last-child td {
 .breadcrumb-trail {
   margin-top: 30px;
   margin-bottom: 30px;
+  margin-left: 18px; // align with side nav
   color: $contrast;
   font-style: italic;
 

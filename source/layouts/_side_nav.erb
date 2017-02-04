@@ -1,0 +1,57 @@
+<% toc = data["#{current_page.data.nav}"].toc %>
+<% this_page = current_page.data.name %> 
+
+<nav class="nav-left nav-sticky nav-vertical">
+  <a href="#" id="nav-close"><%= svg :close %></a>
+
+  <%# Language Tabs for spec page layout are displayed in 
+  the side nav when the page collapses to a single column %> 
+  <% language_tabs = current_page.data.language_tabs %> 
+  <% if language_tabs %> 
+  <div class="lang-selector">
+    <ul>
+      <% language_tabs.each do |lang| %>
+        <% if lang.is_a? Hash %>
+          <li>
+            <a href="#" data-language-name="<%= lang.keys.first %>">
+              <%= lang.values.first %>
+            </a>
+          </li>
+        <% else %>
+          <li>
+            <a href="#" data-language-name="<%= lang %>">
+              <%= lang %>
+            </a>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>  
+  </div>
+  <% end %> 
+
+  <% if toc %> 
+    <% if current_page.data.in_page_toc %>
+      <div class="page-only js-toc"></div> 
+    <% else %>
+      <ul>
+        <% toc.each do |item| %>
+          <% if this_page == item.file then li_class = "active" else 
+              li_class = "" end %> 
+
+          <li data-nav-title="<%= item.file %>" class="<%= li_class %>">
+            <a href="<%= item.file %>" class="nav-top-heading">
+              <%= item.title %> 
+            </a>
+
+            <% if this_page == item.file %> 
+              <div class="page-included js-toc"></div>
+            <% end %> 
+          </li>
+        <% end %> 
+      </ul>
+    <% end %> 
+  <% end %> 
+</nav>
+
+<a href="#" id="show-nav-link"><%= svg :list %></a>
+

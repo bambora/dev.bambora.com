@@ -6,8 +6,6 @@ summary: A test tutorial with dummy content added.
 
 nav: example_nav
 in_page_toc: true
-
-search: false
 ---
 
 # Test Tutorial
