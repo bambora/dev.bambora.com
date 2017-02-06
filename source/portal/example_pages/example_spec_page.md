@@ -13,7 +13,7 @@ navigation:
     header_highlight: Example Pages
 
 includes:
-  - test/_test-include
+  - portal/test/_test-include
 
 language_tabs: 
   - ruby 
