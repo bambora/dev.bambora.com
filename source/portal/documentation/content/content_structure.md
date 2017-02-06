@@ -3,6 +3,7 @@ title: Structure
 layout: tutorial
 
 navigation: 
+  nav_folder: portal
   nav_file: site_howto_nav 
   this_page: /portal/documentation/content/content_structure/
   toc_file: content_toc 

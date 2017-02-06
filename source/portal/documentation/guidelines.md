@@ -14,9 +14,8 @@ summary: >
     developer portal and the content within it. All bambora developer 
     portals must adhere to this design guide.
 
-includes_root: portal
 includes: 
-    - tone
+    - portal/tone
 ---
 
 # Dev Portal Design Guide

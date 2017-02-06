@@ -6,12 +6,14 @@ navigation:
     nav_folder: portal 
     nav_file: example_nav
     this_page: /portal/example_pages/example_tutorial/
-    toc_file: example_toc
+    toc_file: false
     header_highlight: Example Pages
-
 
 summary: > 
   A test tutorial with dummy content added. 
+
+includes: 
+  - portal/test/test_include_1
 
 ---
 
@@ -29,7 +31,7 @@ In dolorum ad odit nesciunt suscipit vitae est dolor doloribus tenetur minima te
 
 | header 1 | header 2 | header 3 | header 4 | header 5 |
 | -------- | -------- |----------|----------|----------|
-| cell 1   | cell 2   | cell 3   | cell 4   | cell 5  | 
+| cell 1   | cell 2   | cell 3   | cell 4   | cell 5   | 
 | cell 3   | cell 4   | cell 6   | cell 7   | cell 8   |
 
 ## Second Level Heading
