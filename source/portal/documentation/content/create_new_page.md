@@ -2,15 +2,16 @@
 title: Create Page
 layout: tutorial
 
-summary: Describes how to create a new page in the dev portal.
+navigation: 
+  nav_file: site_howto_nav 
+  this_page: /portal/documentation/content/create_new_page/
+  toc_file: content_toc
+  header_highlight: Documentation
 
-nav: site_howto_nav
-name: /portal/create_new_page/
-parent: /portal/content/
+summary: > 
+  Describes how to create a new page in the dev portal.
 
 includes_root: portal
-
-search: false
 ---
 
 # Create a New Page

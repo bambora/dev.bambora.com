@@ -2,12 +2,14 @@
 title: Landing Page
 layout: tutorial
 
-nav: site_howto_nav
-name: /portal/landing/
-parent: /portal/content/
-nav_category: Guides
+navigation: 
+  nav_file: site_howto_nav 
+  this_page: /portal/documentation/content/landing/
+  toc_file: content_toc
+  header_highlight: Documentation
 
-summary: An overview of the Landing Page template. 
+summary: > 
+    An overview of the Landing Page template. 
 ---
 
 # Landing Page Template

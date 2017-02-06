@@ -2,13 +2,13 @@
 title: Structure
 layout: tutorial
 
-nav: site_howto_nav
-name: /portal/content_structure/
-parent: /portal/content/
+navigation: 
+  nav_file: site_howto_nav 
+  this_page: /portal/documentation/content/content_structure/
+  toc_file: content_toc 
+  header_highlight: Documentation
 
 includes_root: portal
-
-search: false
 ---
 
 # Content Structure

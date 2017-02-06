@@ -2,13 +2,14 @@
 title: Dev Portal
 layout: tutorial
 
-nav: site_howto_nav
-name: /portal/setup/
-parent: /portal/setup/
-nav_category: Quickstart
-in_page_toc: false
+navigation:
+  header_highlight: Quickstart 
+  nav_file: site_howto_nav 
+  this_page: /portal/documentation/setup/
+  toc_file: self_doc_toc
 
-summary: This page will show you how to set up the Dev Portal on your machine.
+summary: > 
+  This page will show you how to set up the Dev Portal on your machine.
 ---
 
 <img src="/images/svg/zebraffe-dev.svg" alt="bambora-logo" style="width:100%" >

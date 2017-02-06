@@ -2,9 +2,11 @@
 title: Tutorial
 layout: tutorial
 
-nav: site_howto_nav
-name: /portal/content/
-parent: /portal/content/
+navigation: 
+    nav_file: site_howto_nav 
+    this_page: /portal/documentation/content/
+    toc_file: self_doc_toc
+    header_highlight: Documentation
 
 ---
 
@@ -14,7 +16,7 @@ Whether you want to edit some existing content or create a new documentation top
 
 Read these following tutorials on how to update dev portal content:
 
-- [Editing Pages](/portal/editing_pages)
+- [Editing Pages](/portal/documentation/content/editing_pages)
 - [Create a New Page](/portal/create_new_page)
 - [Content Structure](/portal/content_structure)
 - [Writing Tutorials](/portal/tutorials)

@@ -1,5 +1,10 @@
-<% toc = data["#{current_page.data.nav}"].toc %>
-<% this_page = current_page.data.name %> 
+<% if current_page.data.navigation.toc_file %>
+  <% toc_file = data["#{current_page.data.navigation.toc_file}"].toc %>
+<% else %> 
+  <% toc_file = false %>
+<% end %> 
+
+<% this_page = current_page.data.navigation.this_page %> 
 
 <nav class="nav-left nav-sticky nav-vertical">
   <a href="#" id="nav-close"><%= svg :close %></a>
@@ -29,12 +34,12 @@
   </div>
   <% end %> 
 
-  <% if toc %> 
-    <% if current_page.data.in_page_toc %>
+  <%# Tocbot table of contents inside specified list of links %> 
+    <% if toc_file == false %>
       <div class="page-only js-toc"></div> 
     <% else %>
       <ul>
-        <% toc.each do |item| %>
+        <% toc_file.each do |item| %>
           <% if this_page == item.file then li_class = "active" else 
               li_class = "" end %> 
 
@@ -50,8 +55,6 @@
         <% end %> 
       </ul>
     <% end %> 
-  <% end %> 
 </nav>
 
 <a href="#" id="show-nav-link"><%= svg :list %></a>
-

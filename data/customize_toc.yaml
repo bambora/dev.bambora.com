@@ -1,0 +1,15 @@
+toc:
+  - file: /portal/documentation/customize/regions/ 
+    title: Regional Portals
+  - file: /portal/architecture/
+    title: Architecture
+  - file: /portal/middleman/
+    title: Middleman Basics
+  - file: /portal/templates/
+    title: Templates
+  - file: /portal/data_files/
+    title: Data Files
+  - file: /portal/toc/ 
+    title: Table of Contents
+  - file: /portal/css/ 
+    title: CSS

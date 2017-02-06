@@ -2,11 +2,14 @@
 title: Tutorial
 layout: tutorial
 
-nav: site_howto_nav
-name: /portal/tutorials/
-parent: /portal/content/
+navigation: 
+    nav_file: site_howto_nav 
+    this_page: /portal/documentation/content/tutorials/
+    toc_file: content_toc 
+    header_highlight: Documentation
 
-summary: This describes how to write tutorials.
+summary: > 
+    This describes how to write tutorials.
 ---
 
 # Writing Tutorials

@@ -1,8 +1,4 @@
-<% if current_page.data.nav %>
-    <% nav = data["#{current_page.data.nav}"].header %>
-<% else %>
-    <% nav = data.nav.header %>
-<% end %>
+<% nav = data["#{current_page.data.navigation.nav_file}"].header %> 
 
 <% using_hero_image = (current_page.data.hero_unit and current_page.data.hero_unit.hero_image) %>
 
@@ -22,7 +18,7 @@
     </a>
 
     <% nav.links and nav.links.each do |link| %>
-        <% if link.title == current_page.data.nav_category %>
+        <% if link.title == current_page.data.navigation.header_highlight %>
             <a href="<%= link.file %>" class="active"><%= link.title %></a>
         <% else %>
             <a href="<%= link.file %>"><%= link.title %></a>

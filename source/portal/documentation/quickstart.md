@@ -2,11 +2,11 @@
 title: Quickstart
 layout: tutorial
 
-nav: site_howto_nav
-name: /portal/quickstart/
-parent: /portal/quickstart/
-
-search: false
+navigation: 
+    nav_file: site_howto_nav 
+    this_page: /portal/documentation/quickstart/
+    toc_file: self_doc_toc
+    header_highlight: Documentation
 
 summary: > 
     This will guide you through quickly setting up the portal on your machine, editing some docs, and deploying the change.

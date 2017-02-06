@@ -1,0 +1,23 @@
+---
+title: Guidelines
+layout: tutorial
+
+navigation: 
+    nav_file: site_howto_nav 
+    this_page: /portal/documentation/guidelines/
+    toc_file: self_doc_toc 
+    header_highlight: Documentation
+
+summary: > 
+    This page contains the rules and guidelines for creating a developer portal and the content within it. All bambora developer portals must adhere to this design guide.
+
+includes_root: portal
+includes: 
+    - tone
+---
+
+# Dev Portal Design Guide
+
+This page contains the rules and guidelines for creating a developer portal and the content within it. All bambora developer portals must adhere to this design guide.
+
+

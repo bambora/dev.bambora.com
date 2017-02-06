@@ -67,9 +67,9 @@ module CustomHelpers
     result = {}
     path_list = path.split('/')
     if path_list.last == "index.html"
-      path_list = path_list[0...-2] # Don't include current page (index.html) or directory/ 
-    else
-      path_list = path_list[0...-1] # Don't inlcude current page
+      path_list = path_list[0...-1] # Don't include current page (index.html) or directory/ 
+    # else
+    #   path_list = path_list[0...-1] # Don't inlcude current page
     end
     path_list.each_with_index do |path, index|
       link = "/" + path_list[0..index].join('/') + '/'

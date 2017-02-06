@@ -2,9 +2,11 @@
 title: Spec Page 
 layout: tutorial
 
-nav: site_howto_nav
-name: /portal/spec/
-parent: /portal/content/
+navigation: 
+  nav_file: site_howto_nav 
+  this_page: /portal/documentation/content/spec/
+  toc_file: content_toc
+  header_highlight: Documentation
 
 summary: > 
     An overview of the Spec Page template. 

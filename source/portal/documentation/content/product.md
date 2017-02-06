@@ -2,9 +2,11 @@
 title: Product Page
 layout: tutorial
 
-nav: site_howto_nav
-name: /portal/product/
-parent: /portal/content/
+navigation: 
+  nav_file: site_howto_nav 
+  this_page: /portal/documentation/content/product/
+  toc_file: content_toc
+  header_highlight: Documentation
 
 summary: > 
     An overview of the Product Page template.

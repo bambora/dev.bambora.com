@@ -2,9 +2,11 @@
 title: Editing
 layout: tutorial
 
-nav: site_howto_nav
-name: /portal/editing_pages/
-parent: /portal/content/
+navigation: 
+    nav_file: site_howto_nav 
+    this_page: /portal/documentation/content/editing_pages/
+    toc_file: content_toc
+    header_highlight: Documentation
 
 summary:  >
     There are two main ways you can contribute to the dev portal. Edit
