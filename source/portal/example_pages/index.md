@@ -3,6 +3,13 @@ title: Example Pages
 layout: tutorial
 
 nav: example_nav
+
+navigation: 
+    nav_folder: portal
+    nav_file: site_howto_nav 
+    this_page: /portal/documentation/quickstart 
+    toc_file: self_doc_toc 
+    header_highlight: Documentation
 ---
 
 # Example Pages 

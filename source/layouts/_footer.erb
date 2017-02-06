@@ -2,7 +2,7 @@
 <footer>
 
     <% if current_page.data.navigation %>
-        <% footer = data["#{current_page.data.navigation.nav_file}"].footer %>
+        <% footer = data["#{current_page.data.navigation.nav_folder}"]["#{current_page.data.navigation.nav_file}"].footer %>
     <% end %>
 
     <% if footer %> 

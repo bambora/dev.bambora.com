@@ -2,7 +2,8 @@
 title: Example Product Page
 layout: product
 
-navigation: 
+navigation:
+    nav_folder: portal 
     nav_file: example_nav
     this_page: /portal/example_pages/example_product_page/
     toc_file: example_toc

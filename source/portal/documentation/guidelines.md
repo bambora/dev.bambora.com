@@ -2,7 +2,8 @@
 title: Guidelines
 layout: tutorial
 
-navigation: 
+navigation:
+    nav_folder: portal 
     nav_file: site_howto_nav 
     this_page: /portal/documentation/guidelines/
     toc_file: self_doc_toc 

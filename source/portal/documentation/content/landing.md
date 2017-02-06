@@ -2,7 +2,8 @@
 title: Landing Page
 layout: tutorial
 
-navigation: 
+navigation:
+  nav_folder: portal
   nav_file: site_howto_nav 
   this_page: /portal/documentation/content/landing/
   toc_file: content_toc

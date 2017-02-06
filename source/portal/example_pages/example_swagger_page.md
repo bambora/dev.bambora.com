@@ -2,7 +2,8 @@
 title: Example Swagger Page
 layout: swagger
 
-navigation: 
+navigation:
+    nav_folder: portal 
     nav_file: example_nav
     this_page: /portal/example_pages/example_swagger_page/
     toc_file: example_toc

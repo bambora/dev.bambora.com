@@ -2,7 +2,8 @@
 title: Customize
 layout: tutorial
 
-navigation: 
+navigation:
+  nav_folder: portal 
   nav_file: site_howto_nav 
   this_page: /portal/documentation/customize/
   toc_file: customize_toc

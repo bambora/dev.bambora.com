@@ -3,6 +3,7 @@ title: Dev Portal
 layout: tutorial
 
 navigation:
+  nav_folder: portal
   header_highlight: Quickstart 
   nav_file: site_howto_nav 
   this_page: /portal/documentation/setup/

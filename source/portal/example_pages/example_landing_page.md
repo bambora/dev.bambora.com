@@ -2,7 +2,8 @@
 title: Example Landing Page
 layout: landing
 
-navigation: 
+navigation:
+    nav_folder: portal 
     nav_file: example_nav 
     this_page: /portal/example_pages/example_landing_page/
     toc_file: example_toc
