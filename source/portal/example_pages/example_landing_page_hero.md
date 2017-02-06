@@ -2,7 +2,11 @@
 title: Landing Page
 layout: landing
 
-nav: example_nav
+navigation: 
+    nav_file: example_nav 
+    this_page: /portal/example_pages/example_landing_page_hero/
+    toc_file: example_toc
+    header_highlight: Example Pages
 
 hero_unit:
     hero_image: shoal-1.png

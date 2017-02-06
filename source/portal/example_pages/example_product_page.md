@@ -2,7 +2,11 @@
 title: Example Product Page
 layout: product
 
-nav: example_nav
+navigation: 
+    nav_file: example_nav
+    this_page: /portal/example_pages/example_product_page/
+    toc_file: example_toc
+    header_highlight: Example Pages
 
 cards:
     -                

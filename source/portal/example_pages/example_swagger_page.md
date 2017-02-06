@@ -2,7 +2,11 @@
 title: Example Swagger Page
 layout: swagger
 
-nav: example_nav
+navigation: 
+    nav_file: example_nav
+    this_page: /portal/example_pages/example_swagger_page/
+    toc_file: example_toc
+    header_highlight: Example Pages
 
 swagger_file: petstore.json
 ---

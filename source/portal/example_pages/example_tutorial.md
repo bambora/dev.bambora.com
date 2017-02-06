@@ -2,10 +2,16 @@
 title: Test Tutorial
 layout: tutorial
 
-summary: A test tutorial with dummy content added. 
+navigation: 
+    nav_file: example_nav
+    this_page: /portal/example_pages/example_tutorial/
+    toc_file: example_toc
+    header_highlight: Example Pages
 
-nav: example_nav
-in_page_toc: true
+
+summary: > 
+  A test tutorial with dummy content added. 
+
 ---
 
 # Test Tutorial

@@ -3,10 +3,12 @@ header:
   links: 
     - file: /portal/documentation/
       title: Documentation
+    - file: /portal/example_pages/
+      title: Example Pages
     - file: /portal/
       title: API Reference
     - file: /portal/
-      title: SDK Rerefence
+      title: SDK Reference
     - file: /portal/
       title: Guides
     - file: /portal/

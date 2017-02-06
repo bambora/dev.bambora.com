@@ -2,11 +2,14 @@
 title: Test Spec Page
 layout: spec
 
-summary: An example Spec Page implementation.
+summary: > 
+  An example Spec Page implementation.
 
-nav: test_tutorial_nav
-name: /portal/test_spec_page
-parent: /portal/test_spec_page
+navigation: 
+    nav_file: example_nav
+    this_page: /portal/example_pages/example_spec_page/
+    toc_file: example_toc
+    header_highlight: Example Pages
 
 includes:
   - test/_test-include

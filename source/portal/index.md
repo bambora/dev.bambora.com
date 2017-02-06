@@ -28,14 +28,14 @@ card_sets:
                 description: > 
                     The fastest way to get up and running with the portal. 
                 icon: flag
-                link: /portal/quickstart/
+                link: /portal/documentation/quickstart/
             -
                 title: Style guide 
                 description: > 
                     Tempore corrupti, obcaecati voluptate nulla, repellat labore 
                     culpa, accusamus doloremque laudantium similique id molestiae.
                 icon: more
-                link: /portal/guidelines/
+                link: /portal/documentation/guidelines/
             -
                 title: Editing the docs in browser
                 description: >
@@ -49,7 +49,7 @@ card_sets:
                     Extend the portal to add more templates, new styling, new 
                     navigation, and more. 
                 icon: comment
-                link: /portal/customize/
+                link: /portal/documentation/customize/
     -  
         title: Example Templates.
         description: >

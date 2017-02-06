@@ -16,16 +16,6 @@ header:
       title: Sign up
       secondary: true
 
-toc:
-- file: '#'
-  title: 'Category 1 Link'
-- file: '#'
-  title: 'Category 2 Link'
-- file: '#'
-  title: 'Category 3 Link'
-- file: '#'
-  title: 'Category 4 Link'
-
 footer: 
   copyright: Copyright 2016
   left_links: 
