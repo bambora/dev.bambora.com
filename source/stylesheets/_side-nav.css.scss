@@ -73,16 +73,22 @@
 }
 
 
-/* Styling for the js-toc */ 
+/* Styling for the js-toc */
 
-.js-toc .toc-link.node-name--H3 {
-  font-size: 12px;
+.js-toc .toc-link.node-name--H2 {
+  font-size: 14px;
   margin-left: 20px;
 }
 
-.js-toc .toc-link.node-name--H4 {
+.js-toc .toc-link.node-name--H3 {
   font-size: 12px;
   margin-left: 30px;
+}  
+
+.js-toc .toc-link.node-name--H4 {
+  color:$contrast !important;
+  font-size: 12px;
+  margin-left: 40px;
 }
 
 .js-toc .is-collapsible {
@@ -113,20 +119,16 @@
 
 /* styling for in-page toc inside of outside links */
 
-ul .js-toc {
 
+.page-only {
+  .toc-link.node-name--H2 {
+    font-size: 16px;
+  }
+}
+
+ul .js-toc {
   li a { 
     color: rgba(90, 90, 90, 1) !important;
     border-left: none !important;
   } 
-
-  .toc-link.node-name--H2 {
-    font-size: 12px;
-    margin-left: 20px;
-  }
-
-  .toc-link.node-name--H3 {
-    font-size: 12px;
-    margin-left: 30px;
-  }  
 }

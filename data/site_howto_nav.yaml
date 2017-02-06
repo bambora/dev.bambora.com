@@ -18,6 +18,7 @@ header:
       title: Sign Up
     - file: /portal/
       title: Login
+      secondary: true
 
 footer:
   copyright: 2016 Bambora Group 
