@@ -29,7 +29,8 @@ end
 
 # Active middleman-search
 activate :search do |search|
-  search.language = 'es' # TODO: Fix
+  search.language = 'es' # TODO: Bug workaround. Fix.
+  #search.resources = ['portal/', 'includes/']
   search.resources = ['portal/']
   search.fields = {
     title:   {boost: 100, store: true, required: true},
@@ -37,10 +38,21 @@ activate :search do |search|
     url:     {index: false, store: true},
     summary: {boost: 25, store: true}
   }
+
+  # Add 'includes' for each page to the index. 
+  # TODO: Fix. Currently includes rendered html partials 
+  # instead of plain text markdown. 
+  search.before_index = Proc.new do |to_index, to_store, resource| 
+    if resource.data.includes
+      resource.data.includes.each do |include|
+        to_index[:content] += partial("/includes/#{include}")
+      end
+    end
+   end
 end
 
 # Activate asset hash and enable for .json (search index)
-# activate :asset_hash do |asset_hash| 
+# activate :asset_hash do |asset_hash|
 #   asset_hash.exts << '.json'
 # end
 
