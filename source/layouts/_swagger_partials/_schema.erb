@@ -1,44 +1,50 @@
 <%# Recursively print schema definitions %>
 
-<% if schema_body.properties %> <%# TODO: Why is this needed? %>
+<% schema_body = definitions["#{schema_title}"] %>
 
+<span class="schema">
+  
+  <!-- schema title -->
+  <span class="schema-title"><%= schema_title %></span> <span class="syntax">{</span>
+  
+  <!-- schema properties -->
+  <% schema_body.properties.each do |prop| %>
 
-  <p><%= schema_title %> {</p>
-    <% schema_body.properties.each do |prop| %>
+    <% prop_name = prop[0] %>
+    <% prop_body = prop[1] %>
 
-      <% prop_name = prop[0] %>
-      <% prop_body = prop[1] %>
+    <% if prop_body.to_h["$ref"] %>
+      <% schema_title = prop_body.to_h["$ref"].split('/').last %>
+      <% prop_desc = partial "layouts/_swagger_partials/schema", 
+          :locals => { 
+            :schema_title => schema_title, 
+            :definitions => definitions
+      } %>
+    <% else %>
+      <% prop_desc = prop_body.type %> 
 
-      <% if prop_body.to_h["$ref"] %>
-        <% schema_title = prop_body.to_h["$ref"].split('/').last %>
-        <% prop_desc = partial "layouts/_swagger_partials/schema", 
-            :locals => { 
-              :schema_title => schema_title, 
-              :schema_body  => definitions["#{schema_title}"], 
-              :definitions => definitions
-            } %>
-      <% else %>
-        <% prop_desc = prop_body.type %> 
-
-        <!-- if array, add item type to desc -->
-        <% if prop_body.type == "array" %>
-          <% items = prop_body.items %>
-          <% if prop_body.items.type %> 
-            <% prop_desc += " of #{prop_body.items.type}" %>
-          <% else %> 
-            <% schema_title = prop_body.items.to_h["$ref"].split('/').last %>
-            <% prop_desc += " of " %>
-            <% prop_desc += partial "layouts/_swagger_partials/schema", 
-                              :locals => {
-                                :schema_title => schema_title, 
-                                :schema_body => definitions["#{schema_title}"], 
-                                :definitions => definitions
-                              } %>
-          <% end %>
+      <!-- if array, add item type to desc -->
+      <% if prop_body.type == "array" %>
+        <% items = prop_body.items %>
+        <% if prop_body.items.type %> 
+          <% prop_desc += " of #{prop_body.items.type}" %>
+        <% else %> 
+          <% schema_title = prop_body.items.to_h["$ref"].split('/').last %>
+          <% prop_desc += " of " %>
+          <% prop_desc += partial "layouts/_swagger_partials/schema", 
+                            :locals => {
+                              :schema_title => schema_title, 
+                              :definitions => definitions
+          } %>
         <% end %>
-        
       <% end %>
-    <p><%= prop_name %> : <%= prop_desc %></p> 
-    <% end %> 
-  <p>}</p>
-<% end %> 
+      
+    <% end %>
+    <span class="property">
+      <span class="name"><%= prop_name %></span> 
+      <span class="syntax">:</span>
+      <span class="description"><%= prop_desc %></span>
+    </span> 
+  <% end %>
+  <span class="syntax">}</span>
+</span>

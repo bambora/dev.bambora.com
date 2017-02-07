@@ -28,7 +28,7 @@ on it. No other values do. Seems like a weird bug? %>
       <% params.each do |param| %> 
         <% if param.key?("name") %>
           <tr>
-            <%# easy fields %> 
+            <%# these fields are 'easy' %> 
             <td><%= param.in %></td>
             <td><%= param.name %></td>
             <td><%= param.description %></td>
@@ -43,10 +43,28 @@ on it. No other values do. Seems like a weird bug? %>
               <% else %>
                 <% schema_title = param.schema.type %> 
                 <% schema = param.schema %>
-              <% end %> 
+              <% end %>
+
+              <% if schema.type == "array" %>
+                <% if schema.items.to_h.key?("$ref") %>
+                  <% array_type = schema.items.to_h["$ref"].split('/').last %>
+                  <% schema_title = "#{array_type}" %>
+                  <% schema = definitions["#{array_type}"] %>
+                <% else %> 
+                  <% schema_title += " of #{schema.items.type}" %>
+                <% end %>
+              <% end %>
+
               <td><%= schema_title %></td>
+            
             <% else %> 
-              <td><%= param.type %></td>
+
+              <% param_type = param.type %> 
+              <% if param.type == "array" %> 
+                <% param_type += " of #{param.items.type}" %> 
+              <% end %>
+
+              <td><%= param_type %></td>
             <% end %>  
           </tr>
         <% end %> <%# else external $ref %> 
@@ -57,13 +75,14 @@ on it. No other values do. Seems like a weird bug? %>
   <% if schema %>
     <h6><%= schema_title %> Schema</h6>
 
-    <%= partial "layouts/_swagger_partials/schema", 
-        :locals => { 
-          :schema_title => schema_title, 
-          :schema_body => schema, 
-          :definitions => definitions
-        }
-    %> 
+    <div class="schemas">
+      <%= partial "layouts/_swagger_partials/schema", 
+          :locals => { 
+            :schema_title => schema_title, 
+            :definitions => definitions
+          }
+      %> 
+    </div>
 <% end %> 
 
 </div> <!-- ./parameters -->

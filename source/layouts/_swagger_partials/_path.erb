@@ -59,7 +59,6 @@ currently handled. %>
                 <%= partial "layouts/_swagger_partials/parameters", :locals => {
                         :params        => op_obj.parameters, 
                         :definitions   => definitions,
-                        :path          => path_name.gsub(/[^a-z ]/, ''), 
                         :operation     => op_name
                 } %>
             <% else %>
