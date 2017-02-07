@@ -13,7 +13,7 @@ navigation:
     header_highlight: Example Pages
 
 includes:
-  - portal/test/_test-include
+  - portal/test/test-include
 
 language_tabs: 
   - ruby 
@@ -21,7 +21,7 @@ language_tabs:
 
 ---
 
-# A Test Spec Page
+# An Example Spec Page
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam fugiat culpa, molestiae? Quibusdam, quo, cum saepe eius amet possimus distinctio tempore voluptate, quod adipisci ea nostrum est maiores. Et, assumenda? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum porro laborum assumenda magni, perferendis, doloremque asperiores ea amet at veniam, cum totam, suscipit consectetur? Expedita possimus omnis, aliquid totam repellendus.
 
