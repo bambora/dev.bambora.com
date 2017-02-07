@@ -1,0 +1,29 @@
+<% if not current_page.data.includes %> 
+  <a id="edit-on-github" href="<%= github_edit_link current_page.source_file %>" target="_blank">
+    Edit on Github
+  </a>
+<% else %> 
+  <div id="edit-on-github" class="dropdown dropdown-open-on-hover" role="listbox">
+    Edit on Github
+
+    <ul>
+      <%# Base page edit %>
+      <li role="option">
+        <a href="<%= github_edit_link current_page.source_file %>" target="_blank">
+          <strong>    
+            <%= current_page.source_file.split('/').last %>
+          </strong>
+        </a>
+      </li>
+
+      <%# partials edit %> 
+      <% current_page.data.includes.each do |include| %> 
+        <li role="option">
+          <a href="<%= github_edit_include_link include %>" target="_blank">
+            <%= include.split('/').last %>.md
+          </a>
+        </li>
+      <% end %> 
+    </ul>
+  </div>    
+<% end %>

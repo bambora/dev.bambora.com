@@ -42,8 +42,6 @@ activate :search do |search|
   search.before_index = Proc.new do |to_index, to_store, resource| 
 
     # Add 'includes' for each page to the index. 
-    # TODO: Fix. Currently includes rendered html partials 
-    # instead of plain text markdown. 
     if resource.data.includes
       resource.data.includes.each do |include|
         partial_html = partial("/includes/#{include}")

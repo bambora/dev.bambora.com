@@ -288,6 +288,7 @@ table tbody tr:last-child td {
   margin-left: 18px; // align with side nav
   color: $contrast;
   font-style: italic;
+  display: inline-block;
 
   a {
     color: $contrast;
@@ -300,5 +301,17 @@ table tbody tr:last-child td {
 
   .chevron {
     margin: 0 10px;
+  }
+}
+
+/* edit on github */ 
+#edit-on-github {
+  float: right;
+  margin-top: 30px;
+  color: $contrast;
+  text-decoration: none;
+
+  &:hover {
+    color: $primary; 
   }
 }

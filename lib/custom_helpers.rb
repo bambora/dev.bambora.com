@@ -32,7 +32,8 @@ module CustomHelpers
 
   # Returns href to edit partial on github 
   def github_edit_include_link(partial)
-    "#{github_repo_url}/edit/#{github_branch}/source/includes/#{partial}.md"
+    path, _, file = partial.rpartition('/')    
+    "#{github_repo_url}/edit/#{github_branch}/source/includes/#{path}/_#{file}.md"
   end
 
   # Returns the html for a param type for use in the 
