@@ -18,9 +18,9 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat numquam praes
 
 ## Example Page Templates
 
-1. [Example Landing Page](example_landing_page.html)
-    * [Example Landing Page with hero image](example_landing_page_hero.html)
-2. [Example Product Page](example_product_page.html)
-3. [Example Spec Page](example_spec_page.html)
-4. [Example Swagger Page](example_swagger_page.html)
-5. [Example Tutorial](example_tutorial.html)
+1. [Example Landing Page](example_landing_page/)
+    * [Example Landing Page with hero image](example_landing_page_hero/)
+2. [Example Product Page](example_product_page/)
+3. [Example Spec Page](example_spec_page/)
+4. [Example Swagger Page](example_swagger_page/)
+5. [Example Tutorial](example_tutorial/)
