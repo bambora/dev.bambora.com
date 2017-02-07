@@ -1,75 +1,69 @@
+<%# 
+  Partial to render the parameters for a single operation on a 
+  path in swagger file. Usd in the _swagger_partials/_path partial. 
+%> 
+
 <%# NOTE: Unsure why $ref value needs :to_h, :to_s to be called 
 on it. No other values do. Seems like a weird bug? %>
 
 <div class="parameters">
 
-<table class="table table-highlight">
-<thead>
-    <tr> 
+  <table class="table table-highlight">
+    
+    <!-- Table columns --> 
+    <thead>
+      <tr> 
         <th>In</th>
         <th>Name</th>
         <th>Description</th>
         <th>Required</th>
-        <th>Type</th>
-    </tr>
-</thead>
-<tbody>
-    <% schemas = [] %> 
-    <% params.each do |param| %>
-    <% if param.key?("schema") %>
-        <% if param.schema.key?("type") %>
-            <% schemas << param.schema.items.to_h["$ref"].to_s.split('/').last %>
-        <% else %>
-            <% schemas << param.schema.to_h["$ref"].to_s.split('/').last %>
-        <% end %>
-    <% end %>
-    <tr>
-        <td><%= param.in %></td>
-        <td><%= param.name %></td>
-        <td><%= param.description %></td>
-        <td><%= param.required %></td>
-        <td><%= get_swagger_param_type_html(path, operation, param) %></td>
-    </tr>
-    <% end %>
-</tbody>
-</table>
+        <th>Schema</th>
+      </tr>
+    </thead>
 
-<% schemas.each do |schema| %>
-    <a class="schema-link" id="<%= "#{path}-#{operation}-#{schema}" %>-link" href="#">
-        <h6><%= schema %> Schema</h6>
-        <span class="more-icon"><%= svg :drop %></span>
-    </a>
+    <!-- parameters in table --> 
+    <% schema = false %>
+    <% schema_title = '' %>
+    <tbody>
+      <% params.each do |param| %> 
+        <% if param.key?("name") %>
+          <tr>
+            <%# easy fields %> 
+            <td><%= param.in %></td>
+            <td><%= param.name %></td>
+            <td><%= param.description %></td>
+            <td><%= param.required %></td>
 
-    <div class="schema" id="<%= "#{path}-#{operation}-#{schema}" %>-link-code">
-    <p class="obj"><%= schema %> {</p>
-    <% definitions["#{schema}"].properties.each do |prop| %>
-        <p class="property">
-            <span class="name"><%= prop[0] %></span> 
-            <span class="obj">:</span>
-            <% if prop[1].key?("type") %>
-                <span class="desc"><%= prop[1].type %></span>
-            <% else %>
-                <% schema = prop[1].to_h["$ref"].to_s.split('/').last %>
-                <%# schemas << schema %>
-                <span class="desc"><a class="schema-link" id="<%= "#{path}-#{operation}-#{schema}" %>-link" href="#"><%= schema %><%= svg :drop %></a>
-                
-                <!-- nested properties -->
-                <div class="nested-property">
-                    <% definitions["#{schema}"].properties.each do |prop| %>
-                        <p class="property">
-                            <span class="name"><%= prop[0] %></span>
-                            <span class="obj">:</span>
-                            <span class="desc"><%= prop[1].type %></span>
-                        </p>
-                    <% end %>
-                </div>
-                </span>
-            <% end %>
-        </p>
-    <% end %>
-    <p class="obj">}</p>
-    </div> <!-- ./schema -->    
-    
-<% end %>
+            <%# type field, dependent on param.in %>
+            <% if param.in == "body" %>
+              <% if param.schema.to_h.key?("$ref") %> <%# external def. %> 
+                <% ref = param.schema.to_h["$ref"] %>
+                <% schema_title = ref.split('/').last %>
+                <% schema = definitions["#{schema_title}"] %>
+              <% else %>
+                <% schema_title = param.schema.type %> 
+                <% schema = param.schema %>
+              <% end %> 
+              <td><%= schema_title %></td>
+            <% else %> 
+              <td><%= param.type %></td>
+            <% end %>  
+          </tr>
+        <% end %> <%# else external $ref %> 
+      <% end %> 
+    </tbody>
+  </table>
+
+  <% if schema %>
+    <h6><%= schema_title %> Schema</h6>
+
+    <%= partial "layouts/_swagger_partials/schema", 
+        :locals => { 
+          :schema_title => schema_title, 
+          :schema_body => schema, 
+          :definitions => definitions
+        }
+    %> 
+<% end %> 
 
 </div> <!-- ./parameters -->

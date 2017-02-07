@@ -9,7 +9,7 @@ navigation:
     toc_file: false
     header_highlight: Example Pages
 
-swagger_file: petstore.json
+swagger_file: petstore
 ---
 
 # Example Swagger Page 

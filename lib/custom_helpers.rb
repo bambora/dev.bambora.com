@@ -85,4 +85,8 @@ module CustomHelpers
     markdown.render(md)
   end
 
+  def get_json_ref(ref, json) 
+    ref = ref.split('/').last
+    json[ref]
+  end
 end

@@ -1,78 +1,98 @@
-<% path_name = path.first %>
+<%# 
+    Partial to render the operations for a single path 
+    defined in a swagger file. Used in the swagger 
+    template. 
+
+    It's possible that a path item is handled is 
+    defined in an external $ref but that's not 
+    currently handled by the template. 
+%>
+
+<% path_name    = path[0] %>
+<% operations   = path[1] %>
+
 <h3><%= path_name %></h3>
 
-<!-- Operations --> 
-<%# Note: These could be defined in an external $ref. 
+<!-- Operations -->
+<%# Note: These could also be defined in an external $ref. 
 Hasn't come up yet, but a possibility, and isn't 
-currently handled. %> 
-<% operations = path[1] %> 
-<% operations.each do |op| %> 
-    <% op_name = op[0] %>
-    <% op_obj = op[1] %>
+currently handled. %>
+<% operations.each do |op| %>
 
-    <!-- Visible operation heading --> 
-    <div class="operation-heading">
-        <h4>
-        <span class="operation <%= op_name %>">
-            <%= op_name.upcase %>
-        </span> 
-        <%= path_name %>
-        </h4>
-        
-        <span class="heading-body">
-            <span class="summary"><%= op_obj.summary %></span>
-            <div class="more-icon"><%= svg :drop %></div>
-        </span>
-    </div>
+    <% op_name  = op[0] %>
+    <% op_obj   = op[1] %>
 
-    <!-- Expandable operation content --> 
-    <div class="operation-content">
+    <% if ['get', 'put', 'post', 'delete', 'options', 
+            'head', 'path'].include? op_name %> 
+    <%# else an external ref or list of parameters --- not 
+    currently handled %> 
 
-        <!-- Description -->
-        <h5>Description</h5> 
-        <% if op_obj.description and op_obj.description != "" %>
-            <%= render_markdown op_obj.description %>
-        <% else %>
-            <p><em>No description</em></p>
-        <% end %>
+        <!-- Visible operation heading --> 
+        <div class="operation-heading">
+            <h4>
+                <span class="operation <%= op_name %>">
+                    <%= op_name.upcase %>
+                </span> 
+                <%= path_name %>
+            </h4>
+            
+            <span class="heading-body">
+                <span class="summary"><%= op_obj.summary %></span>
+                <div class="more-icon"><%= svg :drop %></div>
+            </span>
+        </div>
 
-        <!-- Parameters table -->
-        <h5>Parameters</h5>
-        <% if not op_obj.parameters.empty? %>
-        <%= partial "layouts/_swagger_partials/parameters", 
-            :locals => { :params => op_obj.parameters, 
-                            :definitions => definitions,
-                            :path => path_name.gsub(/[^a-z ]/,''), 
-                            :operation => op_name }  %>
-        <% else %>
-        <p><em>No parameters</em></p>
-        <% end %>
+        <!-- Expandable operation content --> 
+        <div class="operation-content">
 
-        <!-- Responses table -->
-        <h5>Responses</h5>
-        <% responses = op_obj.responses %> 
-        <% if responses %>
-        <table class="table table-highlight">
-        <thead>
-        <tr>
-            <th>Code</th>
-            <th>Description</th>
-        </tr>
-        </thead>
-        <tbody>
-        <% responses.each do |response| %>
-            <tr>
-            <td><%= response[0] %></td>
-            <td><%= response[1].description %></td>
-            </tr>
-        <% end %>
-        </tbody>
-        </table>
-        <% else %>
-        <p><em>No responses</em></p> 
-        <% end %>
+            <!-- Description -->
+            <h5>Description</h5> 
+            <% if op_obj.description and op_obj.description != "" %>
+                <%= render_markdown op_obj.description %>
+            <% else %>
+                <p><em>No description</em></p>
+            <% end %>
 
-    </div> <!-- /.operation-content -->
+            <!-- Parameters table -->
+            <h5>Parameters</h5>
+            <% if not op_obj.parameters.empty? %>
+                <%= partial "layouts/_swagger_partials/parameters", :locals => {
+                        :params        => op_obj.parameters, 
+                        :definitions   => definitions,
+                        :path          => path_name.gsub(/[^a-z ]/, ''), 
+                        :operation     => op_name
+                } %>
+            <% else %>
+                <p><em>No parameters</em></p>
+            <% end %>
+
+            <!-- Responses table -->
+            <h5>Responses</h5>
+            <% responses = op_obj.responses %> 
+            <% if responses %>
+                <table class="table table-highlight">
+                    <thead>
+                    <tr>
+                        <th>Code</th>
+                        <th>Description</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <% responses.each do |response| %>
+                        <tr>
+                            <td><%= response[0] %></td>
+                            <td><%= response[1].description %></td>
+                        </tr>
+                    <% end %>
+                    </tbody>
+                </table>
+            <% else %>
+                <p><em>No responses</em></p> 
+            <% end %>
+
+        </div> <!-- /.operation-content -->
+
+    <% end %> 
 
 <% end %> <!-- operations.each -->
 <br>
