@@ -10,9 +10,9 @@ set :markdown,
     no_intra_emphasis: true
 
 # Assets
-set :css_dir, 'stylesheets'
-set :js_dir, 'javascripts'
-set :images_dir, 'images'
+set :css_dir,   'stylesheets'
+set :js_dir,    'javascripts'
+set :images_dir,'images'
 set :fonts_dir, 'fonts'
 
 # Activate the syntax highlighter
@@ -30,7 +30,6 @@ end
 # Active middleman-search
 activate :search do |search|
   search.language = 'es' # TODO: Bug workaround. Fix.
-  #search.resources = ['portal/', 'includes/']
   search.resources = ['portal/']
   search.fields = {
     title:   {boost: 100, store: true, required: true},
@@ -39,16 +38,23 @@ activate :search do |search|
     summary: {boost: 25, store: true}
   }
 
-  # Add 'includes' for each page to the index. 
-  # TODO: Fix. Currently includes rendered html partials 
-  # instead of plain text markdown. 
+  # customize content to be indexed and stored per resource
   search.before_index = Proc.new do |to_index, to_store, resource| 
+
+    # Add 'includes' for each page to the index. 
+    # TODO: Fix. Currently includes rendered html partials 
+    # instead of plain text markdown. 
     if resource.data.includes
       resource.data.includes.each do |include|
-        to_index[:content] += partial("/includes/#{include}")
+        partial_html = partial("/includes/#{include}")
+        partial_text = Nokogiri::HTML(partial_html).xpath("//text()").to_s
+        to_index[:content] += partial_text
       end
     end
-   end
+
+    # Replace page summary with first 100 chars of string
+    # to_store[:summary] = to_index[:content].split("\n")[2] + "..."
+  end
 end
 
 # Activate asset hash and enable for .json (search index)

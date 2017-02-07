@@ -14,9 +14,10 @@ hero_unit:
     tag_line:  > 
         This site is both an example Developer Portal using the new portal 
         project, as well as documentation for how to use and extend the portal. 
-    button: 
+    button:
         text: Get Started
-        link: /portal/setup/
+        link: /portal/documentation/setup/
+
 card_sets:
     -
         title: Portal Documentation.
