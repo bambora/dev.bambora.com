@@ -18,7 +18,7 @@
     </a>
 
     <% nav.links and nav.links.each do |link| %>
-        <% if link.title == current_page.data.navigation.header_active %>
+        <% if link.title == current_page.data.navigation.header_highlight %>
             <a href="<%= link.file %>" class="active"><%= link.title %></a>
         <% else %>
             <a href="<%= link.file %>"><%= link.title %></a>
