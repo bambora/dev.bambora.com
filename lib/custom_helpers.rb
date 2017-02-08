@@ -44,7 +44,6 @@ module CustomHelpers
     if path_list.last == "index.html"
       path_list = path_list[0...-1] # Don't include current page (index.html) or directory/
     else
-    #   path_list = path_list[0...-1] # Don't include current page
         path_list = path_list[0...-1] << File.basename(path_list.last, '.html')  
   end
     path_list.each_with_index do |path, index|
@@ -71,9 +70,10 @@ module CustomHelpers
   # swagger template to render the spec.  
   def get_swagger_doc(url, destination)
     require 'open-uri'
+    root = Middleman::Application.root
     name = url.split('/').last
     name, extension = name.split('.')
     download = open(url)
-    IO.copy_stream(download, "./data/#{destination}")
+    IO.copy_stream(download, "#{root}/data/#{destination}")
   end
 end

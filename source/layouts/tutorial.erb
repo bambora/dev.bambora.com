@@ -20,11 +20,11 @@
 
           <div class="markdown">
             <%= yield %> 
-          </div>
           
-          <% current_page.data.includes && current_page.data.includes.each do |include| %>
-            <%= partial "#{current_page.data.includes_root}/includes/#{include}" %>
-          <% end %> 
+            <% current_page.data.includes && current_page.data.includes.each do |include| %>
+              <%= partial "includes/#{include}" %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
