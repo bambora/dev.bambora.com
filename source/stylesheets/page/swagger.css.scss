@@ -11,7 +11,7 @@
     h4 {
         display: inline;
         .operation {
-            background-color: $muted;
+            //background-color: $muted;
             display: inline-block;
             height: 100%;
             padding: 15px;
@@ -24,19 +24,23 @@
             color: $lightest;
 
             &.post {
-                background-color: $green-light;
+                color: $green-light;
+                //background-color: $green-light;
             }
 
             &.put {
-                background-color: $factory-yellow;
+                color: $factory-yellow;
+                //background-color: $factory-yellow;
             }
 
             &.get {
-                background-color: $tabriz-blue;
+                color: $tabriz-blue;
+                //background-color: $tabriz-blue;
             }
 
             &.delete {
-                background-color: $danger;
+                color: $danger;
+                //background-color: $danger;
             }
         }        
     } 
@@ -91,32 +95,6 @@ h3 {
     .parameters {
 
         margin-bottom: 30px;
-
-        a.schema-link {
-            display: block;
-            text-decoration: none;
-
-            h6 {
-                display: inline;
-            }
-
-            .more-icon {
-                display: inline-block;
-            }
-
-            .rotate-180 {
-                position: relative;
-                top: 6px;
-            }
-
-            svg {
-                position: relative;
-                top: 8px;
-                path {
-                    fill: $primary;
-                }
-            }
-        }
     }
 }
 

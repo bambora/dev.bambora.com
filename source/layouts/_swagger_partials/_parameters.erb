@@ -73,16 +73,33 @@ on it. No other values do. Seems like a weird bug? %>
   </table>
 
   <% if schema %>
-    <h6><%= schema_title %> Schema</h6>
 
-    <div class="schemas">
-      <%= partial "layouts/_swagger_partials/schema", 
-          :locals => { 
-            :schema_title => schema_title, 
-            :definitions => definitions
-          }
-      %> 
-    </div>
+    <table class="table">
+
+      <thead>
+        <tr>
+          <th><%= schema_title %> Schema</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr>
+          <td>
+            <div class="schemas">
+              <%= partial "layouts/_swagger_partials/schema", 
+                  :locals => { 
+                    :schema_title => schema_title, 
+                    :definitions => definitions
+                  }
+              %> 
+            </div>              
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
 <% end %> 
 
 </div> <!-- ./parameters -->

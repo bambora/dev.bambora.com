@@ -5,8 +5,13 @@
 <span class="schema">
   
   <!-- schema title -->
-  <span class="schema-title"><%= schema_title %></span> <span class="syntax">{</span>
+  <span class="schema-title">
+    <a href="#"><%= schema_title %></a>
+  </span>
+  <span class="syntax">{</span>
+  <span class="syntax dots">...</span>
   
+  <span class="schema-body">
   <!-- schema properties -->
   <% schema_body.properties.each do |prop| %>
 
@@ -46,5 +51,6 @@
       <span class="description"><%= prop_desc %></span>
     </span> 
   <% end %>
+  </span> <!-- /.schema-body -->
   <span class="syntax">}</span>
 </span>
