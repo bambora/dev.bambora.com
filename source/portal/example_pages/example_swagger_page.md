@@ -9,9 +9,14 @@ navigation:
     toc_file: false
     header_highlight: Example Pages
 
-swagger_file: petstore
+swagger:
+    folder: portal
+    file: test_swagger 
+    
+    
 ---
 
 # Example Swagger Page 
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime omnis dolore excepturi, nihil. Dolores vero unde ex excepturi, nisi quisquam, reiciendis quia natus, magnam beatae nobis amet reprehenderit? Vitae, recusandae.
+This is an example swagger page. In the frontmatter of the page file a swagger file is specified. This text is included in the page file and rendered above the swagger spec on the final page. 
+
