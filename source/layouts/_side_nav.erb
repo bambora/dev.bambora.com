@@ -4,7 +4,7 @@
   <% toc_file = false %>
 <% end %> 
 
-<% this_page = current_page.data.navigation.this_page %> 
+<% this_page = get_page_path current_page %>
 
 <nav class="nav-left nav-sticky nav-vertical">
   <a href="#" id="nav-close"><%= svg :close %></a>

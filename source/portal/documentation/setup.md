@@ -6,7 +6,6 @@ navigation:
   nav_folder: portal
   header_highlight: Quickstart 
   nav_file: site_howto_nav 
-  this_page: /portal/documentation/setup/
   toc_file: self_doc_toc
 
 summary: > 

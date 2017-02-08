@@ -8,7 +8,6 @@ summary: >
 navigation:
     nav_folder: portal 
     nav_file: example_nav
-    this_page: /portal/example_pages/example_spec_page/
     toc_file: example_toc
     header_highlight: Example Pages
 

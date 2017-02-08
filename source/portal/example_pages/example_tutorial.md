@@ -5,7 +5,6 @@ layout: tutorial
 navigation:
     nav_folder: portal 
     nav_file: example_nav
-    this_page: /portal/example_pages/example_tutorial/
     toc_file: false
     header_highlight: Example Pages
 

@@ -59,4 +59,10 @@ module CustomHelpers
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
     markdown.render(md)
   end
+
+  # Return the current page path in the form required for 
+  # the side nav toc. 
+  def get_page_path(current_page)
+    "/" + current_page.path.split('.').first + "/"
+  end
 end

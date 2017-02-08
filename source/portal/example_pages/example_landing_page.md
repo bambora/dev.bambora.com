@@ -5,7 +5,6 @@ layout: landing
 navigation:
     nav_folder: portal 
     nav_file: example_nav 
-    this_page: /portal/example_pages/example_landing_page/
     toc_file: example_toc
     header_highlight: Example Pages
 
