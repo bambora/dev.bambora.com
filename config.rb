@@ -72,6 +72,9 @@ helpers CustomHelpers
 activate :relative_assets
 set :relative_links, true
 
+# Download swagger files from url: 
+get_swagger_doc "http://petstore.swagger.io/v2/swagger.json", "/portal/dl-swagger.json"
+
 # Build Configuration
 configure :build do
   activate :minify_css

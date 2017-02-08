@@ -10,7 +10,7 @@ navigation:
 
 swagger:
     folder: portal
-    file: bambora
+    file: dl-swagger
     
 ---
 

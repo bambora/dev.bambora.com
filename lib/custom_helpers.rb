@@ -65,4 +65,15 @@ module CustomHelpers
   def get_page_path(current_page)
     "/" + current_page.path.split('.').first + "/"
   end
+
+  # Downloads the specified swagger file at build time 
+  # Can then refer to the destination file name in a 
+  # swagger template to render the spec.  
+  def get_swagger_doc(url, destination)
+    require 'open-uri'
+    name = url.split('/').last
+    name, extension = name.split('.')
+    download = open(url)
+    IO.copy_stream(download, "./data/#{destination}")
+  end
 end
