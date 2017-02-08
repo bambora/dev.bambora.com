@@ -1,4 +1,4 @@
-<% nav = get_data_from_frontmatter(current_page.data.navigation.nav_file).header %>
+<% nav = get_data_from_frontmatter(current_page.data.navigation.header) %>
 
 <% using_hero_image = (current_page.data.hero_unit and current_page.data.hero_unit.hero_image) %>
 
@@ -18,7 +18,7 @@
     </a>
 
     <% nav.links and nav.links.each do |link| %>
-        <% if link.title == current_page.data.navigation.header_highlight %>
+        <% if link.title == current_page.data.navigation.header_active %>
             <a href="<%= link.file %>" class="active"><%= link.title %></a>
         <% else %>
             <a href="<%= link.file %>"><%= link.title %></a>

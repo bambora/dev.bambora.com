@@ -2,7 +2,7 @@
 <footer>
 
     <% if current_page.data.navigation %>
-        <% footer = get_data_from_frontmatter(current_page.data.navigation.nav_file).footer %>
+        <% footer = get_data_from_frontmatter(current_page.data.navigation.footer) %>
     <% end %>
 
     <% if footer %> 

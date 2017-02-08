@@ -1,5 +1,5 @@
-<% if current_page.data.navigation.toc_file %>
-  <% toc_file = get_data_from_frontmatter(current_page.data.navigation.toc_file).toc %>
+<% if current_page.data.navigation.toc %>
+  <% toc_file = get_data_from_frontmatter(current_page.data.navigation.toc) %>
 <% else %> 
   <% toc_file = false %>
 <% end %> 

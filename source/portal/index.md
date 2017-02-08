@@ -3,7 +3,8 @@ title: Demo Developer Portal
 layout: landing
 
 navigation:
-    nav_file: portal.site_howto_nav 
+    header: portal.self_doc_header 
+    footer: portal.self_doc_footer
     toc: portal.self_doc_toc
 
 hero_unit:

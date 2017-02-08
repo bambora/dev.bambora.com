@@ -6,9 +6,10 @@ summary: >
   An example Spec Page implementation.
 
 navigation:
-    nav_file: portal.example_nav
-    toc_file: portal.example_toc
-    header_highlight: Example Pages
+    header: portal.self_doc_header 
+    footer: portal.self_doc_footer
+    toc: portal.self_doc_toc
+    header_active: Example Pages
 
 includes:
   - portal/test/test-include

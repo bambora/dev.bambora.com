@@ -3,9 +3,10 @@ title: API Specs
 layout: tutorial
 
 navigation:
-  nav_file: portal.site_howto_nav 
-  toc_file: portal.content_toc
-  header_highlight: Documentation
+  header: portal.self_doc_header
+  footer: portal.self_doc_footer
+  toc: portal.content_toc
+  header_active: Documentation   
 
 ---
 

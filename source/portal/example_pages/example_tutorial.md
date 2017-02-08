@@ -3,9 +3,10 @@ title: Test Tutorial
 layout: tutorial
 
 navigation:
-    nav_file: portal.example_nav
-    toc_file: false
-    header_highlight: Example Pages
+    header: portal.self_doc_header 
+    footer: portal.self_doc_footer
+    toc: portal.self_doc_toc
+    header_active: Example Pages
 
 summary: > 
   A test tutorial with dummy content added. 

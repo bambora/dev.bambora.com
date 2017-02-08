@@ -3,9 +3,10 @@ title: Deploy
 layout: tutorial
 
 navigation:
-    nav_file: portal.site_howto_nav 
-    toc_file: portal.self_doc_toc 
-    header_highlight: Documentation
+  header: portal.self_doc_header 
+  footer: portal.self_doc_footer 
+  toc: portal.self_doc_toc
+  header_active: Documentation
 
 summary: > 
     Local deployment is performed with Middleman.

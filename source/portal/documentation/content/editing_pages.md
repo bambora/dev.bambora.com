@@ -2,10 +2,11 @@
 title: Editing
 layout: tutorial
 
-navigation: 
-    nav_file: portal.site_howto_nav 
-    toc_file: portal.content_toc
-    header_highlight: Documentation
+navigation:
+    header: portal.self_doc_header 
+    footer: portal.self_doc_footer 
+    toc: portal.content_toc
+    header_active: Documentation
 
 summary:  >
     There are two main ways you can contribute to the dev portal. Edit
