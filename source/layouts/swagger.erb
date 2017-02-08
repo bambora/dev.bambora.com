@@ -23,8 +23,9 @@
         </div>
       </div> <!-- /.row -->
 
+      <div class="js-toc-content">
       <div class="row">
-        <div class="col-md-9 col-md-offset-3 js-toc-content">
+        <div class="col-md-9 col-md-offset-3">
         
         <!-- Swagger object fields -->
         <% swagger = data["#{current_page.data.swagger.folder}"]["#{current_page.data.swagger.file}"] %>
@@ -59,19 +60,32 @@
         </p>
         <% end %> 
 
-        <!-- Paths --> 
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-9 col-md-offset-3">
+
+        <!-- Paths -->
         <h2>Paths</h2>
         <% paths.each do |path| %>
+          <div class="row">
+          <div class="col-md-12">
+          
           <% if path[0].start_with?('/') %> <%# path item object %> 
             <%= partial "layouts/_swagger_partials/path", :locals => {
                 :path => path, 
                 :definitions => definitions
                 } %>
             <% end %> <%# else it's a x-* style extension to the spec %> 
+
+          </div>
+          </div>
         <% end %>
         </div>
       </div>
+      </div>
     </div> <!-- /.container -->
+    
 
     <%= partial "layouts/footer" %>
 

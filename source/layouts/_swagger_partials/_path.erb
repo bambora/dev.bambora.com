@@ -27,19 +27,23 @@ currently handled. %>
     <%# else an external ref or list of parameters --- not 
     currently handled %> 
 
+        <div class="operation-block">
         <!-- Visible operation heading --> 
         <div class="operation-heading">
-            <h4>
-                <span class="operation <%= op_name %>">
-                    <%= op_name.upcase %>
-                </span> 
-                <%= path_name %>
-            </h4>
+        
+            <div class="col-sm-2 operation <%= op_name %>">
+                <h4><%= op_name.upcase %></h4>
+            </div>
+        
+            <div class="col-sm-5 col-md-6 col-lg-5 path-name">
+               <span><%= path_name %></span> 
+            </div>
             
-            <span class="heading-body">
-                <span class="summary"><%= op_obj.summary %></span>
-                <div class="more-icon"><%= svg :drop %></div>
-            </span>
+            <div class="col-sm-5 col-md-4 col-lg-5 summary">
+                <span><%= op_obj.summary %></span>
+            </div>
+
+            <div class="clear"></div>
         </div>
 
         <!-- Expandable operation content --> 
@@ -90,6 +94,7 @@ currently handled. %>
             <% end %>
 
         </div> <!-- /.operation-content -->
+        </div>
 
     <% end %> 
 
