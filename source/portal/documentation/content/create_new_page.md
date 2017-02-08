@@ -5,13 +5,11 @@ layout: tutorial
 navigation: 
   header: portal.self_doc_header
   footer: portal.self_doc_footer 
-  toc: portal.content_toc
+  toc: portal.tocs.content_toc
   header_active: Documentation
 
 summary: > 
   Describes how to create a new page in the dev portal.
-
-includes_root: portal
 ---
 
 # Create a New Page

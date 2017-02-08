@@ -5,7 +5,7 @@ layout: tutorial
 navigation:
   header: portal.self_doc_header 
   footer: portal.self_doc_footer 
-  toc: portal.customize_toc
+  toc: portal.tocs.customize_toc
   header_active: Documentation
 
 summary: >
