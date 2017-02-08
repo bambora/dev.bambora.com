@@ -3,9 +3,8 @@ title: Customize
 layout: tutorial
 
 navigation:
-  nav_folder: portal 
-  nav_file: site_howto_nav 
-  toc_file: customize_toc
+  nav_file: portal.site_howto_nav 
+  toc_file: portal.customize_toc
   header_highlight: Documentation
 ---
 

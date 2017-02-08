@@ -3,10 +3,8 @@ title: Create Page
 layout: tutorial
 
 navigation: 
-  nav_folder: portal
-  nav_file: site_howto_nav 
-  this_page: /portal/documentation/content/create_new_page/
-  toc_file: content_toc
+  nav_file: portal.site_howto_nav 
+  toc_file: portal.content_toc
   header_highlight: Documentation
 
 summary: > 

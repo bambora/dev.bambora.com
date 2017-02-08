@@ -3,9 +3,8 @@ title: Demo Developer Portal
 layout: landing
 
 navigation:
-    nav_folder: portal
-    nav_file: site_howto_nav 
-    toc: self_doc_toc
+    nav_file: portal.site_howto_nav 
+    toc: portal.self_doc_toc
 
 hero_unit:
     hero_image: shoal-1.png

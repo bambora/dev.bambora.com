@@ -3,15 +3,12 @@ title: Example Swagger Page
 layout: swagger
 
 navigation:
-    nav_folder: portal 
-    nav_file: example_nav
-    toc_file: false
-    header_highlight: Example Pages
-
-swagger:
-    folder: portal
-    file: dl-swagger
+  nav_file: portal.example_nav
+  toc_file: false
+  header_highlight: Example Pages
     
+swagger: portal.bambora
+  
 ---
 
 # Example Swagger Page 

@@ -3,10 +3,9 @@ title: Dev Portal
 layout: tutorial
 
 navigation:
-  nav_folder: portal
   header_highlight: Quickstart 
-  nav_file: site_howto_nav 
-  toc_file: self_doc_toc
+  nav_file: portal.site_howto_nav 
+  toc_file: portal.self_doc_toc
 
 summary: > 
   This page will show you how to set up the Dev Portal on your machine.

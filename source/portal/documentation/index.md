@@ -3,9 +3,8 @@ title: Documentation
 layout: product
 
 navigation:
-    nav_folder: portal 
-    nav_file: site_howto_nav 
-    toc_file: self_doc_toc
+    nav_file: portal.site_howto_nav 
+    toc_file: portal.self_doc_toc
     header_highlight: Documentation
 
 cards:

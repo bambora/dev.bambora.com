@@ -3,8 +3,7 @@ title: Test Tutorial
 layout: tutorial
 
 navigation:
-    nav_folder: portal 
-    nav_file: example_nav
+    nav_file: portal.example_nav
     toc_file: false
     header_highlight: Example Pages
 

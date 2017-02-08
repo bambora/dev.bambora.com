@@ -6,9 +6,8 @@ summary: >
   An example Spec Page implementation.
 
 navigation:
-    nav_folder: portal 
-    nav_file: example_nav
-    toc_file: example_toc
+    nav_file: portal.example_nav
+    toc_file: portal.example_toc
     header_highlight: Example Pages
 
 includes:

@@ -3,9 +3,8 @@ title: Example Landing Page
 layout: landing
 
 navigation:
-    nav_folder: portal 
-    nav_file: example_nav 
-    toc_file: example_toc
+    nav_file: portal.example_nav 
+    toc_file: portal.example_toc
     header_highlight: Example Pages
 
 hero_unit: 

@@ -1,5 +1,5 @@
 <% if current_page.data.navigation.toc_file %>
-  <% toc_file = data["#{current_page.data.navigation.nav_folder}"]["#{current_page.data.navigation.toc_file}"].toc %>
+  <% toc_file = get_data_from_frontmatter(current_page.data.navigation.toc_file).toc %>
 <% else %> 
   <% toc_file = false %>
 <% end %> 

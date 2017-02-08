@@ -76,4 +76,13 @@ module CustomHelpers
     download = open(url)
     IO.copy_stream(download, "#{root}/data/#{destination}")
   end
+
+  def get_data_from_frontmatter(path) 
+    path = path.split('.')
+    result = data
+    path.each do |p|
+      result = result["#{p}"]
+    end
+    result   
+  end 
 end
