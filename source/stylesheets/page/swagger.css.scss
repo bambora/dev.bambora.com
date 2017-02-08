@@ -3,14 +3,24 @@
 
 /* expandable operation headings */
 
-// .operation-block {
-//     margin-bottom: 24px;
-// }
+.op-border
+{
+    margin-left: 15px;
+    border-right: solid $muted 1px;
+    height: 100%;
+    clear: both;
+    position: absolute;
+}
+
+.operation-block {
+    margin-bottom: 48px;
+}
 
 .operation-heading {
     border: solid $muted 1px; 
     border-radius: 2px;
     cursor: pointer;
+    position: relative;
 
      .operation {    
         border-right: 1px solid $muted;
@@ -44,6 +54,7 @@
         color: $contrast-dark;
         font-size: 18px;
         padding: 15px;
+        word-wrap: break-word;
     }  
 
     .summary {
@@ -118,3 +129,5 @@
         color: $tabriz-blue;
     }
 }
+
+

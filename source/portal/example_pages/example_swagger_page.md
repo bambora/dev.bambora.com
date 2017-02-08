@@ -11,7 +11,7 @@ navigation:
 
 swagger:
     folder: portal
-    file: test_swagger 
+    file: petstore 
     
     
 ---

@@ -30,16 +30,20 @@ currently handled. %>
         <div class="operation-block">
         <!-- Visible operation heading --> 
         <div class="operation-heading">
+
+            <div class="row">
+                <div class="col-sm-2 op-border"></div>
+            </div>
         
             <div class="col-sm-2 operation <%= op_name %>">
                 <h4><%= op_name.upcase %></h4>
             </div>
         
-            <div class="col-sm-5 col-md-6 col-lg-5 path-name">
+            <div class="col-sm-5 col-md-6 col-lg-6 path-name">
                <span><%= path_name %></span> 
             </div>
             
-            <div class="col-sm-5 col-md-4 col-lg-5 summary">
+            <div class="col-sm-5 col-md-4 col-lg-4 summary">
                 <span><%= op_obj.summary %></span>
             </div>
 
