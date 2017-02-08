@@ -30,7 +30,7 @@
           <% prop_desc += " of #{prop_body.items.type}" %>
         <% else %> 
           <% schema_title = prop_body.items.to_h["$ref"].split('/').last %>
-          <% prop_desc += " of " %>
+          <% prop_desc = "<span class='syntax'> array of </span>" %>
           <% prop_desc += partial "layouts/_swagger_partials/schema", 
                             :locals => {
                               :schema_title => schema_title, 

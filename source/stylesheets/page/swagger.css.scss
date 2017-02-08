@@ -136,14 +136,12 @@ h3 {
 
 .schema {
     font-family: monospace;
+    display: inline-block;
+    vertical-align: top;
 
     .property {
         margin-left: 20px;
         display: block;
-
-        .property {
-            margin-left: 120px;
-        }
     }
 
     .schema-title {
@@ -161,6 +159,4 @@ h3 {
     .description {
         color: $tabriz-blue;
     }
-
-    margin-bottom:30px;
 }
