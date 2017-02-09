@@ -6,7 +6,11 @@
 <span class="property-info">
 
   <span class="property-type">
-    <a href="#"><%= property.type %></a>
+    <% if property.maxLength or property.enum or property.description %>
+      <a href="#"><%= property.type %></a>
+    <% else %>
+      <%= property.type %>
+    <% end %>
   </span>
 
   <span class="property-body">

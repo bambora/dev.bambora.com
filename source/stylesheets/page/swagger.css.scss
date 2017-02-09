@@ -168,26 +168,23 @@
 
 /* property details */
 
-.property {
-    //white-space: nowrap;
-}
-
 .property-info {
     display: inline;
     vertical-align: top;
     overflow: hidden;
-    //white-space: nowrap;
+
+    .property-type {
+        color: $tabriz-blue !important;
+    }
 
     .property-body {
         display: inline-block;
         vertical-align: top;
-        //white-space: nowrap;
 
     }
 
     .property-detail {
         display: block;
-        //white-space: nowrap;
     }
 }
 
