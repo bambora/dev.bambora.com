@@ -1,0 +1,344 @@
+# Quick Start
+
+<a href="resources/beanstream.postman_collection" download>Get Postman collection</a>
+
+##1. You need a merchant ID and API key to start
+
+**Merchant ID**
+
+This was emailed to you when you set up your account and can also be found at the top-right corner of the screen after logging in to the [Back Office](https://www.beanstream.com/admin/).
+
+![How to find merchant ID](images/quick_start/merchantId.png)
+
+**API Key**
+
+This can be generated in the [Back Office](https://www.beanstream.com/admin/). Navigate to `administration > account settings > order settings` in the sidebar, then scroll to `payment gateway > security/authentication`. If the 'API access passcode' field is empty, you can generate a new key by clicking the 'generate new code' button, scrolling to the bottom of the screen and clicking the 'update' button.
+
+![How to find API key](images/quick_start/apiKey1.png)
+![How to apply API key](images/quick_start/apiKey2.png)
+
+##2. Download the SDK
+```javascript
+// Step 1) Install module with NPM
+npm install beanstream-node
+
+// Step 2) Import module into your project
+var beanstream = require('beanstream-node')('merchantId', 'Payments API key', 'Profiles API key', 'Reporting API key');
+```
+
+```php
+
+// Composer
+// 1. Edit composer.json
+{
+    "require": {
+        "beanstream/beanstream": "dev-master"
+    }
+}
+// 2. Install the SDK
+composer install
+
+// 3. Require in your php file
+require 'vendor/autoload.php';
+```
+
+```ruby
+gem install beanstream --pre
+```
+
+```python
+// Pip
+pip install beanstream
+```
+
+```java
+// Maven
+<repositories>
+<repository>
+<id>snapshots-repo</id>
+<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+<releases><enabled>false</enabled></releases>
+<snapshots><enabled>true</enabled></snapshots>
+</repository>
+</repositories>
+
+<dependencies>
+<dependency>
+<groupId>com.beanstream.api</groupId>
+<artifactId>beanstream</artifactId>
+<version>1.0.0-SNAPSHOT</version>
+</dependency>
+</dependencies>
+
+//Gradle
+repositories {
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+}
+dependencies {
+    compile("com.beanstream.api:beanstream:1.0.0-SNAPSHOT") {changing=true}
+}
+```
+
+```csharp
+//Nuget
+Id: Beanstream
+
+PM> Install-Package Beanstream
+```
+
+```go
+// Go Get
+import beanstream "github.com/Beanstream/beanstream-go"
+```
+
+All SDKs support Payments, Profiles and Reporting APIs.
+
+| Language | Source                  | Additional Docs     | Packet Repository  |
+| -------- | ----------------------- | ------------------- | ------------------ |
+| NodeJS   | [Source][node-source]   |                     | [NPM][node-pm]     |
+| PHP      | [Source][php-source]    | [Docs][php-docs]    | [Composer][php-pm] |
+| Ruby     | [Source][ruby-source]   |                     | [Gem][ruby-pm]     |
+| Python   | [Source][python-source] | [Docs][python-docs] | [PIP][python-pm]   |
+| Java     | [Source][java-source]   | [Docs][python-docs] | [Maven][python-pm] |
+| C#       | [Source][csharp-source] | [Docs][csharp-docs] | [Nuget][csharp-pm] |
+| Go       | [Source][go-source]     |                     |                    |
+
+[node-source]: https://github.com/Beanstream/beanstream-nodejs
+[node-docs]: #
+[php-source]: https://github.com/Beanstream/beanstream-php
+[php-docs]: https://github.com/Beanstream/beanstream-php/wiki
+[ruby-source]: https://github.com/Beanstream/beanstream-ruby
+[ruby-docs]: #
+[python-source]: https://github.com/Beanstream/beanstream-python
+[python-docs]: https://github.com/Beanstream/beanstream-python/blob/master/README.markdown
+[java-source]: https://github.com/Beanstream/beanstream-java
+[java-docs]: https://github.com/Beanstream/beanstream-java/wiki
+[csharp-source]: https://github.com/Beanstream/beanstream-dotnet
+[csharp-docs]: https://github.com/Beanstream/beanstream-dotnet/wiki
+[go-source]: https://github.com/Beanstream/beanstream-go
+[go-docs]: #
+
+[node-pm]: https://www.npmjs.com/package/beanstream-node
+[php-pm]: https://packagist.org/packages/beanstream/beanstream
+[ruby-pm]: https://rubygems.org/gems/beanstream/versions/1.0.0.rc1
+[python-pm]: https://pypi.python.org/pypi/beanstream/1.0.1
+[java-pm]: https://mvnrepository.com/artifact/com.beanstream.api
+[csharp-pm]: https://www.nuget.org/packages/Beanstream/
+[go-pm]: #
+
+Don’t see an SDK for you? Not to worry, we have a REST API you can use.
+
+##3. Copy and paste the sample code to your text editor or IDE
+
+```shell
+# Definition
+# POST /v1/payments HTTP/1.1
+
+curl https://www.beanstream.com/api/v1/payments \
+-H "Authorization: Passcode MzAwMjAwNTc4OjRCYUQ4MkQ5MTk3YjRjYzRiNzBhMjIxOTExZUU5Zjcw" \
+-H "Content-Type: application/json" \
+-d '{
+   "order_number":"10000123",
+   "amount":100.00,
+   "payment_method":"card",
+   "card":{
+      "name":"John Doe",
+      "number":"5100000010001004",
+      "expiry_month":"02",
+      "expiry_year":"14",
+      "cvd":"123"
+   }
+}'
+```
+
+```javascript
+var beanstream = require('beanstream-node')('YOUR_MERCHANT_ID', 'YOUR_PAYMENTS_API_PASSCODE');
+
+var cardPayment = {
+  order_number: 'order123456abc',
+  amount:10.00,
+  payment_method:"card",
+  card:{
+    name:"John Doe",
+    number:"5100000010001004",
+    expiry_month:"02",
+    expiry_year:"19",
+    cvd:"123"
+  }
+};
+beanstream.payments.makePayment(cardPayment)
+  .then(function(response){
+    // display syccess
+  })
+  .catch(function(error){
+    console.log(error);
+    // display error
+  });
+```
+
+```php
+$beanstream = new \Beanstream\Gateway('YOUR_MERCHANT_ID', 'YOUR_PAYMENTS_API_PASSCODE', 'www', 'v1');
+
+$payment_data = array(
+        'order_number' => 'orderNumber0023',
+        'amount' => 19.99,
+        'payment_method' => 'card',
+        'card' => array(
+            'name' => 'Mr. Card Testerson',
+            'number' => '4030000010001234',
+            'expiry_month' => '07',
+            'expiry_year' => '22',
+            'cvd' => '123'
+        )
+);
+try {
+    $result = $beanstream->payments()->makeCardPayment($payment_data, TRUE); //set to FALSE for Pre-Auth
+    print_r( $result );
+} catch (\Beanstream\Exception $e) {
+    //handle exception
+}
+```
+
+```ruby
+begin
+  result = Beanstream.PaymentsAPI.make_payment(
+  {
+    :order_number => PaymentsAPI.generateRandomOrderId("test"),
+    :amount => 100,
+    :payment_method => PaymentMethods::CARD,
+    :card => {
+      :name => "Mr. Card Testerson",
+      :number => "4030000010001234",
+      :expiry_month => "07",
+      :expiry_year => "22",
+      :cvd => "123",
+      :complete => true
+    }
+  })
+  puts "Success! TransactionID: #{result['id']}"
+
+rescue BeanstreamException => ex
+  puts "Exception: #{ex.user_facing_message}"
+end
+```
+
+```python
+beanstream = gateway.Beanstream()
+beanstream.configure(
+    'YOUR_MERCHANT_ID',
+    payment_passcode='YOUR_PAYMENTS_API_PASSCODE')
+card = billing.CreditCard(
+  'John Doe',
+  '4030000010001234',
+  '03',
+  '2019',
+  '123')
+trans = beanstream.purchase(51.32, card)
+resp = trans.commit()
+```
+
+```java
+Gateway beanstream = new Gateway("v1",
+    YOUR_MERCHANT_ID,
+    "YOUR_PAYMENTS_API_PASSCODE");
+
+CardPaymentRequest req = new CardPaymentRequest();
+req.setAmount(100.0);
+req.setOrderNumber("orderNum000112");
+req.getCard()
+    .setName("John Doe")
+    .setNumber("5100000010001004")
+    .setExpiryMonth("12")
+    .setExpiryYear("18")
+    .setCvd("123");
+
+try {
+    PaymentResponse response = beanstream.payments().makePayment(req);
+    System.out.println("Card Payment Approved? "+ response.isApproved());
+
+} catch (BeanstreamApiException ex) {
+    // todo handle error
+}
+```
+
+```csharp
+Gateway beanstream = new Gateway () {
+    MerchantId = YOUR_MERCHANT_ID,
+    PaymentsApiKey = "YOUR_PAYMENTS_API_PASSCODE",
+    ApiVersion = "1"
+};
+
+PaymentResponse response = beanstream.Payments.MakePayment (
+    new CardPaymentRequest {
+        Amount = 100.00,
+        OrderNumber = "orderNum002233",
+        Card = new Card {
+            Name = "John Doe",
+            Number = "5100000010001004",
+            ExpiryMonth = "12",
+            ExpiryYear = "18",
+            Cvd = "123"
+        }
+    }
+);
+```
+
+```go
+import (
+  beanstream "github.com/Beanstream/beanstream-go"
+  "github.com/Beanstream/beanstream-go/paymentMethods"
+)
+
+config := beanstream.DefaultConfig()
+config.MerchantId = "YOUR_MERCHANT_ID"
+config.PaymentsApiKey = "YOUR_PAYMENTS_API_PASSCODE"
+
+gateway := beanstream.Gateway{config}
+request := beanstream.PaymentRequest{
+  PaymentMethod: paymentMethods.CARD,
+  OrderNumber:   beanstream.Util_randOrderId(6),
+  Amount:        12.99,
+  Card: beanstream.CreditCard{
+    Name:        "John Doe",
+    Number:      "5100000010001004",
+    ExpiryMonth: "11",
+    ExpiryYear:  "19",
+    Cvd:         "123",
+    Complete:    true}} // set to false for pre-auth
+res, err := gateway.Payments().MakePayment(request)
+```
+
+
+
+##4. Fill in your Merchant ID and API Passcode
+
+Look in the code example where it says YOUR_MERCHANT_ID and YOUR_PAYMENTS_API_PASSCODE and replace them with your actual merchant ID and your Payments API Passcode.
+
+If you are using REST directly then you will need to combine your Merchant ID and API key, separated with a colon (`merchant_id:api_key`), and add them in the Authorization header.
+
+<% form_tag '#', :id => "encodeIdAndKey_form", :class => "form-group" do %>
+
+    <%= label_tag :merchantId, :caption => "Merchant ID" %>
+    <%= text_field_tag :merchantId, :id => "merchantId" %>
+
+    <%= label_tag :apiKey, :caption => "API Key" %>
+    <%= text_field_tag :apiKey, :id => "apiKey" %>
+
+    <%= submit_tag "Encode" %>
+<% end %>
+<div id="encodeIdAndKey_result" class="block-highlight hidden"></div>
+<script src='js/encode_key.js'></script>
+
+##5. Run the Code
+
+You should recieve a HTTP response with a status code 200 and a payment response object with code:1, message:approved.
+
+If your transaction was not approved you can easily isolate the problem by cheking the HTTP response code and the message in the payment response object. Our payment gateway emulator only returns two codes, 1:success and 7:declined.
+
+HTTP status codes 200 and 402 indicate your request reached the emulator. All other HTTP status codes indicate that your request did not reach the emulator. You can read a full list of response codes here.
+
+##6. Look at your Money
+
+You can verify the payment by heading back to the [Back Office](https://www.beanstream.com/admin/) and navigating to `reporting/analysis > transaction report` in the sidebar. Select today’s date and hit refresh. Your transaction should be there.
+
+![How to inspect transactions](images/quick_start/transaction_search.png)
