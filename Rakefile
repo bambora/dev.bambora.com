@@ -9,15 +9,15 @@ task :build_slate do
   sh "bundle exec middleman build"
 end
 
-task :copy_swagger do
-  puts "copying swagger UI"
-  sh "cp -r swagger build/"
-  sh "cp -r native-payments build/"
-  sh "cp -r settlement build/"
-  sh "cp -r merchant build/"
-  sh "cp -r payment-depot build/"
-  sh "cp -r backoffice-reports build/"
-end
+# task :copy_swagger do
+#   puts "copying swagger UI"
+#   sh "cp -r swagger build/"
+#   sh "cp -r native-payments build/"
+#   sh "cp -r settlement build/"
+#   sh "cp -r merchant build/"
+#   sh "cp -r payment-depot build/"
+#   sh "cp -r backoffice-reports build/"
+# end
 
 task :run_server do
   sh "bundle install"
