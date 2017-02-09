@@ -34,6 +34,7 @@
         <!-- Swagger object fields -->
         <% swagger = get_data_from_frontmatter current_page.data.swagger %>
         <% info         = swagger.info %>
+        <% security_defs= swagger.securityDefinitions %>
         <% definitions  = swagger.definitions %>
         <% paths        = swagger.paths %>
 
@@ -68,6 +69,37 @@
       </div>
       <div class="row">
         <div class="col-md-9 col-md-offset-3">
+
+        <!-- Security --> 
+        <h2>Security</h2>
+        <div class="security-definition">
+          <% security_defs.each do |definition| %> 
+            <% def_name = definition[0] %>
+            <% def_body = definition[1] %>
+            <div>
+              <h3><%= def_name %></h3> 
+              <span>(<%= def_body.type %>)</span>
+            </div>
+
+            <p><%= def_body.description %></p>
+
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>In</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><%= def_name %></td>
+                  <td><%= def_body.in %></td>
+                </tr>
+              </tbody>
+            </table>
+
+          <% end %> 
+        </div>
 
         <!-- Paths -->
         <h2>Paths</h2>
