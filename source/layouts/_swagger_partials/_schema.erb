@@ -17,6 +17,8 @@
   
   <span class="schema-body">
   <!-- schema properties -->
+
+  <% if schema_body.properties %>
   <% schema_body.properties.each do |prop| %>
 
     <% prop_name = prop[0] %>
@@ -69,6 +71,7 @@
       <span class="syntax">:</span>
       <span class="description"><%= prop_desc %></span>
     </span> 
+  <% end %>
   <% end %>
   </span> <!-- /.schema-body -->
   <span class="syntax">}</span>

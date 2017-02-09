@@ -1,0 +1,62 @@
+<%# 
+  Partial to render the responsese for a single operation 
+  on a path in a swagger file. Used in the _swagger_partials/_path 
+  partial. 
+%> 
+
+<div class="responses">
+
+<table class="table table-highlight">
+  <thead>
+  <tr>
+    <th>Code</th>
+    <th>Description</th>
+    <th>Schema</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% schemas = Set.new %>
+  <% responses.each do |response| %>
+    <% response_code = response[0] %>
+    <% response_body = response[1] %>
+    <tr>
+      <td><%= response_code %></td>
+      <td><%= response_body.description %></td>
+      <% schemas.add(response_body.schema["$ref"].split('/').last) %>
+      <td><%= response_body.schema["$ref"].split('/').last %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<% if schemas %> 
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Response Schema Definitions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+
+      <% schemas.each do |schema| %>
+      <tr>
+        <td>
+          <div class="schemas">
+            <%#= schema %>
+            <%= partial "layouts/_swagger_partials/schema",
+              :locals => {
+                :schema_title => schema, 
+                :definitions => definitions
+              } %>
+          </div>
+        </td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
+
+</div>

@@ -77,22 +77,10 @@ currently handled. %>
             <h5>Responses</h5>
             <% responses = op_obj.responses %> 
             <% if responses %>
-                <table class="table table-highlight">
-                    <thead>
-                    <tr>
-                        <th>Code</th>
-                        <th>Description</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <% responses.each do |response| %>
-                        <tr>
-                            <td><%= response[0] %></td>
-                            <td><%= response[1].description %></td>
-                        </tr>
-                    <% end %>
-                    </tbody>
-                </table>
+            <%= partial "layouts/_swagger_partials/responses", :locals => {
+                    :responses => responses, 
+                    :definitions => definitions
+            } %> 
             <% else %>
                 <p><em>No responses</em></p> 
             <% end %>
