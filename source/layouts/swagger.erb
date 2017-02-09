@@ -72,13 +72,15 @@
 
         <!-- Security --> 
         <h2>Security</h2>
-        <div class="security-definition">
+        <div class="security">
           <% security_defs.each do |definition| %> 
             <% def_name = definition[0] %>
             <% def_body = definition[1] %>
-            <div>
+            
+            <div class="security-definition">
+            <div class="title">
               <h3><%= def_name %></h3> 
-              <span>(<%= def_body.type %>)</span>
+              <span>(<%= def_body.type.underscore.humanize.downcase %>)</span>
             </div>
 
             <p><%= def_body.description %></p>
@@ -97,7 +99,7 @@
                 </tr>
               </tbody>
             </table>
-
+            </div>
           <% end %> 
         </div>
 

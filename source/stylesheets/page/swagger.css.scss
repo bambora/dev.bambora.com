@@ -4,8 +4,21 @@
 /* security definitions */
 
 .security-definition {
+    
+    margin-bottom: 50px;
+
+    p {
+        margin-top: 10px;
+    }
+    
     h3 {
         display: inline; 
+    }
+
+    .title span {
+        color: $contrast;
+        font-size: 18px;
+        margin-left: 10px;
     }
 }
 
@@ -123,7 +136,14 @@
     }
 
     .schema-title {
-        color: $primary;
+        a {
+            color: $primary !important;
+            text-decoration: none;
+
+            &:hover{
+                text-decoration: underline;
+            }
+        }
     }
 
     .syntax {
@@ -135,8 +155,55 @@
     }
 
     .description {
-        color: $tabriz-blue;
+        a {
+            color: $tabriz-blue;
+            text-decoration: none;
+
+            &:hover{
+                text-decoration: underline;
+            }
+        }
     }
 }
 
+/* property details */
 
+.property {
+    //white-space: nowrap;
+}
+
+.property-info {
+    display: inline;
+    vertical-align: top;
+    overflow: hidden;
+    //white-space: nowrap;
+
+    .property-body {
+        display: inline-block;
+        vertical-align: top;
+        //white-space: nowrap;
+
+    }
+
+    .property-detail {
+        display: block;
+        //white-space: nowrap;
+    }
+}
+
+.enum-link {
+    
+    text-decoration: none;
+    color: $darkest !important;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.enum-list {
+    span {
+        display: block;
+        margin-left: 20px;
+    }
+}

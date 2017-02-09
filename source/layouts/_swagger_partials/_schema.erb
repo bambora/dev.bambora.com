@@ -1,6 +1,11 @@
 <%# Recursively print schema definitions %>
+<%# requires local variables: 
+      :schema_title => the name of the schema definitions
+      :definitions => the definitions object of the swagger file 
+%> 
 
 <% schema_body = definitions["#{schema_title}"] %>
+<% required = schema_body.required %>
 
 <span class="schema">
   
@@ -9,7 +14,6 @@
     <a href="#"><%= schema_title %></a>
   </span>
   <span class="syntax">{</span>
-  <span class="syntax dots">...</span>
   
   <span class="schema-body">
   <!-- schema properties -->
@@ -18,35 +22,50 @@
     <% prop_name = prop[0] %>
     <% prop_body = prop[1] %>
 
+
+    <!-- If the property is a reference to other schema --> 
     <% if prop_body.to_h["$ref"] %>
       <% schema_title = prop_body.to_h["$ref"].split('/').last %>
       <% prop_desc = partial "layouts/_swagger_partials/schema", 
-          :locals => { 
+          :locals => {
             :schema_title => schema_title, 
             :definitions => definitions
       } %>
-    <% else %>
-      <% prop_desc = prop_body.type %> 
 
-      <!-- if array, add item type to desc -->
-      <% if prop_body.type == "array" %>
-        <% items = prop_body.items %>
-        <% if prop_body.items.type %> 
-          <% prop_desc += " of #{prop_body.items.type}" %>
-        <% else %> 
-          <% schema_title = prop_body.items.to_h["$ref"].split('/').last %>
-          <% prop_desc = "<span class='syntax'> array of </span>" %>
-          <% prop_desc += partial "layouts/_swagger_partials/schema", 
-                            :locals => {
-                              :schema_title => schema_title, 
-                              :definitions => definitions
-          } %>
-        <% end %>
-      <% end %>
+    <!-- else if property is an array --> 
+    <% elsif prop_body.type == "array" %> 
+      <% items = prop_body.items %>
+
+      <!-- if it's an array of primitives: -->
+      <% if prop_body.items.type %>
+        <% prop_desc = "array of #{prop_body.items.type}" %>
       
-    <% end %>
+      <!-- else it's an array of objects: -->
+      <% else %>
+        <% schema_title = prop_body.items.to_h["$ref"].split('/').last %>
+        <% prop_desc = "<span class='syntax'>array of </span>" %>
+        <% prop_desc += partial "layouts/_swagger_partials/schema", 
+              :locals => {
+                :schema_title => schema_title, 
+                :definitions => definitions 
+        } %>
+      <% end %>
+
+    <!-- otherwise it's a primitive type --> 
+    <% else %> 
+      <% prop_desc = partial "layouts/_swagger_partials/property", 
+          :locals => { :property => prop_body } %>
+    <% end %>      
+
     <span class="property">
-      <span class="name"><%= prop_name %></span> 
+      
+      <!-- mark fields required --> 
+
+      <span class="name"><%= prop_name %><!-- comment whitespace to remove span spacing
+        --><% if required and required.include? prop_name %><!--
+          --><span class="fg-danger">*</span>
+        <% end %>      
+      </span> 
       <span class="syntax">:</span>
       <span class="description"><%= prop_desc %></span>
     </span> 
