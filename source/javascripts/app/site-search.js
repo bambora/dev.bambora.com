@@ -10,6 +10,7 @@ $.ajax({
   url: '/search.json',
   cache: true,
   method: 'GET',
+  dataType: "json",
   success: function(data) {
     lunrData = data;
     lunrIndex = lunr.Index.load(lunrData.index);
