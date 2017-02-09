@@ -23,6 +23,7 @@ task :run_server do
   sh "bundle install"
   sh "ruby -run -ehttpd ./build -p4567"
 end
-task :run => [:build_slate, :copy_swagger, :run_server]
+#task :run => [:build_slate, :copy_swagger, :run_server]
+task :run => [:build_slate, :run_server]
 
 task :static => [:build_slate, :copy_swagger]
