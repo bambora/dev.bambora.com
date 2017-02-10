@@ -11,7 +11,6 @@ set :markdown,
     with_toc_data: true,
     no_intra_emphasis: true 
 
-
 # Assets
 set :css_dir,   'stylesheets'
 set :js_dir,    'javascripts'
