@@ -9,10 +9,9 @@ navigation:
     header_active: Example Pages
     
 swagger: portal.bambora
-  
 ---
 
 # Example Swagger Page 
 
-This is an example swagger page. In the frontmatter of the page file a swagger file is specified. This text is included in the page file and rendered above the swagger spec on the final page. 
+This is an example swagger page. In the frontmatter of the page file a swagger file is specified. This text is included in the page file and rendered above the swagger spec on the final page.
 
