@@ -150,48 +150,6 @@ footer {
 }
 
 
-/* table */  
-
-/*
-  .table styles copied over 
-  from bambora UI and applied to <table>.
-
-  Note: Temp fix to get proper table styling for tables 
-  created in markdown files. Unsure how to add .table class
-  to redcarpet markdown tables.  
-*/ 
-
-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  border: 1px solid rgba(240, 240, 240, 1);
-  border-radius: 8px;
-  transition: all 100ms ease-out; 
-}
-
-table thead th {
-  font-size: 12px;
-  text-align: left;
-  text-transform: uppercase;
-  color: rgba(200, 200, 200, 1);
-  font-weight: 500;
-  letter-spacing: 1px;
-  padding: 20px;
-  padding-bottom: 18px; 
-}
-
-table tbody td {
-  text-align: left;
-  padding: 20px;
-  padding-bottom: 18px;
-  font-size: 16px; 
-}
-
-table tbody tr:last-child td {
-  border-bottom: none;
-}
-
 /* top nav */
 
 .nav-fixed {

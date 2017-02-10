@@ -2,20 +2,20 @@
 title: Test Spec Page
 layout: spec
 
-summary: > 
+summary: >
   An example Spec Page implementation.
 
 navigation:
-    header: portal.self_doc_header 
-    footer: portal.self_doc_footer
-    toc: portal.self_doc_toc
-    header_active: Example Pages
+  header: portal.self_doc_header 
+  footer: portal.self_doc_footer
+  toc: portal.self_doc_toc
+  header_active: Example Pages
 
 includes:
   - portal/test/test-include
 
-language_tabs: 
-  - ruby 
+language_tabs:
+  - ruby
   - python
 
 ---
@@ -25,7 +25,6 @@ language_tabs:
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam fugiat culpa, molestiae? Quibusdam, quo, cum saepe eius amet possimus distinctio tempore voluptate, quod adipisci ea nostrum est maiores. Et, assumenda? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum porro laborum assumenda magni, perferendis, doloremque asperiores ea amet at veniam, cum totam, suscipit consectetur? Expedita possimus omnis, aliquid totam repellendus.
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur, molestiae sit quaerat similique fugit, voluptatibus. Labore ipsam nisi esse vero, tempore quibusdam quod quis ratione, corporis, rerum quisquam, recusandae. Libero.
-
 
 This section of the guide will walk you through how to take payments in your Android app.
 

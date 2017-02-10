@@ -1,13 +1,16 @@
 # Markdown
+require "lib/custom_markdown"
 set :markdown_engine, :redcarpet
 set :markdown,
+    renderer: CustomMarkdown,
     fenced_code_blocks: true,
     smartypants: true,
     disable_indented_code_blocks: true,
     prettify: true,
     tables: true,
     with_toc_data: true,
-    no_intra_emphasis: true
+    no_intra_emphasis: true 
+
 
 # Assets
 set :css_dir,   'stylesheets'
@@ -46,12 +49,10 @@ activate :search do |search|
       resource.data.includes.each do |include|
         partial_html = partial("/includes/#{include}")
         partial_text = Nokogiri::HTML(partial_html).xpath("//text()").to_s
-        to_index[:content] += partial_text
+        to_index[:content] += " " + partial_text
       end
     end
 
-    # Replace page summary with first 100 chars of string
-    # to_store[:summary] = to_index[:content].split("\n")[2] + "..."
   end
 end
 
@@ -60,7 +61,7 @@ end
 #   asset_hash.exts << '.json'
 # end
 
-# Github variables 
+# Edit on Github variables 
 set :github_repo_url, "https://github.com/bambora/dev.bambora.com"
 set :github_branch, "v2"
 
