@@ -5,7 +5,7 @@ layout: swagger
 navigation:
     header: portal.self_doc_header 
     footer: portal.self_doc_footer
-    toc: false
+    toc: portal.tocs.example_toc
     header_active: Example Pages
     
 swagger: portal.bambora

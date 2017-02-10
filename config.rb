@@ -60,8 +60,6 @@ end
 #   asset_hash.exts << '.json'
 # end
 
-activate :asset_hash
-
 # Github variables 
 set :github_repo_url, "https://github.com/bambora/dev.bambora.com"
 set :github_branch, "v2"
@@ -82,7 +80,7 @@ configure :build do
   activate :minify_css
   activate :minify_javascript
   # activate :relative_assets
-  # activate :asset_hash
+  activate :asset_hash
   # activate :gzip
   
   #set :http_prefix, '/dev.na.bambora.com'

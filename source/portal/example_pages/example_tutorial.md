@@ -11,7 +11,7 @@ navigation:
 summary: > 
   A test tutorial with dummy content added. 
 
-includes: 
+includes:
   - portal/test/test_include_1
 
 ---
