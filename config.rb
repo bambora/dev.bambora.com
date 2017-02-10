@@ -60,6 +60,8 @@ end
 #   asset_hash.exts << '.json'
 # end
 
+activate :asset_hash
+
 # Github variables 
 set :github_repo_url, "https://github.com/bambora/dev.bambora.com"
 set :github_branch, "v2"
