@@ -5,10 +5,12 @@ class CustomMarkdown < Middleman::Renderers::MiddlemanRedcarpetHTML
 
   # Add .table class to markdown tables for Bambora UI styling
   def table(header, body)
-  "<table class='table'>" \
-    "<thead>#{header}</thead>" \
-    "<tbody>#{body}</tbody>" \
-  "</table>"
+  "<div class='table-wrap'>" \
+    "<table class='table'>" \
+      "<thead>#{header}</thead>" \
+      "<tbody>#{body}</tbody>" \
+    "</table>" \
+    "</div>"
   end
 
 end

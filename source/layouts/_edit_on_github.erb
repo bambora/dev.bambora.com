@@ -1,29 +1,33 @@
+<%# If page has has no includes, provide single 'edit on github' link %>
 <% if not current_page.data.includes %> 
-  <a id="edit-on-github" href="<%= github_edit_link current_page.source_file %>" target="_blank">
-    Edit on Github
-  </a>
-<% else %> 
-  <div id="edit-on-github" class="dropdown dropdown-open-on-hover" role="listbox">
-    Edit on Github
+<a id="edit-on-github" href="<%= github_edit_link current_page.source_file %>" target="_blank">
+  Edit on Github
+</a>
 
-    <ul>
-      <%# Base page edit %>
+<%# Otherwise, page provides multiple includes, provide dropdown 
+'edit on github' links %>
+<% else %> 
+<div id="edit-on-github" class="dropdown dropdown-open-on-hover" role="listbox">
+  Edit on Github
+
+  <ul>
+    <%# Base page edit %>
+    <li class="dropdown-title">Base page:</li>
+    <li role="option">
+      <a href="<%= github_edit_link current_page.source_file %>" target="_blank">
+        <%= current_page.source_file.split('/').last %>
+      </a>
+    </li>
+
+    <%# partials edit %> 
+    <li class="dropdown-title">Includes:</li>
+    <% current_page.data.includes.each do |include| %> 
       <li role="option">
-        <a href="<%= github_edit_link current_page.source_file %>" target="_blank">
-          <strong>    
-            <%= current_page.source_file.split('/').last %>
-          </strong>
+        <a href="<%= github_edit_include_link include %>" target="_blank">
+          <%= include.split('/').last %>.md
         </a>
       </li>
-
-      <%# partials edit %> 
-      <% current_page.data.includes.each do |include| %> 
-        <li role="option">
-          <a href="<%= github_edit_include_link include %>" target="_blank">
-            <%= include.split('/').last %>.md
-          </a>
-        </li>
-      <% end %> 
-    </ul>
-  </div>    
+    <% end %> 
+  </ul>
+</div>    
 <% end %>
