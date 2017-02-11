@@ -1,4 +1,5 @@
-# Custom Markdown Renderer 
+# Custom Markdown Renderer. Used to add extra classes, etc. to 
+# HTML generated from markdown.
 
 require "middleman-core/renderers/redcarpet"
 class CustomMarkdown < Middleman::Renderers::MiddlemanRedcarpetHTML

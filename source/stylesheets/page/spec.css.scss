@@ -115,7 +115,8 @@ footer {
 
 
 .breadcrumb-trail {
-    margin-left: 28px;
+    //margin-left: 28px;
+    margin-left: calc(-230px + 20px + 16px); // align with toc
     display: inline-block;
 }
 

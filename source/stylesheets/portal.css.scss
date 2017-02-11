@@ -277,6 +277,12 @@ footer {
   color: $contrast;
   text-decoration: none;
 
+  a {
+    width: 100%;
+    border-bottom: none;
+    color: $contrast-dark;
+  }
+
   &:hover {
     color: $primary; 
   }
