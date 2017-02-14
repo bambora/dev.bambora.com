@@ -10,13 +10,16 @@ set :markdown,
     no_intra_emphasis: true
 
 # Assets
-set :css_dir, 'stylesheets'
-set :js_dir, 'javascripts'
-set :images_dir, 'images'
+set :css_dir,   'stylesheets'
+set :js_dir,    'javascripts'
+set :images_dir,'images'
 set :fonts_dir, 'fonts'
 
 # Activate the syntax highlighter
 activate :syntax 
+
+# Activate directory style pretty urls 
+activate :directory_indexes
 
 activate :autoprefixer do |config|
   config.browsers = ['last 2 version', 'Firefox ESR']
@@ -26,7 +29,7 @@ end
 
 # Active middleman-search
 activate :search do |search|
-  search.language = 'es' # TODO: Fix
+  search.language = 'es' # TODO: Bug workaround. Fix.
   search.resources = ['portal/']
   search.fields = {
     title:   {boost: 100, store: true, required: true},
@@ -34,10 +37,26 @@ activate :search do |search|
     url:     {index: false, store: true},
     summary: {boost: 25, store: true}
   }
+
+  # customize content to be indexed and stored per resource
+  search.before_index = Proc.new do |to_index, to_store, resource| 
+
+    # Add 'includes' for each page to the index. 
+    if resource.data.includes
+      resource.data.includes.each do |include|
+        partial_html = partial("/includes/#{include}")
+        partial_text = Nokogiri::HTML(partial_html).xpath("//text()").to_s
+        to_index[:content] += partial_text
+      end
+    end
+
+    # Replace page summary with first 100 chars of string
+    # to_store[:summary] = to_index[:content].split("\n")[2] + "..."
+  end
 end
 
 # Activate asset hash and enable for .json (search index)
-# activate :asset_hash do |asset_hash| 
+# activate :asset_hash do |asset_hash|
 #   asset_hash.exts << '.json'
 # end
 
@@ -46,71 +65,15 @@ set :github_repo_url, "https://github.com/bambora/dev.bambora.com"
 set :github_branch, "v2"
 
 # Helpers 
-# TODO: Move these into their own file. 
-helpers do 
-  
-  # Display svg images inline
-  def svg(name, classes: [])
-    root = Middleman::Application.root
-    file_path = "#{root}/source/images/svg/#{name}.svg"
-    if File.exists?(file_path)
-      f = File.read(file_path)
-      if classes.any? 
-        return f.gsub('<svg ', "<svg class='#{classes.join(' ')}'")
-      else 
-        return f
-      end
-    else
-      return '(not found)'
-    end
-  end
-
-  # Return random color for card icon. 
-  # Names must exist in Bamora UI as classes.
-  def get_random_icon_color()
-    ['green-light', 'raspberry', 'tabriz-blue', 
-      'green-powder', 'factory-yellow'].sample
-  end
-
-  def github_edit_link(source_file)
-    path = source_file.split('/source/', 2)[1]
-    "#{github_repo_url}/edit/#{github_branch}/source/#{path}"
-  end
-
-  def github_edit_include_link(partial)
-    "#{github_repo_url}/edit/#{github_branch}/source/includes/#{partial}.md"
-  end
-
-  # Returns the html for a param type for use in the 
-  # parameters table in the swagger template.
-  # TODO: Clean up, move back into erb file.  
-  def get_swagger_param_type_html(path, op, param)
-    if param.key?("schema")
-      # Param has a schema object definition
-      if param.schema.key?("type")
-        # Param is a collection of objects 
-        schema = param.schema.items.to_h["$ref"].to_s.split('/').last 
-        link_text = param.schema.type + " of " + schema
-      else
-        # Param is just a single object 
-        schema = param.schema.to_h["$ref"].to_s.split('/').last 
-        link_text = schema
-      end
-      "<a class='schema-link' id='#{path}-#{op}-#{schema}-link' href='#'>" + link_text + "</a>" 
-    else
-      # Param is a 'regular' type 
-      if param.type == "array" 
-        "array of " + param.items.type 
-      else 
-        param.type 
-      end
-    end
-  end
-end
+require "lib/custom_helpers"
+helpers CustomHelpers
 
 # Github pages require relative links
 activate :relative_assets
 set :relative_links, true
+
+# Download swagger files from url: 
+get_swagger_doc "http://petstore.swagger.io/v2/swagger.json", "/portal/dl-swagger.json"
 
 # Build Configuration
 configure :build do
@@ -120,5 +83,5 @@ configure :build do
   # activate :asset_hash
   # activate :gzip
   
-  set :http_prefix, '/dev.na.bambora.com'
+  #set :http_prefix, '/dev.na.bambora.com'
 end

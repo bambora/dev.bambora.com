@@ -7,9 +7,10 @@ var lunrData  = null;
 
 // Download index data
 $.ajax({
-  url: "/search.json", // TODO: Fix, ugly. 
+  url: '/search.json',
   cache: true,
   method: 'GET',
+  dataType: "json",
   success: function(data) {
     lunrData = data;
     lunrIndex = lunr.Index.load(lunrData.index);

@@ -1,0 +1,42 @@
+<%# print extra primtitive property information %>
+<%# requires local parameters: 
+        :property => the primtive property object
+%>
+
+<span class="property-info">
+
+  <span class="property-type">
+    <% if property.maxLength or property.enum or property.description %>
+      <a href="#"><%= property.type %></a>
+    <% else %>
+      <%= property.type %>
+    <% end %>
+  </span>
+
+  <span class="property-body">
+    <% if property.maxLength %> 
+      <span class="property-detail">
+        max length: <%= property.maxLength %>
+      </span>
+    <% end %>
+
+    <% if property.enum %>
+      <span class="property-detail">
+        <a class="enum-link" href="#">Enum</a>
+        <span>(<%= property.enum.length %>)</span> 
+        <span class="enum-list">
+          <% property.enum.each do |enum| %>
+            <span><%= enum %></span>
+          <% end %>
+        </span>
+      </span>
+    <% end %>
+
+    <% if property.description %>
+      <span class="property-detail">
+        <em><%= property.description %></em>
+      </span>
+    <% end %>
+  </span>
+
+</span>

@@ -37,7 +37,8 @@ tocbot.init({
 wrap = $(window);
 nav = $('.nav-left');
 nav_link = $('#show-nav-link');
-nav_offset = 75; // hard-coded pixel height of padding above nav
+nav_offset = 84; // hard-coded pixel height between top of nav and page header
+nav_offset -= 40; // padding above fixed nav
 
 wrap.on("scroll", function(e) {
   if(wrap.scrollTop() > nav_offset) {

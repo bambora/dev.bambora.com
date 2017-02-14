@@ -9,16 +9,22 @@
     <%= partial "layouts/header" %>
 
     <div class="container">
+      
+      <%= partial "layouts/breadcrumb_trail" %> 
+      <%= partial "layouts/edit_on_github" %>
+
       <%= partial "layouts/side_nav" %>
-  
+
       <div class="row">
         <div class="col-md-9 col-md-offset-3 js-toc-content">
-            
-          <%= yield %> 
+
+          <div class="markdown">
+            <%= yield %> 
           
-          <% current_page.data.includes && current_page.data.includes.each do |include| %>
-            <%= partial "#{current_page.data.includes_root}/includes/#{include}" %>
-          <% end %> 
+            <% current_page.data.includes && current_page.data.includes.each do |include| %>
+              <%= partial "includes/#{include}" %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>

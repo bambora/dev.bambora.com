@@ -2,14 +2,17 @@
 title: Test Spec Page
 layout: spec
 
-summary: An example Spec Page implementation.
+summary: > 
+  An example Spec Page implementation.
 
-nav: test_tutorial_nav
-name: /portal/test_spec_page
-parent: /portal/test_spec_page
+navigation:
+    header: portal.self_doc_header 
+    footer: portal.self_doc_footer
+    toc: portal.self_doc_toc
+    header_active: Example Pages
 
 includes:
-  - test/_test-include
+  - portal/test/test-include
 
 language_tabs: 
   - ruby 
@@ -17,7 +20,7 @@ language_tabs:
 
 ---
 
-# A Test Spec Page
+# An Example Spec Page
 
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam fugiat culpa, molestiae? Quibusdam, quo, cum saepe eius amet possimus distinctio tempore voluptate, quod adipisci ea nostrum est maiores. Et, assumenda? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum porro laborum assumenda magni, perferendis, doloremque asperiores ea amet at veniam, cum totam, suscipit consectetur? Expedita possimus omnis, aliquid totam repellendus.
 
@@ -32,5 +35,8 @@ This section of the guide will walk you through how to take payments in your And
 
 **Recommended IDE:** [Android Studio](https://developer.android.com/sdk/index.html) with the [Android Plugin for Gradle](http://developer.android.com/tools/revisions/gradle-plugin.html).
 
-
+| header 1 | header 2 | header 3 | header 4 | header 5 |
+| -------- | -------- |----------|----------|----------|
+| cell 1   | cell 2   | cell 3   | cell 4   |  cell 5  | 
+| cell 3   | cell 4   | cell 6   | cell 7   | cell 8   |
 

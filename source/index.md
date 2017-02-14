@@ -1,1 +1,1 @@
-[Go to the new portal here](/portal)
+[Go to the new portal here](/content/na/)

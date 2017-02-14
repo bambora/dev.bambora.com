@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <%= partial "layouts/head" %>
@@ -9,114 +9,121 @@
     <%= partial "layouts/header" %>
 
     <div class="container">
+
+      <%= partial "layouts/breadcrumb_trail" %> 
+      <%= partial "layouts/edit_on_github" %>
+
       <%= partial "layouts/side_nav" %>
 
       <div class="row">
         <div class="col-md-9 col-md-offset-3">
-          <%= yield %>
+          <div class="markdown">
+            <%= yield %>
+
+            <% current_page.data.includes && current_page.data.includes.each do |include| %>
+              <%= partial "includes/#{include}" %>
+            <% end %>
+          </div>
         </div>
       </div> <!-- /.row -->
 
+      <div class="js-toc-content">
       <div class="row">
-        <div class="col-md-9 col-md-offset-3 js-toc-content">
+        <div class="col-md-9 col-md-offset-3">
         
-        <%# swagger = data.petstore_deref %>
-        <% swagger = data.petstore %>
-        <% definitions = swagger.definitions %>
+        <!-- Swagger object fields -->
+        <% swagger = get_data_from_frontmatter current_page.data.swagger %>
+        <% info         = swagger.info %>
+        <% security_defs= swagger.securityDefinitions %>
+        <% definitions  = swagger.definitions %>
+        <% paths        = swagger.paths %>
 
         <!-- Summary Block --> 
-        <% info = swagger.info %>
         <h2><%= info.title %></h2>
-        <p><%= info.description %></p>
-
+        <%= render_markdown info.description %>
+        
         <p><strong>Version:</strong> <%= info.version %></p>
-        <p><strong>Contact:</strong> <%= info.contact.email %></p>
-        <p><strong>Terms of Service:</strong> <a href="<%= info.termsOfService %>"><%= info.termsOfService %></a></p>
-        <p><strong>License:</strong> <a href="<%= info.license.url %>"><%= info.license.name %></a></p>
+        
+        <% if info.contact %> 
+        <p><strong>Contact:</strong> 
+        <p><%= info.contact.name  if info.contact.name %></p>
+        <p><%= info.contact.url   if info.contact.url %></p>
+        <p><%= info.contact.email if info.contact.email %></p>
+        <% end %> 
 
-        <!-- Paths --> 
-        <h2>Paths</h2>
-        <% paths = swagger.paths %>
-        <% paths.each do |path| %>
-          <% path_name = path.first %>
-          <h3><%= path_name %></h3>
+        <% if info.termsOfService %>
+        <p>
+          <strong>Terms of Service:</strong> 
+          <a href="<%= info.termsOfService %>"><%= info.termsOfService %></a>
+        </p>
+        <% end %>
+        
+        <% if info.license %>
+        <p>
+          <strong>License:</strong> 
+          <a href="<%= info.license.url %>"><%= info.license.name %></a>
+        </p>
+        <% end %> 
 
-          <!-- Operations --> 
-          <% operations = path[1] %> 
-          <% operations.each do |op| %> 
-            <% op_name = op[0] %>
-            <% op_obj = op[1] %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-9 col-md-offset-3">
+
+        <!-- Security --> 
+        <h2>Security</h2>
+        <div class="security">
+          <% security_defs.each do |definition| %> 
+            <% def_name = definition[0] %>
+            <% def_body = definition[1] %>
             
-            <!-- Collapsed heading --> 
-            <div class="operation-heading">
-              <h4>
-                <span class="operation <%= op_name %>">
-                  <%= op_name.upcase %>
-                </span> 
-                <%= path_name %>
-              </h4>
-              
-              <span class="heading-body">
-                <span class="summary"><%= op_obj.summary %></span>
-                <div class="more-icon"><%= svg :drop %></div>
-              </span>
+            <div class="security-definition">
+            <div class="title">
+              <h3><%= def_name %></h3> 
+              <span>(<%= def_body.type.underscore.humanize.downcase %>)</span>
             </div>
 
-            <div class="operation-content">
+            <p><%= def_body.description %></p>
 
-              <!-- Description -->
-              <h5>Description</h5> 
-              <% if op_obj.description and op_obj.description != "" %>
-                <p><%= op_obj.description %></p>
-              <% else %>
-                <p><em>No description</em></p>
-              <% end %>
-
-              <!-- Parameters table -->
-              <h5>Parameters</h5>
-              <% if not op_obj.parameters.empty? %>
-                <%= partial "layouts/_swagger/parameters", 
-                    :locals => { :params => op_obj.parameters, 
-                                  :definitions => definitions,
-                                  :path => path_name.gsub(/[^a-z ]/,''), 
-                                  :operation => op_name }  %>
-              <% else %>
-                <p><em>No parameters</em></p>
-              <% end %>
-
-              <!-- Responses table -->
-              <h5>Responses</h5>
-              <% responses = op_obj.responses %> 
-              <% if responses %>
-              <table class="table table-highlight">
+            <table class="table">
               <thead>
                 <tr>
-                  <th>Code</th>
-                  <th>Description</th>
+                  <th>Name</th>
+                  <th>In</th>
                 </tr>
               </thead>
               <tbody>
-                <% responses.each do |response| %>
-                  <tr>
-                    <td><%= response[0] %></td>
-                    <td><%= response[1].description %></td>
-                  </tr>
-                <% end %>
+                <tr>
+                  <td><%= def_name %></td>
+                  <td><%= def_body.in %></td>
+                </tr>
               </tbody>
-              </table>
-              <% else %>
-                <p><em>No responses</em></p> 
-              <% end %>
-
-            </div> <!-- /.operation-content -->
-
-            <% end %> <!-- methods.each -->
-          <br>
-          <% end %> <!-- paths.each -->
-          </div>
+            </table>
+            </div>
+          <% end %> 
         </div>
-      </div> <!-- /.container -->
-    </div>
+
+        <!-- Paths -->
+        <h2>Paths</h2>
+        <% paths.each do |path| %>
+          <div class="row">
+          <div class="col-md-12">
+          
+          <% if path[0].start_with?('/') %> <%# path item object %> 
+            <%= partial "layouts/_swagger_partials/path", :locals => {
+                :path => path, 
+                :definitions => definitions
+                } %>
+            <% end %> <%# else it's a x-* style extension to the spec %> 
+
+          </div>
+          </div>
+        <% end %>
+        </div>
+      </div>
+      </div>
+    </div> <!-- /.container -->
+    
 
     <%= partial "layouts/footer" %>
 

@@ -2,13 +2,18 @@
 title: Test Tutorial
 layout: tutorial
 
-summary: A test tutorial with dummy content added. 
+navigation:
+    header: portal.self_doc_header 
+    footer: portal.self_doc_footer
+    toc: false
+    header_active: Example Pages
 
-nav: example_nav
-name: /portal/test_tutorial
-parent: /portal/test_tutorial
+summary: > 
+  A test tutorial with dummy content added. 
 
-search: false
+includes: 
+  - portal/test/test_include_1
+
 ---
 
 # Test Tutorial
@@ -22,6 +27,11 @@ Suscipit obcaecati sequi maxime ut iste recusandae sint unde ratione! Dignissimo
 atque repudiandae! Aliquid, dignissimos assumenda molestiae ipsa dolore doloremque nobis laborum quae dolores necessitatibus eius maxime earum nostrum. Quia?
 
 In dolorum ad odit nesciunt suscipit vitae est dolor doloribus tenetur minima temporibus hic, similique labore commodi. Explicabo, ad excepturi, debitis omnis cumque iusto odio nemo illo quibusdam blanditiis, id!
+
+| header 1 | header 2 | header 3 | header 4 | header 5 |
+| -------- | -------- |----------|----------|----------|
+| cell 1   | cell 2   | cell 3   | cell 4   | cell 5   | 
+| cell 3   | cell 4   | cell 6   | cell 7   | cell 8   |
 
 ## Second Level Heading
 

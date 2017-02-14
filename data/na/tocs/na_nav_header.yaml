@@ -1,0 +1,17 @@
+  logo_link: /content/na/
+  links:
+    - file: /content/na/guides/merchant_quickstart/
+      title: Quickstart
+    - file: /content/na/guides/
+      title: Guides
+    - file: /content/na/references/
+      title: References
+    - file: /content/na/support/
+      title: Support
+
+  buttons:
+    - file: /content/na/forms/signup/merchant
+      title: Sign Up
+      secondary: true
+    - file: https://www.beanstream.com/admin/sDefault.asp
+      title: Login

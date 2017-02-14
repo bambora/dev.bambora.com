@@ -1,0 +1,94 @@
+<%# 
+    Partial to render the operations for a single path 
+    defined in a swagger file. Used in the swagger 
+    template. 
+
+    It's possible that a path item is handled is 
+    defined in an external $ref but that's not 
+    currently handled by the template. 
+%>
+
+<% path_name    = path[0] %>
+<% operations   = path[1] %>
+
+<h3><%= path_name %></h3>
+
+<!-- Operations -->
+<%# Note: These could also be defined in an external $ref. 
+Hasn't come up yet, but a possibility, and isn't 
+currently handled. %>
+<% operations.each do |op| %>
+
+    <% op_name  = op[0] %>
+    <% op_obj   = op[1] %>
+
+    <% if ['get', 'put', 'post', 'delete', 'options', 
+            'head', 'path'].include? op_name %> 
+    <%# else an external ref or list of parameters --- not 
+    currently handled %> 
+
+        <div class="operation-block">
+        <!-- Visible operation heading --> 
+        <div class="operation-heading">
+
+            <div class="row">
+                <div class="col-sm-2 op-border"></div>
+            </div>
+        
+            <div class="col-sm-2 operation <%= op_name %>">
+                <h4><%= op_name.upcase %></h4>
+            </div>
+        
+            <div class="col-sm-5 col-md-6 col-lg-6 path-name">
+               <span><%= path_name %></span> 
+            </div>
+            
+            <div class="col-sm-5 col-md-4 col-lg-4 summary">
+                <span><%= op_obj.summary %></span>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+
+        <!-- Expandable operation content --> 
+        <div class="operation-content">
+
+            <!-- Description -->
+            <h5>Description</h5> 
+            <% if op_obj.description and op_obj.description != "" %>
+                <%= render_markdown op_obj.description %>
+            <% else %>
+                <p><em>No description</em></p>
+            <% end %>
+
+            <!-- Parameters table -->
+            <h5>Parameters</h5>
+            <% if not op_obj.parameters.empty? %>
+                <%= partial "layouts/_swagger_partials/parameters", :locals => {
+                        :params        => op_obj.parameters, 
+                        :definitions   => definitions,
+                        :operation     => op_name
+                } %>
+            <% else %>
+                <p><em>No parameters</em></p>
+            <% end %>
+
+            <!-- Responses table -->
+            <h5>Responses</h5>
+            <% responses = op_obj.responses %> 
+            <% if responses %>
+            <%= partial "layouts/_swagger_partials/responses", :locals => {
+                    :responses => responses, 
+                    :definitions => definitions
+            } %> 
+            <% else %>
+                <p><em>No responses</em></p> 
+            <% end %>
+
+        </div> <!-- /.operation-content -->
+        </div>
+
+    <% end %> 
+
+<% end %> <!-- operations.each -->
+<br>

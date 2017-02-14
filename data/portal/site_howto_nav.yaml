@@ -1,0 +1,38 @@
+header:
+  logo_link: /portal
+  links: 
+    - file: /portal/documentation/
+      title: Documentation
+    - file: /portal/example_pages/
+      title: Example Pages
+    - file: /portal/
+      title: API Reference
+    - file: /portal/
+      title: SDK Reference
+    - file: /portal/
+      title: Guides
+    - file: /portal/
+      title: Tutorials
+  buttons:
+    - file: /portal/
+      title: Sign Up
+    - file: /portal/
+      title: Login
+      secondary: true
+
+footer:
+  copyright: 2016 Bambora Group 
+  left_links: 
+    - link: '#'
+      title: Careers
+    - link: '#'
+      title: Privacy 
+    - link: '#'
+      title: Terms & Conditions
+  right_links: 
+    - link: '#'
+      title: Facebook
+    - link: '#'
+      title: Twitter
+    - link: '#'
+      title: Medium

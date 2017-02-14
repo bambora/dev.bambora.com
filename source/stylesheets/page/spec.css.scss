@@ -54,11 +54,17 @@ pre {
 }
 
 h1 {
-    padding-top: 100px !important; 
+    padding-top: 0px !important; 
 }
 
 .tabs {
     z-index: $zIndexLangSelector;
+
+    &.lang-selector {
+        background-color: $muted;
+        width: 100%;
+        padding-bottom: 5px;
+    }
 }
 
 footer {
@@ -73,6 +79,11 @@ footer {
 
 .nav-left {
     margin-top: 84px;
+    margin-left: 20px;
+}
+
+.nav-left-fixed {
+    margin-top: 0;
 }
 
 .dark-box .lang-selector {
@@ -81,6 +92,10 @@ footer {
 
 /* tabs in left menu */
 
+.nav-left .lang-selector {
+    display: none;
+}
+
 .nav-left .lang-selector a {
     display: none; 
     margin-top: 10px;
@@ -88,7 +103,29 @@ footer {
 }
 
 @media (max-width: $screen-sm) {
+
+    .nav-left .lang-selector {
+        display: border-box;
+    }
+
     .nav-left .lang-selector a {
         display: inline;
     }
+}
+
+
+.breadcrumb-trail {
+    margin-left: 28px;
+    display: inline-block;
+}
+
+
+table {
+    display: table !important;
+    width: calc(50% - 28px) !important;
+    overflow-x: auto;
+}
+
+#edit-on-github {
+    margin-right: calc(50% + 15px);
 }

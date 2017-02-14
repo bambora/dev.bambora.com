@@ -1,10 +1,8 @@
 <div class="footer-buffer"></div>
 <footer>
 
-    <% if current_page.data.nav %>
-        <% footer = data["#{current_page.data.nav}"].footer %>
-    <% else %> 
-        <% footer = data.nav.footer %>
+    <% if current_page.data.navigation %>
+        <% footer = get_data_from_frontmatter(current_page.data.navigation.footer) %>
     <% end %>
 
     <% if footer %> 

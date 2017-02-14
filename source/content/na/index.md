@@ -2,78 +2,72 @@
 title: Demo Developer Portal
 layout: landing
 
-nav: na_nav
+navigation:
+  header: na.tocs.na_nav_header
+  footer: na.tocs.na_nav_footer
+  toc: na.tocs.na_nav_toc
+  header_active:
 
 hero_unit:
-    hero_image: shoal-1.png
+    #hero_image: shoal-1.png
+    hero_image: beanstream_hero.svg
     big_heading: Developer Documentation.
     tag_line:  >
-        This single source of truth for Beanstream's payment gateway.
+        This single source of truth for our payment gateway.
     button:
         text: Get Started
-        link: /content/na/guides/setup
+        link: /content/na/guides/merchant_quickstart/
 card_sets:
 
     -  
         title: Guides
         description: >
-            Learn how to getting things done with Beanstream in the language of your choice.
+            Learn how to get things done.
         cards:
             -
-                title: Quickstart
+                title: Products
+                description: >
+                    Get acquainted with our products and features.
+                icon: flag
+                link: /content/na/guides/products/
+            -
+                title: Merchant Quickstart
                 description: >
                     Get up and running fast by opening a test account and hitting a few of our API endpoints.
                 icon: flag
-                link: /content/na/guides/quickstart
+                link: /content/na/guides/merchant_quickstart/
             -
-                title: Online Payments
+                title: Partner Quickstart
                 description: >
-                    Find out how to collect card details securely, how to store them for future one-off payments or how to schedule recurring payments.
-                icon: more
-                link: /portal/
-            -
-                title: In-App Payments
-                description: >
-                    How to accept card payments in Android and iOS apps, and how to upgrade your app for Apple Pay.
-                icon: comment
-                link: /portal/
-            -
-                title: Security
-                description: >
-                    Understand the tooling and development standards that you can use to mitigate against fraud, reduce chargebacks and limit your PCI scope.
-                icon: comment
-                link: /portal/
+                    Get up and running fast by opening a test account and hitting a few of our API endpoints.
+                icon: flag
+                link: /content/na/guides/partner_quickstart/
+
 
     -
-        title: Products
+        title: References
         description: >
-            Get acquainted with Beanstream products and features.
+            Get an in-depth knowledge of our payment gateway.
         cards:
             -
-                title: Lorem ipsum dolor sit amet
+                title: Merchant API
                 description: >
                     Tempore corrupti, obcaecati voluptate nulla, repellat labore
                     culpa, accusamus doloremque laudantium similique id molestiae.
                 icon: flag
-                link: /portal/
+                link: /content/na/references/merchant_api/
             -
-                title: Lorem ipsum dolor sit amet
+                title: Merchant SDK
                 description: >
                     Tempore corrupti, obcaecati voluptate nulla, repellat labore
                     culpa, accusamus doloremque laudantium similique id molestiae.
                 icon: more
-                link: /portal/
+                link: /content/na/references/merchant_sdks/
             -
-                title: Lorem ipsum dolor sit amet
+                title: Partner API
                 description: >
                     Tempore corrupti, obcaecati voluptate nulla, repellat labore
                     culpa, accusamus doloremque laudantium similique id molestiae.
                 icon: comment
-                link: /portal/
-            -
-                title: More...
-                description: >
-                    Click here to see our full collection of product pages
-                icon: comment
-                link: /portal/
+                link: /content/na/references/partner_api/
 ---

@@ -1,4 +1,4 @@
-/* Styles for the side navigation / table of contents */
+/* Styling for the nav */ 
 
 .nav-left {
   position: absolute; 
@@ -9,123 +9,10 @@
 
 .nav-left-fixed {
   position: fixed !important;
-  top: 66px;
+  top: 106px; // 66px header + 40px of padding
 }
 
-.nav-left > ul > li {
-  min-height: 26px; 
-  padding-bottom: 14px;
-}
-
-.nav-left li {
-  list-style: none;
-}
-
-.nav-left li a {
-  position: relative;
-  color: rgba(90, 90, 90, 1);
-  display: block;
-  font-size: 16px;
-  text-decoration: none;
-  border: 0;
-  border-left: 2px solid transparent;
-  font-weight: 400;
-  cursor: pointer;
-  padding: 16px;
-  padding-top: 0;
-  padding-bottom: 0;
-  transition: all 100ms ease-out;
-}
-
-.nav-left li.active {
-  border-left: 2px solid rgba(120, 71, 181, 1);
-}
-
-.nav-left .nav-top-heading {
-  color: rgba(90, 90, 90, 1);
-}
-
-.nav-left .active .nav-top-heading {
-  color: rgba(120, 71, 181, 1); 
-}
-
-.nav-left a.nav-top-heading:hover {
-  color: rgba(120, 71, 181, 1); 
-}
-  
-.nav-left .nav-subs {
-  position: relative;
-}
-
-.nav-left ul.nav-subs {
-  padding-left: 16px;
-} 
-
-.nav-left .nav-subs > li { 
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-  min-height: 26px; 
-}
-
-.nav-left .nav-subs > li > a {
-  font-size: 16px;
-  position: relative;
-  padding-top: 0;
-  padding-bottom: 0;
-  color: rgba(90, 90, 90, 1);
-}
-
-.nav-left .nav-subs li > a:hover {
-color: rgba(120, 71, 181, 1); 
-}
-
-.js-toc .toc-list {
-  margin: 0;
-  padding-left: 10px;
-}
-
-.js-toc a.toc-link {
-  color: currentColor;
-  height: 100%;
-}
-
-.js-toc .toc-link.node-name--H2 {
-  font-size: 12px;
-  min-height: 12px;
-}
-
-.js-toc .toc-link.node-name--H3 {
-  font-size: 12px;
-  color: rgba(120, 120, 120, 1);
-}
-
-.js-toc .toc-link.node-name--H4 {
-  font-size: 12px;
-  color: rgba(90, 90, 90, 1);
-}
-
-.js-toc .is-collapsible {
-  max-height: 1000px;
-  overflow: hidden;
-  transition: all 300ms ease-in-out;
-}
-
-.js-toc .is-collapsed {
-  max-height: 0;
-}
-
-.js-toc .is-position-fixed {
-  position: fixed !important;
-  top: 0;
-}
-
-.js-toc .is-active-link {
-  font-size: 15px;
-  font-weight: 600;
-}
-
-/* Nav collapse on mobile screens */
+// /* Responsive nav */ 
 
 #show-nav-link {
   position: fixed;
@@ -158,9 +45,9 @@ color: rgba(120, 71, 181, 1);
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.04);
     position: fixed;
     margin-top: 0 !important;
+    padding-top: 50px;
 
     ul {
-      margin-top: 50px;
       padding-left: 15px;
       padding-right: 15px;
     }
@@ -183,4 +70,65 @@ color: rgba(120, 71, 181, 1);
       fill: $primary; 
     }
   }
+}
+
+
+/* Styling for the js-toc */
+
+.js-toc .toc-link.node-name--H2 {
+  font-size: 14px;
+  margin-left: 20px;
+}
+
+.js-toc .toc-link.node-name--H3 {
+  font-size: 12px;
+  margin-left: 30px;
+}  
+
+.js-toc .toc-link.node-name--H4 {
+  color:$contrast !important;
+  font-size: 12px;
+  margin-left: 40px;
+}
+
+.js-toc .is-collapsible {
+  max-height: 1000px;
+  overflow: hidden;
+  transition: all 300ms ease-in-out;
+}
+
+.js-toc .is-collapsed {
+  max-height: 0;
+}
+
+.js-toc .is-position-fixed {
+  position: fixed !important;
+  top: 0;
+}
+
+.js-toc .is-active-link {
+  color: rgba(120, 71, 181, 1);
+  border-left: 2px solid rgba(120, 71, 181, 1) !important;
+}
+
+.toc-list-item {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+
+/* styling for in-page toc inside of outside links */
+
+
+.page-only {
+  .toc-link.node-name--H2 {
+    font-size: 16px;
+  }
+}
+
+ul .js-toc {
+  li a { 
+    color: rgba(90, 90, 90, 1) !important;
+    border-left: none !important;
+  } 
 }

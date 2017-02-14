@@ -6,6 +6,10 @@
 
 /* general */
 
+div.clear {
+    clear:both;
+}
+
 img {
   display: block;
   margin: auto;
@@ -17,8 +21,7 @@ footer {
 }
 
 .container {
-  //margin-top: 75px; // If nav static 
-  margin-top: 141px; // If nav fixed
+  margin-top: 66px;
 }
 
 table {
@@ -34,6 +37,28 @@ pre {
   word-break: break-all;
   white-space: pre-wrap; 
 }
+
+.markdown {
+  li a:not(.btn) {    // link styling in markdown lists
+    color: rgba(120, 71, 181, 1);
+    text-decoration: none;
+    display: inline-block;
+    border-bottom: rgba(120, 71, 181, 1) 1px solid;
+    line-height: 1.1em;
+    cursor: pointer;
+    transition: all 100ms ease-out; 
+  }
+
+  li a:not(.btn):visited {
+      color: rgba(120, 71, 181, 1); 
+  }
+
+  li a:not(.btn):hover {
+      color: rgba(202, 172, 223, 1);
+      border-bottom: rgba(202, 172, 223, 1) 1px solid; 
+  }
+}
+
 
 
 /* flex box cards */
@@ -259,3 +284,38 @@ table tbody tr:last-child td {
   overflow: hidden; 
 }
 
+/* bread crumb trail */
+
+.breadcrumb-trail {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 18px; // align with side nav
+  color: $contrast;
+  font-style: italic;
+  display: inline-block;
+
+  a {
+    color: $contrast;
+    text-decoration: none;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  .chevron {
+    margin: 0 10px;
+  }
+}
+
+/* edit on github */ 
+#edit-on-github {
+  float: right;
+  margin-top: 30px;
+  color: $contrast;
+  text-decoration: none;
+
+  &:hover {
+    color: $primary; 
+  }
+}

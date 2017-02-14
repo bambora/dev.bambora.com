@@ -1,0 +1,13 @@
+<% breadcrumbs = get_breadcrumbs current_page.path %>
+
+<div class="breadcrumb-trail">
+<% breadcrumbs.each_with_index do |(link, name), index| %> 
+    <span><a href="<%= link %>">
+        <%= File.basename(name, '.html').gsub(/_/, ' ').titleize %>
+    </a></span>
+    <% if index != breadcrumbs.length - 1 %> 
+        <span class="chevron"> / </span>
+    <% end %> 
+<% end %>
+</div>
+

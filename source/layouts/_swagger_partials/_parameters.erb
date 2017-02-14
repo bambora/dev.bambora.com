@@ -1,0 +1,105 @@
+<%# 
+  Partial to render the parameters for a single operation on a 
+  path in swagger file. Usd in the _swagger_partials/_path partial. 
+%> 
+
+<%# NOTE: Unsure why $ref value needs :to_h, :to_s to be called 
+on it. No other values do. Seems like a weird bug? %>
+
+<div class="parameters">
+
+  <table class="table table-highlight">
+    
+    <!-- Table columns --> 
+    <thead>
+      <tr> 
+        <th>In</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Required</th>
+        <th>Schema</th>
+      </tr>
+    </thead>
+
+    <!-- parameters in table --> 
+    <% schema = false %>
+    <% schema_title = '' %>
+    <tbody>
+      <% params.each do |param| %> 
+        <% if param.key?("name") %>
+          <tr>
+            <%# these fields are 'easy' %> 
+            <td><%= param.in %></td>
+            <td><%= param.name %></td>
+            <td><%= param.description %></td>
+            <td><%= param.required %></td>
+
+            <%# type field, dependent on param.in %>
+            <% if param.in == "body" %>
+              <% if param.schema.to_h.key?("$ref") %> <%# external def. %> 
+                <% ref = param.schema.to_h["$ref"] %>
+                <% schema_title = ref.split('/').last %>
+                <% schema = definitions["#{schema_title}"] %>
+              <% else %>
+                <% schema_title = param.schema.type %> 
+                <% schema = param.schema %>
+              <% end %>
+
+              <% if schema.type == "array" %>
+                <% if schema.items.to_h.key?("$ref") %>
+                  <% array_type = schema.items.to_h["$ref"].split('/').last %>
+                  <% schema_title = "#{array_type}" %>
+                  <% schema = definitions["#{array_type}"] %>
+                <% else %> 
+                  <% schema_title += " of #{schema.items.type}" %>
+                <% end %>
+              <% end %>
+
+              <td><%= schema_title %></td>
+            
+            <% else %> 
+
+              <% param_type = param.type %> 
+              <% if param.type == "array" %> 
+                <% param_type += " of #{param.items.type}" %> 
+              <% end %>
+
+              <td><%= param_type %></td>
+            <% end %>  
+          </tr>
+        <% end %> <%# else external $ref %> 
+      <% end %> 
+    </tbody>
+  </table>
+
+  <% if schema %>
+
+    <table class="table">
+
+      <thead>
+        <tr>
+          <th>Parameter Schema Definitions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr>
+          <td>
+            <div class="schemas">
+              <%= partial "layouts/_swagger_partials/schema", 
+                  :locals => { 
+                    :schema_title => schema_title, 
+                    :definitions => definitions
+                  }
+              %> 
+            </div>              
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+<% end %> 
+
+</div> <!-- ./parameters -->

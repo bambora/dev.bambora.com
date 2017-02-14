@@ -2,7 +2,11 @@
 title: Example Product Page
 layout: product
 
-nav: example_nav
+navigation:
+    header: portal.self_doc_header 
+    footer: portal.self_doc_footer
+    toc: portal.self_doc_toc
+    header_active: Example Pages
 
 cards:
     -                

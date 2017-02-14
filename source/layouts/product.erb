@@ -8,11 +8,23 @@
     <%= partial "layouts/header" %>
 
     <div class="container">
+        
+      <%= partial "layouts/breadcrumb_trail" %> 
+      <%= partial "layouts/edit_on_github" %>
+
       <%= partial "layouts/side_nav" %>
 
-      <div class="row">
-        <div class="col-md-9 col-md-offset-3 col-sm-9 col-sm-offset-3">
-          <%= yield %>
+      <div class="row">    
+        <div class="col-md-9 col-md-offset-3 col-sm-9 col-sm-offset-3"> 
+
+          <div class="markdown">
+            <%= yield %>
+
+            <% current_page.data.includes && current_page.data.includes.each do |include| %>
+              <%= partial "/includes/#{include}" %>
+            <% end %>
+          </div>
+          
         </div>
       </div>
 
