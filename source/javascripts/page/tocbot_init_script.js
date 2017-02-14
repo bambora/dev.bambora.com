@@ -30,6 +30,10 @@ tocbot.init({
 
     // Class to add to list items.
     //listItemClass: '',
+
+    smoothScrollOptions: {
+      offset: 80 // offset to account for header
+    }
 });
 
 
