@@ -55,7 +55,11 @@ on it. No other values do. Seems like a weird bug? %>
                 <% end %>
               <% end %>
 
-              <td><%= schema_title %></td>
+              <td>
+                <a href="#<%= make_html_safe "#{operation}-#{path_name}-#{schema_title}" %>">
+                  <%= schema_title %>
+                </a>
+              </td>
             
             <% else %> 
 
@@ -90,7 +94,9 @@ on it. No other values do. Seems like a weird bug? %>
               <%= partial "layouts/_swagger_partials/schema", 
                   :locals => { 
                     :schema_title => schema_title, 
-                    :definitions => definitions
+                    :definitions => definitions, 
+                    :operation => operation, 
+                    :path_name => path_name
                   }
               %> 
             </div>              

@@ -77,6 +77,7 @@ module CustomHelpers
     IO.copy_stream(download, "#{root}/data/#{destination}")
   end
 
+
   def get_data_from_frontmatter(path) 
     path = path.split('.')
     result = data
@@ -84,5 +85,10 @@ module CustomHelpers
       result = result["#{p}"]
     end
     result   
+  end 
+
+  # Nicely format a string for use as a html id or other attribute.
+  def make_html_safe(str) 
+    str.gsub(/[^-\p{Alnum}]/, '')
   end 
 end
