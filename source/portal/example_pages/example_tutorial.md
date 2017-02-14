@@ -5,7 +5,7 @@ layout: tutorial
 navigation:
     header: portal.self_doc_header 
     footer: portal.self_doc_footer
-    toc: false
+    toc: in-page
     header_active: Example Pages
 
 summary: > 

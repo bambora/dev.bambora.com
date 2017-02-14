@@ -58,4 +58,3 @@ $('#show-nav-link, #nav-close').click(function(event) {
     $("#show-nav-link").toggle();
     $(".nav-left").toggleClass("show");
 });
-
