@@ -298,3 +298,87 @@ color: rgba(120, 71, 181, 1);
   }
 }
 ```
+
+## This is a really long heading that might break the table of contents styling if it gets too long for the page
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum aspernatur similique reprehenderit est asperiores delectus quibusdam, sapiente odio aliquam commodi quas accusamus, reiciendis rerum magni beatae, ab quidem autem. Maxime!
+
+### Heading x.1 
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Similique illum ad, eos reiciendis officiis corporis nemo quos dolore debitis aliquid! Odio fugit eius asperiores et sapiente commodi veritatis suscipit perspiciatis.
+
+### Heading x.2 
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo nulla, saepe odio voluptate rerum odit dignissimos nam, adipisci deleniti maiores pariatur! Neque velit voluptatibus illum fuga magni, repellendus sapiente consequuntur!
+
+### Heading x.3 
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque expedita impedit, eligendi iste! Ex repudiandae eum eligendi ducimus, eveniet, quaerat dolorem sequi repellendus necessitatibus commodi expedita enim totam debitis nulla!
+
+### Heading x.4
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe voluptate dolorum, ex quam sequi! Quo ea, tenetur recusandae, non nisi eos officiis excepturi quod repudiandae reprehenderit, ullam rem placeat accusamus?
+
+### Heading x.5 
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni dolor, a ab ut, amet perferendis rem ex natus accusantium ducimus nostrum doloremque praesentium similique harum nisi totam animi deserunt culpa.
+
+#### Heading x.5.1 
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium tempore illum eaque est fuga quos quis. Consequatur, veritatis? Sed et labore maiores, aliquam dolorum in doloremque, incidunt excepturi. Repudiandae, cum.
+
+#### Heading x.5.2 
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium tempore illum eaque est fuga quos quis. Consequatur, veritatis? Sed et labore maiores, aliquam dolorum in doloremque, incidunt excepturi. Repudiandae, cum.
+
+#### Heading x.5.3 
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium tempore illum eaque est fuga quos quis. Consequatur, veritatis? Sed et labore maiores, aliquam dolorum in doloremque, incidunt excepturi. Repudiandae, cum.
+
+#### Heading x.5.4 
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium tempore illum eaque est fuga quos quis. Consequatur, veritatis? Sed et labore maiores, aliquam dolorum in doloremque, incidunt excepturi. Repudiandae, cum.
+
+#### Heading x.5.5 
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium tempore illum eaque est fuga quos quis. Consequatur, veritatis? Sed et labore maiores, aliquam dolorum in doloremque, incidunt excepturi. Repudiandae, cum.
+
+##### Heading x.5.5.1 
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium tempore illum eaque est fuga quos quis. Consequatur, veritatis? Sed et labore maiores, aliquam dolorum in doloremque, incidunt excepturi. Repudiandae, cum.
+
+##### Heading x.5.5.2 
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium tempore illum eaque est fuga quos quis. Consequatur, veritatis? Sed et labore maiores, aliquam dolorum in doloremque, incidunt excepturi. Repudiandae, cum.
+
+##### Heading x.5.5.3 
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium tempore illum eaque est fuga quos quis. Consequatur, veritatis? Sed et labore maiores, aliquam dolorum in doloremque, incidunt excepturi. Repudiandae, cum.
+
+##### Heading x.5.5.4 
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium tempore illum eaque est fuga quos quis. Consequatur, veritatis? Sed et labore maiores, aliquam dolorum in doloremque, incidunt excepturi. Repudiandae, cum.
+
+##### Heading x.5.5.5
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium tempore illum eaque est fuga quos quis. Consequatur, veritatis? Sed et labore maiores, aliquam dolorum in doloremque, incidunt excepturi. Repudiandae, cum.
+
+##### Heading x.5.5.6
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium tempore illum eaque est fuga quos quis. Consequatur, veritatis? Sed et labore maiores, aliquam dolorum in doloremque, incidunt excepturi. Repudiandae, cum.
+
+##### Heading x.5.5.7
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium tempore illum eaque est fuga quos quis. Consequatur, veritatis? Sed et labore maiores, aliquam dolorum in doloremque, incidunt excepturi. Repudiandae, cum.
+
+##### Heading x.5.5.8
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium tempore illum eaque est fuga quos quis. Consequatur, veritatis? Sed et labore maiores, aliquam dolorum in doloremque, incidunt excepturi. Repudiandae, cum.
+
+##### Heading x.5.5.9
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium tempore illum eaque est fuga quos quis. Consequatur, veritatis? Sed et labore maiores, aliquam dolorum in doloremque, incidunt excepturi. Repudiandae, cum.
+
+##### Heading x.5.5.10
+
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Praesentium tempore illum eaque est fuga quos quis. Consequatur, veritatis? Sed et labore maiores, aliquam dolorum in doloremque, incidunt excepturi. Repudiandae, cum.

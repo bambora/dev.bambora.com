@@ -4,13 +4,79 @@
   position: absolute; 
   overflow-y: auto;
   max-width: 240px;
-  max-height: calc(100% - 66px - 66px);
+  max-height: calc(100% - 106px - 66px); // fit between header and footer
 }
 
 .nav-left-fixed {
   position: fixed !important;
   top: 106px; // 66px header + 40px of padding
 }
+
+/* Styling for the js-toc */
+
+.js-toc .toc-link.node-name--H2 {
+  font-size: 14px;
+  margin-left: 20px;
+}
+
+.js-toc .toc-link.node-name--H3 {
+  font-size: 12px;
+  margin-left: 30px;
+}  
+
+.js-toc .toc-link.node-name--H4 {
+  color:$contrast !important;
+  font-size: 12px;
+  margin-left: 40px;
+}
+
+.js-toc .toc-link.node-name--H5 {
+  color: $contrast !important;
+  font-size: 10px; 
+  margin-left: 50px;
+}
+
+.js-toc .is-collapsible {
+  max-height: 1000px;
+  overflow: hidden;
+  transition: all 300ms ease-in-out;
+}
+
+.js-toc .is-collapsed {
+  max-height: 0;
+}
+
+.js-toc .is-position-fixed {
+  position: fixed !important;
+  top: 0;
+}
+
+.js-toc .is-active-link {
+  color: rgba(120, 71, 181, 1);
+  border-left: 2px solid rgba(120, 71, 181, 1) !important;
+}
+
+.toc-list-item {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+
+/* styling for in-page toc inside of outside links */
+
+.page-only {
+  .toc-link.node-name--H2 {
+    font-size: 16px;
+  }
+}
+
+ul .js-toc {
+  li a { 
+    color: rgba(90, 90, 90, 1) !important;
+    border-left: none !important;
+  } 
+}
+
 
 // /* Responsive nav */ 
 
@@ -70,65 +136,4 @@
       fill: $primary; 
     }
   }
-}
-
-
-/* Styling for the js-toc */
-
-.js-toc .toc-link.node-name--H2 {
-  font-size: 14px;
-  margin-left: 20px;
-}
-
-.js-toc .toc-link.node-name--H3 {
-  font-size: 12px;
-  margin-left: 30px;
-}  
-
-.js-toc .toc-link.node-name--H4 {
-  color:$contrast !important;
-  font-size: 12px;
-  margin-left: 40px;
-}
-
-.js-toc .is-collapsible {
-  max-height: 1000px;
-  overflow: hidden;
-  transition: all 300ms ease-in-out;
-}
-
-.js-toc .is-collapsed {
-  max-height: 0;
-}
-
-.js-toc .is-position-fixed {
-  position: fixed !important;
-  top: 0;
-}
-
-.js-toc .is-active-link {
-  color: rgba(120, 71, 181, 1);
-  border-left: 2px solid rgba(120, 71, 181, 1) !important;
-}
-
-.toc-list-item {
-  padding-bottom: 0;
-  margin-bottom: 0;
-}
-
-
-/* styling for in-page toc inside of outside links */
-
-
-.page-only {
-  .toc-link.node-name--H2 {
-    font-size: 16px;
-  }
-}
-
-ul .js-toc {
-  li a { 
-    color: rgba(90, 90, 90, 1) !important;
-    border-left: none !important;
-  } 
 }
