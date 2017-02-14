@@ -4,6 +4,15 @@
 require "middleman-core/renderers/redcarpet"
 class CustomMarkdown < Middleman::Renderers::MiddlemanRedcarpetHTML
 
+  # Need to merge renderer options for redcarpet 
+  # https://github.com/vmg/redcarpet#darling-i-packed-you-a-couple-renderers-for-lunch
+  def initialize(options={})
+    super options.merge(
+      :prettify => true,
+      :with_toc_data => true,
+    )
+  end
+
   # Add .table class to markdown tables for Bambora UI styling
   def table(header, body)
   "<div class='table-wrap'>" \
