@@ -17,8 +17,7 @@ $(function() {
         }
     };
 
-
-    // Use div dropdown as <select>  
+    // Use div dropdown as <select>
     var val = $('.form-group .dropdown-open-on-hover .value');
     var options = $('.form-group .dropdown-open-on-hover ul');
 
