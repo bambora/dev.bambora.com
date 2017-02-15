@@ -2,10 +2,19 @@
 <%# requires local variables: 
       :schema_title => the name of the schema definitions
       :definitions => the definitions object of the swagger file 
-%> 
+%>
 
-<% schema_body = definitions["#{schema_title}"] %>
-<% required = schema_body.required %>
+<%# If have been passed a reference to the schema definition %> 
+<% if schema_title.is_a? String %> 
+  <% schema_body = definitions["#{schema_title}"] %>
+  <% required = schema_body.required %>
+
+<%# else been passed a definition itself %> 
+<% else %> 
+  <% schema_body = schema_title[1] %>
+  <% schema_title = schema_title[0] %>
+  <% required = [] %>
+<% end %>
 
 <span class="schema">
   

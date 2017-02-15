@@ -30,6 +30,10 @@ tocbot.init({
 
     // Class to add to list items.
     //listItemClass: '',
+
+    smoothScrollOptions: {
+      offset: 80 // offset to account for header
+    }
 });
 
 
@@ -54,4 +58,3 @@ $('#show-nav-link, #nav-close').click(function(event) {
     $("#show-nav-link").toggle();
     $(".nav-left").toggleClass("show");
 });
-

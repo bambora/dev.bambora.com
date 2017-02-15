@@ -5,10 +5,10 @@ layout: swagger
 navigation:
     header: portal.self_doc_header 
     footer: portal.self_doc_footer
-    toc: false
+    toc: none
     header_active: Example Pages
     
-swagger: portal.bambora
+swagger: portal.swagger.toc_2016-08-18
 ---
 
 # Example Swagger Page 

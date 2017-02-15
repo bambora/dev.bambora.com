@@ -1,10 +1,20 @@
-<% if current_page.data.navigation.toc %>
-  <% toc_file = get_data_from_frontmatter(current_page.data.navigation.toc) %>
-<% else %> 
-  <% toc_file = false %>
-<% end %> 
-
 <% this_page = get_page_path current_page %>
+
+<%# Get the toc data to use for this page %> 
+<% if current_page.data.navigation.toc %> 
+  <% if current_page.data.navigation.toc == "in-page" || 
+        current_page.data.navigation.toc == false %>    
+    <% toc_file = "in-page" %> 
+  <% elsif current_page.data.navigation.toc == "none" %> 
+    <% toc_file = "none" %> 
+  <% else %> 
+    <% toc_file = get_data_from_frontmatter(current_page.data.navigation.toc) %> 
+  <% end %> 
+<% else %>
+  <% toc_file = "in-page" %> <%# Default to in-page %> 
+<% end %>
+
+<% if toc_file != "none" %> 
 
 <nav class="nav-left nav-sticky nav-vertical">
   <a href="#" id="nav-close"><%= svg :close %></a>
@@ -35,7 +45,7 @@
   <% end %> 
 
   <%# Tocbot table of contents inside specified list of links %> 
-    <% if toc_file == false %>
+    <% if toc_file == "in-page" %>
       <div class="page-only js-toc"></div> 
     <% else %>
       <ul>
@@ -58,3 +68,5 @@
 </nav>
 
 <a href="#" id="show-nav-link"><%= svg :list %></a>
+
+<% end %> 

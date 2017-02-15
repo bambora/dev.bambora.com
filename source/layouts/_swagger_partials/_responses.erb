@@ -23,8 +23,27 @@
     <tr>
       <td><%= response_code %></td>
       <td><%= response_body.description %></td>
-      <% schemas.add(response_body.schema["$ref"].split('/').last) %>
-      <td><%= response_body.schema["$ref"].split('/').last %></td>
+
+      <%# response has $ref to definition %> 
+      <% if response_body.schema.has_key?("$ref") %> 
+        <% schemas.add(response_body.schema["$ref"].split('/').last) %>
+        <td><%= response_body.schema["$ref"].split('/').last %></td>
+      
+      <%# Response is an array with $ref to items %>
+      <% elsif response_body.schema.has_key?("type") and 
+          response_body.schema.type == "array" %> 
+          <% schemas.add(response_body.schema.items["$ref"].split('/').last) %>
+          <td>Array of <%= response_body.schema.items["$ref"].split('/').last %></td>
+      
+      <%# response is 'inline' %>
+      <% else %>
+        <%# Create formatted array for schema to pass to the partial %> 
+        <% formatted_schema = [] %>
+        <% formatted_schema[0] = "#{response_code} Response" %>
+        <% formatted_schema[1] = response_body.schema %>
+        <% schemas.add(formatted_schema) %>
+        <td><%= response_code %> Response</td>
+      <% end %> 
     </tr>
   <% end %>
   </tbody>

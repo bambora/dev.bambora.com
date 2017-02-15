@@ -2,12 +2,14 @@
 
 <div class="breadcrumb-trail">
 <% breadcrumbs.each_with_index do |(link, name), index| %> 
-    <span><a href="<%= link %>">
-        <%= File.basename(name, '.html').gsub(/_/, ' ').titleize %>
-    </a></span>
-    <% if index != breadcrumbs.length - 1 %> 
+    <% if index != breadcrumbs.length - 1 %>
+        <span><a href="<%= link %>">
+            <%= File.basename(name, '.html').gsub(/_/, ' ').titleize %>
+        </a></span>
         <span class="chevron"> / </span>
-    <% end %> 
+    <% else %>
+        <span class="this-page"><%= File.basename(name, '.html').gsub(/_/, ' ').titleize %></span>
+    <% end %>
 <% end %>
 </div>
 
