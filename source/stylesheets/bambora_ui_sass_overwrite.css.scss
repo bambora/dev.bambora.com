@@ -9,55 +9,60 @@
     version, but there's not a great way to do that right now.
 */
 
+@import 'bambora_ui_variables';
+@import 'site_primary_colors';
+
 /* a.scss */
 p a {
     &:not(.btn) {
-        color: $color-primary; 
-        border-bottom-color: $color-primary; 
-    }
+        color: $primary; 
+        border-bottom-color: $primary; 
 
-    &:visited {
-        color: $color-primary; 
-    }
+        &:visited {
+            color: $primary; 
+        }
 
-    &:hover {
-        color: $color-primary-light; 
-        border-bottom-color: $color-primary-light; 
+        &:hover {
+            color: $primary-light; 
+            border-bottom-color: $primary-light; 
+        }
     }
 }
 
+
 /* buttons.scss */
 $button-border-width: 1px;
-$button-border: $button-border-width solid $color-primary;
+$button-border: $button-border-width solid $primary;
 
 
 .btn {
-    background-color: $color-primary; 
-    color: $color-lightest;
+    background-color: $primary; 
+    color: $lightest;
 
     &:hover:not(:disabled) {
-        background-color: $color-primary-dark;
-        color: $color-lightest;
+        background-color: $primary-dark;
+        color: $lightest;
     }
 
     &:active:not(:disabled),
     &:focus:not(:disabled) {
-        background-color: $color-primary-dark;
+        background-color: $primary-dark;
     }
 }
 
 
 .btn-secondary {
-    color: $color-primary;
+    color: $primary;
     border: $button-border;
+    background-color: transparent;
 
     &:hover:not(:disabled) {
-        background-color: $color-primary;
-        color: $color-lightest;
+        background-color: $primary;
+        color: $lightest;
     }
     &:focus:not(:disabled),
     &:active:not(:disabled) {
-        background-color: $color-primary;
+        background-color: $primary;
     }
 }
 
@@ -65,12 +70,12 @@ $button-border: $button-border-width solid $color-primary;
 
 dl {
     &:after {
-        background-color: $color-muted-light;
+        background-color: $muted-light;
     }
 
     dt,
     dd {
-        background-color: $color-lightest;
+        background-color: $lightest;
     }
 }
 
@@ -78,20 +83,20 @@ dl {
 /* dropdown.scss */
 
 .dropdown {
-    color: $color-darkest;
-    border: 1px solid $color-muted;
+    color: $darkest;
+    border: 1px solid $muted;
 
     &:after {
-        border-bottom: 4px solid $color-darkest;
-        border-right: 4px solid $color-darkest;
+        border-bottom: 4px solid $darkest;
+        border-right: 4px solid $darkest;
     }
 }
 
 .dropdown-nav {
     
     &:after {
-        border-bottom: 4px solid $color-darkest;
-        border-right: 4px solid $color-darkest;
+        border-bottom: 4px solid $darkest;
+        border-right: 4px solid $darkest;
     }
 }
 
@@ -99,40 +104,40 @@ dl {
 .dropdown-nav {
 
     >ul {
-        background-color: $color-lightest;
+        background-color: $lightest;
 
         &:after {
-            border-left: 4px solid $color-lightest;
-            border-top: 4px solid $color-lightest;     
+            border-left: 4px solid $lightest;
+            border-top: 4px solid $lightest;     
         }
 
         >li {
             
             &:first-child:before{
-                background: $color-lightest;
+                background: $lightest;
             }
             &:last-child:after{
-                background: $color-lightest;                
+                background: $lightest;                
             }
 
             >a {
-                color: $color-contrast-dark;
-                background-color: $color-lightest;
+                color: $contrast-dark;
+                background-color: $lightest;
 
                 &:hover {
-                    background-color: $color-muted-light;
+                    background-color: $muted-light;
                 }
             }
         }
     }
 
     &.disabled {
-        background-color: $color-muted-light !important;
-        color: $color-muted-dark !important;
+        background-color: $muted-light !important;
+        color: $muted-dark !important;
         
         &:after {
-            border-bottom: 4px solid $color-muted-dark;
-            border-right: 4px solid $color-muted-dark;
+            border-bottom: 4px solid $muted-dark;
+            border-right: 4px solid $muted-dark;
         }
     }
 }
@@ -142,22 +147,22 @@ dl {
     &:hover,
     &:focus,
     &:active {
-        border-color: $color-primary;
+        border-color: $primary;
     }
 }
 
 .dropdown-open:not(.disabled) {
-    border-color: $color-primary;
+    border-color: $primary;
 }
 
 .nav-pane{
     // dark header 
     &.nav-pane-dark .dropdown-nav {
-        color: $color-lightest;
+        color: $lightest;
         
         &:after {
-            border-bottom: 5px solid $color-lightest;
-            border-right: 5px solid $color-lightest;
+            border-bottom: 5px solid $lightest;
+            border-right: 5px solid $lightest;
         }
     }
 }
@@ -166,20 +171,20 @@ dl {
 /* footer.scss */
 
 footer {
-    color: $color-contrast-light;
+    color: $contrast-light;
 
     svg path {
-        fill: $color-contrast-light;
+        fill: $contrast-light;
     }
 
     a {
-        color: $color-contrast-light;
+        color: $contrast-light;
 
         &:hover {
-            color: $color-primary;
+            color: $primary;
 
             svg path {
-                fill: $color-primary;
+                fill: $primary;
             }
         }
     }
@@ -191,7 +196,7 @@ footer {
 .form-group {
 
     label {
-        color: $color-muted-dark;
+        color: $muted-dark;
     }
 
     input[type='text'],
@@ -208,26 +213,26 @@ footer {
     input[type='year'],
     input[type='url'],
     input[type='color'] {
-        color: $color-darkest;
-        border: 1px solid $color-muted-dark;
+        color: $darkest;
+        border: 1px solid $muted-dark;
         &:focus {
-            border: 1px solid $color-primary;
+            border: 1px solid $primary;
         }
 
         &:disabled {
-            background: $color-muted;
+            background: $muted;
         }
     }
 
     textarea {
-        color: $color-contrast-dark;
-        border: 1px solid $color-muted-dark;
+        color: $contrast-dark;
+        border: 1px solid $muted-dark;
         &:focus {
-            border: 1px solid $color-primary;
+            border: 1px solid $primary;
         }
 
         &:disabled {
-            background: $color-muted;
+            background: $muted;
         }
     }
 }
@@ -237,32 +242,32 @@ div.checkbox {
     input[type=checkbox] {
 
         & + label:before {
-            background-color: $color-lightest;
-            border: 1px solid $color-muted-dark;
+            background-color: $lightest;
+            border: 1px solid $muted-dark;
         }
 
         &:checked + label:before {
-            background-color: $color-primary;
-            border-color: $color-primary;
+            background-color: $primary;
+            border-color: $primary;
         }
         &:disabled {
             & + label:before {
-                background-color: $color-muted;
+                background-color: $muted;
             }
 
             &+ label {
-                color: $color-muted-dark;
+                color: $muted-dark;
             }
         }
         &:disabled {
             &:checked {
                 & + label:before {
-                    background-color: $color-muted-dark !important;
-                    border-color: $color-muted-dark;
+                    background-color: $muted-dark !important;
+                    border-color: $muted-dark;
                 }
 
                 & + label {
-                    color: $color-muted-dark;
+                    color: $muted-dark;
                 }
             }
         }
@@ -270,7 +275,7 @@ div.checkbox {
     input[type=radio]:focus:not(:disabled) + label:before,
     input[type=radio]:active:not(:disabled) + label:before,
     &:hover input[type=checkbox]:not(:disabled) + label:before {
-        border-color: $color-primary;
+        border-color: $primary;
     }
     
 }
@@ -279,36 +284,36 @@ div.radio {
     input[type=radio] {
 
         & + label:before {
-            border: 1px solid $color-muted-dark;
+            border: 1px solid $muted-dark;
         }
 
         &:checked + label:before {
-            border-color: $color-primary;
+            border-color: $primary;
         }
         &:checked + label:after {
-            background-color: $color-primary;
+            background-color: $primary;
         }
         &:disabled {
             & + label:before {
-                background-color: $color-muted;
+                background-color: $muted;
             }
 
             &+ label {
-                color: $color-muted-dark;
+                color: $muted-dark;
             }
         }
         &:disabled {
             &:checked {
                 & + label:before {
-                    background-color: $color-muted !important;
-                    border-color:  $color-muted-dark !important;
+                    background-color: $muted !important;
+                    border-color:  $muted-dark !important;
                 }
                 &+ label:after {
-                    background-color: $color-muted-dark;
+                    background-color: $muted-dark;
                 }
 
                 &+ label {
-                    color: $color-muted-dark !important;
+                    color: $muted-dark !important;
                 }
             }
         }
@@ -316,7 +321,7 @@ div.radio {
     input[type=radio]:focus:not(:disabled) + label:before,
     input[type=radio]:active:not(:disabled) + label:before,
     &:hover input[type=radio]:not(:disabled) + label:before {
-            border-color: $color-primary;
+            border-color: $primary;
     }
 }
 
@@ -338,11 +343,11 @@ div.radio {
     input[type='color'].invalid,
     input[type='range'].invalid,
     input[type='file'].invalid {
-        border-color: $color-danger !important;
+        border-color: $danger !important;
     }
 
     label.invalid {
-        color: $color-danger !important;
+        color: $danger !important;
     }
 }
 
@@ -364,60 +369,60 @@ div.radio {
     input[type='color'].valid,
     input[type='range'].valid,
     input[type='file'].valid {
-        border-color: $color-success !important;
+        border-color: $success !important;
     }
 
     label.valid {
-        color: $color-success !important;
+        color: $success !important;
     }
 }
 
 /* hr.scss */
 
 hr {
-    background: $color-primary;
+    background: $primary;
 }
 
 /* icons.scss */
 
 .icon-circle-wrap {
-    border: 2px solid $color-contrast-dark;
+    border: 2px solid $contrast-dark;
 }
 
 /* labels.scss */
 
 .label {
-    background: $color-muted;
+    background: $muted;
 
     .remove {
-        border-left: 1px solid $color-muted-dark;
-        background: $color-muted;
+        border-left: 1px solid $muted-dark;
+        background: $muted;
     }
 }
 
 /* messages.scss */
 
 .message {
-    border: 1px solid $color-muted-dark;
+    border: 1px solid $muted-dark;
 }
 
 .well {
-    background-color: $color-muted-light;
+    background-color: $muted-light;
 }
 
 /* navigation.scss */
 
 .nav-pane {
-    background-color: $color-lightest;
+    background-color: $lightest;
     .nav-links > a {
 
         &:hover:not(.logo) {
-            color: $color-primary;            
+            color: $primary;            
         }
         &.active {
-            color: $color-primary;            
+            color: $primary;            
             &:after {
-                background: $color-primary;
+                background: $primary;
             }
         }
     }
@@ -425,26 +430,26 @@ hr {
     .nav-icon {
         &:hover {
             path {
-                fill: $color-primary;
+                fill: $primary;
             }    
         }
     }
 
     .notification {
-        color: $color-lightest;
-        background: $color-primary;
+        color: $lightest;
+        background: $primary;
     }
     &.nav-pane-dark {
         .nav-links > a:hover:not(.logo) {
-            color: $color-lightest;            
+            color: $lightest;            
         }
         .nav-links > a.active {
-            color: $color-lightest;
+            color: $lightest;
         }
         .nav-icon {
             &:hover {
                 path {
-                    fill: $color-lightest;
+                    fill: $lightest;
                 }    
             }
         }
@@ -456,20 +461,20 @@ hr {
     > a {
 
         &.active {
-            color: $color-primary;
+            color: $primary;
             
             &:after {
-                background: $color-primary;   
+                background: $primary;   
             }
         }
 
         &:before {
-            background: $color-muted; 
+            background: $muted; 
         }
     }
 
     &:before {
-        background: $color-muted;
+        background: $muted;
     }
 }
 
@@ -478,15 +483,15 @@ hr {
 
     li {
         a {
-            color: $color-contrast-dark;
+            color: $contrast-dark;
 
             &:hover {
-                color: $color-primary;
+                color: $primary;
             }
         }
         &.active a {
-            color: $color-primary;
-            border-left: 2px solid $color-primary;
+            color: $primary;
+            border-left: 2px solid $primary;
         }
     }
 }
@@ -498,22 +503,22 @@ hr {
 
         &.active {            
             > a {
-                color: $color-darkest !important;            
+                color: $darkest !important;            
             }
         }
     }
 
     a {
-        color: $color-contrast-light;
+        color: $contrast-light;
 
         &:hover {
-            color: $color-darkest;
+            color: $darkest;
         }
        
     }
     .menu-category .sub-elements > a {
         &.active {
-            color: $color-darkest !important;
+            color: $darkest !important;
         }
     }
 }
@@ -527,19 +532,19 @@ $spinner-border-width: 2px;
     .spinner-left,
     .spinner-right {
         &:after {
-            border: $spinner-border-width solid $color-primary;
+            border: $spinner-border-width solid $primary;
         }
     }
     &.spinner-success {
         .spinner-left:after,
         .spinner-right:after {
-            border-color: $color-success;
+            border-color: $success;
         }
     }
     &.spinner-danger {
         .spinner-left:after,
         .spinner-right:after {
-            border-color: $color-danger;
+            border-color: $danger;
         }
     }
 }
@@ -547,31 +552,31 @@ $spinner-border-width: 2px;
 /* tables.scss */
 
 table.table {
-    border: 1px solid $color-muted;
+    border: 1px solid $muted;
 
     thead {
         th {
-            color: $color-muted-dark;
+            color: $muted-dark;
         }
     }
     &.table-zebraff,
     &.table-zebraffe,
     &.table-giraffy {
         tbody tr:nth-child(odd) {
-            background-color: $color-muted-light;
+            background-color: $muted-light;
         }
     }
     &.table-highlight tbody tr:hover {
-        background-color: $color-muted-light;
+        background-color: $muted-light;
     }
 
     &.table-lines {
         thead th {
-            border-bottom: 1px solid $color-muted;    
+            border-bottom: 1px solid $muted;    
         }
 
         tbody td {
-            border-bottom: 1px solid $color-muted;            
+            border-bottom: 1px solid $muted;            
         }
     }
 }
@@ -580,15 +585,15 @@ table.table {
 /* typography.scss */
 
 body {
-    color: $color-darkest;
+    color: $darkest;
 }
 
 small,
 .text-small,
 .text-meta {
-    color: $color-muted-dark;
+    color: $muted-dark;
 }
 .text-micro,
 .text-label {
-    color: $color-muted-dark;
+    color: $muted-dark;
 }

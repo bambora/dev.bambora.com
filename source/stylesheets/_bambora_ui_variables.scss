@@ -1,5 +1,11 @@
 /* Variables (taken from Bambora UI) */ 
 
+/* 
+!! Don't change these colors to change the 
+    primary color of the site !!
+
+    use the file _primary_colors.scss */
+
 // colors
 $primary: rgb(120, 71, 181);
 $amethyst: rgb(69, 36, 89);
@@ -23,12 +29,6 @@ $contrast-dark: rgb(90, 90, 90);
 $success: rgb(91, 181, 99);
 $danger: rgb(224, 80, 67);
 
-
-// "these aliases are used internaly, to simplify 
-// refactoring if the primary color in the ui framework change" 
-// -- Bambora UI
-$color-primary-light: $faded-violet;
-$color-primary-dark: $amethyst;
 
 // screen sizes
 $screen-md: 992px;
