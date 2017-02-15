@@ -8,12 +8,12 @@
 <nav class="nav-pane nav-fixed">
 <% end %>
     <div class="pull-left nav-links">
-    <a href="<%= nav.logo_link %>" class="logo">
+    <a href="<%= nav.logo.link %>" class="logo">
         <%# set logo version based on hero image %> 
         <% if current_page.data.hero_unit and current_page.data.hero_unit.hero_image %>
-            <%= image_tag "svg/zebraffe-dev-white.svg" %>
+            <%= image_tag nav.logo.light %>
         <% else %>
-            <%= image_tag "svg/zebraffe-dev.svg" %>
+            <%= image_tag nav.logo.dark %>
         <% end %>
     </a>
 
