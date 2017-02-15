@@ -59,6 +59,22 @@ pre {
       color: rgba(202, 172, 223, 1);
       border-bottom: rgba(202, 172, 223, 1) 1px solid; 
   }
+
+
+  .dropdown li a {
+    border: none;
+    display: block;
+    color: rgba(90, 90, 90, 1);
+
+    &:hover {
+      border: none;
+      color: rgba(90, 90, 90, 1);
+    }
+
+    &:visited {
+      color: rgba(90, 90, 90, 1);
+    }
+  }
 }
 
 

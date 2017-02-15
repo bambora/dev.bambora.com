@@ -4,6 +4,8 @@ links:
     title: Documentation
   - file: /portal/example_pages/
     title: Example Pages
+  - file: /portal/forms/
+    title: Forms
 buttons:
   - file: /portal/
     title: Sign Up
