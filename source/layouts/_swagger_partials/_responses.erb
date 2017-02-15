@@ -38,8 +38,15 @@
       <%# Response is an array with $ref to items %>
       <% elsif response_body.schema.has_key?("type") and 
           response_body.schema.type == "array" %> 
-          <% schemas.add(response_body.schema.items["$ref"].split('/').last) %>
-          <td>Array of <%= response_body.schema.items["$ref"].split('/').last %></td>
+        
+        <% response_schema = response_body.schema.items["$ref"].split('/').last %>
+        <% schemas.add(response_schema) %>
+        <td>
+          <a href="#<%= make_html_safe "#{operation}-#{path_name}-#{response_schema}" %>">
+            Array of <%= response_schema %> 
+          </a>
+        </td> 
+        
       
       <%# response is 'inline' %>
       <% else %>
@@ -48,7 +55,11 @@
         <% formatted_schema[0] = "#{response_code} Response" %>
         <% formatted_schema[1] = response_body.schema %>
         <% schemas.add(formatted_schema) %>
-        <td><%= response_code %> Response</td>
+        <td>
+          <a href="#<%= make_html_safe "#{operation}-#{path_name}-#{response_code}Response" %>">
+            <%= response_code %> Response
+          </a>
+        </td>
       <% end %> 
     </tr>
   <% end %>

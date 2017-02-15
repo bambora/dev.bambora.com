@@ -8,8 +8,8 @@ navigation:
     toc: none
     header_active: Example Pages
     
-#swagger: portal.swagger.toc_2016-08-18
-swagger: portal.bambora
+swagger: portal.swagger.toc_2016-08-18
+# swagger: portal.bambora
 
 ---
 
