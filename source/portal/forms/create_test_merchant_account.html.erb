@@ -8,7 +8,7 @@ navigation:
     toc: none
     header_active: Forms
 
-temp_site_url: 'http://1e8556da.ngrok.io'
+site_url: 'http://1e8556da.ngrok.io'
 ---
 
 <h1>Create a Test Merchant Account</h1>
@@ -16,8 +16,8 @@ temp_site_url: 'http://1e8556da.ngrok.io'
 <% form_tag 'https://api.beanstream.com/scripts/merchantaccount/createtestaccount.aspx', 
     :id => 'createTestAccount_form', :class => 'form-group', :method => 'POST' do %> 
 
-  <%= hidden_field_tag :error_page_url, :value => current_page.data.temp_site_url + '/portal/forms/create_test_merchant_account' %> 
-  <%= hidden_field_tag :success_page_url, :value => current_page.data.temp_site_url + '/portal/forms/create_test_merchant_account' %> 
+  <%= hidden_field_tag :error_page_url, :value => current_page.data.site_url + '/portal/forms/create_test_merchant_account' %> 
+  <%= hidden_field_tag :success_page_url, :value => current_page.data.site_url + '/portal/forms/create_test_merchant_account' %> 
   <%= hidden_field_tag :create_session, :value => '1' %>
   <%= hidden_field_tag :account_type, :value => 'DEVELOPER' %>
 
@@ -51,22 +51,26 @@ temp_site_url: 'http://1e8556da.ngrok.io'
   </div>
 
   <div class="form-group">
-  <%= label_tag :country_and_currency %>
-  <div class="dropdown dropdown-open-on-hover" role="listbox">
-    Your country and currency
-    <ul>
-      <li role="option"><a href="#">Canada - CAD</a></li>
-      <li role="option"><a href="#">Canada - USD</a></li>
-      <li role="option"><a href="#">USA - USD</a></li>
-      <li role="option"><a href="#">UK - GBP</a></li>
-      <li role="option"><a href="#">UK - Euro</a></li>
-    </ul>
+    <%= label_tag :country_and_currency %>
+    <div id="country-currency-select" class="dropdown dropdown-open-on-hover" role="listbox">
+      <div class="value">Your country and currency</div>
+      <ul>
+        <li role="option"><a href="#">Canada - CAD</a></li>
+        <li role="option"><a href="#">Canada - USD</a></li>
+        <li role="option"><a href="#">USA - USD</a></li>
+        <li role="option"><a href="#">UK - GBP</a></li>
+        <li role="option"><a href="#">UK - Euro</a></li>
+      </ul>
+    </div>
   </div>
-  </div>
+
+  <%= hidden_field_tag :merchant_country, :value => 'CA' %> 
+  <%= hidden_field_tag :merchant_currency, :value => '1' %> 
 
   <%= submit_tag 'Create Test Merchant Account', :class => "btn btn-default" %> 
 <% end %>
-<div class='block-highlight hidden'><p></p></div>
+
+<div class='message block-highlight hidden'><p></p></div>
 
 
 <%= javascript_include_tag 'page/create_test_merchant_account' %>

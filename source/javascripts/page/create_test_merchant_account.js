@@ -18,21 +18,50 @@ $(function() {
     };
 
 
-    // Update hidden fields for merchant country and merchant currency when 
+    // Use div dropdown as <select>  
+    var val = $('.form-group .dropdown-open-on-hover .value');
+    var options = $('.form-group .dropdown-open-on-hover ul');
+
+    options.children('li').click(function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        val.text($(this).text());
+    });
+
+    // Update hidden fields for merchant coutnry and merchant currency when 
     // select field representing both is changed. 
     // legend ([country, currency]):
     //      'Canada - CAD'   => ['CA', 1]
     //      'Canada - USD'   => ['CA', 2]
-    //      'USA - USD'      => ['SE', 3]
+    //      'USA - USD'      => ['US', 2]
+    //      'UK - GBP'       => ['SE', 3]
     //      'UK - Euro'      => ['SE', 4]
-    var $countryAndCurrencySelect = $('#createTestAccount_form select[name="country_and_currency"]');
+    var $countryCurrencySelect = $('#country-currency-select .value');
     var $countryHiddenInput = $('#createTestAccount_form input[name="merchant_country"]');
     var $currencyHiddenInput = $('#createTestAccount_form input[name="merchant_currency"]');
-
-    $countryAndCurrencySelect.change(function() {
-        var countryCurrencyVals = $countryAndCurrencySelect.val().split('-');
-        $countryHiddenInput.val(countryCurrencyVals[0]);
-        $currencyHiddenInput.val(countryCurrencyVals[1]);
+    $("#country-currency-select ul li").click(function() {
+        switch($countryCurrencySelect.text()) {
+            case "Canada - CAD":
+                $countryHiddenInput.val('CA');
+                $currencyHiddenInput.val('1');
+                break;
+            case "Canada - USD": 
+                $countryHiddenInput.val('CA');
+                $currencyHiddenInput.val('2');
+                break;
+            case "USA - USD": 
+                $countryHiddenInput.val('US');
+                $currencyHiddenInput.val('2');
+                break;
+            case "UK - GBP": 
+                $countryHiddenInput.val('SE');
+                $currencyHiddenInput.val('3');
+                break;
+            case "UK - Euro": 
+                $countryHiddenInput.val('SE');
+                $currencyHiddenInput.val('4');
+                break;
+        }
     });
 
 
@@ -47,7 +76,7 @@ $(function() {
 
         // if account was created successfully: 
         if(urlStatus === '1') { 
-            $statusParagraph.html("Account successfully created!");
+            $statusParagraph.html("<strong>Account successfully created!</strong>");
             $statusParagraph.append("<br> Merchant ID: " + getUrlParameter('merchant_id'));
             $statusDiv.removeClass('hidden notice error');
             $statusDiv.addClass('success');
@@ -74,7 +103,7 @@ $(function() {
                 $currentForm.find("label[for=" + errorFields[i] + "]").addClass('invalid');
             }
             
-            $statusParagraph.html("Account creation failed.");
+            $statusParagraph.html("<strong>Account creation failed.</strong>");
             $statusParagraph.append("<br> " + errorMessage); 
             $statusDiv.removeClass('hidden success notice');
             $statusDiv.addClass('error');

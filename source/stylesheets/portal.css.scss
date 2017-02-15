@@ -7,7 +7,6 @@
 @import 'side-nav';
 
 /* general */
-
 div.clear {
     clear:both;
 }
@@ -40,6 +39,7 @@ pre {
   white-space: pre-wrap; 
 }
 
+// TODO: Fix li so it doesn't underline in dropdowns, other places. 
 .markdown {
   li a:not(.btn) {    // link styling in markdown lists
     color: rgba(120, 71, 181, 1);
@@ -76,8 +76,6 @@ pre {
     }
   }
 }
-
-
 
 /* flex box cards */
 
@@ -318,5 +316,32 @@ footer {
     text-decoration: none;
     transition: all 100ms ease-out;
     font-weight:bold;
+  }
+}
+
+
+/* form messages */
+
+.block-highlight {
+
+  padding: 15px;
+
+  p {
+    padding-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  &.hidden {
+    display: none;
+  }
+
+  &.success {
+    color: $success;
+    border-color: $success;
+  }
+
+  &.error {
+    color: $danger;
+    border-color: $danger;
   }
 }
