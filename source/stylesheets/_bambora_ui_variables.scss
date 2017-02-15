@@ -1,19 +1,31 @@
 /* Variables (taken from Bambora UI) */
-$muted: rgb(240, 240, 240);
-$muted-light: rgb(246, 246, 246);
-$muted-dark: rgb(200, 200, 200);
-$lightest: rgb(255, 255, 255);
-$contrast: rgb(140, 140, 140);
-$contrast-light: rgb(163, 163, 163);
-$darkest: rgb(30, 30, 30);
-$amethyst: rgb(69, 36, 89);
-$primary: rgb(120, 71, 181);
-$contrast-dark: rgb(90, 90, 90);
 
+// colors
+$primary: rgb(120, 71, 181);
+$amethyst: rgb(69, 36, 89);
+$nude: rgb(239, 200, 177);
+$raspberry: rgb(203, 70, 112);
+$faded-violet: rgb(202, 172, 223);
+$sky-blue: rgb(189, 222, 245);
+$tabriz-blue: rgb(28, 145, 176);
+$green-powder: rgb(28, 145, 176);
 $green-light: rgb(0, 166, 153);
 $factory-yellow: rgb(252, 207, 120);
-$tabriz-blue: rgb(28, 145, 176);
+$bronze: rgb(160, 123, 94);
+$darkest: rgb(30, 30, 30);
+$lightest: rgb(255, 255, 255);
+
+$muted-light: rgb(246, 246, 246);
+$muted: rgb(240, 240, 240);
+$muted-dark: rgb(200, 200, 200);
+
+$contrast-light: rgb(163, 163, 163);
+$contrast: rgb(140, 140, 140);
+
+$contrast-dark: rgb(90, 90, 90);
+$success: rgb(91, 181, 99);
 $danger: rgb(224, 80, 67);
 
+// screen sizes
 $screen-md: 992px;
 $screen-sm: 767px;

@@ -26,3 +26,14 @@ $('.enum-link').click(function(event) {
     event.preventDefault();
     $(this).siblings('.enum-list').toggle();
 });
+
+// smooth scrolling to schema definitions 
+$('a[href^="#"]').on('click', function(event) {
+    var target = $(this.getAttribute('href'));
+    if( target.length ) {
+        event.preventDefault();
+        $('html, body').stop().animate({
+            scrollTop: target.offset().top - 100 // accomodate for fixed header
+        }, 500);
+    }
+});

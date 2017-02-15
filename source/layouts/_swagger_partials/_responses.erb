@@ -25,15 +25,28 @@
       <td><%= response_body.description %></td>
 
       <%# response has $ref to definition %> 
-      <% if response_body.schema.has_key?("$ref") %> 
-        <% schemas.add(response_body.schema["$ref"].split('/').last) %>
-        <td><%= response_body.schema["$ref"].split('/').last %></td>
+      <% if response_body.schema.has_key?("$ref") %>
+        <% response_schema = response_body.schema["$ref"].split('/').last %> 
+        <% schemas.add(response_schema) %>
+        <td>
+          <a href="#<%= make_html_safe "#{operation}-#{path_name}-#{response_schema}" %>">
+            <%= response_schema %>        
+          </a>
+        </td>
+
       
       <%# Response is an array with $ref to items %>
       <% elsif response_body.schema.has_key?("type") and 
           response_body.schema.type == "array" %> 
-          <% schemas.add(response_body.schema.items["$ref"].split('/').last) %>
-          <td>Array of <%= response_body.schema.items["$ref"].split('/').last %></td>
+        
+        <% response_schema = response_body.schema.items["$ref"].split('/').last %>
+        <% schemas.add(response_schema) %>
+        <td>
+          <a href="#<%= make_html_safe "#{operation}-#{path_name}-#{response_schema}" %>">
+            Array of <%= response_schema %> 
+          </a>
+        </td> 
+        
       
       <%# response is 'inline' %>
       <% else %>
@@ -42,7 +55,11 @@
         <% formatted_schema[0] = "#{response_code} Response" %>
         <% formatted_schema[1] = response_body.schema %>
         <% schemas.add(formatted_schema) %>
-        <td><%= response_code %> Response</td>
+        <td>
+          <a href="#<%= make_html_safe "#{operation}-#{path_name}-#{response_code}Response" %>">
+            <%= response_code %> Response
+          </a>
+        </td>
       <% end %> 
     </tr>
   <% end %>
@@ -66,7 +83,9 @@
             <%= partial "layouts/_swagger_partials/schema",
               :locals => {
                 :schema_title => schema, 
-                :definitions => definitions
+                :definitions => definitions,
+                :operation => operation, 
+                :path_name => path_name
               } %>
           </div>
         </td>

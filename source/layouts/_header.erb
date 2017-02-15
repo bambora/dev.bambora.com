@@ -32,12 +32,21 @@
 
         <a id="search-button" href="#"><%= svg "search" %></a>
         <% nav.buttons and nav.buttons.each do |btn| %>
+<<<<<<< HEAD
             <% if not btn.secondary %>
                 <a href="<%= btn.file %>" class="btn btn-small">
                     <%= btn.title %>
                 </a>
             <% else %>
                 <a href="<%= btn.file %>" class="btn btn-small btn-secondary">
+=======
+            <% if not btn.secondary %> 
+                <a href="<%= btn.file %>" class="btn btn-small" target="_blank">
+                    <%= btn.title %>
+                </a>
+            <% else %> 
+                <a href="<%= btn.file %>" class="btn btn-small btn-secondary" target="_blank">
+>>>>>>> v2
                     <%= btn.title %>
                 </a>
             <% end %>
