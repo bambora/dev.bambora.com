@@ -33,7 +33,7 @@ end
 
 # Active middleman-search
 activate :search do |search|
-  search.language = 'es' # TODO: Bug workaround. Fix.
+  search.language = 'es' # TODO: Bug workaround. Doesn't work for english lang. Fix.
   search.resources = ['portal/']
   search.fields = {
     title:   {boost: 100, store: true, required: true},

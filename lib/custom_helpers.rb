@@ -77,7 +77,8 @@ module CustomHelpers
     IO.copy_stream(download, "#{root}/data/#{destination}")
   end
 
-
+  # Get the data file referenced using dot notation 
+  # from the front matter of a page. 
   def get_data_from_frontmatter(path) 
     path = path.split('.')
     result = data
