@@ -10,7 +10,7 @@ navigation:
 
 hero_unit:
     #hero_image: shoal-1.png
-    hero_image: beanstream_hero.svg
+    hero_image: beanstream_hero.jpg
     big_heading: Developer Documentation.
     tag_line:  >
         This single source of truth for our payment gateway.
