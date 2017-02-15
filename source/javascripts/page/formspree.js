@@ -1,5 +1,22 @@
 $(function() {
 
+    // Use div dropdown as <select>
+    var val = $('.form-group .dropdown-open-on-hover .value');
+    var options = $('.form-group .dropdown-open-on-hover ul');
+
+    options.children('li').click(function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        val.text($(this).text());
+    });
+
+    // Update hidden field for country when select field is changed.
+    var $countrySelect = $("#country-select .value");
+    var $countryHiddenField = $("input[name='country']");
+    $("#country-select ul li").click(function() {
+        $countryHiddenField.val($countrySelect.text());
+    });
+
     // Handle formspree form submission (Asynchronous)
     $('.formspree-form').submit(function(e) { 
         e.preventDefault();
