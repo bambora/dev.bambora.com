@@ -23,6 +23,13 @@ $contrast-dark: rgb(90, 90, 90);
 $success: rgb(91, 181, 99);
 $danger: rgb(224, 80, 67);
 
+
+// "these aliases are used internaly, to simplify 
+// refactoring if the primary color in the ui framework change" 
+// -- Bambora UI
+$color-primary-light: $faded-violet;
+$color-primary-dark: $amethyst;
+
 // screen sizes
 $screen-md: 992px;
 $screen-sm: 767px;
