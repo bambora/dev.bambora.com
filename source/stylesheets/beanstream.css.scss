@@ -1,0 +1,18 @@
+// Import variables
+@import 'syntax'; // syntax highlighting for code blocks
+@import 'bambora_ui_variables'; // colors, break points, etc.
+@import 'z-index';
+
+// Import stylesheets
+@import 'side-nav';
+
+/* general */
+
+a.btn {
+    background-color:#067aed;
+}
+
+a.btn-secondary {
+    border-color:#067aed;
+    background-color: transparent;
+}

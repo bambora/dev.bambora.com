@@ -5,41 +5,35 @@ layout: product
 navigation:
   header: na.tocs.na_nav_header
   footer: na.tocs.na_nav_footer
-  toc: na.tocs.references
-  header_active: References
+  toc: na.tocs.guides
+  header_active: Guides
 
 cards:
     -                
-        title: APIs - Merchant
+        title: Quickstart - Merchant
         description: >
             Use the Bambora native payments SDK to accept payments in
             iOS and android apps.
         icon: notification-active
         tag: tag
-        link: /content/na/references/merchant_api/
+        link: /content/na/guides/merchant_quickstart/
     -
-        title: APIs - Partner
+        title: Quickstart - Partner
         description: >
             Use Bambora checkout, or one of our Shopping Cart plugins,
             to accept payments on your website or online store.
         icon: checkmark
-        link: /content/na/references/partner_api/
+        link: /content/na/guides/partner_quickstart/
     -
-        title: SDKs - Merchant
+        title: Onboarding
         description: >
             Get up and running in minutes. Use the Bambora API to make
             payments and much more.
         icon: list
-        link: /content/na/references/merchant_sdks/
-    -
-        title: Test Cards
-        description: >
-            You can use these test cards for testing card registration and
-            purchasing (no real money is charged when these cards are used).
-        icon: creditcard-outline
+        link: /content/na/guides/onboarding/
 
 ---
 
-# References
+# Guides
 
-### In-depth information on our payment gateway.
+### Functional descriptions of getting things done with our payment gateway.

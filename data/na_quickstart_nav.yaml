@@ -17,13 +17,13 @@ header:
       title: Login
 
 toc:
-- file: '/content/na/guides/quickstart/index'
+- file: '/docs/guides/quickstart/index'
   title: 'Merchant Setup'
-- file: '/content/na/guides/quickstart/merchant_quickstart'
+- file: '/docs/guides/quickstart/merchant_quickstart'
   title: 'Merchant Quickstart'
-- file: '/content/na/guides/quickstart/partner_setup'
+- file: '/docs/guides/quickstart/partner_setup'
   title: 'Partner Setup'
-- file: '/content/na/guides/quickstart/partner_quickstart'
+- file: '/docs/guides/quickstart/partner_quickstart'
   title: 'Partner Quickstart'
 
 footer:

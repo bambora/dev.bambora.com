@@ -17,15 +17,15 @@ header:
       title: Login
 
 toc:
-- file: '/content/na/references/api/index'
+- file: '/docs/references/api/index'
   title: 'APIs'
-- file: '/content/na/references/api/merchant_overview'
+- file: '/docs/references/api/merchant_overview'
   title: 'Merchant API Overview'
-- file: '/content/na/references/sdk/merchant_spec'
+- file: '/docs/references/sdk/merchant_spec'
   title: 'Merchant API Spec'
-- file: '/content/na/references/api/partner_overview'
+- file: '/docs/references/api/partner_overview'
   title: 'Partner API Overview'
-- file: '/content/na/references/sdk/partner_spec'
+- file: '/docs/references/sdk/partner_spec'
   title: 'Partner API Spec'
 
 

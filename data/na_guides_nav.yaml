@@ -17,9 +17,9 @@ header:
       title: Login
 
 toc:
-- file: '/content/na/guides/quickstart/setup'
+- file: '/docs/guides/quickstart/setup'
   title: 'Setup'
-- file: '/content/na/guides/quickstart/call_the_apis'
+- file: '/docs/guides/quickstart/call_the_apis'
   title: 'Call the APIs'
 
 
