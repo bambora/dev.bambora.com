@@ -6,6 +6,8 @@
 
   <body class="<%= page_classes %>">
 
+    <%= partial "layouts/google_tag_manager" %>
+
     <% hero_image = current_page.data.hero_image %>
     <%# Open hero block div with image if it has been specified %>
     <% if hero_image = current_page.data.hero_unit.hero_image %>

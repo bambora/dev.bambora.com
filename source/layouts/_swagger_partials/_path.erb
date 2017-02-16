@@ -64,7 +64,7 @@ currently handled. %>
 
             <!-- Parameters table -->
             <h5>Parameters</h5>
-            <% if not op_obj.parameters.empty? %>
+            <% if op_obj.parameters and not op_obj.parameters.empty? %>
                 <%= partial "layouts/_swagger_partials/parameters", :locals => {
                         :params        => op_obj.parameters, 
                         :definitions   => definitions,

@@ -57,13 +57,25 @@ $(document).ready(function () {
         // Using the reference get the document
         var doc = lunrData.docs[ref];
 
+        // Get Breadcrumbs 
+        var breadcrumbs = "<p>" + doc.breadcrumbs + "</p>";
+
+        // Get Title 
+        var title = "<p><a href='" + doc.url + "'>" + doc.title + "</a></p>";
+
+        // Get Summary 
         if(!doc.summary) {
           var summary = "<p class='summary'><em>Page has no summary </em></p>"; 
         } else {
           var summary = "<p class='summary'>" + doc.summary + "</p>";
         }
 
-        var searchitem = "<div class='search-result'><p><a href='" + doc.url + "'>" + doc.title + "</a>" + summary;
+        // Create search result 
+
+        var searchitem = "<div class='search-result'>" + breadcrumbs + 
+                          title + summary + "</div>"; 
+
+        // var searchitem = "<div class='search-result'><p><a href='" + doc.url + "'>" + doc.title + "</a>" + summary;
 
         searchresults.append(searchitem);
       }

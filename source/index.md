@@ -1,1 +1,2 @@
-[Go to the new portal here](/portal)
+[Go to the selfdoc portal here](/portal)
+

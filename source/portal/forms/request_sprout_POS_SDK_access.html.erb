@@ -13,7 +13,7 @@ sproutpos_sdk_request_email: 'ethan.wipond@beanstream.com'
 
 <h1>Request Access to SproutPOS SDK</h1>
 
-<% form_tag 'https://formspree.io/'+current_page.data.sproutpos_sdk_request_email, 
+<% form_tag "https://formspree.io/#{current_page.data.sproutpos_sdk_request_email}", 
     :id => 'requestSproutSDK_form', :class => 'form-group formspree-form', :method => 'POST' do %> 
 
   <div class="form-group">
