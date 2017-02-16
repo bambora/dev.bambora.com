@@ -5,6 +5,7 @@
 // are in the header. 
 $header-break-width: 875px;
 
+
 .nav-fixed {
   position: fixed;
   width: 100%;
@@ -13,6 +14,10 @@ $header-break-width: 875px;
 
 .nav-pane a:hover path {
       fill: $primary;
+}
+
+.header-contents {
+  display: inline;
 }
 
 /* transparent nav on landing page */
@@ -39,6 +44,7 @@ nav { // transitions on landing page scroll
   position: fixed;
   top: 25px;
   left: 20px;
+  display: none;
 }
 
 
@@ -47,11 +53,16 @@ nav { // transitions on landing page scroll
 // really work for the site. 
 @media (max-width: $header-break-width) {  
 
+  .hamburger-icon {
+    display: inline;
+  }
+
   .nav-pane {
 
       background-color: rgb(31, 37, 50);
 
       .header-contents {
+        display: none;
         width: 200px;
         background-color: rgb(31, 37, 50);
         position: fixed;
@@ -98,3 +109,4 @@ nav { // transitions on landing page scroll
       }
   }
 }
+

@@ -10,3 +10,21 @@ $w.on("scroll", function(e) {
         $nav.addClass('nav-pane-transparent');
     }
 });
+
+// TODO: Putting this here now but should be site-wide. 
+
+// Hamburger menu on mobile screen
+$('.hamburger-icon').click(function(event) {
+    event.preventDefault();
+    $(".header-contents").slideToggle("fast");
+});
+
+
+$(window).on('resize', function(event){
+    var windowWidth = $(window).width();
+    if(windowWidth > 875){
+        $('.header-contents').show();
+    }
+});
+
+
