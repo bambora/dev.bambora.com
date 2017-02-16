@@ -12,6 +12,12 @@
   top: 106px; // 66px header + 40px of padding
 }
 
+/* Fixes it so the tocbot toc fits in the list */
+.nav-vertical li {
+  height: auto !important;
+  min-height: 34px !important;
+}
+
 /* Styling for the js-toc */
 
 .js-toc .toc-link.node-name--H2 {
