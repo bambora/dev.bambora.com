@@ -1,0 +1,35 @@
+---
+title: Create API Passcode Form
+layout: tutorial
+
+navigation:
+    header: na.tocs.na_nav_header
+    footer: na.tocs.na_nav_footer
+    toc: none
+    header_active: Forms
+
+---
+
+<h1>Encode API Passcode</h1>
+
+<div class="col-md-6">
+
+<% form_tag '#', :id => "encodeIdAndKey_form", :class => "form-group" do %>
+
+    <div class="form-group">
+      <%= label_tag :merchantId, :caption => "Merchant ID" %>
+      <%= text_field_tag :merchantId, :placeholder => 'Your Merchant ID', :id => "merchantId", :required => true %>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :apiKey, :caption => "API Key" %>
+      <%= text_field_tag :apiKey, :placeholder => 'Your API Key', :id => "apiKey", :required => true %>
+    </div>
+
+    <%= submit_tag "Encode", :class => "btn btn-default" %>
+<% end %>
+<div id="encodeIdAndKey_result" class='block-highlight message hidden'><p></p></div>
+
+<%= javascript_include_tag "na/encode_api_passcode" %>
+
+</div>

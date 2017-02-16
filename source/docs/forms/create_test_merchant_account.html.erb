@@ -1,0 +1,82 @@
+---
+title: Merchant Form
+layout: tutorial
+
+navigation:
+    header: na.tocs.na_nav_header
+    footer: na.tocs.na_nav_footer
+    toc: none
+    header_active: Forms
+
+site_url: ''
+---
+
+
+<h1>Create a Test Merchant Account</h1>
+
+<div class="col-md-6">
+
+
+<% form_tag 'https://api.beanstream.com/scripts/merchantaccount/createtestaccount.aspx',
+    :id => 'createTestAccount_form', :class => 'form-group', :method => 'POST' do %>
+
+  <%= hidden_field_tag :error_page_url, :value => "#{current_page.data.site_url}/portal/forms/create_test_merchant_account" %>
+  <%= hidden_field_tag :success_page_url, :value => "#{current_page.data.site_url}/portal/forms/create_test_merchant_account" %>
+  <%= hidden_field_tag :create_session, :value => '1' %>
+  <%= hidden_field_tag :account_type, :value => 'DEVELOPER' %>
+
+  <div class="form-group">
+  <%= label_tag :user_login, :caption => 'Username: ' %>
+  <%= label_tag :user_login, :caption => '6-32 chars. alphanumeric, hyphens, underscores, not spaces' %>
+  <%= text_field_tag :user_login, :placeholder => 'Your username', :id => 'user_login', :required => true %>
+  </div>
+
+  <div class="form-group">
+  <%= label_tag :company_login, :caption => 'Company: ' %>
+  <%= label_tag :company_login, :caption => '6-32 chars. alphanumeric, hyphens, underscores, not spaces' %>
+  <%= text_field_tag :company_login, :placeholder => 'Your company', :id => 'company_login', :required => true %>
+  </div>
+
+  <div class="form-group">
+  <%= label_tag :user_email, :caption => 'Email: ' %>
+  <%= email_field_tag :user_email, :placeholder => 'Your email', :id => 'user_email', :required => true %>
+  </div>
+
+  <div class="form-group">
+  <%= label_tag :user_password, :caption => 'Password: ' %>
+  <%= label_tag :user_password, :caption => '8-16 chars including an uppercase and a lowercase char,
+                                              and either a special char or a number' %>
+  <%= password_field_tag :user_password, :placeholder => 'Your password', :id => 'user_password', :required => true %>
+  </div>
+
+  <div class="form-group">
+  <%= label_tag :confirm_password %>
+  <%= password_field_tag :confirm_password, :placeholder => 'Confirm password', :id => 'confirm_password', :required => true %>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :country_and_currency %>
+    <div id="country-currency-select" class="dropdown dropdown-open-on-hover" role="listbox">
+      <div class="value">Your country and currency</div>
+      <ul>
+        <li role="option"><a href="#">Canada - CAD</a></li>
+        <li role="option"><a href="#">Canada - USD</a></li>
+        <li role="option"><a href="#">USA - USD</a></li>
+        <li role="option"><a href="#">UK - GBP</a></li>
+        <li role="option"><a href="#">UK - Euro</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <%= hidden_field_tag :merchant_country, :value => 'CA' %>
+  <%= hidden_field_tag :merchant_currency, :value => '1' %>
+
+  <%= submit_tag 'Create Test Merchant Account', :class => "btn btn-default" %>
+<% end %>
+
+<div class='message block-highlight hidden'><p></p></div>
+
+
+<%= javascript_include_tag 'na/create_test_merchant_account' %>
+
+</div>

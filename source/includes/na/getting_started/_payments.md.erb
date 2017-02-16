@@ -1,0 +1,36 @@
+# Payments
+We facilitate payments **online** with our RESTful APIs and Web SDKs, **in-app** with our Mobile SDKs and **in-person** (tap, chip & pin or swipe) with our Point Of Sale hardware (SproutPOS).
+
+## Online
+You can process payments online either directly with our RESTful Payments API or via one of our API wrapping libraries (our Server SDK) in JS, PHP, Ruby, Java, C#, Python or Go.
+
+You can collect credit card data while limiting the scope of your PCI compliance to it's easiest level (SAQ A) by using our Payfields or Payform browser-side JS libraries to accept and tokenize the data.
+
+## In-App
+You can also limit the scope of your PCI compliance while collecting credit card data for in-app purchases using either iOS Payform SDK or Android Payform SDK. You then process the payment from your server using the RESTful Payments API or a Server SDK.
+
+## Point of Sale (POS)
+You can accept payments in-person with our point of sale (POS) hardware system - SproutPOS. We offer SDKs on Android and iOS which utilize the iCMP payment terminal by Ingenico to support swipe, chip and pin, NFC contactless on Visa, MasterCard and Interac debit cards
+as well as Apple Pay.
+
+
+# Accounts
+We offer two main types of account: Merchant accounts and Partner accounts. A merchant account allows you to process payments. A Partner account allows you to onboard sub merchants and process payments on their behalf.
+
+## Merchant Accounts
+A merchant account is not your average bank account. A merchant account is where settlement takes place. Once the funds have cleared in the gateway and acquiring process, they are then settled into your merchant account. These funds are then passed through to your business bank account.
+
+We offer two types of merchant account: Payment Facilitator (PayFac) accounts and Independent Sales Organization (ISO) accounts.
+
+### PayFac Merchant Account
+A PayFac account is a sub-merchant account with a Payment Facilitator that holds a master merchant account with an acquirer (e.g. TD). The Payment Facilitator becomes the 'merchant on record' for their sub merchant's transactions and assumes the risk of their sub-merchant's transaction. This allows the Payment Facilitator to expedite new merchant account application and to offer customized processing fees.
+
+### ISO Merchant Account
+An ISO merchant account is held with an acquirer (e.g. TD). The application process is more involved as you are assuming all of the risk of your transactions, but the payoff is that you can usually get better per-transactions rates.
+
+You can read more about our merchant accounts <a  href='http://blog.beanstream.com/merchant-accounts/'>here</a> or <a  href='http://blog.beanstream.com/payment-facilitator-payment-processor/'>here</a>.
+
+## Partner Accounts
+A partner account with allows you to become a Payment Facilitator and add sub-merchants. It allows you to add new sub merchants and to process transactions on their behalf. As a Partner you can set custom commission options for your sub-merchant and take a cut of the monthly revenue from their transaction and processing fees.
+
+You can read more about our partner accounts <a  href='http://blog.beanstream.com/your-partner-in-payments/'>here</a>.

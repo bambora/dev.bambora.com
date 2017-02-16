@@ -1,0 +1,4054 @@
+swagger: '2.0'
+info:
+  version: "2016-08-18"
+  title: Onboarding API
+  description: Onboarding API Specifications
+host: onboarding.beanstream.com
+basePath: /v1
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: api_key
+    in: header
+    description: 'Pass the Authorization header in your request as "Authorization: Token INSERT_KEY_HERE. Contact Beanstream to get an API Key generated for you if you don''t have one.'
+paths:
+# SEPA EUR WORKFLOW
+  '/workflows/sepa-eur/applications':
+    post:
+      tags:
+        - Funds Transfer (SEPA EUR)
+      operationId: createSepaEurApplication
+      description: 'Creates a new European SEPA application. The status of the application will be returned in the status object. A Location header that points to the URL of the new resource will be available in the response. The Location header has an application ID that should be used for all future requests to that application.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: application
+          in: body
+          description: 'Application details'
+          required: true
+          schema:
+            $ref: '#/definitions/SepaEurApplication'
+      responses:
+        201:
+          description: 'Application created'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+    get:
+      tags:
+        - Funds Transfer (SEPA EUR)
+      operationId: getSepaEurApplications
+      description: |
+        Retrieves all European SEPA applications referenced by the given criteria in the url. A search criteria can be a combination of the following:
+           - state={state}
+            - *Accepted values are "in_progress", "in_review", "approved" and "rejected"*
+           - created_before={date}
+           - created_after={date}
+           - updated_before={date}
+           - updated_after={date}
+
+        Documents file data will be excluded to limit the amount of data on the wire.
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      responses:
+        200:
+          description: 'Application(s) retrieved'
+          schema:
+           type: array
+           items:
+              $ref: '#/definitions/SepaEurApplication'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Applications not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/sepa-eur/applications/{applicationId}':
+    put:
+      tags:
+        - Funds Transfer (SEPA EUR)
+      operationId: updateSepaEurApplication
+      description: 'Updates a European SEPA application referenced by the given applicationId.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to update'
+          type: integer
+        - name: document
+          in: body
+          description: 'Application details'
+          required: true
+          schema:
+            $ref: '#/definitions/SepaEurApplication'
+      responses:
+        200:
+          description: 'Application Updated.'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+    get:
+      tags:
+        - Funds Transfer (SEPA EUR)
+      operationId: getSepaEurApplication
+      description: 'Retrieves a European SEPA application referenced by the given applicationId.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to retrieve'
+          type: string
+      responses:
+        200:
+          description: 'Application retrieved'
+          schema:
+            $ref: '#/definitions/SepaEurApplication'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/sepa-eur/applications/{applicationId}/documents':
+    post:
+      tags:
+        - Funds Transfer (SEPA EUR)
+      operationId: createSepaEurApplicationDocuments
+      description: 'Creates a European SEPA application document for the referenced applicationId. Returns the status of the application.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to create a document in.'
+          type: integer
+        - name: document
+          in: body
+          description: 'Document details'
+          required: true
+          schema:
+            $ref: '#/definitions/SepaEurFile'
+      responses:
+        200:
+          description: 'Document created'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/sepa-eur/applications/{applicationId}/documents/{documentId}':
+    delete:
+      tags:
+        - Funds Transfer (SEPA EUR)
+      operationId: deleteSepaEurApplicationDocuments
+      description: 'Deletes a European SEPA application document for the referenced applicationId and documentId. Returns the status of the application.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to delete the document from'
+          type: integer
+        - name: documentId
+          in: path
+          required: true
+          description: 'The name of the document to delete'
+          type: string
+          enum: ["copy_id", "void_cheque", "bank_statement", "certificate", "registration", "board_members", "mandate"]
+      responses:
+        204:
+          description: 'Documents Updated'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application or Document not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/sepa-eur/applications/{applicationId}/status':
+    put:
+      tags:
+        - Funds Transfer (SEPA EUR)
+      operationId: updateSepaEurApplicationStatus
+      description: 'NOTE: This is for internal use only. If you are integrating to the onboarding API you will not have access to set the status. Our system will do that. Updates a European SEPA application status for the referenced applicationId. Returns the status of the application.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to update status for'
+          type: integer
+        - name: status
+          in: body
+          description: 'The status details'
+          required: true
+          schema:
+              $ref: '#/definitions/Status'
+      responses:
+        200:
+          description: 'Status Updated'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+#BACS GBP WORKFLOW
+  '/workflows/bacs-gbp/applications':
+    post:
+      tags:
+        - Funds Transfer (BACS GBP)
+      operationId: createBacsGbpApplication
+      description: 'Creates a new United Kingdom BACS application. The status of the application will be returned in the status object. A Location header that points to the URL of the new resource will be available in the response. The Location header has an application ID that should be used for all future requests to that application.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: application
+          in: body
+          description: 'Applicaiton details'
+          required: true
+          schema:
+            $ref: '#/definitions/BacsGbpApplication'
+      responses:
+        201:
+          description: 'Application created'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+    get:
+      tags:
+        - Funds Transfer (BACS GBP)
+      operationId: getBacsGbpApplications
+      description: |
+        Retrieves all United Kingdom BACS applications referenced by the given criteria in the url. A search criteria can be a combination of the following:
+           - state={state}
+            - *Accepted values are "in_progress", "pending_review", "in_review", "approved" and "rejected"*
+           - created_before={date}
+           - created_after={date}
+           - updated_before={date}
+           - updated_after={date}
+
+        Documents file data will be excluded to limit the amount of data on the wire.
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      responses:
+        200:
+          description: 'Application(s) retrieved'
+          schema:
+           type: array
+           items:
+              $ref: '#/definitions/BacsGbpApplication'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Applications not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/bacs-gbp/applications/{applicationId}':
+    put:
+      tags:
+        - Funds Transfer (BACS GBP)
+      operationId: updateBacsGbpApplication
+      description: 'Updates a United Kingdom BACS application referenced by the given applicationId.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to update'
+          type: integer
+        - name: application
+          in: body
+          description: 'Applicaiton details'
+          required: true
+          schema:
+            $ref: '#/definitions/BacsGbpApplication'
+      responses:
+        200:
+          description: 'Application updated'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+    get:
+      tags:
+        - Funds Transfer (BACS GBP)
+      operationId: getBacsGbpApplication
+      description: 'Retrieves a United Kingdom BACS application referenced by the given applicationId.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to retrieve'
+          type: string
+      responses:
+        200:
+          description: 'Application retrieved'
+          schema:
+            $ref: '#/definitions/BacsGbpApplication'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/bacs-gbp/applications/{applicationId}/documents':
+    post:
+      tags:
+        - Funds Transfer (BACS GBP)
+      operationId: createBacsGbpApplicationDocuments
+      description: 'Creates a United Kingdom BACS application document for the referenced applicationId. Returns the status of the application.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to create a document in.'
+          type: integer
+        - name: document
+          in: body
+          description: 'Document details'
+          required: true
+          schema:
+            $ref: '#/definitions/BacsGbpFile'
+      responses:
+        200:
+          description: 'Document created'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/bacs-gbp/applications/{applicationId}/documents/{documentId}':
+    delete:
+      tags:
+        - Funds Transfer (BACS GBP)
+      operationId: deleteBacsGbpApplicationDocuments
+      description: 'Deletes a United Kingdom BACS application document for the referenced applicationId and documentId. Returns the status of the application.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to delete the document from'
+          type: integer
+        - name: documentId
+          in: path
+          required: true
+          description: 'The name of the document to delete'
+          type: string
+          enum: ["copy_id", "void_cheque", "bank_statement", "certificate", "registration", "board_members", "direct_debit"]
+      responses:
+        204:
+          description: 'Documents Updated'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application or Document not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/bacs-gbp/applications/{applicationId}/status':
+    put:
+      tags:
+        - Funds Transfer (BACS GBP)
+      operationId: updateBacsGbpApplicationStatus
+      description: 'Updates a United Kingdom BACS application status for the referenced applicationId. Returns the status of the application.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to update status for'
+          type: integer
+        - name: status
+          in: body
+          description: 'The status details'
+          required: true
+          schema:
+              $ref: '#/definitions/Status'
+      responses:
+        200:
+          description: 'Status Updated'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+# ACH USD WORKFLOW
+  '/workflows/ach-usd/applications':
+    post:
+      tags:
+        - Funds Transfer (ACH USD)
+      operationId: createAchUsdApplication
+      description: 'Creates a new United States ACH application. The status of the application will be returned in the status object. A Location header that points to the URL of the new resource will be available in the response. The Location header has an application ID that should be used for all future requests to that application.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: application
+          in: body
+          description: 'Application details'
+          required: true
+          schema:
+            $ref: '#/definitions/AchUsdApplication'
+      responses:
+        201:
+          description: 'Application created'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+    get:
+      tags:
+        - Funds Transfer (ACH USD)
+      operationId: getAchUsdApplications
+      description: |
+        Retrieves all United States ACH applications referenced by the given criteria in the url. A search criteria can be a combination of the following:
+           - state={state}
+            - *Accepted values are "in_progress", "pending_review", "in_review", "approved" and "rejected"*
+           - created_before={date}
+           - created_after={date}
+           - updated_before={date}
+           - updated_after={date}
+
+        Documents file data will be excluded to limit the amount of data on the wire.
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      responses:
+        200:
+          description: 'Application(s) retrieved'
+          schema:
+           type: array
+           items:
+              $ref: '#/definitions/AchUsdApplication'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Applications not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/ach-usd/applications/{applicationId}':
+    put:
+      tags:
+        - Funds Transfer (ACH USD)
+      operationId: updateAchUsdApplication
+      description: 'Updates a United States ACH application referenced by the given applicationId.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to update'
+          type: integer
+        - name: application
+          in: body
+          description: 'Applicaiton details'
+          required: true
+          schema:
+            $ref: '#/definitions/AchUsdApplication'
+      responses:
+        200:
+          description: 'Application updated'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+    get:
+      tags:
+        - Funds Transfer (ACH USD)
+      operationId: getAchUsdApplication
+      description: 'Retrieves a United States ACH application referenced by the given applicationId.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to retrieve'
+          type: string
+      responses:
+        200:
+          description: 'Application retrieved'
+          schema:
+            $ref: '#/definitions/AchUsdApplication'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/ach-usd/applications/{applicationId}/documents':
+    post:
+      tags:
+        - Funds Transfer (ACH USD)
+      operationId: createAchUsdApplicationDocuments
+      description: 'Creates a United States ACH application document for the referenced applicationId. Returns the status of the application.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to create a document in.'
+          type: integer
+        - name: document
+          in: body
+          description: 'Document details'
+          required: true
+          schema:
+            $ref: '#/definitions/AchUsdFile'
+      responses:
+        200:
+          description: 'Document created'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/ach-usd/applications/{applicationId}/documents/{documentId}':
+    delete:
+      tags:
+        - Funds Transfer (ACH USD)
+      operationId: deleteAchUsdApplicationDocuments
+      description: 'Deletes a United States ACH application document for the referenced applicationId and documentId. Returns the status of the application.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to delete the document from'
+          type: integer
+        - name: documentId
+          in: path
+          required: true
+          description: 'The name of the document to delete'
+          type: string
+          enum: ["copy_id", "void_cheque", "bank_statement", "certificate", "registration", "board_members"]
+      responses:
+        204:
+          description: 'Document deleted'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application or Document not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/ach-usd/applications/{applicationId}/status':
+    put:
+      tags:
+        - Funds Transfer (ACH USD)
+      operationId: updateAchUsdApplicationStatus
+      description: 'Updates a United States ACH application status for the referenced applicationId. Returns the status of the application.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to update status for'
+          type: integer
+        - name: status
+          in: body
+          description: 'The status details'
+          required: true
+          schema:
+              $ref: '#/definitions/Status'
+      responses:
+        200:
+          description: 'Status Updated'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+# EFT CAD WORKFLOW
+  '/workflows/eft-cad/applications':
+    post:
+      tags:
+        - Funds Transfer (EFT CAD)
+      operationId: createEftCadApplication
+      description: 'Creates a new Canada EFT application. The status of the application will be returned in the status object. A Location header that points to the URL of the new resource will be available in the response. The Location header has an application ID that should be used for all future requests to that application.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: application
+          in: body
+          description: 'Applicaiton details'
+          required: true
+          schema:
+            $ref: '#/definitions/EftCadApplication'
+      responses:
+        201:
+          description: 'Application created'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+    get:
+      tags:
+        - Funds Transfer (EFT CAD)
+      operationId: getEftCadApplications
+      description: |
+        Retrieves all Canada EFT applications referenced by the given criteria in the url. A search criteria can be a combination of the following:
+           - state={state}
+            - *Accepted values are "in_progress", "pending_review", "in_review", "approved" and "rejected"*
+           - created_before={date}
+           - created_after={date}
+           - updated_before={date}
+           - updated_after={date}
+
+        Documents file data will be excluded to limit the amount of data on the wire.
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      responses:
+        200:
+          description: 'Application(s) retrieved'
+          schema:
+           type: array
+           items:
+              $ref: '#/definitions/EftCadApplication'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Applications not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/eft-cad/applications/{applicationId}':
+    put:
+      tags:
+        - Funds Transfer (EFT CAD)
+      operationId: updateEftCadApplication
+      description: 'Updates a Canada EFT application referenced by the given applicationId.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to update'
+          type: integer
+        - name: application
+          in: body
+          description: 'Applicaiton details'
+          required: true
+          schema:
+            $ref: '#/definitions/EftCadApplication'
+      responses:
+        200:
+          description: 'Application updated'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+    get:
+      tags:
+        - Funds Transfer (EFT CAD)
+      operationId: getEftCadApplication
+      description: 'Retrieves a Canada EFT application referenced by the given applicationId.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to retrieve'
+          type: string
+      responses:
+        200:
+          description: 'Application retrieved'
+          schema:
+            $ref: '#/definitions/EftCadApplication'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/eft-cad/applications/{applicationId}/documents':
+    post:
+      tags:
+        - Funds Transfer (EFT CAD)
+      operationId: createEftCadApplicationDocuments
+      description: 'Creates a Canada EFT application document for the referenced applicationId. Returns the status of the application.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to create a document in.'
+          type: integer
+        - name: document
+          in: body
+          description: 'Document details'
+          required: true
+          schema:
+            $ref: '#/definitions/EftCadFile'
+      responses:
+        200:
+          description: 'Document created'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/eft-cad/applications/{applicationId}/documents/{documentId}':
+    delete:
+      tags:
+        - Funds Transfer (EFT CAD)
+      operationId: deleteEftCadApplicationDocuments
+      description: 'Deletes a Canada EFT application document for the referenced applicationId and documentId. Returns the status of the application.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to delete the document from'
+          type: integer
+        - name: documentId
+          in: path
+          required: true
+          description: 'The name of the document to delete'
+          type: string
+          enum: ["copy_id", "void_cheque", "bank_statement", "certificate", "registration", "board_members"]
+      responses:
+        204:
+          description: 'Document deleted'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application or Document not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/eft-cad/applications/{applicationId}/status':
+    put:
+      tags:
+        - Funds Transfer (EFT CAD)
+      operationId: updateEftCadApplicationStatus
+      description: 'Updates a Canada EFT application status for the referenced applicationId. Returns the status of the application.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to update status for'
+          type: integer
+        - name: status
+          in: body
+          description: 'The status details'
+          required: true
+          schema:
+              $ref: '#/definitions/Status'
+      responses:
+        200:
+          description: 'Status Updated'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+# PSP CAD WORKFLOW
+  '/workflows/psp-cad/applications':
+    post:
+      tags:
+        - Credit Card Payments (PSP CAD)
+      operationId: createPspCadPspApplication
+      description: 'Creates a new Canada PSP application. The status of the application will be returned in the status object. A Location header that points to the URL of the new resource will be available in the response. The Location header has an application ID that should be used for all future requests to that application.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: application
+          in: body
+          description: 'Application details'
+          required: true
+          schema:
+            $ref: '#/definitions/PspCadApplication'
+      responses:
+        201:
+          description: 'Application created'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+    get:
+      tags:
+        - Credit Card Payments (PSP CAD)
+      operationId: getPspCadApplications
+      description: |
+        Retrieves all Canada PSP applications referenced by the given criteria in the url. A search criteria can be a combination of the following:
+           - state={state}
+            - *Accepted values are "in_progress", "in_review", "approved" and "rejected"*
+           - created_before={date}
+           - created_after={date}
+           - updated_before={date}
+           - updated_after={date}
+
+        Documents file data will be excluded to limit the amount of data on the wire.
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      responses:
+        200:
+          description: 'Application(s) retrieved'
+          schema:
+           type: array
+           items:
+              $ref: '#/definitions/PspCadApplication'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Applications not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/psp-cad/applications/{applicationId}':
+    put:
+      tags:
+        - Credit Card Payments (PSP CAD)
+      operationId: updatePspCadApplication
+      description: 'Updates a Canada PSP application referenced by the given applicationId.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to update'
+          type: integer
+        - name: document
+          in: body
+          description: 'Application details'
+          required: true
+          schema:
+            $ref: '#/definitions/PspCadApplication'
+      responses:
+        200:
+          description: 'Application Updated.'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+    get:
+      tags:
+        - Credit Card Payments (PSP CAD)
+      operationId: getPspCadApplication
+      description: 'Retrieves a Canada PSP application referenced by the given applicationId.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to retrieve'
+          type: string
+      responses:
+        200:
+          description: 'Application retrieved'
+          schema:
+            $ref: '#/definitions/PspCadApplication'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/psp-cad/applications/{applicationId}/status':
+    put:
+      tags:
+        - Credit Card Payments (PSP CAD)
+      operationId: updatePspCadApplicationStatus
+      description: 'Updates Canada PSP application status for the referenced applicationId. Returns the status of the application.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to update status for'
+          type: integer
+        - name: status
+          in: body
+          description: 'The status details'
+          required: true
+          schema:
+              $ref: '#/definitions/Status'
+      responses:
+        200:
+          description: 'Status Updated'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+# PSP USD WORKFLOW
+  '/workflows/psp-usd/applications':
+    post:
+      tags:
+        - Credit Card Payments (PSP USD)
+      operationId: createPspUsdPspApplication
+      description: 'Creates a new US PSP application. The status of the application will be returned in the status object. A Location header that points to the URL of the new resource will be available in the response. The Location header has an application ID that should be used for all future requests to that application.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: application
+          in: body
+          description: 'Application details'
+          required: true
+          schema:
+            $ref: '#/definitions/PspUsdApplication'
+      responses:
+        201:
+          description: 'Application created'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+    get:
+      tags:
+        - Credit Card Payments (PSP USD)
+      operationId: getPspUsdApplications
+      description: |
+        Retrieves all US PSP applications referenced by the given criteria in the url. A search criteria can be a combination of the following:
+           - state={state}
+            - *Accepted values are "in_progress", "in_review", "approved" and "rejected"*
+           - created_before={date}
+           - created_after={date}
+           - updated_before={date}
+           - updated_after={date}
+
+        Documents file data will be excluded to limit the amount of data on the wire.
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      responses:
+        200:
+          description: 'Application(s) retrieved'
+          schema:
+           type: array
+           items:
+              $ref: '#/definitions/PspUsdApplication'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Applications not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/psp-usd/applications/{applicationId}':
+    put:
+      tags:
+        - Credit Card Payments (PSP USD)
+      operationId: updatePspUsdApplication
+      description: 'Updates a US PSP application referenced by the given applicationId.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to update'
+          type: integer
+        - name: document
+          in: body
+          description: 'Application details'
+          required: true
+          schema:
+            $ref: '#/definitions/PspUsdApplication'
+      responses:
+        200:
+          description: 'Application Updated.'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+    get:
+      tags:
+        - Credit Card Payments (PSP USD)
+      operationId: getPspUsdApplication
+      description: 'Retrieves a US PSP application referenced by the given applicationId.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to retrieve'
+          type: string
+      responses:
+        200:
+          description: 'Application retrieved'
+          schema:
+            $ref: '#/definitions/PspUsdApplication'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/psp-usd/applications/{applicationId}/documents':
+    post:
+      tags:
+        - Credit Card Payments (PSP USD)
+      operationId: createPspUsdApplicationDocuments
+      description: 'Creates a United States PSP application document for the referenced applicationId. Returns the status of the application.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to create a document in.'
+          type: integer
+        - name: document
+          in: body
+          description: 'Document details'
+          required: true
+          schema:
+            $ref: '#/definitions/PspUsdFile'
+      responses:
+        200:
+          description: 'Document created'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/psp-usd/applications/{applicationId}/documents/{documentId}':
+    delete:
+      tags:
+        - Credit Card Payments (PSP USD)
+      operationId: deletePspUsdApplicationDocuments
+      description: 'Deletes a United States PSP application document for the referenced applicationId and documentId. Returns the status of the application.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to delete the document from'
+          type: integer
+        - name: documentId
+          in: path
+          required: true
+          description: 'The name of the document to delete'
+          type: string
+          enum: ["id_applicant", "bank_statement", "pci_saq_document"]
+      responses:
+        204:
+          description: 'Document deleted'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application or Document not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/psp-usd/applications/{applicationId}/status':
+    put:
+      tags:
+        - Credit Card Payments (PSP USD)
+      operationId: updatePspUsdApplicationStatus
+      description: 'Updates US PSP application status for the referenced applicationId. Returns the status of the application.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to update status for'
+          type: integer
+        - name: status
+          in: body
+          description: 'The status details'
+          required: true
+          schema:
+              $ref: '#/definitions/Status'
+      responses:
+        200:
+          description: 'Status Updated'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+# GW CDN WORKFLOW
+  '/workflows/gw-cdn/applications':
+    post:
+      tags:
+        - Gateway application (GW CDN)
+      operationId: createGwCdnApplication
+      description: 'Creates a new Canadian Gateway application. The status of the application will be returned in the status object. A Location header that points to the URL of the new resource will be available in the response. The Location header has an application ID that should be used for all future requests to that application.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: application
+          in: body
+          description: 'Application details'
+          required: true
+          schema:
+            $ref: '#/definitions/GwCdnApplication'
+      responses:
+        201:
+          description: 'Application created'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+    get:
+      tags:
+        - Gateway application (GW CDN)
+      operationId: getGwCdnApplications
+      description: |
+        Retrieves all Canadian Gateway applications referenced by the given criteria in the url. A search criteria can be a combination of the following:
+           - state={state}
+            - *Accepted values are "in_progress", "in_review", "approved" and "rejected"*
+           - created_before={date}
+           - created_after={date}
+           - updated_before={date}
+           - updated_after={date}
+
+        Documents file data will be excluded to limit the amount of data on the wire.
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      responses:
+        200:
+          description: 'Application(s) retrieved'
+          schema:
+           type: array
+           items:
+              $ref: '#/definitions/GwCdnApplication'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Applications not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/gw-cdn/applications/{applicationId}':
+    put:
+      tags:
+        - Gateway application (GW CDN)
+      operationId: updateGwCdnApplication
+      description: 'Updates a Canadian Gateway application referenced by the given applicationId.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to update'
+          type: integer
+        - name: document
+          in: body
+          description: 'Application details'
+          required: true
+          schema:
+            $ref: '#/definitions/GwCdnApplication'
+      responses:
+        200:
+          description: 'Application Updated.'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+    get:
+      tags:
+        - Gateway application (GW CDN)
+      operationId: getGwCdnApplication
+      description: 'Retrieves a Canadian Gateway application referenced by the given applicationId.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to retrieve'
+          type: string
+      responses:
+        200:
+          description: 'Application retrieved'
+          schema:
+            $ref: '#/definitions/GwCdnApplication'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/gw-cdn/applications/{applicationId}/status':
+    put:
+      tags:
+        - Gateway application (GW CDN)
+      operationId: updateGwCdnApplicationStatus
+      description: 'Updates Canadian Gateway application status for the referenced applicationId. Returns the status of the application.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to update status for'
+          type: integer
+        - name: status
+          in: body
+          description: 'The status details'
+          required: true
+          schema:
+              $ref: '#/definitions/Status'
+      responses:
+        200:
+          description: 'Status Updated'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+# GW USA WORKFLOW
+  '/workflows/gw-usa/applications':
+    post:
+      tags:
+        - Gateway application (GW USA)
+      operationId: createGwUsaApplication
+      description: 'Creates a new US Gateway application. The status of the application will be returned in the status object. A Location header that points to the URL of the new resource will be available in the response. The Location header has an application ID that should be used for all future requests to that application.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: application
+          in: body
+          description: 'Application details'
+          required: true
+          schema:
+            $ref: '#/definitions/GwUsaApplication'
+      responses:
+        201:
+          description: 'Application created'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+    get:
+      tags:
+        - Gateway application (GW USA)
+      operationId: getGwUsaApplications
+      description: |
+        Retrieves all US Gateway applications referenced by the given criteria in the url. A search criteria can be a combination of the following:
+           - state={state}
+            - *Accepted values are "in_progress", "in_review", "approved" and "rejected"*
+           - created_before={date}
+           - created_after={date}
+           - updated_before={date}
+           - updated_after={date}
+
+        Documents file data will be excluded to limit the amount of data on the wire.
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      responses:
+        200:
+          description: 'Application(s) retrieved'
+          schema:
+           type: array
+           items:
+              $ref: '#/definitions/GwUsaApplication'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Applications not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/gw-usa/applications/{applicationId}':
+    put:
+      tags:
+        - Gateway application (GW USA)
+      operationId: updateGwUsaApplication
+      description: 'Updates a US Gateway application referenced by the given applicationId.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to update'
+          type: integer
+        - name: document
+          in: body
+          description: 'Application details'
+          required: true
+          schema:
+            $ref: '#/definitions/GwUsaApplication'
+      responses:
+        200:
+          description: 'Application Updated.'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+    get:
+      tags:
+        - Gateway application (GW USA)
+      operationId: getGwUsaApplication
+      description: 'Retrieves a US Gateway application referenced by the given applicationId.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to retrieve'
+          type: string
+      responses:
+        200:
+          description: 'Application retrieved'
+          schema:
+            $ref: '#/definitions/GwUsaApplication'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/gw-usa/applications/{applicationId}/status':
+    put:
+      tags:
+        - Gateway application (GW USA)
+      operationId: updateGwUsaApplicationStatus
+      description: 'Updates US Gateway application status for the referenced applicationId. Returns the status of the application.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to update status for'
+          type: integer
+        - name: status
+          in: body
+          description: 'The status details'
+          required: true
+          schema:
+              $ref: '#/definitions/Status'
+      responses:
+        200:
+          description: 'Status Updated'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+
+# PSP NZD WORKFLOW
+  '/workflows/psp-nz/applications':
+    post:
+      tags:
+        - Credit Card Payments (PSP NZD)
+      operationId: createPspNzdPspApplication
+      description: 'Creates a new New Zealand PSP application. The status of the application will be returned in the status object. A Location header that points to the URL of the new resource will be available in the response. The Location header has an application ID that should be used for all future requests to that application.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: application
+          in: body
+          description: 'Application details'
+          required: true
+          schema:
+            $ref: '#/definitions/PspNzdApplication'
+      responses:
+        201:
+          description: 'Application created'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+    get:
+      tags:
+        - Credit Card Payments (PSP NZD)
+      operationId: getPspNzdApplications
+      description: |
+        Retrieves all New Zealand PSP applications referenced by the given criteria in the url. A search criteria can be a combination of the following:
+           - state={state}
+            - *Accepted values are "in_progress", "in_review", "approved" and "rejected"*
+           - created_before={date}
+           - created_after={date}
+           - updated_before={date}
+           - updated_after={date}
+
+        Documents file data will be excluded to limit the amount of data on the wire.
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      responses:
+        200:
+          description: 'Application(s) retrieved'
+          schema:
+           type: array
+           items:
+              $ref: '#/definitions/PspNzdApplication'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Applications not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/psp-nz/applications/{applicationId}':
+    put:
+      tags:
+        - Credit Card Payments (PSP NZD)
+      operationId: updatePspNzdApplication
+      description: 'Updates a New Zealand PSP application referenced by the given applicationId.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to update'
+          type: integer
+        - name: document
+          in: body
+          description: 'Application details'
+          required: true
+          schema:
+            $ref: '#/definitions/PspNzdApplication'
+      responses:
+        200:
+          description: 'Application Updated.'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+    get:
+      tags:
+        - Credit Card Payments (PSP NZD)
+      operationId: getPspNzdApplication
+      description: 'Retrieves a New Zealand PSP application referenced by the given applicationId.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to retrieve'
+          type: string
+      responses:
+        200:
+          description: 'Application retrieved'
+          schema:
+            $ref: '#/definitions/PspNzdApplication'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/psp-nz/applications/{applicationId}/status':
+    put:
+      tags:
+        - Credit Card Payments (PSP NZD)
+      operationId: updatePspNzdApplicationStatus
+      description: 'Updates New Zealand PSP application status for the referenced applicationId. Returns the status of the application.'
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: applicationId
+          in: path
+          required: true
+          description: 'The id of the application to update status for'
+          type: integer
+        - name: status
+          in: body
+          description: 'The status details'
+          required: true
+          schema:
+              $ref: '#/definitions/Status'
+      responses:
+        200:
+          description: 'Status Updated'
+          schema:
+            $ref: '#/definitions/Status'
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Application not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+definitions:
+  EftCadApplication:
+    description: 'Defines an EFT Canadian application'
+    additionalProperties: false
+    type: object
+    required:
+      - applicant
+      - business
+      - pricing_id
+    properties:
+      id:
+        type: integer
+        description: 'This application identifier is used to identify an application. [ReadOnly]'
+      merchant_id:
+        type: integer
+        description: 'This merchant identifier is populated when the application is approved and a merchant account has been associated. [ReadOnly]'
+      pricing_id:
+        type: string
+        maxLength: 32
+        description: 'This is the reference number for the pricing package associated with an application'
+      status:
+        $ref: '#/definitions/Status'
+      applicant:
+        $ref: '#/definitions/EftCadApplicant'
+      business:
+        $ref: '#/definitions/EftCadBusiness'
+
+  AchUsdApplication:
+    description: 'Defines an ACH American application'
+    additionalProperties: false
+    type: object
+    required:
+      - applicant
+      - business
+      - pricing_id
+    properties:
+      id:
+        type: integer
+        description: 'This application identifier is used to identify an application. [ReadOnly]'
+      merchant_id:
+        type: integer
+        description: 'This merchant identifier is populated when the application is approved and a merchant account has been associated. [ReadOnly]'
+      pricing_id:
+        type: string
+        maxLength: 32
+        description: 'This is the reference number for the pricing package associated with an application'
+      status:
+        $ref: '#/definitions/Status'
+      applicant:
+        $ref: '#/definitions/EftApplicant'
+      business:
+        $ref: '#/definitions/AchUsdBusiness'
+
+  SepaEurApplication:
+    description: 'Defines a SEPA European application'
+    additionalProperties: false
+    type: object
+    required:
+      - applicant
+      - business
+      - pricing_id
+    properties:
+      id:
+        type: integer
+        description: 'This application identifier is used to identify an application. [ReadOnly]'
+      merchant_id:
+        type: integer
+        description: 'This merchant identifier is populated when the application is approved and a merchant account has been associated. [ReadOnly]'
+      pricing_id:
+        type: string
+        maxLength: 32
+        description: 'This is the reference number for the pricing package associated with an application'
+      status:
+        $ref: '#/definitions/Status'
+      applicant:
+        $ref: '#/definitions/EftApplicant'
+      business:
+        $ref: '#/definitions/SepaEurBusiness'
+
+  BacsGbpApplication:
+    description: 'Defines a BACS United Kingdom application'
+    additionalProperties: false
+    type: object
+    required:
+      - applicant
+      - business
+      - pricing_id
+    properties:
+      id:
+        type: integer
+        description: 'This application identifier is used to identify an application.  [ReadOnly]'
+      merchant_id:
+        type: integer
+        description: 'This merchant identifier is populated when the application is approved and a merchant account has been associated. [ReadOnly]'
+      pricing_id:
+        type: string
+        maxLength: 32
+        description: 'This is the reference number for the pricing package associated with an application'
+      status:
+        $ref: '#/definitions/Status'
+      applicant:
+        $ref: '#/definitions/EftApplicant'
+      business:
+        $ref: '#/definitions/BacsGbpBusiness'
+
+  PspCadApplication:
+    description: 'Defines a PSP Canadian application'
+    additionalProperties: false
+    type: object
+    required:
+      - applicant
+      - business
+      - pricing_id
+    properties:
+      id:
+        type: integer
+        format: int32
+        description: 'This application identifier is used to identify an application. [ReadOnly]'
+      merchant_id:
+        type: integer
+        description: 'This merchant identifier is populated when the application is approved and a merchant account has been associated. [ReadOnly]'
+      pricing_id:
+        type: string
+        maxLength: 32
+        description: 'This is the reference number for the pricing package associated with an application'
+      status:
+        $ref: '#/definitions/Status'
+      applicant:
+        $ref: '#/definitions/PspCadApplicant'
+      business:
+        $ref: '#/definitions/PspCadBusiness'
+
+  PspUsdApplication:
+    description: 'Defines a PSP US application'
+    additionalProperties: false
+    type: object
+    required:
+      - applicant
+      - business
+      - pricing_id
+    properties:
+      id:
+        type: integer
+        format: int32
+        description: 'This application identifier is used to identify an application. [ReadOnly]'
+      merchant_id:
+        type: integer
+        description: 'This merchant identifier is populated when the application is approved and a merchant account has been associated. [ReadOnly]'
+      pricing_id:
+        type: string
+        maxLength: 32
+        description: 'This is the reference number for the pricing package associated with an application'
+      status:
+        $ref: '#/definitions/Status'
+      applicant:
+        $ref: '#/definitions/PspUsdApplicant'
+      business:
+        $ref: '#/definitions/PspUsdBusiness'
+
+  GwCdnApplication:
+    description: 'Defines a Canada Gateway application'
+    additionalProperties: false
+    type: object
+    required:
+      - applicant
+      - business
+      - pricing_id
+    properties:
+      id:
+        type: integer
+        format: int32
+        description: 'This application identifier is used to identify an application. [ReadOnly]'
+      status:
+        $ref: '#/definitions/Status'
+      applicant:
+        $ref: '#/definitions/GwApplicant'
+      business:
+        $ref: '#/definitions/GwCdnBusiness'
+      terminal:
+        $ref: '#/definitions/GwCdnTerminal'
+      pricing_id:
+        type: string
+        maxLength: 32
+        description: 'This is the reference number for the pricing package associated with an application'
+
+  GwUsaApplication:
+    description: 'Defines a US Gateway application'
+    additionalProperties: false
+    type: object
+    required:
+      - applicant
+      - business
+      - pricing_id
+    properties:
+      id:
+        type: integer
+        format: int32
+        description: 'This application identifier is used to identify an application. [ReadOnly]'
+      status:
+        $ref: '#/definitions/Status'
+      applicant:
+        $ref: '#/definitions/GwApplicant'
+      business:
+        $ref: '#/definitions/GwUsaBusiness'
+      terminal:
+        $ref: '#/definitions/GwUsaTerminal'
+      pricing_id:
+        type: string
+        maxLength: 32
+        description: 'This is the reference number for the pricing package associated with an application'
+
+  PspNzdApplication:
+    description: 'Defines a PSP New Zealander application'
+    additionalProperties: false
+    type: object
+    required:
+      - applicant
+      - business
+    properties:
+      id:
+        type: integer
+        format: int32
+        description: 'This application identifier is used to identify an application. [ReadOnly]'
+      merchant_id:
+        type: integer
+        description: 'This merchant identifier is populated when the application is approved and a merchant account has been associated. [ReadOnly]'
+      status:
+        $ref: '#/definitions/Status'
+      applicant:
+        $ref: '#/definitions/PspNzdApplicant'
+      business:
+        $ref: '#/definitions/PspNzdBusiness'
+
+  GwApplicant:
+    description: 'The individual completing the application'
+    additionalProperties: false
+    type: object
+    required:
+      - first_name
+      - last_name
+      - phone_number
+      - agreement
+      - email
+    properties:
+      first_name:
+        type: string
+        maxLength: 64
+      last_name:
+        type: string
+        maxLength: 64
+      phone_number:
+        type: string
+        maxLength: 15
+      agreement:
+        $ref: '#/definitions/Agreement'
+      email:
+        type: string
+        maxLength: 500
+
+  GwCdnBusiness:
+    description: 'The details of an Gateway Canadian business'
+    additionalProperties: false
+    type: object
+    required:
+      - company_name
+      - merchant_category
+      - address
+      - bank_account
+    properties:
+      company_name:
+        type: string
+        maxLength: 64
+      merchant_category:
+        type: string
+        description: 'This is the merchant category code'
+        enum: ["5813","5811","5812","8398","7997","8651","8661","8641","1711","1750","1731","1520","7623","1761","1740","7033","5462","5411","5499","5994","8021","8099","5963","5699","5971","5970","5992","5399","8931","7311","7542","7217","8351","7379","7372","7392","0780","8111","7349","7333","8999","6513","7251","0742","7230","7210","4121","4722","8299"]
+      website_url:
+        type: string
+        maxLength: 128
+        format: 'uri'
+      address:
+        $ref: '#/definitions/Address'
+      bank_account:
+        $ref: '#/definitions/CanadianBankAccount'
+
+  GwUsaBusiness:
+    description: 'The details of an Gateway US business'
+    additionalProperties: false
+    type: object
+    required:
+      - company_name
+      - merchant_category
+      - address
+      - bank_account
+    properties:
+      company_name:
+        type: string
+        maxLength: 64
+      merchant_category:
+        type: string
+        description: 'This is the merchant category code'
+        enum: ["5813","5811","5812","8398","7997","8651","8661","8641","1711","1750","1731","1520","7623","1761","1740","7033","5462","5411","5499","5994","8021","8099","5963","5699","5971","5970","5992","5399","8931","7311","7542","7217","8351","7379","7372","7392","0780","8111","7349","7333","8999","6513","7251","0742","7230","7210","4121","4722","8299"]
+      website_url:
+        type: string
+        maxLength: 128
+        format: 'uri'
+      address:
+        $ref: '#/definitions/Address'
+      bank_account:
+        $ref: '#/definitions/AmericanBankAccount'
+
+  GwCdnTerminal:
+    description: 'The details for the terminal of a gateway application'
+    additionalProperties: false
+    type: object
+    required:
+      - terminal_type
+    properties:
+      terminal_type:
+        type: string
+        description: 'This is type of terminal'
+        enum: ["td","first_data_nashville","chase_paymentech","tsys","global","elavon","moneris"]
+      td_terminal:
+        $ref: '#/definitions/TdTerminal'
+      first_data_nashville_terminal:
+        $ref: '#/definitions/FirstDataNashvilleTerminal'
+      chase_paymentech_terminal:
+        $ref: '#/definitions/ChasePaymentechTerminal'
+      tsys_terminal:
+        $ref: '#/definitions/TsysTerminal'
+      global_terminal:
+        $ref: '#/definitions/GlobalTerminal'
+      elavon_terminal:
+        $ref: '#/definitions/ElavonTerminal'
+      moneris_terminal:
+        $ref: '#/definitions/MonerisTerminal'
+
+  GwUsaTerminal:
+    description: 'The details for the terminal of a gateway application'
+    additionalProperties: false
+    type: object
+    required:
+      - terminal_type
+    properties:
+      terminal_type:
+        type: string
+        description: 'This is type of terminal'
+        enum: ["first_data_nashville","chase_paymentech","tsys","global","elavon","moneris"]
+      first_data_nashville_terminal:
+        $ref: '#/definitions/FirstDataNashvilleTerminal'
+      chase_paymentech_terminal:
+        $ref: '#/definitions/ChasePaymentechTerminal'
+      tsys_terminal:
+        $ref: '#/definitions/TsysTerminal'
+      global_terminal:
+        $ref: '#/definitions/GlobalTerminal'
+      elavon_terminal:
+        $ref: '#/definitions/ElavonTerminal'
+
+
+  TdTerminal:
+    type: object
+    description: 'TD terminal'
+    additionalProperties: false
+    properties:
+      terminal_number:
+        type: string
+        minLength: 12
+        maxLength: 12
+      visa_number:
+        type: string
+        minLength: 8
+        maxLength: 8
+      mc_number:
+        type: string
+        minLength: 8
+        maxLength: 8
+
+  FirstDataNashvilleTerminal:
+    type: object
+    description: 'First Data Nashville terminal'
+    additionalProperties: false
+    properties:
+      merchant_id:
+        type: string
+        minLength: 7
+        maxLength: 7
+      terminal_number:
+        type: string
+        minLength: 6
+        maxLength: 8
+      visa_number:
+        type: string
+        minLength: 11
+        maxLength: 11
+      mc_number:
+        type: string
+        minLength: 11
+        maxLength: 11
+
+  ChasePaymentechTerminal:
+    type: object
+    description: 'Chase Paymentech terminal'
+    additionalProperties: false
+    properties:
+      client_number:
+        type: string
+        minLength: 4
+        maxLength: 4
+      merchant_number:
+        type: string
+        minLength: 12
+        maxLength: 12
+      terminal_number:
+        type: string
+        minLength: 3
+        maxLength: 3
+      net_connect_user_id:
+        type: string
+        minLength: 6
+        maxLength: 32
+      net_connect_pw:
+        type: string
+        minLength: 6
+        maxLength: 32
+      visa_number:
+        type: string
+        minLength: 7
+        maxLength: 12
+      mc_number:
+        type: string
+        minLength: 7
+        maxLength: 12
+
+  TsysTerminal:
+    type: object
+    description: 'TSYS terminal'
+    additionalProperties: false
+    properties:
+      acquirer_bin:
+        type: string
+        minLength: 6
+        maxLength: 6
+      agent_bank_number:
+        type: string
+        minLength: 6
+        maxLength: 6
+      agent_chain_number:
+        type: string
+        minLength: 6
+        maxLength: 6
+      merchant_number:
+        type: string
+        minLength: 12
+        maxLength: 12
+      store_number:
+        type: string
+        minLength: 4
+        maxLength: 4
+      terminal_number:
+        type: string
+        minLength: 4
+        maxLength: 4
+      terminal_id:
+        type: string
+        minLength: 8
+        maxLength: 8
+      visa_number:
+        type: string
+        minLength: 11
+        maxLength: 12
+      mc_number:
+        type: string
+        minLength: 11
+        maxLength: 12
+
+  GlobalTerminal:
+    type: object
+    description: 'Global terminal'
+    additionalProperties: false
+    properties:
+      terminal_id:
+        type: string
+        minLength: 11
+        maxLength: 11
+      bin_number:
+        type: string
+        minLength: 6
+        maxLength: 6
+      visa_number:
+        type: string
+        minLength: 11
+        maxLength: 12
+      mc_number:
+        type: string
+        minLength: 11
+        maxLength: 12
+
+  ElavonTerminal:
+    type: object
+    description: 'Elavon terminal'
+    additionalProperties: false
+    properties:
+      bank_number:
+        type: string
+        minLength: 6
+        maxLength: 6
+      terminal_id:
+        type: string
+        minLength: 16
+        maxLength: 16
+      visa_number:
+        type: string
+        minLength: 8
+        maxLength: 12
+      mc_number:
+        type: string
+        minLength: 8
+        maxLength: 12
+
+  MonerisTerminal:
+    type: object
+    description: 'Moneris terminal'
+    additionalProperties: false
+
+  EftApplicant:
+    description: 'The individual completing the application'
+    additionalProperties: false
+    type: object
+    required:
+      - first_name
+      - last_name
+      - phone_number
+      - agreement
+      - email
+    properties:
+      first_name:
+        type: string
+        maxLength: 64
+      last_name:
+        type: string
+        maxLength: 64
+      phone_number:
+        type: string
+        maxLength: 15
+      agreement:
+        $ref: '#/definitions/Agreement'
+      email:
+        type: string
+        maxLength: 500
+
+  EftCadApplicant:
+    description: 'The individual completing the application'
+    additionalProperties: false
+    type: object
+    required:
+      - first_name
+      - last_name
+      - phone_number
+      - agreement
+      - email
+      - date_of_birth
+    properties:
+      first_name:
+        type: string
+        maxLength: 64
+      last_name:
+        type: string
+        maxLength: 64
+      phone_number:
+        type: string
+        maxLength: 15
+      date_of_birth:
+        type: string
+        format: date-time
+        description: 'Defines the birthday in ISO 8601 format with a timezone'
+      agreement:
+        $ref: '#/definitions/Agreement'
+      email:
+        type: string
+        maxLength: 500
+
+  PspCadApplicant:
+    description: 'The individual completing the application'
+    additionalProperties: false
+    type: object
+    required:
+      - first_name
+      - last_name
+      - phone_number
+      - date_of_birth
+      - address
+      - agreement
+      - email
+    properties:
+      first_name:
+        type: string
+        maxLength: 64
+      last_name:
+        type: string
+        maxLength: 64
+      social_insurance_number:
+        type: string
+        description: "This is the social insurance number"
+        maxLength: 9
+      date_of_birth:
+        type: string
+        format: date-time
+        description: 'Defines the birthday in ISO 8601 format with a timezone'
+      resided_over_years:
+        type: boolean
+        description: "This is used to determine if the applicant has resided at this address for at last 2 years"
+      phone_number:
+        type: string
+        maxLength: 15
+      agreement:
+        $ref: '#/definitions/Agreement'
+      address:
+        $ref: '#/definitions/Address'
+      email:
+        type: string
+        maxLength: 500
+
+  PspUsdApplicant:
+    description: 'The individual completing the application'
+    additionalProperties: false
+    type: object
+    required:
+      - social_security_number
+      - first_name
+      - last_name
+      - phone_number
+      - date_of_birth
+      - citizenship
+      - address
+      - agreement
+      - position
+      - email
+    properties:
+      first_name:
+        type: string
+        maxLength: 20
+      last_name:
+        type: string
+        maxLength: 20
+      social_security_number:
+        type: string
+        description: "This is the social security number"
+        pattern: '^\d{3}-?\d{2}-?\d{4}$'
+      date_of_birth:
+        type: string
+        format: date-time
+        description: 'Defines the birthday in ISO 8601 format with a timezone'
+      citizenship:
+        type: string
+        description: "Valid ISO 3166-1 country code"
+        enum: ["AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KP", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "YE", "YT", "ZA", "ZM", "ZW"]
+      phone_number:
+        type: string
+        pattern: '^\d{1,20}$'
+      position:
+        type: string
+        description: "The position of the applicant"
+        enum: ["owner","co_owner","president","legal_contact","secretary_treasurer","partner","general_manager","administrator","vice_president","director","ceo","corporate_officer","principal","cfo","coo"]
+      agreement:
+        $ref: '#/definitions/Agreement'
+      address:
+        $ref: '#/definitions/PspUsdAddress'
+      email:
+        type: string
+        maxLength: 70
+
+  PspNzdApplicant:
+    description: 'The individual completing the application'
+    additionalProperties: false
+    type: object
+    required:
+      - first_name
+      - last_name
+      - email
+    properties:
+      title:
+        type: string
+        maxLength: 4
+        enum: ["Mr","Miss","Ms","Mrs","Mx"]
+      first_name:
+        type: string
+        maxLength: 64
+      last_name:
+        type: string
+        maxLength: 64
+      date_of_birth:
+        type: string
+        format: date-time
+        description: 'Defines the birthday in ISO 8601 format with a timezone'
+      agreement:
+        $ref: '#/definitions/Agreement'
+      address:
+        $ref: '#/definitions/Address'
+      email:
+        type: string
+        maxLength: 500
+
+  EftCadBusiness:
+    description: 'The details of an EFT Canadian business'
+    additionalProperties: false
+    type: object
+    required:
+      - company_name
+      - annual_sales
+      - entity_type
+      - start_date
+      - dba_name
+      - bank_account
+      - batch_settings
+      - address
+      - services_description
+    properties:
+      company_name:
+        type: string
+        maxLength: 64
+      annual_sales:
+        type: number
+        format: float32
+        description: 'This is the annual sales volume in CAD.'
+      entity_type:
+        type: string
+        description: 'This is the business entity type'
+        enum: ["sole_proprietor","partnership","limited_partnership","joint_venture","corporation","non_profit","publicly_traded","charitable_organization"]
+      website_url:
+        type: string
+        maxLength: 128
+        format: 'uri'
+      services_description:
+        type: string
+        maxLength: 500
+        description: 'This is the description of the goods and/or services the merchant sells'
+      registration_location:
+        type: string
+        maxLength: 64
+      start_date:
+        type: string
+        format: date-time
+        description: 'This is the business start date in ISO 8601 format with a timezone'
+      business_number:
+        type: string
+        maxLength: 32
+      dba_name:
+        type: string
+        description: 'This is the "doing business as" name'
+        maxLength: 32
+      batch_settings:
+        $ref: '#/definitions/BatchSettings'
+      address:
+        $ref: '#/definitions/Address'
+      directors:
+        type: array
+        maxItems: 5
+        minItems: 1
+        items:
+          $ref: '#/definitions/EftCadDirector'
+      bank_account:
+          $ref: '#/definitions/CanadianBankAccount'
+      documents:
+        type: array
+        description: 'A maximum of five documents is allowed'
+        minItems: 0
+        maxItems: 5
+        items:
+          $ref: '#/definitions/EftCadFile'
+
+  AchUsdBusiness:
+    description: 'The details of an ACH American business'
+    additionalProperties: false
+    type: object
+    required:
+      - company_name
+      - annual_sales
+      - entity_type
+      - start_date
+      - dba_name
+      - bank_account
+      - batch_settings
+      - address
+      - directors
+    properties:
+      company_name:
+        type: string
+        maxLength: 64
+      annual_sales:
+        type: number
+        format: float32
+        description: 'This is the annual sales volume in USD.'
+      entity_type:
+        type: string
+        description: 'This is the business entity type'
+        enum: ["sole_proprietor","partnership","limited_partnership","joint_venture","corporation","non_profit","publicly_traded","charitable_organization"]
+      website_url:
+        type: string
+        maxLength: 128
+        format: uri
+      registration_location:
+        type: string
+        maxLength: 64
+      start_date:
+        type: string
+        format: date-time
+        description: 'This is the business start date in ISO 8601 format with a timezone'
+      business_number:
+        type: string
+        maxLength: 32
+      dba_name:
+        type: string
+        description: 'This is the "doing business as" name'
+        maxLength: 32
+      batch_settings:
+        $ref: '#/definitions/BatchSettings'
+      address:
+        $ref: '#/definitions/Address'
+      directors:
+        type: array
+        maxItems: 5
+        minItems: 1
+        items:
+          $ref: '#/definitions/AchUsdDirector'
+      bank_account:
+          $ref: '#/definitions/AmericanBankAccount'
+      documents:
+        type: array
+        description: 'A maximum of five documents is allowed'
+        minItems: 0
+        maxItems: 5
+        items:
+          $ref: '#/definitions/AchUsdFile'
+
+  SepaEurBusiness:
+    description: 'The details of a European business'
+    additionalProperties: false
+    type: object
+    required:
+      - company_name
+      - annual_sales
+      - entity_type
+      - legal_name
+      - start_date
+      - dba_name
+      - bank_account
+      - batch_settings
+      - address
+      - directors
+    properties:
+      company_name:
+        type: string
+        maxLength: 64
+      annual_sales:
+        type: number
+        format: float32
+        description: 'This is the annual sales volume in EUR.'
+      entity_type:
+        type: string
+        description: 'This is the business entity type'
+        enum: ["public_limited","private_limited","limited_liability_partnership","combination_partnership","partnership","sole_trader","community_interest","charitable_incorporated","other"]
+      website_url:
+        type: string
+        maxLength: 128
+        format: uri
+      legal_name:
+        type: string
+        maxLength: 64
+      start_date:
+        type: string
+        format: date-time
+        description: 'This is the business start date in ISO 8601 format with a timezone'
+      registration_number:
+        type: string
+        maxLength: 32
+      dba_name:
+        type: string
+        description: 'This is the "doing business as" name'
+        maxLength: 32
+      batch_settings:
+        $ref: '#/definitions/BatchSettings'
+      address:
+        $ref: '#/definitions/Address'
+      directors:
+        type: array
+        maxItems: 5
+        minItems: 1
+        items:
+          $ref: '#/definitions/SepaEurDirector'
+      bank_account:
+          $ref: '#/definitions/EuropeanBankAccount'
+      documents:
+        type: array
+        description: 'A maximum of six documents is allowed'
+        minItems: 0
+        maxItems: 6
+        items:
+          $ref: '#/definitions/SepaEurFile'
+
+  BacsGbpBusiness:
+    description: 'The details of a BACS United Kingdom business'
+    additionalProperties: false
+    type: object
+    required:
+      - company_name
+      - annual_sales
+      - entity_type
+      - legal_name
+      - start_date
+      - dba_name
+      - bank_account
+      - batch_settings
+      - address
+      - directors
+    properties:
+      company_name:
+        type: string
+        maxLength: 64
+      annual_sales:
+        type: number
+        format: float32
+        description: 'This is the annual sales volume in GBP.'
+      entity_type:
+        type: string
+        description: 'This is the business entity type'
+        enum: ["public_limited","private_limited","limited_liability_partnership","combination_partnership","partnership","sole_trader","community_interest","charitable_incorporated","other"]
+      website_url:
+        type: string
+        maxLength: 128
+        format: uri
+      legal_name:
+        type: string
+        maxLength: 64
+      start_date:
+        type: string
+        format: date-time
+        description: 'This is the business start date in ISO 8601 format with a timezone'
+      registration_number:
+        type: string
+        maxLength: 32
+      dba_name:
+        type: string
+        description: 'This is the "doing business as" name'
+        maxLength: 32
+      batch_settings:
+        $ref: '#/definitions/BatchSettings'
+      address:
+        $ref: '#/definitions/Address'
+      directors:
+        type: array
+        maxItems: 5
+        minItems: 1
+        items:
+          $ref: '#/definitions/BacsGbpDirector'
+      bank_account:
+          $ref: '#/definitions/UnitedKingdomBankAccount'
+      documents:
+        type: array
+        description: 'A maximum of six documents is allowed'
+        minItems: 0
+        maxItems: 6
+        items:
+          $ref: '#/definitions/BacsGbpFile'
+
+  PspCadBusiness:
+    description: 'The details of a Canadian business'
+    additionalProperties: false
+    type: object
+    required:
+      - company_name
+      - annual_sales
+      - merchant_category
+      - start_date
+      - entity_type
+      - bank_account
+      - address
+    properties:
+      company_name:
+        type: string
+        maxLength: 64
+      annual_sales:
+        type: number
+        format: float32
+        description: 'This is the annual sales volume in CAD/USD.'
+      merchant_category:
+        type: string
+        description: 'This is the merchant category code'
+        enum: ["5813","5811","5812","8398","7997","8651","8661","8641","1711","1750","1731","1520","7623","1761","1740","7033","5462","5411","5499","5994","8021","8099","5963","5699","5971","5970","5992","5399","8931","7311","7542","7217","8351","7379","7372","7392","0780","8111","7349","7333","8999","6513","7251","0742","7230","7210","4121","4722","8299"]
+      services_description:
+        type: string
+        maxLength: 500
+        description: 'This is the description of the goods and/or services the merchant sells'
+      entity_type:
+        type: string
+        description: 'This is the business entity type'
+        enum: ["sole_proprietor","partnership","limited_partnership","joint_venture","corporation","non_profit"]
+      website_url:
+        type: string
+        maxLength: 128
+        format: uri
+      start_date:
+        type: string
+        format: date-time
+        description: 'This is the business start date in ISO 8601 format with a timezone'
+      business_number:
+        type: string
+        maxLength: 32
+      address:
+        $ref: '#/definitions/Address'
+      owners:
+        type: array
+        maxItems: 5
+        minItems: 0
+        description: 'Owners are required fields for Non-Profit entities'
+        items:
+          $ref: '#/definitions/PspCadOwner'
+      bank_account:
+          $ref: '#/definitions/CanadianBankAccount'
+
+  PspUsdBusiness:
+    description: 'The details of a US business'
+    additionalProperties: false
+    type: object
+    required:
+      - company_name
+      - legal_name
+      - annual_sales
+      - merchant_category
+      - start_date
+      - entity_type
+      - average_delivery
+      - bank_account
+      - address
+      - federal_tax_id
+      - tin_type
+      - average_amount
+      - services_description
+    properties:
+      company_name:
+        type: string
+        maxLength: 24
+        description: 'This is the DBA (Doing Business As) name'
+      legal_name:
+        type: string
+        maxLength: 40
+        description: 'This is the business legal name'
+      annual_sales:
+        type: number
+        format: float32
+        description: 'This is the annual sales volume in USD.'
+      merchant_category:
+        type: string
+        description: 'This is the merchant category code'
+        enum: ["7997","8699","8641","7941","7922","7994","5192","5499","7995","8099","5969","5968","5977","5732","5992","5999","7399","4816","7372","7392","8999","7299","4722","8299","4899","4814"]
+      services_description:
+        type: string
+        maxLength: 100
+        description: 'This is the description of the goods and/or services the merchant sells'
+      federal_tax_id:
+        type: string
+        pattern: '^\d{9}$'
+      tin_type:
+        type: string
+        description: 'This is the type of federal tax provided'
+        enum: ["social_security","employment_id", "other"]
+      entity_type:
+        type: string
+        description: 'This is the business entity type'
+        enum: ["sole_proprietor","partnership","limited_liability_corp","privately_held_corp","publicly_traded_corp","international_organization","government","non_profit"]
+      website_url:
+        type: string
+        maxLength: 70
+        format: uri
+      start_date:
+        type: string
+        format: date-time
+        description: 'This is the business start date in ISO 8601 format with a timezone'
+      average_amount:
+        type: number
+        format: float32
+        description: 'This is the average transaction amount in USD.'
+      average_delivery:
+        type: string
+        description: 'This is the average delivery time in days. 07: Days in Delivery 0 to 7,  14: Days in Delivery 8 to 14, 30: Days in Delivery 15 to 30, 31: Days in Delivery over 30'
+        enum: ["07", "14", "30", "31"]
+      seasonal_sales:
+        type: string
+        description: 'This determines if the sales are seasonal'
+        enum: [ "1", "0"]
+      address:
+        $ref: '#/definitions/PspUsdAddress'
+      owners:
+        type: array
+        maxItems: 5
+        minItems: 0
+        items:
+          $ref: '#/definitions/PspUsdOwner'
+      bank_account:
+          $ref: '#/definitions/AmericanBankAccount'
+      documents:
+        type: array
+        description: 'A maximum of three documents is allowed'
+        minItems: 0
+        maxItems: 3
+        items:
+          $ref: '#/definitions/PspUsdFile'
+
+  PspNzdBusiness:
+    description: 'The details of a New Zealand business'
+    additionalProperties: false
+    type: object
+    required:
+      - company_name
+      - company_description
+      - legal_name
+      - annual_sales
+      - average_monthly_sale
+      - gst_number
+      - merchant_category
+      - business_industry
+      - start_date
+      - phone_number
+      - entity_type
+      - bank_account
+      - address
+    properties:
+      company_name:
+        type: string
+        maxLength: 64
+        description: 'Business Trading Name'
+      company_description:
+        type: string
+        maxLength: 128
+        description: 'Business purpose and description'
+      legal_name:
+        type: string
+        maxLength: 128
+        description: 'Source data from ASIC/business check'
+      average_monthly_sale:
+        type: number
+        format: integer
+      annual_sales:
+        type: number
+        format: integer
+        description: 'This is the annual sales volume in NZD.'
+      gst_number:
+        type: string
+        maxLength: 64
+        description: 'gst number if yearly revenue is more than 60k'
+      merchant_category:
+        type: number
+        format: integer
+        description: 'This is the merchant category code'
+      services_description:
+        type: string
+        maxLength: 512
+        description: 'This is the description of the goods and/or services the merchant sells'
+      business_industry:
+        type: string
+        maxLength: 64
+      entity_type:
+        type: string
+        description: 'This is the business entity type that maps to Legal Business Type'
+        enum: ["sole_trader","company"]
+      website_url:
+        type: string
+        maxLength: 128
+        format: uri
+      start_date:
+        type: string
+        format: date-time
+        description: 'This is the business start date in ISO 8601 format with a timezone'
+      business_number:
+        type: string
+        maxLength: 32
+      phone_number:
+        type: string
+        maxLength: 15
+      address:
+        $ref: '#/definitions/Address'
+      documents:
+        type: array
+        description: 'A maximum of three documents is allowed'
+        minItems: 0
+        maxItems: 3
+        items:
+          $ref: '#/definitions/PspNzdFile'
+      owners:
+        type: array
+        maxItems: 5
+        minItems: 0
+        description: 'Owners are required fields for Non-Profit entities'
+        items:
+          $ref: '#/definitions/PspNzdOwner'
+      bank_account:
+          $ref: '#/definitions/NewZealandBankAccount'
+
+  BatchSettings:
+    description: 'The details of a batch requirements'
+    additionalProperties: false
+    type: object
+    required:
+      - frequency
+      - average_amount
+      - maximum_amount
+    properties:
+      frequency:
+        type: string
+        enum: [ "daily", "weekly", "bi_weekly", "monthly", "bi_monthly", "semi_annually", "annually" ]
+      average_amount:
+        type: number
+        format: float32
+      maximum_amount:
+        type: number
+        format: float32
+
+  PspUsdAddress:
+    description: 'Defines a PSP USD address'
+    additionalProperties: false
+    type: object
+    required:
+      - address_line1
+      - city
+      - country
+    properties:
+      address_line1:
+        type: string
+        maxLength: 24
+      address_line2:
+        type: string
+        maxLength: 24
+      city:
+        type: string
+        maxLength: 21
+      region:
+        type: string
+        description: "State/Province/Municipality/Region"
+        maxLength: 2
+      country:
+        type: string
+        description: "Valid ISO 3166-1 country code"
+        enum: ["AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KP", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "YE", "YT", "ZA", "ZM", "ZW"]
+      postal_code:
+        type: string
+        description: 'Postal/Zip code'
+        maxLength: 12
+
+  Address:
+    description: 'Defines a generic address'
+    additionalProperties: false
+    type: object
+    required:
+      - address_line1
+      - city
+      - country
+    properties:
+      address_line1:
+        type: string
+        maxLength: 64
+      address_line2:
+        type: string
+        maxLength: 64
+      city:
+        type: string
+        maxLength: 64
+      region:
+        type: string
+        description: "State/Province/Municipality/Region"
+        maxLength: 64
+      country:
+        type: string
+        description: "Valid ISO 3166-1 country code"
+        enum: ["AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KP", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "YE", "YT", "ZA", "ZM", "ZW"]
+      postal_code:
+        type: string
+        description: 'Postal/Zip code'
+        maxLength: 7
+
+  PspNzIdentity:
+    description: 'Defines the identity for the owner'
+    additionalProperties: false
+    type: object
+    properties:
+      passport_number:
+        type: string
+        maxLength: 64
+      passport_expiry:
+        type: string
+        format: date-time
+      drivers_license_number:
+        type: string
+        maxLength: 64
+      drivers_license_version:
+        type: string
+        maxLength: 64
+      ev-token:
+        type: string
+        maxLength: 64
+        description: 'Green verification ID'
+        
+  EftCadDirector:
+    description: 'Defines an EFT Canadian business owner or director'
+    additionalProperties: false
+    type: object
+    required:
+      - first_name
+      - last_name
+      - date_of_birth
+      - address
+    properties:
+      first_name:
+        type: string
+        maxLength: 64
+      last_name:
+        type: string
+        maxLength: 64
+      date_of_birth:
+        type: string
+        format: date-time
+        description: 'Defines the birthday in ISO 8601 format with a timezone'
+      address:
+        $ref: '#/definitions/Address'
+
+  AchUsdDirector:
+    description: 'Defines an ACH American business owner or director'
+    additionalProperties: false
+    type: object
+    required:
+      - first_name
+      - last_name
+      - date_of_birth
+      - start_date
+      - address
+    properties:
+      first_name:
+        type: string
+        maxLength: 64
+      last_name:
+        type: string
+        maxLength: 64
+      date_of_birth:
+        type: string
+        format: date-time
+        description: 'Defines the birthday in ISO 8601 format with a timezone'
+      start_date:
+        type: string
+        format: date-time
+        description: 'Defines the ownership start date in ISO 8601 format with a timezone'
+      percentage:
+        description: 'Defines the percentage, from 0.00 to 100.00, of the company ownership.'
+        type: number
+        format: float32
+        minimum: 0
+        maximum: 100
+      address:
+        $ref: '#/definitions/Address'
+
+  SepaEurDirector:
+    description: 'Defines a SEPA European business owner  or director'
+    additionalProperties: false
+    type: object
+    required:
+      - first_name
+      - last_name
+      - date_of_birth
+      - start_date
+      - address
+    properties:
+      first_name:
+        type: string
+        maxLength: 64
+      last_name:
+        type: string
+        maxLength: 64
+      date_of_birth:
+        type: string
+        format: date-time
+        description: 'Defines the birthday in ISO 8601 format with a timezone'
+      start_date:
+        type: string
+        format: date-time
+        description: 'Defines the ownership start date in ISO 8601 format with a timezone'
+      percentage:
+        description: 'Defines the percentage, from 0.00 to 100.00, of the company ownership.'
+        type: number
+        format: float32
+        minimum: 0
+        maximum: 100
+      address:
+        $ref: '#/definitions/Address'
+
+  BacsGbpDirector:
+    description: 'Defines a BACS United Kingdom business owner  or director'
+    additionalProperties: false
+    type: object
+    required:
+      - first_name
+      - last_name
+      - date_of_birth
+      - start_date
+      - address
+    properties:
+      first_name:
+        type: string
+        maxLength: 64
+      last_name:
+        type: string
+        maxLength: 64
+      date_of_birth:
+        type: string
+        format: date-time
+        description: 'Defines the birthday in ISO 8601 format with a timezone'
+      start_date:
+        type: string
+        format: date-time
+        description: 'Defines the the ownership start date in ISO 8601 format with a timezone'
+      percentage:
+        description: 'Defines the percentage, from 0.00 to 100.00, of the company ownership.'
+        type: number
+        format: float32
+        minimum: 0
+        maximum: 100
+      address:
+        $ref: '#/definitions/Address'
+
+  PspCadOwner:
+    description: 'Defines a Canadian business owner'
+    additionalProperties: false
+    type: object
+    required:
+      - first_name
+      - last_name
+      - date_of_birth
+      - address
+    properties:
+      first_name:
+        type: string
+        maxLength: 64
+      last_name:
+        type: string
+        maxLength: 64
+      date_of_birth:
+        type: string
+        format: date-time
+        description: 'Defines the birthday in ISO 8601 format with a timezone'
+      address:
+        $ref: '#/definitions/Address'
+
+  PspUsdOwner:
+    description: 'Defines a US business owner'
+    additionalProperties: false
+    type: object
+    required:
+      - first_name
+      - last_name
+      - date_of_birth
+      - social_security_number
+      - citizenship
+      - address
+    properties:
+      first_name:
+        type: string
+        maxLength: 20
+      last_name:
+        type: string
+        maxLength: 20
+      date_of_birth:
+        type: string
+        format: date-time
+        description: 'Defines the birthday in ISO 8601 format with a timezone'
+      social_security_number:
+        type: string
+        maxLength: 9
+      phone_number:
+        type: string
+        pattern: '^\d{1,20}$'
+      email:
+        type: string
+        maxLength: 70
+      citizenship:
+        type: string
+        description: "Valid ISO 3166-1 country code"
+        enum: ["AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KP", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "YE", "YT", "ZA", "ZM", "ZW"]
+      percentage:
+        description: 'Defines the percentage, from 0.00 to 100.00, of the company ownership.'
+        type: number
+        format: float32
+        minimum: 0
+        maximum: 100
+      address:
+        $ref: '#/definitions/PspUsdAddress'
+
+  PspNzdOwner:
+    description: 'Defines a New Zealander business owner'
+    additionalProperties: false
+    type: object
+    required:
+      - first_name
+      - last_name
+      - date_of_birth
+      - phone_number
+      - business_role
+      - address
+    properties:
+      first_name:
+        type: string
+        maxLength: 64
+      last_name:
+        type: string
+        maxLength: 64
+      business_role:
+        type: string
+        maxLength: 64
+      date_of_birth:
+        type: string
+        format: date-time
+        description: 'Defines the birthday in ISO 8601 format with a timezone'
+      phone_number:
+        type: string
+        maxLength: 15
+      address:
+        $ref: '#/definitions/Address'
+      identity:
+            $ref: '#/definitions/PspNzIdentity'
+
+  CanadianBankAccount:
+    description: 'Defines a Canadian bank account'
+    additionalProperties: false
+    type: object
+    required:
+      - owner_name
+      - transit_number
+      - institution_number
+      - account_number
+    properties:
+      currency:
+        type: string
+        enum: ["CAD", "USD"]
+        default: "CAD"
+        description: 'This is the currency of the bank account'
+      owner_name:
+        type: string
+        maxLength: 64
+      transit_number:
+        type: string
+        pattern: '^\d{5}$'
+      institution_number:
+        type: string
+        pattern: '^\d{3}$'
+      account_number:
+        type: string
+        pattern: '^\d{4,12}$'
+  AmericanBankAccount:
+    description: 'Defines an American bank account'
+    additionalProperties: false
+    type: object
+    required:
+      - owner_name
+      - routing_number
+      - account_number
+    properties:
+      owner_name:
+        type: string
+        maxLength: 64
+      routing_number:
+        type: string
+        pattern: '^\d{9}$'
+      account_number:
+        type: string
+        pattern: '^\d{1,17}$'
+
+  EuropeanBankAccount:
+    description: 'Defines a European bank account'
+    additionalProperties: false
+    type: object
+    required:
+      - owner_name
+      - bank_name
+      - swift_code
+      - iban
+    properties:
+      owner_name:
+        type: string
+        maxLength: 64
+      bank_name:
+        type: string
+        maxLength: 32
+      swift_code:
+        type: string
+        maxLength: 11
+        description: 'Must be either 8 or 11 characters in length. Characters 1-4 are letters (A-Z). Characters 5-6 are a valid ISO 3166-1 Alpha-2 country code (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2). To verify a SWIFT/BIC code and for example SWIFT/BIC codes, see http://formvalidation.io/validators/bic/.'
+      iban:
+        type: string
+        maxLength: 34
+        description: 'Must be valid IBAN. To verify an IBAN and get example IBANS, see http://formvalidation.io/validators/iban/.'
+
+  UnitedKingdomBankAccount:
+    description: 'Defines a United Kingdom bank account'
+    additionalProperties: false
+    type: object
+    required:
+      - owner_name
+      - bank_name
+      - sort_code
+      - account_number
+    properties:
+      owner_name:
+        type: string
+        maxLength: 64
+      bank_name:
+        type: string
+        maxLength: 32
+      sort_code:
+        type: string
+        pattern: '^\d{2}-?\d{2}-?\d{2}$'
+      account_number:
+        type: string
+        pattern: '^\d{8}$'
+
+  NewZealandBankAccount:
+    description: 'Defines a New Zealand bank account'
+    additionalProperties: false
+    type: object
+    required:
+      - owner_name
+      - bsb
+      - account_number
+    properties:
+      currency:
+        type: string
+        default: "NZD"
+        description: 'This is the currency of the bank account'
+      owner_name:
+        type: string
+        maxLength: 64
+      bsb:
+        type: string
+        pattern: '^\d{6}$'
+      account_number:
+        type: string
+        pattern: '^\d{9,10}$'
+
+  EftCadFile:
+    description: 'Defines a document that is required for application approval.'
+    additionalProperties: false
+    type: object
+    required:
+      - name
+      - type
+      - base64
+    properties:
+      name:
+        type: string
+        description: 'Name of the document. This will match to one of the list of possible files. This is a read-only attribute. The options are "Copy ID (Owner and/or Principal) - govt issued photo ID", "Void Check or Bank Statement", "Certificate of Incorporation (if applicable)", "Non-Profit Registration Documents (if applicable)" and "List of Board Members (public and NFP companies)"'
+        enum: ["copy_id", "void_cheque", "bank_statement", "certificate", "registration", "board_members"]
+      type:
+        type: string
+        description: 'File type of the document; accepted file formats.'
+        enum: ["jpg", "jpeg", "doc", "docx", "pdf", "png"]
+      notes:
+        type: string
+        description: 'Description of the document and the contents that it must contain.'
+      base64:
+        type: string
+        description: 'The document data, submitted as a base64 encoded string..'
+      uri:
+        type: string
+        description: 'The URI that allows retrival of the documents using the GET /appplicatins/{id}/documents/{name}. [ReadOnly]'
+
+  AchUsdFile:
+    description: 'Defines a document that is required for application approval.'
+    additionalProperties: false
+    type: object
+    required:
+      - name
+      - type
+      - base64
+    properties:
+      name:
+        type: string
+        description: 'Name of the document. This will match to one of the list of possible files. This is a read-only attribute. The options are "Copy ID (Owner and/or Principal) - govt issued photo ID", "Void Check or Bank Statement", "Certificate of Incorporation (if applicable)", "Non-Profit Registration Documents (if applicable)" and "List of Board Members (public and NFP companies)"'
+        enum: ["copy_id", "void_cheque", "bank_statement", "certificate", "registration", "board_members"]
+      type:
+        type: string
+        description: 'File type of the document; accepted file formats.'
+        enum: ["jpg", "jpeg", "doc", "docx", "pdf", "png"]
+      notes:
+        type: string
+        description: 'Description of the document and the contents that it must contain.'
+      base64:
+        type: string
+        description: 'The document data, submitted as a base64 encoded string..'
+      uri:
+        type: string
+        description: 'The URI that allows retrival of the documents using the GET /appplicatins/{id}/documents/{name}. [ReadOnly]'
+
+  SepaEurFile:
+    description: 'Defines a document that is required for application approval.'
+    additionalProperties: false
+    type: object
+    required:
+      - name
+      - type
+      - base64
+    properties:
+      name:
+        type: string
+        description: 'Name of the document. This will match to one of the list of possible files. This is a read-only attribute. The options are "Copy ID (Owner and/or Principal) - govt issued photo ID", "Void Check or Bank Statement", "Certificate of Incorporation (if applicable)", "Non-Profit Registration Documents (if applicable)", "List of Board Members (public and NFP companies)" and "Mandate"'
+        enum: ["copy_id", "void_cheque", "bank_statement", "certificate", "registration", "board_members", "mandate"]
+      type:
+        type: string
+        description: 'File type of the document; accepted file formats.'
+        enum: ["jpg", "jpeg", "doc", "docx", "pdf", "png"]
+      notes:
+        type: string
+        description: 'Description of the document and the contents that it must contain.'
+      base64:
+        type: string
+        description: 'The document data, submitted as a base64 encoded string..'
+      uri:
+        type: string
+        description: 'The URI that allows retrival of the documents using the GET /appplicatins/{id}/documents/{name}. [ReadOnly]'
+
+  BacsGbpFile:
+    description: 'Defines a document that is required for application approval.'
+    additionalProperties: false
+    type: object
+    required:
+      - name
+      - type
+      - base64
+    properties:
+      name:
+        type: string
+        description: 'Name of the document. This will match to one of the list of possible files. This is a read-only attribute. The options are "Copy ID (Owner and/or Principal) - govt issued photo ID", "Void Check or Bank Statement", "Certificate of Incorporation (if applicable)", "Non-Profit Registration Documents (if applicable)", "List of Board Members (public and NFP companies)" and "Direct Debit Instructions"'
+        enum: ["copy_id", "void_cheque", "bank_statement", "certificate", "registration", "board_members", "direct_debit"]
+      type:
+        type: string
+        description: 'File type of the document; accepted file formats.'
+        enum: ["jpg", "jpeg", "doc", "docx", "pdf", "png"]
+      notes:
+        type: string
+        description: 'Description of the document and the contents that it must contain.'
+      base64:
+        type: string
+        description: 'The document data, submitted as a base64 encoded string..'
+      uri:
+        type: string
+        description: 'The URI that allows retrival of the documents using the GET /appplicatins/{id}/documents/{name}. [ReadOnly]'
+
+  PspUsdFile:
+    description: 'Defines a document that is required for application approval.'
+    additionalProperties: false
+    type: object
+    required:
+      - name
+      - type
+      - base64
+    properties:
+      name:
+        type: string
+        description: 'Name of the document.'
+        enum: ["id_applicant", "bank_statement", "pci_saq_document"]
+      type:
+        type: string
+        description: 'File type of the document; accepted file formats.'
+        enum: ["jpg", "jpeg", "doc", "docx", "pdf", "png"]
+      notes:
+        type: string
+        description: 'Description of the document and the contents that it must contain.'
+      base64:
+        type: string
+        description: 'The document data, submitted as a base64 encoded string..'
+      uri:
+        type: string
+        description: 'The URI that allows retrival of the documents using the GET /appplicatins/{id}/documents/{name}. [ReadOnly]'
+
+  PspNzdFile:
+    description: 'Defines a document that is required for application approval.'
+    additionalProperties: false
+    type: object
+    required:
+      - name
+      - type
+    properties:
+      name:
+        type: string
+        description: 'Name of the document.'
+        enum: ["id_applicant", "bank_statement", "pci_saq_document"]
+      expiry_date:
+        type: string
+        format: date-time
+        description: 'Defines the date when the document will be expired in ISO 8601 format with a timezone'
+      reference_number:
+        type: string
+        maxLength: 16
+        description: 'document reference number if any'
+      type:
+        type: string
+        description: 'File type of the document; accepted file formats.'
+        enum: ["jpg", "jpeg", "doc", "docx", "pdf", "png"]
+      notes:
+        type: string
+        description: 'Description of the document and the contents that it must contain.'
+      base64:
+        type: string
+        description: 'The document data, submitted as a base64 encoded string..'
+      uri:
+        type: string
+        description: 'The URI that allows retrival of the documents using the GET /appplicatins/{id}/documents/{name}. [ReadOnly]'
+
+  Status:
+    description: 'Defines information about the application. [ReadOnly]'
+    additionalProperties: false
+    type: object
+    properties:
+      state:
+        type: string
+        description: 'The state of the application. Possible values are "in_progress", "in_review", "rejected", "approved"'
+        enum: ["in_progress","in_review","rejected","approved"]
+      created_on:
+        type: string
+        format: date-time
+        description: 'Defines the date when the application was created in ISO 8601 format with a timezone [ReadOnly]'
+      updated_on:
+        type: string
+        format: date-time
+        description: 'Defines the date when the application was modified in  ISO 8601 format with a timezone [ReadOnly]'
+      pending_issues:
+        type: array
+        items:
+          $ref: '#/definitions/Error'
+
+  Agreement:
+    description: 'Defines an terms and conditions agreement between a merchant and Beanstream'
+    additionalProperties: false
+    type: object
+    required:
+      - name
+      - version
+      - timestamp
+    properties:
+      name:
+        type: string
+        description: 'Defines the name of the agreement'
+      version:
+        type: string
+        description: 'Defines the version of the agreement'
+      personal_guarantee_accepted:
+        type: boolean
+        description: "The applicant has read and accepted the terms of a personal guarantee."
+      timestamp:
+        type: string
+        format: date-time
+        description: 'Defines the date of the application terms and conditions agreeent in ISO 8601 format with a timezone [ReadOnly]'
+
+  Error:
+    description: 'Defines an error'
+    additionalProperties: false
+    type: object
+    properties:
+      name:
+        type: string
+        description: 'A field associated with the error'
+      reason:
+        type: string
+        description: 'A code associated with the error'
+      message:
+        type: string
+        description: 'A human readable message about the error'
+  
+
+
+
+

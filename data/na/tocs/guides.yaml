@@ -1,0 +1,6 @@
+- file: '/docs/guides/merchant_quickstart'
+  title: 'Quickstart: Merchant'
+- file: '/docs/guides/partner_quickstart'
+  title: 'Quickstart: Partner'
+- file: '/docs/guides/onboarding'
+  title: 'Onboarding'

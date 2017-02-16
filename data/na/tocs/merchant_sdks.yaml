@@ -1,0 +1,10 @@
+- file: /docs/references/merchant_sdks/overview/
+  title: Overview
+- file: /docs/references/merchant_sdks/collect_card_data/
+  title: Collect Card Data
+- file: /docs/references/merchant_sdks/take_payments/
+  title: Take Payments
+- file: /docs/references/merchant_sdks/save_customer_data/
+  title: Save Customer Data
+- file: /docs/references/merchant_sdks/analyze_payments/
+  title: Analyze Payments

@@ -1,0 +1,6 @@
+- file: '/docs/references/merchant_api/'
+  title: 'Payments API'
+- file: '/docs/references/partner_api/'
+  title: 'Onboarding API'
+- file: '/docs/references/merchant_sdks/'
+  title: 'Payments SDKs'
