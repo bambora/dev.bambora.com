@@ -2,22 +2,17 @@
 title: Onboarding
 layout: tutorial
 
+summary: >
+    The Onboarding API allows you to take full control of a user’s onboarding experience. You can design, build, and brand the UI through which a sub-merchants sign up for a Beanstream account.
+
 navigation:
   header: na.tocs.na_nav_header
   footer: na.tocs.na_nav_footer
   toc: false
   header_active: Guides
-
-summary: >
-    This page contains the rules and guidelines for creating a
-    developer portal and the content within it. All bambora developer
-    portals must adhere to this design guide.
-
 ---
 
 # Onboarding
-Beanstream supports two types of accounts, Merchant accounts and Partner accounts. The Merchant account is the standard account. It allows you to process payments. The Partner account is an enhanced account. It allows you to process payments and to onboard sub-merchants.
-
 The Onboarding API allows you to take full control of a user’s onboarding experience. You can design, build, and brand the UI through which a sub-merchants sign up for a Beanstream account. You can reuse the merchant’s information already collected to create a lightweight integration.
 
 You can submit either completed or partially completed applications. This means you can allow your sub-merchant to submit their application in stages or to submit supporting documentation at a later date. This also facilitates tracking of dropped applications.

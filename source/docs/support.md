@@ -1,6 +1,9 @@
 ---
-title: Example Product Page
+title: Support
 layout: product
+
+summary: >
+    Find answers in our support docs or talk to a human.
 
 navigation:
   header: na.tocs.na_nav_header
@@ -21,7 +24,6 @@ cards:
             Need help? Call, instant message or email us.
         icon: list
         link: http://www.beanstream.com/contact/support/
-
 ---
 
 # Support

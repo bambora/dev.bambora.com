@@ -2,16 +2,14 @@
 title: Merchant API Overview
 layout: tutorial
 
+summary: >
+    The Onboarding API allows you to build your own custom UI.
+
 navigation:
   header: na.tocs.na_nav_header
   footer: na.tocs.na_nav_footer
   toc: false
   header_active: References
-
-search: false
-
-summary: >
-    This will guide you through quickly setting up the portal on your machine, editing some docs, and deploying the change.
 ---
 
 # Partner API

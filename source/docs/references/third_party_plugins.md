@@ -2,21 +2,18 @@
 title: Third Party Plugins
 layout: tutorial
 
+summary: >
+    Here is an ever-growing list of plugins and tools used for taking payments with us.
+
 navigation:
   header: na.tocs.na_nav_header
   footer: na.tocs.na_nav_footer
-  toc: false
+  toc: none
   header_active: References
-
-summary: >
-    This page contains the rules and guidelines for creating a
-    developer portal and the content within it. All bambora developer
-    portals must adhere to this design guide.
-
 ---
 
 # Third Party Plugins
-Here is an ever-growing list of plugins and tools used for taking payments using Beanstream. There are plugins for shopping carts, CMS suites, and programming language libraries. If you know of one that isn’t listed let us know!
+Here is an ever-growing list of plugins and tools used for taking payments with us. There are plugins for shopping carts, CMS suites, and programming language libraries. If you know of one that isn’t listed let us know!
 
 For a comprehensive list of our partners please visit our [marketplace][https://marketplace.beanstream.com/].
 

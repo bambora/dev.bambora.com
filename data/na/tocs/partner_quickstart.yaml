@@ -1,4 +1,4 @@
-- file: '/docs/guides/partner_quickstart'
-  title: 'Setup'
-- file: '/docs/guides/partner_quickstart'
-  title: 'Quickstart'
+- file: /docs/guides/partner_quickstart/setup/
+  title: Setup
+- file: /docs/guides/partner_quickstart/calling_apis/
+  title: Calling APIs

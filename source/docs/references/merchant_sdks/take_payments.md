@@ -2,7 +2,7 @@
 title: Take Payments
 layout: spec
 
-summary: An example Spec Page implementation.
+summary: Take Payments
 
 navigation:
   header: na.tocs.na_nav_header

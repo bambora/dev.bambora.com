@@ -1,5 +1,5 @@
 ---
-title: Example Product Page
+title: References
 layout: product
 
 navigation:
@@ -12,25 +12,21 @@ cards:
     -                
         title: Payments - API
         description: >
-            Use the Bambora native payments SDK to accept payments in
-            iOS and android apps.
+            The Payments API allows you to tokenize cards, take payments, store customer data and query transactions.
         icon: notification-active
-        tag: tag
-        link: /content/na/references/merchant_api/
+        link: /docs/references/merchant_api/
     -
         title: Onboarding - API
         description: >
-            Use Bambora checkout, or one of our Shopping Cart plugins,
-            to accept payments on your website or online store.
+            The Onboarding API allows you to submit applications on behalf of sub-merchants.
         icon: checkmark
-        link: /content/na/references/partner_api/
+        link: /docs/references/partner_api/
     -
         title: Payments - SDKs
         description: >
-            Get up and running in minutes. Use the Bambora API to make
-            payments and much more.
+            The Payments SDKs wrap the Payments API. They include server, mobile and browser SDKs.
         icon: list
-        link: /content/na/references/merchant_sdks/
+        link: /docs/references/merchant_sdks/
 
 
 ---

@@ -1,6 +1,9 @@
 ---
-title: Demo Developer Portal
+title: Developer Portal
 layout: landing
+
+summary: >
+    Welcome to our Developer Documentation Portal. This single source of truth for our payment gateway.
 
 navigation:
   header: na.tocs.na_nav_header
@@ -16,7 +19,7 @@ hero_unit:
         This single source of truth for our payment gateway.
     button:
         text: Get Started
-        link: /content/na/guides/merchant_quickstart/
+        link: /docs/guides/merchant_quickstart/
 card_sets:
 
     -  
@@ -25,23 +28,17 @@ card_sets:
             Learn how to get things done.
         cards:
             -
-                title: Products
-                description: >
-                    Get acquainted with our products and features.
-                icon: flag
-                link: /content/na/guides/products/
-            -
                 title: Merchant Quickstart
                 description: >
                     Get up and running fast by opening a test account and hitting a few of our API endpoints.
                 icon: flag
-                link: /content/na/guides/merchant_quickstart/
+                link: /docs/guides/merchant_quickstart/setup/
             -
                 title: Partner Quickstart
                 description: >
                     Get up and running fast by opening a test account and hitting a few of our API endpoints.
                 icon: flag
-                link: /content/na/guides/partner_quickstart/
+                link: /docs/guides/partner_quickstart/setup/
 
 
     -
@@ -50,24 +47,21 @@ card_sets:
             Get an in-depth knowledge of our payment gateway.
         cards:
             -
-                title: Merchant API
+                title: Payments API
                 description: >
-                    Tempore corrupti, obcaecati voluptate nulla, repellat labore
-                    culpa, accusamus doloremque laudantium similique id molestiae.
+                    Our Payments API supports online payments, card tokenization, payment profiles and reporting.
                 icon: flag
-                link: /content/na/references/merchant_api/
+                link: /docs/references/merchant_api/overview/
             -
-                title: Merchant SDK
+                title: Payments SDKs
                 description: >
-                    Tempore corrupti, obcaecati voluptate nulla, repellat labore
-                    culpa, accusamus doloremque laudantium similique id molestiae.
+                    Our Payments SDKs include a range of server-side SDKs, mobile SDKs for Android and iOS, and a browser SDK.
                 icon: more
-                link: /content/na/references/merchant_sdks/
+                link: /docs/references/merchant_sdks/overview/
             -
-                title: Partner API
+                title: Onboarding API
                 description: >
-                    Tempore corrupti, obcaecati voluptate nulla, repellat labore
-                    culpa, accusamus doloremque laudantium similique id molestiae.
+                    Our Onboarding API allows partners to submit applications on behalf of new sub-merchants.
                 icon: comment
-                link: /content/na/references/partner_api/
+                link: /docs/references/partner_api/overview/
 ---

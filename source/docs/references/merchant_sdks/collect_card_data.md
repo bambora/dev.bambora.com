@@ -1,8 +1,8 @@
 ---
-title: Test Spec Page
+title: Collect Card Data
 layout: spec
 
-summary: An example Spec Page implementation.
+summary: Collect Card Data
 
 navigation:
   header: na.tocs.na_nav_header
@@ -10,8 +10,8 @@ navigation:
   toc: na.tocs.merchant_sdks
   header_active: References
 
-name: /content/na/references/sdk/collect_card_data
-parent: /content/na/references/sdk/collect_card_data
+name: /docs/references/sdk/collect_card_data
+parent: /docs/references/sdk/collect_card_data
 nav_category: Collect Card Data
 
 includes:

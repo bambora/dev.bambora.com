@@ -2,17 +2,14 @@
 title: Products
 layout: tutorial
 
+summary: >
+    Products Overview.
+
 navigation:
   header: na.tocs.na_nav_header
   footer: na.tocs.na_nav_footer
   toc: false
   header_active: Guides
-
-summary: >
-    This page contains the rules and guidelines for creating a
-    developer portal and the content within it. All bambora developer
-    portals must adhere to this design guide.
-
 ---
 
 # Products

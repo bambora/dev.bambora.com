@@ -2,24 +2,21 @@
 title: Merchant SDKs Overview
 layout: tutorial
 
+summary: >
+    Our SDKs wrap our RESTful APIs.
+    
 navigation:
   header: na.tocs.na_nav_header
   footer: na.tocs.na_nav_footer
   toc: na.tocs.merchant_sdks
   header_active: Guides
-
-summary: >
-    This page contains the rules and guidelines for creating a
-    developer portal and the content within it. All bambora developer
-    portals must adhere to this design guide.
-
 ---
 
 # Overview
 Our SDKs wrap our RESTful APIs. Our server and mobile SDKs make it easy for you to use our RESTful APIs in a range of languages: C#, Go, Java, Javascript (Node), PHP, Python and Ruby. Our browser SDK limits the scope of your PCI compliance to PCI SAQ-A.
 
 
-## Server SKD
+## Server SDK
 Our Server SDKs wrap our Payments, Payment Profiles and Reporting APIs. You can read more about the functionality [here](../take_payments).
 
 ### Source
@@ -57,7 +54,7 @@ Our Server SDKs wrap our Payments, Payment Profiles and Reporting APIs. You can 
 [csharp-pm]: https://www.nuget.org/packages/Beanstream/
 [go-pm]: #
 
-## Mobile SKD
+## Mobile SDK
 Our Mobile SDKs wraps our Tokenization API. You can read more about the functionality [here](../collect_card_data#mobile-sdks-payform).
 
 ### Source
@@ -73,7 +70,7 @@ Our Mobile SDKs wraps our Tokenization API. You can read more about the function
 [ios-docs]: #
 [ios-pm]: #
 
-## Browser SKD
+## Browser SDK
 Our Browser SDKs wraps our Tokenization API. It limits the scope of your PCI compliance to PCI SAQ-A. You can read more about the functionality [here](../collect_card_data#browser-sdk-payfields).
 
 ### Source

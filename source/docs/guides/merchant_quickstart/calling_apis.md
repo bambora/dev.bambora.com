@@ -2,21 +2,19 @@
 title: Merchant Quickstart
 layout: tutorial
 
+summary: >
+    This will guide you through quickly hitting each of our Payments APIs and verifying the success of the operation in the Back Office.
+    
 navigation:
   header: na.tocs.na_nav_header
   footer: na.tocs.na_nav_footer
   toc: na.tocs.merchant_quickstart
   header_active: Guides
-
-summary: >
-    This page contains the rules and guidelines for creating a
-    developer portal and the content within it. All bambora developer
-    portals must adhere to this design guide.
 ---
 
-# Calling the APIs
+# Calling the Payment APIs
 
-This will guide you through quickly hitting each of our APIs and verifying the success of the operation in the Back Office.
+This will guide you through quickly hitting each of our Payments APIs and verifying the success of the operation in the Back Office.
 
 Each of these API calls will require a distinct authentication passcode. We described how to generate these in the Merchant Setup section.
 
@@ -29,8 +27,6 @@ All the examples in this guide use cURL, a lightweight, command-line tool for ma
 We also provide a Postman collection for those who prefer the readability of a user friendly interface. Postman is a popular HTTP client that runs as a Chrome app. You can download Postman <a href="https://www.getpostman.com/" target="_blank">here</a>.
 
 You can download our collection and an environment here. You will need to update the environment with your merchant ID and pass codes before you can run any queries. Most queries contain variables that are set from the response of a related (e.g. 'Get Token' sets the returned token in the environment, 'Make Token Payment' sets the token from the environment in its request body).
-
-ToDo: add the samples + content from http://developer.beanstream.com/documentation/rest-api/ here
 
 ## 1. Tokenize a credit card
 If you accept credit cards, you must be in compliance with PCI Security Council standards. You can reduce the scope of your compliance by minimizing your application's contact with the card data. You can remove the need to pass credit card details to your server by tokenization the card data in the browser. You can create a single use token from the browser/mobile app through our Tokenization API.

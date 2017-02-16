@@ -1,8 +1,8 @@
 ---
-title: Test Spec Page
+title: Save Customer Data
 layout: spec
 
-summary: An example Spec Page implementation.
+summary: Save Customer Data
 
 navigation:
   header: na.tocs.na_nav_header

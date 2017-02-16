@@ -1,5 +1,5 @@
 ---
-title: Example Product Page
+title: Guides
 layout: product
 
 navigation:
@@ -12,25 +12,22 @@ cards:
     -                
         title: Quickstart - Merchant
         description: >
-            Use the Bambora native payments SDK to accept payments in
-            iOS and android apps.
+            Create a test account and test our our Payment APIs
         icon: notification-active
         tag: tag
-        link: /content/na/guides/merchant_quickstart/
+        link: /docs/guides/merchant_quickstart/
     -
         title: Quickstart - Partner
         description: >
-            Use Bambora checkout, or one of our Shopping Cart plugins,
-            to accept payments on your website or online store.
+            Get a Partner API key and try our Onboarding API
         icon: checkmark
-        link: /content/na/guides/partner_quickstart/
+        link: /docs/guides/partner_quickstart/
     -
         title: Onboarding
         description: >
-            Get up and running in minutes. Use the Bambora API to make
-            payments and much more.
+            Get up to speed on our Onboarding API in minutes.
         icon: list
-        link: /content/na/guides/onboarding/
+        link: /docs/guides/onboarding/
 
 ---
 

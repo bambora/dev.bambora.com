@@ -2,14 +2,15 @@
 title: Merchant API Overview
 layout: tutorial
 
+summary: >
+    Our Merchant API is the RESTful interface to our payment gateway.
+    
 navigation:
   header: na.tocs.na_nav_header
   footer: na.tocs.na_nav_footer
   toc: false
   header_active: References
 
-summary: >
-    This will guide you through quickly setting up the portal on your machine, editing some docs, and deploying the change.
 ---
 
 # Merchant API
