@@ -1,15 +1,3 @@
 <% breadcrumbs = get_breadcrumbs current_page.path %>
 
-<div class="breadcrumb-trail">
-<% breadcrumbs.each_with_index do |(link, name), index| %> 
-    <% if index != breadcrumbs.length - 1 %>
-        <span><a href="<%= link %>">
-            <%= breadcrumb_titleize name %>
-        </a></span>
-        <span class="chevron"> / </span>
-    <% else %>
-        <span class="this-page"><%= breadcrumb_titleize name %></span>
-    <% end %>
-<% end %>
-</div>
-
+<%= format_breadcrumb_trail(breadcrumbs, div_class: 'breadcrumb-trail') %>

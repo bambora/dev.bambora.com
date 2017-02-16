@@ -183,6 +183,9 @@ footer {
   }
 }
 
+
+/* Search Overlay */
+
 #search-overlay {
   display: none;
   position: fixed;
@@ -241,6 +244,7 @@ footer {
   }
 
   .search-result {
+
     margin-bottom: 50px;
 
     p {
@@ -252,7 +256,29 @@ footer {
       margin-top: 10px; 
       color: $lightest;
     }
-  }
+
+    .search-breadcrumbs {
+
+      text-align: center;
+      margin-bottom: 5px;
+
+
+      span {
+        color: $contrast-dark;
+        font-size: 14px;
+
+        a {
+          color: $contrast-dark;
+          font-size: 14px;
+          text-decoration: none;        
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  } 
 }
 
 .no-scroll {

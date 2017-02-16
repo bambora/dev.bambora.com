@@ -41,11 +41,13 @@ module CustomHelpers
   def get_breadcrumbs(path)
     result = {}
     path_list = path.split('/')
+    
     if path_list.last == "index.html"
       path_list = path_list[0...-1] # Don't include current page (index.html) or directory/
     else
         path_list = path_list[0...-1] << File.basename(path_list.last, '.html')  
-  end
+    end
+    
     path_list.each_with_index do |path, index|
       link = "/" + path_list[0..index].join('/') + '/'
       result[link] = path
@@ -97,6 +99,20 @@ module CustomHelpers
   # the name, e.g. test_API will become Test API (not Test Api).
   def breadcrumb_titleize(name)
     File.basename(name, '.html').gsub(/_/, ' ').split.map{|x| x.slice(0,1).capitalize + x.slice(1..-1)}.join(' ')
+  end
+
+
+  def format_breadcrumb_trail(breadcrumbs, div_class: '')
+    result = "<div class='#{div_class}'>"
+    breadcrumbs.each_with_index do |(link, name), index| 
+      if index != breadcrumbs.length - 1 
+        result += "<span><a href='#{link}'>#{breadcrumb_titleize name}</a></span>"
+        result += "<span class='chevron'> / </span>"
+      else 
+        result += "<span class='this-page'>#{breadcrumb_titleize name}</span>"
+      end
+    end
+    result += "</div>"
   end
 
 end
