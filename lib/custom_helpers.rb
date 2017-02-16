@@ -102,6 +102,8 @@ module CustomHelpers
   end
 
 
+  # Build div of breadcrumbs from get_breadcrumbs. Not great to define HTML 
+  # inline like this but needed at build time when creating the search index.  
   def format_breadcrumb_trail(breadcrumbs, div_class: '')
     result = "<div class='#{div_class}'>"
     breadcrumbs.each_with_index do |(link, name), index| 

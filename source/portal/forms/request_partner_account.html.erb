@@ -13,7 +13,7 @@ partner_account_request_email: 'ethan.wipond@beanstream.com'
 
 <h1>Request a Partnet Account</h1>
 
-<% form_tag 'https://formspree.io/'+current_page.data.partner_account_request_email, 
+<% form_tag "https://formspree.io/#{current_page.data.partner_account_request_email}", 
     :id => 'requestPartnerAccount_form', :class => 'form-group formspree-form', :method => 'POST' do %>
 
   <div class="form-group">
