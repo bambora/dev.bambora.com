@@ -23,9 +23,3 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat numquam praes
 4. [Example Swagger Page](example_swagger_page/)
 5. [Example Tutorial](example_tutorial/)
 
-
-## Extra Swagger Files 
-
-1. [tac_v2016-08-18](tac_v2016-08-18/)
-2. [v2016-06-11](v2016-06-11/)
-3. [v2016-08-18](v2016-08-18/)
