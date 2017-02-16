@@ -8,7 +8,7 @@ summary: >
 navigation:
   header: portal.self_doc_header 
   footer: portal.self_doc_footer
-  toc: portal.self_doc_toc
+  toc: in-page
   header_active: Example Pages
 
 includes:
