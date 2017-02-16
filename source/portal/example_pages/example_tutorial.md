@@ -8,6 +8,8 @@ navigation:
     toc: in-page
     header_active: Example Pages
 
+breadcrumbs: false
+
 summary: > 
   A test tutorial with dummy content added. 
 

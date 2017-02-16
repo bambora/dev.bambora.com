@@ -287,6 +287,13 @@ footer {
 
 /* bread crumb trail */
 
+.breadcrumb-spacer {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  height: 1em;
+  display: inline-block;
+}
+
 .breadcrumb-trail {
   margin-top: 30px;
   margin-bottom: 30px;
