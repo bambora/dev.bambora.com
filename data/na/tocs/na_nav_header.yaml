@@ -1,6 +1,6 @@
 logo: 
   link: /portal
-  light: "beanstream_developer_white.png"
+  light: "beanstream_developer_white.svg"
   dark: "beanstream_developer.png"
 links:
   - file: /docs/guides/merchant_quickstart/
