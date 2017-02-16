@@ -92,4 +92,11 @@ module CustomHelpers
   def make_html_safe(str) 
     str.gsub(/[^-\p{Alnum}]/, '')
   end 
+
+  # Like titleize(), but better because it will keep all caps words in 
+  # the name, e.g. test_API will become Test API (not Test Api).
+  def breadcrumb_titleize(name)
+    File.basename(name, '.html').gsub(/_/, ' ').split.map{|x| x.slice(0,1).capitalize + x.slice(1..-1)}.join(' ')
+  end
+
 end

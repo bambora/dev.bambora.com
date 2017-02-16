@@ -4,11 +4,11 @@
 <% breadcrumbs.each_with_index do |(link, name), index| %> 
     <% if index != breadcrumbs.length - 1 %>
         <span><a href="<%= link %>">
-            <%= File.basename(name, '.html').gsub(/_/, ' ').titleize %>
+            <%= breadcrumb_titleize name %>
         </a></span>
         <span class="chevron"> / </span>
     <% else %>
-        <span class="this-page"><%= File.basename(name, '.html').gsub(/_/, ' ').titleize %></span>
+        <span class="this-page"><%= breadcrumb_titleize name %></span>
     <% end %>
 <% end %>
 </div>
