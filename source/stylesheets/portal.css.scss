@@ -6,6 +6,7 @@
 
 // Import stylesheets
 @import 'side-nav';
+@import 'header';
 
 /* general */
 div.clear {
@@ -166,22 +167,7 @@ footer {
   margin-top: 75px;
 }
 
-
-/* top nav */
-
-.nav-fixed {
-  position: fixed;
-  width: 100%;
-  z-index: $zIndexHeader;
-}
-
-.nav-pane a {
-  &:hover {
-    path {
-      fill: $primary;
-    }   
-  }
-}
+/* search overlay */
 
 #search-overlay {
   display: none;

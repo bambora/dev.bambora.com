@@ -1,0 +1,100 @@
+/* header nav styling */
+
+// The pixel width where the header becomes too long
+// for the screen. Will vary depending on what links 
+// are in the header. 
+$header-break-width: 875px;
+
+.nav-fixed {
+  position: fixed;
+  width: 100%;
+  z-index: $zIndexHeader;
+}
+
+.nav-pane a:hover path {
+      fill: $primary;
+}
+
+/* transparent nav on landing page */
+
+.nav-pane-transparent {
+  background-color: transparent;
+
+  color: $lightest;
+
+  .nav-links a {
+      color: $lightest;
+  } 
+
+  path {
+    fill: $lightest;
+  } 
+}
+
+nav { // transitions on landing page scroll
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.hamburger-icon {
+  position: fixed;
+  top: 25px;
+  left: 20px;
+}
+
+
+// Nav styling on small screen (i.e. links in nav too long)
+// Overrides Bambora UI media queries for nav, but those don't 
+// really work for the site. 
+@media (max-width: $header-break-width) {  
+
+  .nav-pane {
+
+      background-color: rgb(31, 37, 50);
+
+      .header-contents {
+        width: 200px;
+        background-color: rgb(31, 37, 50);
+        position: fixed;
+        top: 66px;
+        left: 0;
+        height: 100%;
+        border-top: 1px solid #9197a3;
+      }
+
+        path {
+          fill: #9197a3;
+        } 
+
+        a:hover {
+          color: $lightest !important;
+        }
+
+      .pull-left {
+          float: none;
+
+          >a {
+              float: none;
+              display: block;
+              color: #9197a3;
+          }
+      }
+      .pull-right {
+          float: none;
+          display: block;
+
+          >a {
+            float: none;
+          }
+
+          #search-button {
+            padding-left: 15px;
+          }
+
+          .button-wrap {
+            display: block;
+            padding-bottom: 15px;
+            text-align: center;
+          }
+      }
+  }
+}
