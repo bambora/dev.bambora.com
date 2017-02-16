@@ -16,8 +16,8 @@ site_url: ''
 <% form_tag 'https://api.beanstream.com/scripts/merchantaccount/createtestaccount.aspx', 
     :id => 'createTestAccount_form', :class => 'form-group', :method => 'POST' do %> 
 
-  <%= hidden_field_tag :error_page_url, :value => current_page.data.site_url + '/portal/forms/create_test_merchant_account' %> 
-  <%= hidden_field_tag :success_page_url, :value => current_page.data.site_url + '/portal/forms/create_test_merchant_account' %> 
+  <%= hidden_field_tag :error_page_url, :value => "#{current_page.data.site_url}/portal/forms/create_test_merchant_account" %> 
+  <%= hidden_field_tag :success_page_url, :value => "#{current_page.data.site_url}/portal/forms/create_test_merchant_account" %> 
   <%= hidden_field_tag :create_session, :value => '1' %>
   <%= hidden_field_tag :account_type, :value => 'DEVELOPER' %>
 

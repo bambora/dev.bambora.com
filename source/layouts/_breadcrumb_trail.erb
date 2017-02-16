@@ -1,15 +1,6 @@
-<% breadcrumbs = get_breadcrumbs current_page.path %>
-
-<div class="breadcrumb-trail">
-<% breadcrumbs.each_with_index do |(link, name), index| %> 
-    <% if index != breadcrumbs.length - 1 %>
-        <span><a href="<%= link %>">
-            <%= File.basename(name, '.html').gsub(/_/, ' ').titleize %>
-        </a></span>
-        <span class="chevron"> / </span>
-    <% else %>
-        <span class="this-page"><%= File.basename(name, '.html').gsub(/_/, ' ').titleize %></span>
-    <% end %>
+<% if current_page.data.has_key? "breadcrumbs" and current_page.data.breadcrumbs == false %>
+    <div class="breadcrumb-spacer"></div>
+<% else %>
+    <% breadcrumbs = get_breadcrumbs current_page.path %>
+    <%= format_breadcrumb_trail(breadcrumbs, div_class: 'breadcrumb-trail') %>
 <% end %>
-</div>
-

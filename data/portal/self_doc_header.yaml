@@ -1,4 +1,7 @@
-logo_link: /portal
+logo: 
+  link: /portal
+  light: "svg/zebraffe-dev-white.svg"
+  dark: "svg/zebraffe-dev.svg"
 links: 
   - file: /portal/documentation/
     title: Documentation

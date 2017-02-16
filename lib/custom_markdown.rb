@@ -13,7 +13,8 @@ class CustomMarkdown < Middleman::Renderers::MiddlemanRedcarpetHTML
     )
   end
 
-  # Add .table class to markdown tables for Bambora UI styling
+  # Add .table class to markdown tables for Bambora UI styling. 
+  # Also wrap tables in div for responsive styling. 
   def table(header, body)
   "<div class='table-wrap'>" \
     "<table class='table'>" \

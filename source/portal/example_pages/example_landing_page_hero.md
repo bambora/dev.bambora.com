@@ -6,7 +6,6 @@ navigation:
     header: portal.self_doc_header 
     footer: portal.self_doc_footer
     toc: portal.self_doc_toc
-    header_active: Example Pages
 
 hero_unit:
     hero_image: shoal-1.png

@@ -33,17 +33,23 @@ end
 
 # Active middleman-search
 activate :search do |search|
-  search.language = 'es' # TODO: Bug workaround. Fix.
-  search.resources = ['portal/']
+  search.language = 'es' # TODO: Bug workaround. Gem doesn't work for english lang. Fix.
+  search.resources = ['portal/'] # The folder containing the docs to index
   search.fields = {
     title:   {boost: 100, store: true, required: true},
     content: {boost: 50},
     url:     {index: false, store: true},
-    summary: {boost: 25, store: true}
+    summary: {boost: 25, store: true},
+    breadcrumbs: {index:false, store: true}
   }
 
   # customize content to be indexed and stored per resource
-  search.before_index = Proc.new do |to_index, to_store, resource| 
+  search.before_index = Proc.new do |to_index, to_store, resource|
+
+    # Add the breadcrumb trail for each resource to the index. 
+    # (To display in search results)
+    breadcrumbs = get_breadcrumbs(resource.path)
+    to_store[:breadcrumbs] = format_breadcrumb_trail(breadcrumbs, div_class: 'search-breadcrumbs')
 
     # Add 'includes' for each page to the index. 
     if resource.data.includes
