@@ -52,8 +52,8 @@
 }
 
 .js-toc .is-active-link {
-  color: rgba(120, 71, 181, 1);
-  border-left: 2px solid rgba(120, 71, 181, 1) !important;
+  color: $primary;
+  border-left: 2px solid $primary !important;
 }
 
 .toc-list-item {

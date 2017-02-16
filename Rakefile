@@ -6,7 +6,7 @@ CLOBBER.include('build')
 
 task :build_slate do
   puts "building slate"
-  sh "bundle exec middleman build"
+  sh "bundle exec middleman build --verbose"
 end
 
 task :run_server do

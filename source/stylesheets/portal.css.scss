@@ -1,7 +1,8 @@
 // Import variables
 @import 'syntax'; // syntax highlighting for code blocks
 @import 'bambora_ui_variables'; // colors, break points, etc.
-@import 'z-index';
+@import 'site_primary_colors'; // overwrite primary Bambora colors 
+@import 'z-index'; // manage site z-indexes
 
 // Import stylesheets
 @import 'side-nav';
@@ -42,22 +43,22 @@ pre {
 // TODO: Fix li so it doesn't underline in dropdowns, other places. 
 .markdown {
   li a:not(.btn) {    // link styling in markdown lists
-    color: rgba(120, 71, 181, 1);
+    color: $primary;
     text-decoration: none;
     display: inline-block;
-    border-bottom: rgba(120, 71, 181, 1) 1px solid;
+    border-bottom: $primary 1px solid;
     line-height: 1.1em;
     cursor: pointer;
     transition: all 100ms ease-out; 
   }
 
   li a:not(.btn):visited {
-      color: rgba(120, 71, 181, 1); 
+      color: $primary; 
   }
 
   li a:not(.btn):hover {
-      color: rgba(202, 172, 223, 1);
-      border-bottom: rgba(202, 172, 223, 1) 1px solid; 
+      color: $primary-light;
+      border-bottom: $primary-light 1px solid; 
   }
 
 
