@@ -1,17 +1,20 @@
-  logo_link: /docs/
-  links:
-    - file: /docs/guides/merchant_quickstart/
-      title: Quickstart
-    - file: /docs/guides/
-      title: Guides
-    - file: /docs/references/
-      title: References
-    - file: /docs/support/
-      title: Support
+logo: 
+  link: /portal
+  light: "beanstream_developer_white.png"
+  dark: "beanstream_developer.png"
+links:
+  - file: /docs/guides/merchant_quickstart/
+    title: Quickstart
+  - file: /docs/guides/
+    title: Guides
+  - file: /docs/references/
+    title: References
+  - file: /docs/support/
+    title: Support
 
-  buttons:
-    - file: /docs/forms/signup/merchant
-      title: Sign Up
-      secondary: true
-    - file: https://www.beanstream.com/admin/sDefault.asp
-      title: Login
+buttons:
+  - file: /docs/forms/signup/merchant
+    title: Sign Up
+    secondary: true
+  - file: https://www.beanstream.com/admin/sDefault.asp
+    title: Login
