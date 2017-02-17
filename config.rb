@@ -80,7 +80,7 @@ activate :relative_assets
 set :relative_links, true
 
 # Download swagger files from url: 
-get_swagger_doc "http://www.beanstream.com/api/v1/swagger", "/na/api_spec/beanstream_payments_api.json"
+# get_swagger_doc "http://www.beanstream.com/api/v1/swagger", "/na/api_spec/beanstream_payments_api.json"
 
 # Build Configuration
 configure :build do
