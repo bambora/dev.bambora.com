@@ -9,7 +9,7 @@ navigation:
     header_active: Example Pages
     
 swagger: portal.swagger.toc_2016-08-18
-
+#swagger: portal.swagger.1_0_2
 ---
 
 # Example Swagger Page 
