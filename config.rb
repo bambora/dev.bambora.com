@@ -70,7 +70,7 @@ end
 
 # Edit on Github variables 
 set :github_repo_url, "https://github.com/bambora/dev.bambora.com"
-set :github_branch, "v2"
+set :github_branch, "dev.na.bambora.com"
 
 # Helpers 
 helpers CustomHelpers
@@ -80,7 +80,7 @@ activate :relative_assets
 set :relative_links, true
 
 # Download swagger files from url: 
-get_swagger_doc "http://petstore.swagger.io/v2/swagger.json", "/portal/dl-swagger.json"
+get_swagger_doc "http://www.beanstream.com/api/v1/swagger", "/na/api_spec/beanstream_payments_api.json"
 
 # Build Configuration
 configure :build do
