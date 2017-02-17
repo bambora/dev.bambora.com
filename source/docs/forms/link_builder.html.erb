@@ -1,0 +1,316 @@
+---
+title: Link Builder
+layout: tutorial
+
+navigation:
+    header: na.tocs.na_nav_header
+    footer: na.tocs.na_nav_footer
+    toc: none
+
+breadcrumbs: false
+
+partner_account_request_email: 'example@example.com'
+---
+
+<div class="col-md-6 col-md-offset-3">
+
+<h1>Hosted Payment Form - Link Builder</h1>
+
+<p>This form will help you to to create secure links to your Beanstream Hosted Payment Form.
+    <strong>It will not validate your input.</strong>
+    You can view the documentation including the field requirements on the Hosted Payment Form
+    <a href="http://support.beanstream.com/bic/w/#docs/customized-payment-form-data-variables.htm">here</a>.
+    You can view the source for this form <a href="">here</a>.
+</p>
+
+<form id="form">
+    <h4>Required Info</h4>
+    <div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+        <label for="merchant-id">Merchant ID*</label>
+        <input id="merchant-id" type="text" name="merchant-id" pattern="^\d{9}$"
+            oninvalid="setCustomValidity('This is a 9 digit string found in the Back Office at `Administration > Company Info`.')"
+            oninput="setCustomValidity('')"
+            required/>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+        <label for="hash-key">Hash Key*</label>
+        <input id="hash-key" type="text" name="hash-key"
+            oninvalid="setCustomValidity('This string can be found in the Back Office at `Administration > Account Settings > Order Settings`.')"
+            oninput="setCustomValidity('')"
+            required/>
+        </div>
+    </div>
+    </div>
+
+    <div class="radio-group">
+    <div class="form-group">
+        <label>Hashing Algorithm*</label>
+    </div>
+    <div class="radio">
+        <input type="radio" name="radios" id="md5-radio" value="md5" >
+        <label for="md5-radio">MD5</label>
+    </div>
+    <div class="radio">
+        <input type="radio" name="radios" id="sha-1-radio" value="sha-1" checked>
+        <label for="sha-1-radio">SHA-1</label>
+    </div>
+    </div>
+
+    <h4>Order Info (optional)</h4>
+    <div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+        <label for="amount">Amount</label>
+        <input id="amount" type="number" name="amount"
+            pattern="[0-9]+([\.,][0-9]+)?" step="0.01"
+            oninvalid="setCustomValidity('This number should be a decimal to two decimal places, eg. `1.00`.')"
+            oninput="setCustomValidity('')"/>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+        <label for="order-number">Order Number</label>
+        <input id="order-number" type="text" name="order-number"/>
+        </div>
+    </div>
+    </div>
+    <div class="form-group">
+    <label for="transaction-type">Transaction Type</label>
+    <input id="transaction-type" type="text" name="transaction-type"/>
+    </div>
+
+    <h4>Card Info (optional)</h4>
+    <div class="form-group">
+    <label for="card-owner">Card Owner</label>
+    <input id="card-owner" type="text" name="card-owner"/>
+    </div>
+
+    <h4>Language (optional)</h4>
+    <div class="form-group">
+    <label for="language">Language</label>
+    <input id="language" type="text" name="language"/>
+    </div>
+
+    <h4>Billing Info (optional)</h4>
+    <div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+        <label for="order-name">Name</label>
+        <input id="order-name" type="text" name="order-name"/>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+        <label for="order-email">Email</label>
+        <input id="order-email" type="text" name="order-email"/>
+        </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+        <label for="order-address-1">Address 1</label>
+        <input id="order-address-1" type="text" name="order-address-1"/>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+        <label for="order-address-2">Address 2</label>
+        <input id="order-address-2" type="text" name="order-address-2"/>
+        </div>
+    </div>
+    </div>
+
+    <div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+        <label for="order-city">City</label>
+        <input id="order-city" type="text" name="order-city"/>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+        <label for="order-province">Province</label>
+        <input id="order-province" type="text" name="order-province"/>
+        </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+        <label for="order-postal-code">Postal Code</label>
+        <input id="order-postal-code" type="text" name="order-postal-code"/>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+        <label for="order-country">Country</label>
+        <input id="order-country" type="text" name="order-country"/>
+        </div>
+    </div>
+    </div>
+
+
+    <h4>Shipping Info (optional)</h4>
+    <div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+        <label for="ship-name">Name</label>
+        <input id="ship-name" type="text" name="ship-name"/>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+        <label for="ship-email">Email</label>
+        <input id="ship-email" type="text" name="ship-email"/>
+        </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+        <label for="ship-address-1">Address 1</label>
+        <input id="ship-address-1" type="text" name="ship-address-1"/>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+        <label for="ship-address-2">Address 2</label>
+        <input id="ship-address-2" type="text" name="ship-address-2"/>
+        </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+        <label for="ship-city">City</label>
+        <input id="ship-city" type="text" name="ship-city"/>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+        <label for="ship-province">Province</label>
+        <input id="ship-province" type="text" name="ship-province"/>
+        </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+        <label for="ship-postal-code">Postal Code</label>
+        <input id="ship-postal-code" type="text" name="ship-postal-code"/>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+        <label for="ship-country">Country</label>
+        <input id="ship-country" type="text" name="ship-country"/>
+        </div>
+    </div>
+    </div>
+    <div class="form-group">
+    <label for="ship-phone">Phone</label>
+    <input id="ship-phone" type="text" name="ship-phone"/>
+    </div>
+
+
+    <h4>Redirects (optional)</h4>
+    <div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+        <label for="approved-link">Approved Link</label>
+        <input id="approved-link" type="text" name="approved-link"/>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+        <label for="declined-link">Declined Link</label>
+        <input id="declined-link" type="text" name="declined-link"/>
+        </div>
+    </div>
+    </div>
+
+    <h4>Hash Expiry (optional)</h4>
+    <div class="form-group">
+    <label for="hash-expiry">Hash Expiry</label>
+    <input id="hash-expiry" type="text" name="hash-expiry"/>
+    </div>
+
+    <h4>References Info (optional)</h4>
+    <div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+        <label for="ref1">Ref 1</label>
+        <input id="ref1" type="text" name="ref1"/>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+        <label for="ref2">Ref 2</label>
+        <input id="ref2" type="text" name="ref2"/>
+        </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+        <label for="ref3">Ref 3</label>
+        <input id="ref3" type="text" name="ref3"/>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+        <label for="ref4">Ref 4</label>
+        <input id="ref4" type="text" name="ref4"/>
+        </div>
+    </div>
+    </div>
+    <div class="form-group">
+    <label for="ref5">Ref 5</label>
+    <input id="ref5" type="text" name="ref5"/>
+    </div>
+
+    <h4>Desjardins Info (optional)</h4>
+    <div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+        <label for="d-financing-type">Financing Type</label>
+        <input id="d-financing-type" type="text" name="d-financing-type"/>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+        <label for="d-plan-number">Plan Number</label>
+        <input id="d-plan-number" type="text" name="d-plan-number"/>
+        </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+        <label for="d-grace-period">Grace Period</label>
+        <input id="d-grace-period" type="text" name="d-grace-period"/>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+        <label for="d-term">Term</label>
+        <input id="d-term" type="text" name="d-term"/>
+        </div>
+    </div>
+    </div>
+
+    <input type="submit" class="btn btn-default" value="Create Link">
+    <input type="reset" class="btn btn-secondary" value="Clear Form">
+</form>
+
+<div class="message" id="message">
+    <strong><a href="#link">Your new link:</a></strong>
+    <div><a id="link"></a></div>
+</div>
+
+</div>
