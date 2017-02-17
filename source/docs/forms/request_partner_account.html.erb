@@ -6,14 +6,17 @@ navigation:
     header: na.tocs.na_nav_header
     footer: na.tocs.na_nav_footer
     toc: none
-    header_active: Forms
 
-partner_account_request_email: 'example@example.com'
+breadcrumbs: false
+
+partner_account_request_email: 'sales@beanstream.com'
 ---
+
+<div class="col-md-6 col-md-offset-3">
+
 
 <h1>Request a Partner Account</h1>
 
-<div class="col-md-6">
 
 <% form_tag "https://formspree.io/#{current_page.data.partner_account_request_email}",
     :id => 'requestPartnerAccount_form', :class => 'form-group formspree-form', :method => 'POST' do %>

@@ -5,6 +5,8 @@
   </head>
 
   <body class="<%= page_classes %>">
+    <%= partial "layouts/google_tag_manager" %>
+
     <%= partial "layouts/header" %>
 
     <div class="container">
@@ -39,7 +41,7 @@
 
     <%= partial "layouts/footer" %>
 
-    <%= javascript_include_tag "page/tocbot_init_script" %>
+    <%= javascript_include_tag "template/tocbot_init_script" %>
     
   </body>
 </html>

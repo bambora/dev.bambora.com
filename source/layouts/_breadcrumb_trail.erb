@@ -1,4 +1,5 @@
-<% if current_page.data.has_key? "breadcrumbs" and current_page.data.breadcrumbs == false %>
+<% if current_page.data.has_key? "breadcrumbs" and 
+        current_page.data.breadcrumbs == false %>
     <div class="breadcrumb-spacer"></div>
 <% else %>
     <% breadcrumbs = get_breadcrumbs current_page.path %>
