@@ -45,7 +45,7 @@ curl https://www.beanstream.com/scripts/tokenization/tokens  \
 ```
 
 ## 2. Create a Payment Profile
-Now that you have a single use token you can either take a one-off payment or create a multi use token to store the card data for future payments.
+Now that you have a single use token you can either take a one-off payment or create a multi-use token to store the card data for future payments.
 
 ```
 curl https://www.beanstream.com/api/v1/profiles  \
