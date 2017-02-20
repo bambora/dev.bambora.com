@@ -353,12 +353,22 @@ footer {
   }
 }
 
+/* forms */
+
+form {
+  margin-bottom: 30px;
+}
+
 
 /* form messages */
 
 .block-highlight {
 
   padding: 15px;
+
+  a {
+    word-break: break-all;
+  }
 
   p {
     padding-bottom: 0;

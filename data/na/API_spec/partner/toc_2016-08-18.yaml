@@ -1,0 +1,1083 @@
+swagger: '2.0'
+info:
+  version: 2016-08-18
+  title: Onboarding API TAC
+  description: Onboarding API Terms and Conditions Specifications
+host: onboardingapi.beanstream.com
+basePath: /v1
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: api_key
+    in: header
+    description: 'Pass the Authorization header in your request as "Authorization: Token INSERT_KEY_HERE. Contact Beanstream to get an API Key generated for you if you don''t have one.'
+paths:
+# SEPA EUR TAC
+  '/workflows/sepa-eur/terms/{partner}/{file_type}/version':
+    get:
+      tags:
+        - Terms and Conditions (SEPA EUR)
+      operationId: getSepaEurTermsVersion
+      description: 'Returns latest version of T&Cs doc for a European SEPA application.'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: partner
+          in: path
+          required: true
+          description: 'The name of the partner, if customized T&Cs have been agreed. Pass "default" for the default version of the document.'
+          type: string
+        - name: file_type
+          in: path
+          required: true
+          description: 'The format of the T&Cs document to be returned.'
+          type: string
+          enum: ["html", "pdf"]
+      responses:
+        200:
+          description: 'Document version info'
+          schema:
+            description: 'Defines information about the document.'
+            additionalProperties: false
+            properties:
+              version :
+                type: string
+                description: 'Defines the version of the document returned.'
+              name:
+                type: string
+                format: flow/partner_date:time
+                description: 'Defines the name of the document returned.'
+
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Document not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/sepa-eur/terms/{partner}/{file_type}/version/{version}':
+    get:
+      tags:
+        - Terms and Conditions (SEPA EUR)
+      operationId: getSepaEurTerms
+      description: 'Returns T&Cs for a European SEPA application.'
+      consumes:
+        - application/json
+      produces:
+        - text/html
+        - application/pdf
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: partner
+          in: path
+          required: true
+          description: 'The name of the partner, if customized T&Cs have been agreed. Pass "default" for the default version of the document.'
+          type: string
+        - name: file_type
+          in: path
+          required: true
+          description: 'The format of the T&Cs document to be returned.'
+          type: string
+          enum: ["html", "pdf"]
+        - name: version
+          in: path
+          required: true
+          description: 'The version of the document.'
+          type: string
+      responses:
+        200:
+          description: 'Document retrieved with identifing properties in HTTP header'
+          schema:
+            description: 'Defines information about the document. [HTTP header]'
+            additionalProperties: false
+            properties:
+              X-Version :
+                type: string
+                description: 'Defines the version of the document returned.'
+              X-Name:
+                type: string
+                format: flow/partner_date:time
+                description: 'Defines the name of the document returned.'
+
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Document not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+#BACS GBP WORKFLOW
+  '/workflows/bacs-gbp/terms/{partner}/{file_type}/version':
+    get:
+      tags:
+        - Terms and Conditions (BACS GBP)
+      operationId: getBacsGbpTermsVersion
+      description: 'Returns latest version of T&Cs doc for a United Kingdom BACS application.'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: partner
+          in: path
+          required: true
+          description: 'The name of the partner, if customized T&Cs have been agreed. Pass "default" for the default version of the document.'
+          type: string
+        - name: file_type
+          in: path
+          required: true
+          description: 'The format of the T&Cs document to be returned.'
+          type: string
+          enum: ["html", "pdf"]
+      responses:
+        200:
+          description: 'Document version info'
+          schema:
+            description: 'Defines information about the document.'
+            additionalProperties: false
+            properties:
+              version :
+                type: string
+                description: 'Defines the version of the document returned.'
+              name:
+                type: string
+                format: flow/partner_date:time
+                description: 'Defines the name of the document returned.'
+
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Document not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/bacs-gbp/terms/{partner}/{file_type}/version/{version}':
+    get:
+      tags:
+        - Terms and Conditions (BACS GBP)
+      operationId: getBacsGbpTerms
+      description: 'Retrieves T&Cs for a United Kingdom BACS application.'
+      consumes:
+        - application/json
+      produces:
+        - text/html
+        - application/pdf
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: partner
+          in: path
+          required: true
+          description: 'The name of the partner, if customized T&Cs have been agreed. Pass "default" for the default version of the document.'
+          type: string
+        - name: file_type
+          in: path
+          required: true
+          description: 'The format of the T&Cs document to be returned.'
+          type: string
+          enum: ["html", "pdf"]
+        - name: version
+          in: path
+          required: true
+          description: 'The version of the document.'
+          type: string
+      responses:
+        200:
+          description: 'Document retrieved with identifing properties in HTTP header'
+          schema:
+            description: 'Defines information about the document. [HTTP header]'
+            additionalProperties: false
+            properties:
+              X-Version :
+                type: string
+                description: 'Defines the version of the document returned.'
+              X-Name:
+                type: string
+                format: flow/partner_date:time
+                description: 'Defines the name of the document returned.'
+
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Document not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+# ACH USD WORKFLO TAC
+  '/workflows/ach-usd/terms/{partner}/{file_type}/version':
+    get:
+      tags:
+        - Terms and Conditions (ACH USD)
+      operationId: getAchUsdTermsVersion
+      description: 'Returns latest version of T&Cs doc for US ACH application.'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: partner
+          in: path
+          required: true
+          description: 'The name of the partner, if customized T&Cs have been agreed. Pass "default" for the default version of the document.'
+          type: string
+        - name: file_type
+          in: path
+          required: true
+          description: 'The format of the T&Cs document to be returned.'
+          type: string
+          enum: ["html", "pdf"]
+      responses:
+        200:
+          description: 'Document version info'
+          schema:
+            description: 'Defines information about the document.'
+            additionalProperties: false
+            properties:
+              version :
+                type: string
+                description: 'Defines the version of the document returned.'
+              name:
+                type: string
+                format: flow/partner_date:time
+                description: 'Defines the name of the document returned.'
+
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Document not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/ach-usd/terms/{partner}/{file_type}/version/{version}':
+    get:
+      tags:
+        - Terms and Conditions (ACH USD)
+      operationId: getAchUsdTerms
+      description: 'Retrieves T&Cs for a US ACH application.'
+      consumes:
+        - application/json
+      produces:
+        - text/html
+        - application/pdf
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: partner
+          in: path
+          required: true
+          description: 'The name of the partner, if customized T&Cs have been agreed. Pass "default" for the default version of the document.'
+          type: string
+        - name: file_type
+          in: path
+          required: true
+          description: 'The format of the T&Cs document to be returned.'
+          type: string
+          enum: ["html", "pdf"]
+        - name: version
+          in: path
+          required: true
+          description: 'The version of the document.'
+          type: string
+      responses:
+        200:
+          description: 'Document retrieved with identifing properties in HTTP header'
+          schema:
+            description: 'Defines information about the document. [HTTP header]'
+            additionalProperties: false
+            properties:
+              X-Version :
+                type: string
+                description: 'Defines the version of the document returned.'
+              X-Name:
+                type: string
+                format: flow/partner_date:time
+                description: 'Defines the name of the document returned.'
+
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Document not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+# EFT CAD WORKFLOW TAC
+  '/workflows/eft-cad/terms/{partner}/{file_type}/version':
+    get:
+      tags:
+        - Terms and Conditions (EFT CAD)
+      operationId: getEftCadTermsVersion
+      description: 'Returns latest version of T&Cs doc for a Canada EFT application.'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: partner
+          in: path
+          required: true
+          description: 'The name of the partner, if customized T&Cs have been agreed. Pass "default" for the default version of the document.'
+          type: string
+        - name: file_type
+          in: path
+          required: true
+          description: 'The format of the T&Cs document to be returned.'
+          type: string
+          enum: ["html", "pdf"]
+      responses:
+        200:
+          description: 'Document version info'
+          schema:
+            description: 'Defines information about the document.'
+            additionalProperties: false
+            properties:
+              version :
+                type: string
+                description: 'Defines the version of the document returned.'
+              name:
+                type: string
+                format: flow/partner_date:time
+                description: 'Defines the name of the document returned.'
+
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Document not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+
+  '/workflows/eft-cad/terms/{partner}/{file_type}/version/{version}':
+    get:
+      tags:
+        - Terms and Conditions (EFT CAD)
+      operationId: getEftCadTerms
+      description: 'Retrieves T&Cs for a Canada EFT  application.'
+      consumes:
+        - application/json
+      produces:
+        - text/html
+        - application/pdf
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: partner
+          in: path
+          required: true
+          description: 'The name of the partner, if customized T&Cs have been agreed. Pass "default" for the default version of the document.'
+          type: string
+        - name: file_type
+          in: path
+          required: true
+          description: 'The format of the T&Cs document to be returned.'
+          type: string
+          enum: ["html", "pdf"]
+        - name: version
+          in: path
+          required: true
+          description: 'The version of the document.'
+          type: string
+      responses:
+        200:
+          description: 'Document retrieved with identifing properties in HTTP header'
+          schema:
+            description: 'Defines information about the document. [HTTP header]'
+            additionalProperties: false
+            properties:
+              X-Version :
+                type: string
+                description: 'Defines the version of the document returned.'
+              X-Name:
+                type: string
+                format: flow/partner_date:time
+                description: 'Defines the name of the document returned.'
+
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Document not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+# PSP CAD WORKFLOW TAC
+  '/workflows/psp-cad/terms/{partner}/{file_type}/version':
+    get:
+      tags:
+        - Terms and Conditions (PSP CAD)
+      operationId: getPspCadTermsVersion
+      description: 'Returns latest version of T&Cs for a Canada PSP application.'
+      consumes:
+          - application/json
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: partner
+          in: path
+          required: true
+          description: 'The name of the partner, if customized T&Cs have been agreed. Pass "default" for the default version of the document.'
+          type: string
+        - name: file_type
+          in: path
+          required: true
+          description: 'The format of the T&Cs document to be returned.'
+          type: string
+          enum: ["html", "pdf"]
+      responses:
+        200:
+          description: 'Document version info'
+          schema:
+            description: 'Defines information about the document.'
+            additionalProperties: false
+            properties:
+              version :
+                type: string
+                description: 'Defines the version of the document returned.'
+              name:
+                type: string
+                format: flow/partner_date:time
+                description: 'Defines the name of the document returned.'
+
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Document not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/psp-cad/terms/{partner}/{file_type}/version/{version}':
+    get:
+      tags:
+        - Terms and Conditions (PSP CAD)
+      operationId: getPspCadTerms
+      description: 'Retrieves T&Cs for a Canada PSP application.'
+      consumes:
+        - application/json
+      produces:
+        - text/html
+        - application/pdf
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: partner
+          in: path
+          required: true
+          description: 'The name of the partner, if customized T&Cs have been agreed. Pass "default" for the default version of the document.'
+          type: string
+        - name: file_type
+          in: path
+          required: true
+          description: 'The format of the T&Cs document to be returned.'
+          type: string
+          enum: ["html", "pdf"]
+        - name: version
+          in: path
+          required: true
+          description: 'The version of the document.'
+          type: string
+      responses:
+        200:
+          description: 'Document retrieved with identifing properties in HTTP header'
+          schema:
+            description: 'Defines information about the document. [HTTP header]'
+            additionalProperties: false
+            properties:
+              X-Version :
+                type: string
+                description: 'Defines the version of the document returned.'
+              X-Name:
+                type: string
+                format: flow/partner_date:time
+                description: 'Defines the name of the document returned.'
+
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Document not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+# PSP USD WORKFLOW TAC
+  '/workflows/psp-usd/terms/{partner}/{file_type}/version':
+    get:
+      tags:
+        - Terms and Conditions (PSP USD)
+      operationId: getPspUsdTermsVersion
+      description: 'Returns latest version of T&Cs for a US PSP application.'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: partner
+          in: path
+          required: true
+          description: 'The name of the partner, if customized T&Cs have been agreed. Pass "default" for the default version of the document.'
+          type: string
+        - name: file_type
+          in: path
+          required: true
+          description: 'The format of the T&Cs document to be returned.'
+          type: string
+          enum: ["html", "pdf"]
+      responses:
+        200:
+          description: 'Document version info'
+          schema:
+            description: 'Defines information about the document.'
+            additionalProperties: false
+            properties:
+              version :
+                type: string
+                description: 'Defines the version of the document returned.'
+              name:
+                type: string
+                format: flow/partner_date:time
+                description: 'Defines the name of the document returned.'
+
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Document not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/psp-usd/terms/{partner}/{file_type}/version/{version}':
+    get:
+      tags:
+        - Terms and Conditions (PSP USD)
+      operationId: getPspUsdTerms
+      description: 'Retrieves T&Cs for a US PSP application.'
+      consumes:
+        - application/json
+      produces:
+        - text/html
+        - application/pdf
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: partner
+          in: path
+          required: true
+          description: 'The name of the partner, if customized T&Cs have been agreed. Pass "default" for the default version of the document.'
+          type: string
+        - name: file_type
+          in: path
+          required: true
+          description: 'The format of the T&Cs document to be returned.'
+          type: string
+          enum: ["html", "pdf"]
+        - name: version
+          in: path
+          required: true
+          description: 'The version of the document.'
+          type: string
+      responses:
+        200:
+          description: 'Document retrieved with identifing properties in HTTP header'
+          schema:
+            description: 'Defines information about the document. [HTTP header]'
+            additionalProperties: false
+            properties:
+              X-Version :
+                type: string
+                description: 'Defines the version of the document returned.'
+              X-Name:
+                type: string
+                format: flow/partner_date:time
+                description: 'Defines the name of the document returned.'
+
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Document not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+# GW CDN WORKFLOW TAC
+  '/workflows/gw-cdn/terms/{partner}/{file_type}/version':
+    get:
+      tags:
+        - Terms and Conditions (GW CDN)
+      operationId: getGwCdnTermsVersion
+      description: 'Returns latest version of T&Cs for a Canadian Gateway application.'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: partner
+          in: path
+          required: true
+          description: 'The name of the partner, if customized T&Cs have been agreed. Pass "default" for the default version of the document.'
+          type: string
+        - name: file_type
+          in: path
+          required: true
+          description: 'The format of the T&Cs document to be returned.'
+          type: string
+          enum: ["html", "pdf"]
+      responses:
+        200:
+          description: 'Document version info'
+          schema:
+            description: 'Defines information about the document.'
+            additionalProperties: false
+            properties:
+              version :
+                type: string
+                description: 'Defines the version of the document returned.'
+              name:
+                type: string
+                format: flow/partner_date:time
+                description: 'Defines the name of the document returned.'
+
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Document not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/gw-cdn/terms/{partner}/{file_type}/version/{version}':
+    get:
+      tags:
+        - Terms and Conditions (GW CDN)
+      operationId: getGwCdnTerms
+      description: 'Retrieves T&Cs for a Canadian Gateway application.'
+      consumes:
+        - application/json
+      produces:
+        - text/html
+        - application/pdf
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: partner
+          in: path
+          required: true
+          description: 'The name of the partner, if customized T&Cs have been agreed. Pass "default" for the default version of the document.'
+          type: string
+        - name: file_type
+          in: path
+          required: true
+          description: 'The format of the T&Cs document to be returned.'
+          type: string
+          enum: ["html", "pdf"]
+        - name: version
+          in: path
+          required: true
+          description: 'The version of the document.'
+          type: string
+      responses:
+        200:
+          description: 'Document retrieved with identifing properties in HTTP header'
+          schema:
+            description: 'Defines information about the document. [HTTP header]'
+            additionalProperties: false
+            properties:
+              X-Version :
+                type: string
+                description: 'Defines the version of the document returned.'
+              X-Name:
+                type: string
+                format: flow/partner_date:time
+                description: 'Defines the name of the document returned.'
+
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Document not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+# GW USA WORKFLOW TAC
+  '/workflows/gw-usa/terms/{partner}/{file_type}/version':
+    get:
+      tags:
+        - Terms and Conditions (GW USA)
+      operationId: getGwUsaTermsVersion
+      description: 'Returns latest version of T&Cs for an American Gateway application.'
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: partner
+          in: path
+          required: true
+          description: 'The name of the partner, if customized T&Cs have been agreed. Pass "default" for the default version of the document.'
+          type: string
+        - name: file_type
+          in: path
+          required: true
+          description: 'The format of the T&Cs document to be returned.'
+          type: string
+          enum: ["html", "pdf"]
+      responses:
+        200:
+          description: 'Document version info'
+          schema:
+            description: 'Defines information about the document.'
+            additionalProperties: false
+            properties:
+              version :
+                type: string
+                description: 'Defines the version of the document returned.'
+              name:
+                type: string
+                format: flow/partner_date:time
+                description: 'Defines the name of the document returned.'
+
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Document not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/gw-usa/terms/{partner}/{file_type}/version/{version}':
+    get:
+      tags:
+        - Terms and Conditions (GW USA)
+      operationId: getGwUsaTerms
+      description: 'Retrieves T&Cs for an American Gateway application.'
+      consumes:
+        - application/json
+      produces:
+        - text/html
+        - application/pdf
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: partner
+          in: path
+          required: true
+          description: 'The name of the partner, if customized T&Cs have been agreed. Pass "default" for the default version of the document.'
+          type: string
+        - name: file_type
+          in: path
+          required: true
+          description: 'The format of the T&Cs document to be returned.'
+          type: string
+          enum: ["html", "pdf"]
+        - name: version
+          in: path
+          required: true
+          description: 'The version of the document.'
+          type: string
+      responses:
+        200:
+          description: 'Document retrieved with identifing properties in HTTP header'
+          schema:
+            description: 'Defines information about the document. [HTTP header]'
+            additionalProperties: false
+            properties:
+              X-Version :
+                type: string
+                description: 'Defines the version of the document returned.'
+              X-Name:
+                type: string
+                format: flow/partner_date:time
+                description: 'Defines the name of the document returned.'
+
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Document not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+# PSP NZD WORKFLOW TAC
+  '/workflows/psp-nzd/terms/{partner}/{file_type}/version':
+    get:
+      tags:
+        - Terms and Conditions (PSP NZD)
+      operationId: getPspNzdTermsVersion
+      description: 'Returns latest version of T&Cs for a New Zealand PSP application.'
+      consumes:
+          - application/json
+      produces:
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: partner
+          in: path
+          required: true
+          description: 'The name of the partner, if customized T&Cs have been agreed. Pass "default" for the default version of the document.'
+          type: string
+        - name: file_type
+          in: path
+          required: true
+          description: 'The format of the T&Cs document to be returned.'
+          type: string
+          enum: ["html", "pdf"]
+      responses:
+        200:
+          description: 'Document version info'
+          schema:
+            description: 'Defines information about the document.'
+            additionalProperties: false
+            properties:
+              version :
+                type: string
+                description: 'Defines the version of the document returned.'
+              name:
+                type: string
+                format: flow/partner_date:time
+                description: 'Defines the name of the document returned.'
+
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Document not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+  '/workflows/psp-nzd/terms/{partner}/{file_type}/version/{version}':
+    get:
+      tags:
+        - Terms and Conditions (PSP NZD)
+      operationId: getPspNzdTerms
+      description: 'Retrieves T&Cs for a New Zealand PSP application.'
+      consumes:
+        - application/json
+      produces:
+        - text/html
+        - application/pdf
+        - application/json
+      security:
+        - api_key: []
+      parameters:
+        - name: partner
+          in: path
+          required: true
+          description: 'The name of the partner, if customized T&Cs have been agreed. Pass "default" for the default version of the document.'
+          type: string
+        - name: file_type
+          in: path
+          required: true
+          description: 'The format of the T&Cs document to be returned.'
+          type: string
+          enum: ["html", "pdf"]
+        - name: version
+          in: path
+          required: true
+          description: 'The version of the document.'
+          type: string
+      responses:
+        200:
+          description: 'Document retrieved with identifing properties in HTTP header'
+          schema:
+            description: 'Defines information about the document. [HTTP header]'
+            additionalProperties: false
+            properties:
+              X-Version :
+                type: string
+                description: 'Defines the version of the document returned.'
+              X-Name:
+                type: string
+                format: flow/partner_date:time
+                description: 'Defines the name of the document returned.'
+
+        400:
+          description: 'Invalid request'
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Error'
+        404:
+          description: 'Document not found'
+          schema:
+            $ref: '#/definitions/Error'
+        500:
+          description: 'Unexpected error'
+          schema:
+            $ref: '#/definitions/Error'
+
+
+definitions:
+
+
+  Error:
+    description: 'Defines an error'
+    additionalProperties: false
+    type: object
+    properties:
+      name:
+        type: string
+        description: 'A field associated with the error'
+      reason:
+        type: string
+        description: 'A code associated with the error'
+      message:
+        type: string
+        description: 'A human readable message about the error'

@@ -20,7 +20,7 @@ Read these following tutorials on how to update dev portal content:
 - [Create a New Page](/portal/create_new_page)
 - [Content Structure](/portal/content_structure)
 - [Writing Tutorials](/portal/tutorials)
-- [Documenting APIs](/portal/api_specs)
+- [Documenting APIs](/portal/API_specs)
 - [Navigation and ToC](/portal/navigation)
 - [Guidelines](/portal/guidelines) *(aka 'some rules')*
 

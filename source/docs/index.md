@@ -51,17 +51,17 @@ card_sets:
                 description: >
                     Our Payments API supports online payments, card tokenization, payment profiles and reporting.
                 icon: flag
-                link: /docs/references/merchant_api/overview/
+                link: /docs/references/merchant_API/overview/
             -
                 title: Payments SDKs
                 description: >
                     Our Payments SDKs include a range of server-side SDKs, mobile SDKs for Android and iOS, and a browser SDK.
                 icon: more
-                link: /docs/references/merchant_sdks/overview/
+                link: /docs/references/merchant_SDKs/overview/
             -
                 title: Onboarding API
                 description: >
                     Our Onboarding API allows partners to submit applications on behalf of new sub-merchants.
                 icon: comment
-                link: /docs/references/partner_api/overview/
+                link: /docs/references/partner_API/overview/
 ---
