@@ -194,7 +194,7 @@ request := beanstream.PaymentRequest{
 res, err := gateway.Payments().MakePayment(request)
 ```
 
-With this action, you can create a new payment profile tied to one individual, assigning and validating one or more credit cards.
+With this action, you can create a new payment profile tied to one individual, assigning, and validating one or more credit cards.
 
 ## Create Profile (Single-Use Token)
 
