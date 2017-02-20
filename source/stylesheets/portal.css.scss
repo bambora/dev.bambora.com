@@ -367,7 +367,8 @@ footer {
 }
 
 
-/* mobile styling */ 
+/* general mobile styling */ 
+/* (mobile styling for header, side nav are in respective .scss files */
 
 @media (max-width : 992px) {
   #edit-on-github {
@@ -377,5 +378,13 @@ footer {
     margin-top: -15px;
     margin-bottom: 15px;
     margin-right: 15px;
+  }
+
+  div#edit-on-github {
+    text-align: left;
+  }
+
+  .breadcrumb-spacer{
+    margin: 0;
   }
 }

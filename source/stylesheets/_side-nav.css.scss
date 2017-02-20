@@ -113,4 +113,9 @@ ul .js-toc {
   .nav-left-fixed {
     position: static !important;
   }
+
+  // Hide page toc on mobile
+  .js-toc {
+    display: none;
+  }
 }
