@@ -14,7 +14,7 @@ links:
 
 buttons:
   - file: /docs/forms/signup/merchant
-    title: Sign Up
+    title: Sign up
     secondary: true
   - file: https://www.beanstream.com/admin/sDefault.asp
     title: Login

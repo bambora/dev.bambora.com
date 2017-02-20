@@ -18,7 +18,7 @@ hero_unit:
     tag_line:  >
         This single source of truth for our payment gateway.
     button:
-        text: Get Started
+        text: Get started
         link: /docs/guides/merchant_quickstart/
 card_sets:
 
