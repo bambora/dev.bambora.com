@@ -18,7 +18,7 @@ breadcrumbs: false
     <strong>It will not validate your input.</strong>
     You can view the documentation including the field requirements on the Hosted Payment Form
     <a href="http://support.beanstream.com/bic/w/#docs/customized-payment-form-data-variables.htm">here</a>.
-    You can view the source for this form <a href="">here</a>.
+    You can view the source for this form <a href="#">here</a>.
 </p>
 
 <form id="form">
@@ -306,9 +306,13 @@ breadcrumbs: false
     <input type="reset" class="btn btn-secondary" value="Clear Form">
 </form>
 
-<div class="message" id="message">
-    <strong><a href="#link">Your new link:</a></strong>
+<div class="block-highlight message hidden" id="message">
+    <strong>Your new link:</strong>
     <div><a id="link"></a></div>
 </div>
 
 </div>
+
+<%= javascript_include_tag "na/sha1.js" %>
+<%= javascript_include_tag "na/md5.js" %>
+<%= javascript_include_tag "na/link_builder" %>
