@@ -1,7 +1,7 @@
 
 ## Purchases and Pre-Auth's
 
-A Payment processes the credit card right away. A Pre-authorization (aka “pre-auth”) checks to see if the customer has the funds available without actually charging them. After a pre-auth you will want to “complete” the payment for less than or equal to the original pre-auth amount.
+A payment processes the credit card right away. A pre-authorization (aka “pre-auth”) checks to see if the customer has the funds available without actually charging them. After a pre-auth you will want to “complete” the payment for less than or equal to the original pre-auth amount.
 
 Set the Credit Card object’s “complete” value to true to complete a payment after a pre-auth, or to just push the payment through in the first place without pre-auth.
 
@@ -191,7 +191,7 @@ If you are using a test account, or a production account that is still in its in
 Please refer to the [API Spec](../../merchant_API) for full details on parameters.
 
 **Approved and declined responses**<br/>
-If you are using an SDK an approved payment will return a payment response object. A declined payment will throw an exception or return an error. If you are using the rest API directly then an approved payment will return a 200 OK http status response as well as a response object.
+If you are using an SDK an approved payment will return a payment response object. A declined payment will throw an exception or return an error. If you are using the REST API directly then an approved payment will return a 200 OK http status response as well as a response object.
 
 You can view the data model of the response below in the REST API section. The data model there is the same in the REST response as well as the SDKs.
 
