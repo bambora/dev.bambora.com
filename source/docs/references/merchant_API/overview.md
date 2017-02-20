@@ -14,11 +14,11 @@ navigation:
 ---
 
 # Merchant API
-Our Merchant API is the RESTful interface to our payment gateway. It allows you to take payments, analyze payments, create payment profile to record customer details for future payments and create credit card tokens to reduce the scope of your PCI compliance.
+Our Merchant API is the RESTful interface to our payment gateway. It allows you to accept and analyze payments, create a payment profile to record customer details for future transactions, and create credit card tokens to reduce the scope of your PCI compliance.
 
 You can either interact with the API directly or through a SDK (a library of helper functions to simplify your integration with the SDK).
 
-Note: this doc is limited to the Payment, Reporting, Payment Profile and Tokenization APIs. You may also be interested in the OnBoarding API.
+Note: this doc is limited to the Payment, Reporting, Payment Profile, and Tokenization APIs. You may also be interested in the Onboarding API.
 
 ## v1.0.2
 
