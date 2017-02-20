@@ -3,7 +3,7 @@ title: Partner Quickstart
 layout: tutorial
 
 summary: >
-    Use this space to learn how to request your partner account, and how to test our Onboarding API.
+    Learn how to request your partner account, and how to test the Onboarding API.
 
 navigation:
   header: na.tocs.na_nav_header
@@ -14,7 +14,7 @@ navigation:
 
 # Partner Quickstart
 
-Welcome to our partner setup guide. Use this space to learn how to request your partner account, and how to test our Onboarding API.
+Welcome to our partner setup guide. Learn how to request your partner account, and how to test the Onboarding API.
 
 This guide will show you how to create and configure a test account.
 
