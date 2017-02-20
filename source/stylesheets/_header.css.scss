@@ -5,7 +5,6 @@
 // are in the header (how many). 
 $header-break-width: 875px;
 
-
 .nav-fixed {
   position: fixed;
   width: 100%;
@@ -80,6 +79,8 @@ nav { // transitions on landing page scroll
   }
 
   .nav-pane {
+
+      height: 66px !important;
 
       /* colors for dark/transparent nav and menu */
       &.nav-pane-transparent, &.nav-pane-dark {
@@ -165,12 +166,8 @@ nav { // transitions on landing page scroll
       }
   }
 
-
   footer {
     display: none;
   }
 }
-
-// ---
-
 
