@@ -2,7 +2,7 @@
 
 // The pixel width where the header becomes too long
 // for the screen. Will vary depending on what links 
-// are in the header. 
+// are in the header (how many). 
 $header-break-width: 875px;
 
 
@@ -16,9 +16,6 @@ $header-break-width: 875px;
       fill: $primary;
 }
 
-.header-contents {
-  display: inline;
-}
 
 /* transparent nav on landing page */
 
@@ -47,6 +44,21 @@ nav { // transitions on landing page scroll
   display: none;
 }
 
+/* pull right styling fix */
+.nav-pane {
+    .pull-right {
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 66px;
+
+        > *:not(:first-child) {
+            margin: 0 0 0 30px;
+        }
+    }
+}
+
 
 // Nav styling on small screen (i.e. links in nav too long)
 // Overrides Bambora UI media queries for nav, but those don't 
@@ -57,48 +69,92 @@ nav { // transitions on landing page scroll
     display: inline;
   }
 
+  .header-contents {
+    display: inline;
+  }
+
+  .nav-pane {
+    .header-contents {
+      background-color: $lightest;
+    }
+  }
+
   .nav-pane {
 
-      background-color: rgb(31, 37, 50);
-
-      .header-contents {
-        display: none;
-        width: 200px;
+      /* colors for dark/transparent nav and menu */
+      &.nav-pane-transparent, &.nav-pane-dark {
         background-color: rgb(31, 37, 50);
+
+        .header-contents {
+          background-color: rgb(31, 37, 50);
+
+          a:hover {
+            color: $lightest;
+          }
+
+          a.active {
+            color: $lightest; 
+          }
+          .nav-icon {
+            path {
+              fill: $contrast;
+            }
+            &:hover {
+              path {
+               fill: $lightest;
+              }    
+            }
+          }
+        }
+      }
+
+      /* general styling and colors for white nav and menu */
+      .header-contents {
+
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.04);
+
+        &.mobile-state-hidden {
+          display: block;
+          left: -200px;
+        }
+
+        width: 200px;
         position: fixed;
         top: 66px;
         left: 0;
+        transition: left 0.5s;
         height: 100%;
-        border-top: 1px solid #9197a3;
       }
 
         path {
           fill: #9197a3;
         } 
 
-        a:hover {
-          color: $lightest !important;
-        }
-
       .pull-left {
-          float: none;
+        float: none;
+        margin-bottom: 15px;
 
-          >a {
-              float: none;
-              display: block;
-              color: #9197a3;
-          }
+        >a {
+            float: none;
+            display: block;
+            color: #9197a3;
+        }
       }
       .pull-right {
           float: none;
           display: block;
+          
 
           >a {
             float: none;
           }
+          
+          > *:not(:first-child) {
+              margin: 0;
+          }
 
           #search-button {
-            padding-left: 15px;
+            padding-left: 0px;
           }
 
           .button-wrap {
@@ -114,4 +170,7 @@ nav { // transitions on landing page scroll
     display: none;
   }
 }
+
+// ---
+
 
