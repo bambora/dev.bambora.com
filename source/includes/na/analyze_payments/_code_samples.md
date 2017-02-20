@@ -267,4 +267,4 @@ There are 6 operators available. They must be encoded:
 This is the value you want to match against.
 
 ## Analyze Payment Errors
-You can read the errors returned by the API [here](../../merchant_api).
+You can read the errors returned by the API [here](../../merchant_API).

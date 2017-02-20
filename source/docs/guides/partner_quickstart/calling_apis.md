@@ -49,4 +49,4 @@ curl https://uat-onboarding-api.beanstream.com/v1/workflows/psp-cad/applications
 Using the ID returned from your first request you can now request the submitted application.
 
 ## 3. Next steps
-You can read more about Onboarding in the [Onboarding Guide](/docs/guides/onboarding) and the [Onboarding API Spec](/docs/references/partner_api/spec/).
+You can read more about Onboarding in the [Onboarding Guide](/docs/guides/onboarding) and the [Onboarding API Spec](/docs/references/partner_API/spec/).

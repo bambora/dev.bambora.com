@@ -34,7 +34,7 @@ end
 # Active middleman-search
 activate :search do |search|
   search.language = 'es' # TODO: Bug workaround. Gem doesn't work for english lang. Fix.
-  search.resources = ['portal/'] # The folder containing the docs to index
+  search.resources = ['docs/'] # The folder containing the docs to index
   search.fields = {
     title:   {boost: 100, store: true, required: true},
     content: {boost: 50},
@@ -80,7 +80,7 @@ activate :relative_assets
 set :relative_links, true
 
 # Download swagger files from url: 
-get_swagger_doc "http://www.beanstream.com/api/v1/swagger", "/na/api_spec/merchant/1_0_2.json"
+get_swagger_doc "http://www.beanstream.com/api/v1/swagger", "/na/API_spec/merchant/1_0_2.json"
 
 # Build Configuration
 configure :build do

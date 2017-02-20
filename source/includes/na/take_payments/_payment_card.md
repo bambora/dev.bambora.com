@@ -188,7 +188,7 @@ res, err := gateway.Payments().MakePayment(request)
 If you are using a test account, or a production account that is still in its initial 'test' mode, you’ll need to use test card numbers. You’ll be able to view the transaction process from beginning to end without sending real information to the banking network. See [here](http://support.beanstream.com/olm/w/docs/using-test-card-numbers.htm) for a list of test card numbers.
 
 **Required Parameters**<br/>
-Please refer to the [API Spec](../../merchant_api) for full details on parameters.
+Please refer to the [API Spec](../../merchant_API) for full details on parameters.
 
 **Approved and declined responses**<br/>
 If you are using an SDK an approved payment will return a payment response object. A declined payment will throw an exception or return an error. If you are using the rest API directly then an approved payment will return a 200 OK http status response as well as a response object.

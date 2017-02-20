@@ -7,7 +7,7 @@ summary: Collect Card Data
 navigation:
   header: na.tocs.na_nav_header
   footer: na.tocs.na_nav_footer
-  toc: na.tocs.merchant_sdks
+  toc: na.tocs.merchant_SDKs
   header_active: References
 
 name: /docs/references/sdk/collect_card_data
