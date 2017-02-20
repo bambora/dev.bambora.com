@@ -13,11 +13,11 @@ navigation:
 ---
 
 # Overview
-Our SDKs wrap our RESTful APIs. Our server and mobile SDKs make it easy for you to use our RESTful APIs in a range of languages: C#, Go, Java, Javascript (Node), PHP, Python and Ruby. Our browser SDK limits the scope of your PCI compliance to PCI SAQ-A.
+Our SDKs wrap our RESTful APIs. Our server and mobile SDKs make it easy for you to use our RESTful APIs in a range of languages: C#, Go, Java, Javascript (Node), PHP, Python, and Ruby. Our browser SDK limits the scope of your PCI compliance to PCI SAQ-A.
 
 
 ## Server SDK
-Our Server SDKs wrap our Payments, Payment Profiles and Reporting APIs. You can read more about the functionality [here](../take_payments).
+Our Server SDKs wrap our Payments, Payment Profiles, and Reporting APIs. You can read more about the functionality [here](../take_payments).
 
 ### Source
 
