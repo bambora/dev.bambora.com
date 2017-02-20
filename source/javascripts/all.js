@@ -3,3 +3,4 @@
 //= require ./app/_crypto-js.min
 //= require ./app/_tocbot.min
 //= require ./app/site-search
+//= require ./app/navigation

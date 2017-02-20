@@ -107,39 +107,15 @@ ul .js-toc {
 
 @media (max-width : 992px) {
   .nav-left {
-    transition: left 0.5s;
-    left: -250px;
-    background-color: $lightest;
-    z-index: $zIndexSideNav;
-    height: 100%;
-    max-height: 100%;
-    top: 0;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.04);
-    position: fixed;
-    margin-top: 0 !important;
-    padding-top: 50px;
-
-    ul {
-      padding-left: 15px;
-      padding-right: 15px;
-    }
-
-    &.show {
-      left: 0;
-    }
+    position: static;
   }
 
-  #show-nav-link {
-    display: block;
+  .nav-left-fixed {
+    position: static !important;
   }
 
-  #nav-close {
-    display: block;
-    position: absolute;
-    right: 15px;
-    top: 15px;
-    path {
-      fill: $primary; 
-    }
+  // Hide page toc on mobile
+  .js-toc {
+    display: none;
   }
 }
