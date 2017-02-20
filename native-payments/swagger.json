@@ -1,9 +1,9 @@
 {
     "swagger": "2.0",
     "info": {
-        "version": "1.0.0",
+        "version": "1.1.0",
         "title": "Bambora Payments API",
-        "description": "The Bambora Payments API makes it possible to perform payment-related operations such as authorizing and capturing payments.\n\nIn order to use this API you need to sign up with Bambora. Please send an email to sales.ecom@bambora.com if you want to sign up.\n\nNote that this API cannot be used for processing payments made through the Online Checkout. To handle online payments refer to the <a href=\"https:\/\/transaction-v1.api.epay.eu/help\">Online Payment API documentation</a>.",
+        "description": "The Bambora Payments API makes it possible to perform payment-related operations such as authorizing and capturing payments.\n\nIn order to use this API you need to sign up with Bambora. Please send an email to sales.ecom@bambora.com if you want to sign up.\n",
         "contact": {
             "name": "native.support@bambora.com"
         },
@@ -12,8 +12,7 @@
     "schemes": [
         "https"
     ],
-    "host": "api-beta.bambora.com",
-    "basePath": "/payments",
+    "basePath": "/v1",
     "consumes": [
         "application/json"
     ],
@@ -22,7 +21,7 @@
         "application/problem+json"
     ],
     "paths": {
-        "/{payment}/": {
+        "/merchants/{merchant}/payments/{payment}/": {
             "get": {
                 "operationId": "query_payment",
                 "summary": "Get payment",
@@ -48,10 +47,10 @@
                     },
                     {
                         "name": "merchant",
-                        "in": "query",
-                        "description": "Merchant identifier. Only neccessary if the merchant authentication token is for another merchant in the same corporate hierarchy. The service will validate that the merchant authentication token is authorized to perform the operation.\n",
+                        "in": "path",
+                        "description": "Merchant identifier",
                         "type": "string",
-                        "required": false
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -110,7 +109,7 @@
                         },
                         "examples": {
                             "application/json": {
-                                "type": "http://api.bambora.com/definitions/payments/payment_not_found",
+                                "type": "https://api.bambora.com/definitions/payments/payment_not_found",
                                 "title": "Payment not found",
                                 "detail": "No payment could be found, check that you used the correct payment identifier.\n",
                                 "status": 404
@@ -126,7 +125,7 @@
                 }
             }
         },
-        "/{payment}/encrypted_card_authorization/": {
+        "/merchants/{merchant}/payments/{payment}/encrypted_card_authorization/": {
             "post": {
                 "operationId": "authorize_card_payment",
                 "summary": "Make payment using encrypted credit card",
@@ -148,6 +147,13 @@
                         "description": "Identifier for the payment. Must be unique for this merchant.\n",
                         "required": true,
                         "type": "string"
+                    },
+                    {
+                        "name": "merchant",
+                        "in": "path",
+                        "description": "Merchant identifier",
+                        "type": "string",
+                        "required": true
                     },
                     {
                         "name": "details",
@@ -201,7 +207,7 @@
                         },
                         "examples": {
                             "application/json": {
-                                "type": "http://api.bambora.com/definitions/payments/cannot_authorize",
+                                "type": "https://api.bambora.com/definitions/payments/cannot_authorize",
                                 "title": "Cannot authorize",
                                 "detail": "",
                                 "status": 402
@@ -229,7 +235,7 @@
                         },
                         "examples": {
                             "application/json": {
-                                "type": "http://api.bambora.com/definitions/payments/payment_operation_blocked",
+                                "type": "https://api.bambora.com/definitions/payments/payment_operation_blocked",
                                 "title": "Payment operation blocked",
                                 "detail": "The payment was being modified by another request. The attempted operation could be retried again, or the payment could be queried to find out if its properties have changed.\n",
                                 "status": 409
@@ -243,7 +249,7 @@
                         },
                         "examples": {
                             "application/json": {
-                                "type": "http://api.bambora.com/definitions/payments/invalid_payment_state_transition",
+                                "type": "https://api.bambora.com/definitions/payments/invalid_payment_state_transition",
                                 "title": "Invalid payment state transition",
                                 "detail": "The operation 'Refund' is not allowed when the payment is in state 'Authorized'\n",
                                 "status": 422
@@ -259,7 +265,7 @@
                 }
             }
         },
-        "/{payment}/card_token_authorization/": {
+        "/merchants/{merchant}/payments/{payment}/card_token_authorization/": {
             "post": {
                 "operationId": "authorize_token_payment",
                 "summary": "Make payment using credit card token",
@@ -281,6 +287,13 @@
                         "description": "Identifier for the payment. Must be unique for this merchant.\n",
                         "required": true,
                         "type": "string"
+                    },
+                    {
+                        "name": "merchant",
+                        "in": "path",
+                        "description": "Merchant identifier",
+                        "type": "string",
+                        "required": true
                     },
                     {
                         "name": "details",
@@ -334,7 +347,7 @@
                         },
                         "examples": {
                             "application/json": {
-                                "type": "http://api.bambora.com/definitions/payments/cannot_authorize",
+                                "type": "https://api.bambora.com/definitions/payments/cannot_authorize",
                                 "title": "Cannot authorize",
                                 "detail": "",
                                 "status": 402
@@ -362,7 +375,7 @@
                         },
                         "examples": {
                             "application/json": {
-                                "type": "http://api.bambora.com/definitions/payments/payment_operation_blocked",
+                                "type": "https://api.bambora.com/definitions/payments/payment_operation_blocked",
                                 "title": "Payment operation blocked",
                                 "detail": "The payment was being modified by another request. The attempted operation could be retried again, or the payment could be queried to find out if its properties have changed.\n",
                                 "status": 409
@@ -376,7 +389,7 @@
                         },
                         "examples": {
                             "application/json": {
-                                "type": "http://api.bambora.com/definitions/payments/invalid_payment_state_transition",
+                                "type": "https://api.bambora.com/definitions/payments/invalid_payment_state_transition",
                                 "title": "Invalid payment state transition",
                                 "detail": "The operation 'Refund' is not allowed when the payment is in state 'Authorized'\n",
                                 "status": 422
@@ -392,7 +405,7 @@
                 }
             }
         },
-        "/{payment}/capture/": {
+        "/merchants/{merchant}/payments/{payment}/capture/": {
             "post": {
                 "operationId": "capture_payment",
                 "tags": [
@@ -417,6 +430,13 @@
                         "description": "The payment id of the pre-auth that will be captured.",
                         "required": true,
                         "type": "string"
+                    },
+                    {
+                        "name": "merchant",
+                        "in": "path",
+                        "description": "Merchant identifier",
+                        "type": "string",
+                        "required": true
                     },
                     {
                         "name": "details",
@@ -470,7 +490,7 @@
                         },
                         "examples": {
                             "application/json": {
-                                "type": "http://api.bambora.com/definitions/payments/cannot_capture",
+                                "type": "https://api.bambora.com/definitions/payments/cannot_capture",
                                 "title": "Cannot capture",
                                 "detail": "",
                                 "status": 402
@@ -498,7 +518,7 @@
                         },
                         "examples": {
                             "application/json": {
-                                "type": "http://api.bambora.com/definitions/payments/payment_operation_blocked",
+                                "type": "https://api.bambora.com/definitions/payments/payment_operation_blocked",
                                 "title": "Payment operation blocked",
                                 "detail": "The payment was being modified by another request. The attempted operation could be retried again, or the payment could be queried to find out if its properties have changed.\n",
                                 "status": 409
@@ -512,7 +532,7 @@
                         },
                         "examples": {
                             "application/json": {
-                                "type": "http://api.bambora.com/definitions/payments/invalid_payment_state_transition",
+                                "type": "https://api.bambora.com/definitions/payments/invalid_payment_state_transition",
                                 "title": "Invalid payment state transition",
                                 "detail": "",
                                 "status": 422
@@ -528,7 +548,7 @@
                 }
             }
         },
-        "/{payment}/cancel/": {
+        "/merchants/{merchant}/payments/{payment}/cancel/": {
             "post": {
                 "operationId": "cancel_payment",
                 "tags": [
@@ -553,10 +573,25 @@
                         "description": "The payment id of the pre-auth that will be captured.",
                         "required": true,
                         "type": "string"
+                    },
+                    {
+                        "name": "merchant",
+                        "in": "path",
+                        "description": "Merchant identifier",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "details",
+                        "in": "body",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Cancel"
+                        }
                     }
                 ],
                 "responses": {
-                    "200": {
+                    "201": {
                         "description": "Successful cancel.",
                         "schema": {
                             "$ref": "#/definitions/PaymentResponse"
@@ -589,7 +624,7 @@
                         },
                         "examples": {
                             "application/json": {
-                                "type": "http://api.bambora.com/definitions/payments/cannot_cancel",
+                                "type": "https://api.bambora.com/definitions/payments/cannot_cancel",
                                 "title": "Cannot cancel",
                                 "detail": "",
                                 "status": 402
@@ -617,7 +652,7 @@
                         },
                         "examples": {
                             "application/json": {
-                                "type": "http://api.bambora.com/definitions/payments/payment_operation_blocked",
+                                "type": "https://api.bambora.com/definitions/payments/payment_operation_blocked",
                                 "title": "Payment operation blocked",
                                 "detail": "The payment was being modified by another request. The attempted operation could be retried again, or the payment could be queried to find out if its properties have changed.\n",
                                 "status": 409
@@ -631,7 +666,7 @@
                         },
                         "examples": {
                             "application/json": {
-                                "type": "http://api.bambora.com/definitions/payments/invalid_payment_state_transition",
+                                "type": "https://api.bambora.com/definitions/payments/invalid_payment_state_transition",
                                 "title": "Invalid payment state transition",
                                 "detail": "",
                                 "status": 422
@@ -647,7 +682,7 @@
                 }
             }
         },
-        "/{payment}/refund/": {
+        "/merchants/{merchant}/payments/{payment}/refund/": {
             "post": {
                 "operationId": "refund_payment",
                 "tags": [
@@ -672,6 +707,13 @@
                         "description": "The payment id of the payment that will be refunded.",
                         "required": true,
                         "type": "string"
+                    },
+                    {
+                        "name": "merchant",
+                        "in": "path",
+                        "description": "Merchant identifier",
+                        "type": "string",
+                        "required": true
                     },
                     {
                         "name": "details",
@@ -725,7 +767,7 @@
                         },
                         "examples": {
                             "application/json": {
-                                "type": "http://api.bambora.com/definitions/payments/cannot_refund",
+                                "type": "https://api.bambora.com/definitions/payments/cannot_refund",
                                 "title": "Cannot refund",
                                 "detail": "",
                                 "status": 402
@@ -753,7 +795,7 @@
                         },
                         "examples": {
                             "application/json": {
-                                "type": "http://api.bambora.com/definitions/payments/payment_operation_blocked",
+                                "type": "https://api.bambora.com/definitions/payments/payment_operation_blocked",
                                 "title": "Payment operation blocked",
                                 "detail": "The payment was being modified by another request. The attempted operation could be retried again, or the payment could be queried to find out if its properties have changed.\n",
                                 "status": 409
@@ -767,7 +809,7 @@
                         },
                         "examples": {
                             "application/json": {
-                                "type": "http://api.bambora.com/definitions/payments/invalid_payment_state_transition",
+                                "type": "https://api.bambora.com/definitions/payments/invalid_payment_state_transition",
                                 "title": "Invalid payment state transition",
                                 "detail": "",
                                 "status": 422
@@ -816,8 +858,8 @@
         "CardAuthorization": {
             "type": "object",
             "required": [
-                "currency",
                 "amount",
+                "currency",
                 "encryptedCard",
                 "encryptedSessionKeys",
                 "token"
@@ -825,7 +867,7 @@
             "properties": {
                 "currency": {
                     "type": "string",
-                    "description": "Values of: EUR, USD, CAD, GBP, SEK et c. Uses ISO-4217 currency codes.\n",
+                    "description": "Values of: EUR, USD, CAD, GBP, SEK etc. Uses ISO-4217 currency codes.\n",
                     "pattern": "^[A-Z]{3}$"
                 },
                 "amount": {
@@ -866,7 +908,6 @@
                     "type": "object",
                     "required": [
                         "cardNumber",
-                        "cvcCode",
                         "expiryMonth",
                         "expiryYear"
                     ],
@@ -905,7 +946,7 @@
             "properties": {
                 "currency": {
                     "type": "string",
-                    "description": "Values of: EUR, USD, CAD, GBP, SEK et c. Uses ISO-4217 currency codes.\n",
+                    "description": "Values of: EUR, USD, CAD, GBP, SEK etc. Uses ISO-4217 currency codes.\n",
                     "pattern": "^[A-Z]{3}$"
                 },
                 "amount": {
@@ -941,14 +982,30 @@
                     "type": "string",
                     "maxLength": 256,
                     "description": "256 characters of available space for a comment that will be saved on the payment.\n"
+                },
+                "currency": {
+                    "type": "string",
+                    "description": "Values of: EUR, USD, CAD, GBP, SEK etc. Uses ISO-4217 currency codes.\n",
+                    "pattern": "^[A-Z]{3}$"
                 }
             },
             "required": [
-                "amount"
+                "amount",
+                "currency"
             ],
             "example": {
                 "amount": 1000,
                 "comment": "10 EUR capture"
+            }
+        },
+        "Cancel": {
+            "type": "object",
+            "properties": {
+                "comment": {
+                    "type": "string",
+                    "maxLength": 256,
+                    "description": "256 characters of available space for a comment that will be saved on the operation.\n"
+                }
             }
         },
         "Refund": {
@@ -960,12 +1017,21 @@
                     "minimum": 1,
                     "description": "Amount to refund, in cents (or equivalent). If this is less than the amount of the payment, a partial refund will be performed. If this parameter is omitted, the entire amount of the payment will be refunded.\n"
                 },
+                "currency": {
+                    "type": "string",
+                    "description": "Values of: EUR, USD, CAD, GBP, SEK etc. Uses ISO-4217 currency codes.\n",
+                    "pattern": "^[A-Z]{3}$"
+                },
                 "comment": {
                     "type": "string",
                     "maxLength": 256,
                     "description": "256 characters of available space for a comment that will be saved on the payment.\n"
                 }
             },
+            "required": [
+                "amount",
+                "currency"
+            ],
             "example": {
                 "amount": 1000,
                 "comment": "10 EUR refund"
@@ -973,10 +1039,6 @@
         },
         "PaymentResponse": {
             "type": "object",
-            "required": [
-                "payment",
-                "state"
-            ],
             "properties": {
                 "region": {
                     "type": "string",
@@ -1013,7 +1075,7 @@
                 },
                 "currency": {
                     "type": "string",
-                    "description": "Values of: EUR, USD, DKK, CAD, GBP, SEK et c. Uses ISO-4217 currency codes.\n",
+                    "description": "Values of: EUR, USD, CAD, GBP, SEK etc. Uses ISO-4217 currency codes.\n",
                     "pattern": "^[A-Z]{3}$"
                 },
                 "amount": {
@@ -1027,6 +1089,11 @@
                     "maxLength": 256,
                     "description": "256 characters of available space for a comment that will be saved on the payment.\n"
                 },
+                "scheme_response_code": {
+                    "type": "string",
+                    "title": "Authorization response code (also known as action code) received from the card scheme",
+                    "description": "Usually 00 for approved authorization"
+                },
                 "captures": {
                     "type": "array",
                     "items": {
@@ -1037,10 +1104,6 @@
         },
         "CardPaymentResponse": {
             "type": "object",
-            "required": [
-                "payment",
-                "state"
-            ],
             "properties": {
                 "region": {
                     "type": "string",
@@ -1076,7 +1139,7 @@
                 },
                 "currency": {
                     "type": "string",
-                    "description": "Values of: EUR, USD, DKK, CAD, GBP, SEK et c. Uses ISO-4217 currency codes.\n",
+                    "description": "Values of: EUR, USD, CAD, GBP, SEK etc. Uses ISO-4217 currency codes.\n",
                     "pattern": "^[A-Z]{3}$"
                 },
                 "amount": {
@@ -1089,6 +1152,11 @@
                     "type": "string",
                     "maxLength": 256,
                     "description": "256 characters of available space for a comment that will be saved on the payment.\n"
+                },
+                "scheme_response_code": {
+                    "type": "string",
+                    "title": "Authorization response code (also known as action code) received from the card scheme",
+                    "description": "Usually 00 for approved authorization"
                 },
                 "captures": {
                     "type": "array",
