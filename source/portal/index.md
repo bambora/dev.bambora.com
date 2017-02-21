@@ -9,6 +9,7 @@ navigation:
 
 hero_unit:
     hero_image: shoal-1.png
+    gradient: True
     big_heading: Demo Developer Portal.
     tag_line:  > 
         This site is both an example Developer Portal using the new portal 
