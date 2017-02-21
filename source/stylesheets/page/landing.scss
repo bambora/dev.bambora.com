@@ -11,10 +11,6 @@ body {
     } 
 }
 
-body > .container {
-    margin-top: 0;
-}
-
 .hero-image { 
     background-repeat: no-repeat;
     background-position: center center;
@@ -42,6 +38,11 @@ body > .container {
         background-image: linear-gradient(to bottom right, black, $primary-dark);
         opacity: .7;         
     }
+}
+
+
+body > .container {
+    margin-top: 0;
 }
 
 .hero-no-image .row {

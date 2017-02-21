@@ -283,7 +283,6 @@ footer {
 .breadcrumb-trail {
   margin-top: 30px;
   margin-bottom: 30px;
-  margin-left: 18px; // align with side nav
   color: $contrast;
   font-style: italic;
   display: inline-block;
@@ -368,7 +367,7 @@ footer {
 
 
 /* general mobile styling */ 
-/* (mobile styling for header, side nav are in respective .scss files */
+/* (mobile styling for header, side nav are in respective .scss files) */
 
 @media (max-width : 992px) {
   #edit-on-github {
