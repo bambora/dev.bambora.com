@@ -9,6 +9,7 @@ navigation:
 
 hero_unit:
     hero_image: shoal-1.png
+    gradient: False
     big_heading: Example landing page.
     tag_line:  > 
         This is a demo of the landing page template without a hero image.
