@@ -29,7 +29,9 @@ body > .container {
             color: $lightest;
         }
     }
+}
 
+.hero-image-gradient {
     &:before {
         content: '';
         position: absolute;
