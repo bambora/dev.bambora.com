@@ -1,20 +1,20 @@
 <%# If page has has no includes, provide single 'edit on github' link %>
 <% if not current_page.data.includes %> 
-<a id="edit-on-github" href="<%= github_edit_link current_page.source_file %>" target="_blank">
-  Edit on Github
+<a id="edit-on-github" href="<%= github_edit_link current_page.source_file %>">
+  Edit this page
 </a>
 
 <%# Otherwise, page provides multiple includes, provide dropdown 
 'edit on github' links %>
 <% else %> 
 <div id="edit-on-github" class="dropdown dropdown-open-on-hover" role="listbox">
-  Edit on Github
+  Edit this page
 
   <ul>
     <%# Base page edit %>
     <li class="dropdown-title">Base page:</li>
     <li role="option">
-      <a href="<%= github_edit_link current_page.source_file %>" target="_blank">
+      <a href="<%= github_edit_link current_page.source_file %>">
         <%= current_page.source_file.split('/').last %>
       </a>
     </li>
@@ -23,7 +23,7 @@
     <li class="dropdown-title">Includes:</li>
     <% current_page.data.includes.each do |include| %> 
       <li role="option">
-        <a href="<%= github_edit_include_link include %>" target="_blank">
+        <a href="<%= github_edit_include_link include %>">
           <%= include.split('/').last %>.md
         </a>
       </li>
@@ -31,3 +31,25 @@
   </ul>
 </div>    
 <% end %>
+
+<!-- Modal apears on link click -->
+<div class="modal-overlay">
+  <div class="modal github-modal" role="dialog">
+      <h3>Edit on Github</h3>
+      <p>Intructions for editing on github and so on.</p>
+
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+
+      <div class="btn-row">
+          <a href="#" class="btn continue-to-github" target="_blank">Continue to Github</a>
+          <button class="btn btn-secondary close-modal">Cancel</button>
+      </div>
+  </div>
+</div>
