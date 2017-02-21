@@ -1,7 +1,7 @@
 
 All payment requests are made via server-side requests. You can either call our RESTful Payment API directly, or via one of our API wrapping libraries (our SDKs).
 
-Our RESTful APIs allow you to take payments, analyze payments, create payment profile to record customer details for future payments and create credit card tokens to reduce the scope of your PCI compliance. You can read the API Spec [here](../../merchant_API).
+Our RESTful APIs allow you to take payments, analyze payments, create payment profile to record customer details for future payments, and create credit card tokens to reduce the scope of your PCI compliance. You can read the API Spec [here](../../merchant_API).
 
 ## Include the Server SDK
 
