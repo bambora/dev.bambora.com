@@ -1,0 +1,173 @@
+/* header nav styling */
+
+// The pixel width where the header becomes too long
+// for the screen. Will vary depending on what links 
+// are in the header (how many). 
+$header-break-width: 875px;
+
+.nav-fixed {
+  position: fixed;
+  width: 100%;
+  z-index: $zIndexHeader;
+}
+
+.nav-pane a:hover path {
+      fill: $primary;
+}
+
+
+/* transparent nav on landing page */
+
+.nav-pane-transparent {
+  background-color: transparent;
+
+  color: $lightest;
+
+  .nav-links a {
+      color: $lightest;
+  } 
+
+  path {
+    fill: $lightest;
+  } 
+}
+
+nav { // transitions on landing page scroll
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.hamburger-icon {
+  position: fixed;
+  top: 25px;
+  left: 20px;
+  display: none;
+}
+
+/* pull right styling fix */
+.nav-pane {
+    .pull-right {
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 66px;
+
+        > *:not(:first-child) {
+            margin: 0 0 0 30px;
+        }
+    }
+}
+
+
+// Nav styling on small screen (i.e. links in nav too long)
+// Overrides Bambora UI media queries for nav, but those don't 
+// really work for the site. 
+@media (max-width: $header-break-width) {  
+
+  .hamburger-icon {
+    display: inline;
+  }
+
+  .header-contents {
+    display: inline;
+  }
+
+  .nav-pane {
+    .header-contents {
+      background-color: $lightest;
+    }
+  }
+
+  .nav-pane {
+
+      height: 66px !important;
+
+      /* colors for dark/transparent nav and menu */
+      &.nav-pane-transparent, &.nav-pane-dark {
+        background-color: rgb(31, 37, 50);
+
+        .header-contents {
+          background-color: rgb(31, 37, 50);
+
+          a:hover {
+            color: $lightest;
+          }
+
+          a.active {
+            color: $lightest; 
+          }
+          .nav-icon {
+            path {
+              fill: $contrast;
+            }
+            &:hover {
+              path {
+               fill: $lightest;
+              }    
+            }
+          }
+        }
+      }
+
+      /* general styling and colors for white nav and menu */
+      .header-contents {
+
+        box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.04);
+
+        &.mobile-state-hidden {
+          display: block;
+          left: -200px;
+        }
+
+        width: 200px;
+        position: fixed;
+        top: 66px;
+        left: 0;
+        transition: left 0.5s;
+        height: 100%;
+      }
+
+        path {
+          fill: #9197a3;
+        } 
+
+      .pull-left {
+        float: none;
+        margin-bottom: 15px;
+
+        >a {
+            float: none;
+            display: block;
+            color: #9197a3;
+        }
+      }
+      .pull-right {
+          float: none;
+          display: block;
+          
+
+          >a {
+            float: none;
+          }
+          
+          > *:not(:first-child) {
+              margin: 0;
+          }
+
+          #search-button {
+            padding-left: 0px;
+          }
+
+          .button-wrap {
+            display: block;
+            padding-bottom: 15px;
+            text-align: center;
+          }
+      }
+  }
+
+  footer {
+    display: none;
+  }
+}
+

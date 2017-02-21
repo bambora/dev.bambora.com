@@ -11,24 +11,6 @@ body {
     } 
 }
 
-.hero-image .nav-pane {
-    a {
-        color: $lightest;
-
-        path {
-            fill: $lightest;
-        }
-    }
-}
-
-nav {
-    transition: background-color 1s ease;
-}
-
-.nav-pane-transparent {
-    background-color: transparent;  
-}
-
 body > .container {
     margin-top: 0;
 }

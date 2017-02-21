@@ -7,42 +7,62 @@
 <% else %>
 <nav class="nav-pane nav-fixed">
 <% end %>
-    <div class="pull-left nav-links">
-    <a href="<%= nav.logo.link %>" class="logo">
-        <%# set logo version based on hero image %> 
-        <% if current_page.data.hero_unit and current_page.data.hero_unit.hero_image %>
-            <%= image_tag nav.logo.light %>
-        <% else %>
-            <%= image_tag nav.logo.dark %>
-        <% end %>
-    </a>
 
-    <% nav.links and nav.links.each do |link| %>
-        <% if link.title == current_page.data.navigation.header_active %>
-            <a href="<%= link.file %>" class="active"><%= link.title %></a>
-        <% else %>
-            <a href="<%= link.file %>"><%= link.title %></a>
-        <% end %>
-    <% end %>
+    <!-- Hamburger icon --> 
+    <a href="#" class="hamburger-icon"><%= svg :list %></a>
+
+    <!-- Logo -->
+    <div class="pull-left nav-links">
+        <a href="<%= nav.logo.link %>" class="logo">
+            <%# set logo version based on hero image %> 
+            <% if current_page.data.hero_unit and current_page.data.hero_unit.hero_image %>
+                <%= image_tag nav.logo.light %>
+            <% else %>
+                <%= image_tag nav.logo.dark %>
+            <% end %>
+        </a>
     </div>
 
-    <div class="pull-right">
+    <div class="header-contents mobile-state-hidden">
+    <span>
 
-        <a id="search-button" href="#"><%= svg "search" %></a>
-        <% nav.buttons and nav.buttons.each do |btn| %>
-            <% if not btn.secondary %>
-                <a href="<%= btn.file %>" class="btn btn-small" target="_blank">
-                    <%= btn.title %>
-                </a>
+    <!-- Links --> 
+    <div class="pull-left nav-links">
+        <% nav.links and nav.links.each do |link| %>
+            <% if link.title == current_page.data.navigation.header_active %>
+                <a href="<%= link.file %>" class="active"><%= link.title %></a>
             <% else %>
-                <a href="<%= btn.file %>" class="btn btn-small btn-secondary" target="_blank">
-                    <%= btn.title %>
-                </a>
+                <a href="<%= link.file %>"><%= link.title %></a>
             <% end %>
         <% end %>
     </div>
+
+    <!-- Search / buttons -->
+    <div class="pull-right">
+        
+        <span class="button-wrap">
+            <a id="search-button" href="#"><%= svg "search" %></a>
+        </span>
+
+        <% nav.buttons and nav.buttons.each do |btn| %>
+            <span class="button-wrap">
+                <% if not btn.secondary %> 
+                    <a href="<%= btn.file %>" class="btn btn-small" target="_blank">
+                        <%= btn.title %>
+                    </a>
+                <% else %> 
+                    <a href="<%= btn.file %>" class="btn btn-small btn-secondary" target="_blank">
+                        <%= btn.title %>
+                    </a>
+                <% end %>
+            </span>
+        <% end %>
+    </div>
+
+    </div>
 </nav>
 
+<!-- Search Overlay -->
 <div id="search-overlay">
     <%= partial "layouts/search_overlay" %>
 </div>
