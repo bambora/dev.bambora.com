@@ -9,7 +9,7 @@ navigation:
 
 hero_unit:
     hero_image: shoal-1.png
-    gradient: False
+    gradient: True
     big_heading: Example landing page.
     tag_line:  > 
         This is a demo of the landing page template without a hero image.
@@ -84,4 +84,11 @@ card_sets:
                     itaque delectus.
                 icon: comment
                 tag: test-tag
+            -
+                title: The fourth test card
+                description: >
+                    Nulla, velit, illo. Soluta, perspiciatis? Voluptate esse, 
+                    molestiae et natus qui voluptas doloribus minus praesentium 
+                    itaque delectus.
+                icon: comment
 ---
