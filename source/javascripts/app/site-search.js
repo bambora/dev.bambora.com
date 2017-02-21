@@ -21,6 +21,7 @@ $(document).ready(function () {
   
   $('#search-button').click(function(event) {
     event.preventDefault();
+    event.stopPropagation();
     $('#search-overlay').fadeIn("fast"); 
     $('#search-overlay input').focus();
     $('#search-overlay input').val("");
@@ -35,6 +36,7 @@ $(document).ready(function () {
 
   $('#close-search-overlay').click(function(event) {
     event.preventDefault();
+    event.stopPropagation();
     $('body').removeClass('no-scroll');
     $('#search-overlay').fadeOut("fast");
   });
