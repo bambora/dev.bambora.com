@@ -25,6 +25,12 @@ $(document).ready(function () {
     $('#search-overlay input').focus();
     $('#search-overlay input').val("");
     $('body').addClass('no-scroll');
+    
+    // Reset results 
+    var searchresults = $('.search-results');
+    var resultcount = $('#result-count');
+    searchresults.hide();
+    resultcount.hide();
   });
 
   $('#close-search-overlay').click(function(event) {
