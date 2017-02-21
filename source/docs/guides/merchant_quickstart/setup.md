@@ -3,7 +3,7 @@ title: Merchant Quickstart
 layout: tutorial
 
 summary: >
-Learn how to create, configure, and test your merchant account with our Payment APIs. 
+  Learn how to create, configure, and test your merchant account with our Payment APIs. 
 
 navigation:
   header: na.tocs.na_nav_header
