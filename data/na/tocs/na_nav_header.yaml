@@ -13,7 +13,7 @@ links:
     title: Support
 
 buttons:
-  - file: /docs/forms/signup/merchant
+  - file: /docs/forms/create_test_merchant_account/
     title: Sign up
     secondary: true
   - file: https://www.beanstream.com/admin/sDefault.asp
