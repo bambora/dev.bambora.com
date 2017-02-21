@@ -1,6 +1,7 @@
 // Collapsable path-method blocks 
 $('.operation-heading').click(function(){
     $(this).next('.operation-content').slideToggle('fast');
+    $(this).toggleClass('open');
 });
 
 // Hide elements on page load 
