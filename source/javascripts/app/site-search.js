@@ -33,6 +33,14 @@ $(document).ready(function () {
     $('#search-overlay').fadeOut("fast");
   });
 
+  $(document).keyup(function(e) {
+    if (e.keyCode == 27) { // escape key maps to keycode `27`
+      event.preventDefault();
+      $('body').removeClass('no-scroll');
+      $('#search-overlay').fadeOut("fast");
+    }
+  });
+
   $('input#search').on('keyup', function () {
     // Get query
     var query = $(this).val();
@@ -74,8 +82,6 @@ $(document).ready(function () {
 
         var searchitem = "<div class='search-result'>" + breadcrumbs + 
                           title + summary + "</div>"; 
-
-        // var searchitem = "<div class='search-result'><p><a href='" + doc.url + "'>" + doc.title + "</a>" + summary;
 
         searchresults.append(searchitem);
       }
