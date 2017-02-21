@@ -16,7 +16,7 @@ navigation:
 
 This will guide you through quickly hitting one of our Onboarding API endpoints.
 
-This API requires an authentication passcode form a partner account that you requested in the Setup stage of this Quickstart Guide.
+This API requires an authentication passcode form a partner account that you requested in the setup stage of this Quickstart Guide.
 
 The Onboarding API endpoints are divided by account type, or 'flow'. This guide will focus on 'psp-cad'.
 
@@ -38,7 +38,7 @@ curl https://uat-onboarding-api.beanstream.com/v1/workflows/psp-cad/applications
 }'
 ```
 
-You will receive a response with a HTTP status 201 Created. The response body will have an ID, a state and an array of pending fields. The state of an application will remain 'in_progress' until all required fields have been submitted.
+You will receive a response with a HTTP status 201 Created. The response body will have an ID, a state, and an array of pending fields. The state of an application will remain 'in_progress' until all required fields have been submitted.
 
 ## 2. Retrieve the partial application
 
