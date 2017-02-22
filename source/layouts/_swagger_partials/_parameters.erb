@@ -13,10 +13,10 @@ on it. No other values do. Seems like a weird bug? %>
     <!-- Table columns --> 
     <thead>
       <tr> 
+        <th>Required</th>
         <th>In</th>
         <th>Name</th>
         <th>Description</th>
-        <th>Required</th>
         <th>Schema</th>
       </tr>
     </thead>
@@ -29,10 +29,10 @@ on it. No other values do. Seems like a weird bug? %>
         <% if param.key?("name") %>
           <tr>
             <%# these fields are 'easy' %> 
+            <td><%= param.required %></td>
             <td><%= param.in %></td>
             <td><%= param.name %></td>
             <td><%= param.description %></td>
-            <td><%= param.required %></td>
 
             <%# type field, dependent on param.in %>
             <% if param.in == "body" %>

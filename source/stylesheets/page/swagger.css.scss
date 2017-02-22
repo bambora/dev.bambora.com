@@ -26,6 +26,7 @@ h2 {
     position: relative;
     display: inline-block;
     padding-left: 20px;
+    cursor: pointer;
 
     a {
         color: $darkest; 
@@ -73,6 +74,7 @@ h2.open:before {
         position: relative;
         display: inline-block;
         padding-left: 20px;
+        cursor: pointer;
     }
 }
 
