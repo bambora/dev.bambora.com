@@ -1,13 +1,17 @@
-// Collapsable path-method blocks 
-$('.operation-heading').click(function(){
-    $(this).next('.operation-content').slideToggle('fast');
-    $(this).toggleClass('open');
-});
-
-// Hide elements on page load 
+// Hide elements that should be hidden on page load 
+$('.tag-operations').toggle();
 $('.schema-body .schema-body').toggle();
 $('.property-body').toggle();
 $('.enum-list').toggle();
+
+// smooth scrolling to expandable things 
+$('h2, h3, .operation-heading').on('click', function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    $(this).toggleClass('open');
+    $(this).next('.expandable').slideToggle('fast');
+    $('html, body').animate({scrollTop: $(this).offset().top - 75}, 800);
+});
 
 // on click collapse object schema definitions
 $('.schema-title').click(function(event) {

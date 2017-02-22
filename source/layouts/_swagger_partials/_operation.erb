@@ -1,0 +1,85 @@
+<%# 
+    Partial to render a single operation on a path 
+    defined in a swagger file. Used in the swagger 
+    template. 
+
+    TODO: Find out what needs to be passed in as 
+    local variables and pass them in. 
+
+    - operation_name : string 
+    - path_name : string
+    - operation_body : hash
+
+%>
+
+<% if ['get', 'put', 'post', 'delete', 'options', 
+        'head', 'path'].include? operation_name %> 
+<%# else an external ref or list of parameters --- not 
+currently handled %> 
+
+    <div class="operation-block">
+    
+    <!-- Visible operation heading --> 
+    <div class="operation-heading">
+
+        <div class="row">
+            <div class="col-sm-2 op-border"></div>
+        </div>
+    
+        <div class="col-sm-2 operation <%= operation_name %>">
+            <h4><%= operation_name.upcase %></h4>
+        </div>
+    
+        <div class="col-sm-5 col-md-6 col-lg-6 path-name">
+            <span><%= path_name %></span> 
+        </div>
+        
+        <div class="col-sm-5 col-md-4 col-lg-4 summary">
+            <span><%= operation_body.summary %></span>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+
+    <!-- Expandable operation content --> 
+    <div class="expandable operation-content">
+
+        <!-- Description -->
+        <h5>Description</h5> 
+        <% if operation_body.description and operation_body.description != "" %>
+            <%= render_markdown operation_body.description %>
+        <% else %>
+            <p><em>No description</em></p>
+        <% end %>
+
+        <!-- Parameters table -->
+        <h5>Parameters</h5>
+        <% if operation_body.parameters and not operation_body.parameters.empty? %>
+            <%= partial "layouts/_swagger_partials/parameters", :locals => {
+                    :params        => operation_body.parameters, 
+                    :definitions   => definitions,
+                    :operation     => operation_name,
+                    :path_name     => path_name
+            } %>
+        <% else %>
+            <p><em>No parameters</em></p>
+        <% end %>
+
+        <!-- Responses table -->
+        <h5>Responses</h5>
+        <% responses = operation_body.responses %> 
+        <% if responses %>
+        <%= partial "layouts/_swagger_partials/responses", :locals => {
+                :responses      => responses, 
+                :definitions    => definitions,
+                :operation      => operation_name,
+                :path_name      => path_name
+        } %> 
+        <% else %>
+            <p><em>No responses</em></p> 
+        <% end %>
+
+    </div> <!-- /.operation-content -->
+    </div>
+
+<% end %> 

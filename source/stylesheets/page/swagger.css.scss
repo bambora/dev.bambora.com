@@ -1,6 +1,40 @@
 @import 'bambora_ui_variables';
 
-/* security definitions */
+/* h2 level collapsable headings */
+
+h2 {
+    position: relative;
+    display: inline-block;
+    padding-right: 30px;
+
+    a {
+        color: $darkest; 
+        text-decoration: none;
+    }
+}
+
+h2:after {
+    content: '';
+    position: absolute;
+    right: 10px;
+    top: calc(50% - 5px);
+    transform: rotate(225deg);
+    width: 8px;
+    height: 8px;
+    border-left: 4px solid transparent;
+    border-bottom: 4px solid $darkest;
+    border-right: 4px solid $darkest;
+    border-top: 4px solid transparent; 
+    transition: transform 0.2s, top 0.2s;
+}
+
+h2.open:after {
+    top: calc(50% - 10px);
+    transform: rotate(45deg);
+}
+
+
+/* security section */
 
 .security-definition {
     margin-bottom: 50px;
@@ -10,7 +44,7 @@
     }
     
     h3 {
-        display: inline; 
+        display: inline;
     }
 
     .title span {
@@ -19,6 +53,56 @@
         margin-left: 10px;
     }
 }
+
+/* operations section */
+
+
+/* Tag headings */
+
+.tag-group {
+    h3 {
+        margin-bottom: 15px;
+        position: relative;
+        display: inline-block;
+        padding-right: 30px;
+    }
+}
+
+.tag-group h3 a {
+    position: relative;
+    text-decoration: none;
+    color: $contrast;
+    font-size: 18px;
+    transition: color 0.1s;
+
+    &:hover {
+        color: $primary;
+    }
+}
+
+.tag-group h3:after {
+    content: '';
+    position: absolute;
+    right: 10px;
+    top: calc(50% - 3px);
+    transform: rotate(225deg);
+    width: 8px;
+    height: 8px;
+    border-left: 4px solid transparent;
+    border-bottom: 4px solid $contrast;
+    border-right: 4px solid $contrast;
+    border-top: 4px solid transparent; 
+    transition: transform 0.2s, top 0.2s;
+}
+
+.tag-group h3.open:after {
+    top: calc(50% - 8px);
+    transform: rotate(45deg);
+}
+
+
+
+
 
 /* expandable operation headings */
 
@@ -32,7 +116,7 @@
 }
 
 .operation-block {
-    margin-bottom: 48px;
+    margin-bottom: 15px;
 }
 
 .operation-heading {
@@ -49,6 +133,8 @@
 
         h4 {
             padding: 15px;
+            padding-bottom: 0;
+            padding-top: 12px;
             margin-bottom: 0;
         }
 
@@ -91,14 +177,15 @@
     }
 }
 
+/* Dropdown arrow */
 .operation-heading:after {
+    top: calc(50% - 5px);
+    transform: rotate(225deg);
     content: '';
     position: absolute;
     right: 20px;
-    top: calc(50% - 10px);
     width: 8px;
     height: 8px;
-    transform: rotate(45deg);
     border-left: 4px solid transparent;
     border-bottom: 4px solid $contrast;
     border-right: 4px solid $contrast;
@@ -107,13 +194,12 @@
 }
 
 .operation-heading.open:after {
-    top: calc(50% - 5px);
-    transform: rotate(225deg);
+    top: calc(50% - 10px);
+    transform: rotate(45deg);
 }
 
 
 /* Expandable operation content */
-
 .operation-content {
     display: none;
     border: solid $muted 1px;
