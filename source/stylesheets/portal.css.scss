@@ -350,8 +350,24 @@ footer {
     position: fixed;
     background-color: $lightest;
     left: calc(50% - 250px); // 50% - half of modal width
-    top: 100px;
-  }
+    top: 50px;
+
+    .btn-row {
+      text-align: center;
+    }
+
+    ol {
+      padding-left: 0;
+      padding-bottom: 30px;
+    }
+  
+    li {
+      list-style-position: inside; 
+      text-indent: calc(-1em - 10px);
+      padding-left: calc(1em + 10px);
+      margin-bottom: 1em;
+    }
+  }  
 }
 
 
