@@ -1,6 +1,12 @@
+// TODO: Clean this logic up.
+// Just give everything that can expand a class of expandable and target 
+// the next .expandable on click?
+
 // Hide elements that should be hidden on page load 
 $('.tag-operations').toggle();
 $('.schema-body .schema-body').toggle();
+$('.schema-title').toggleClass('open');
+$('.schema-body .schema-title').toggleClass('open');
 $('.property-body').toggle();
 $('.enum-list').toggle();
 
@@ -17,6 +23,7 @@ $('h2, h3, .operation-heading').on('click', function(event) {
 $('.schema-title').click(function(event) {
     event.preventDefault();
     link_id = $(this).attr('id');
+    $(this).toggleClass('open');
     $(this).siblings('.schema-body').toggle();
 });
 
@@ -24,16 +31,18 @@ $('.schema-title').click(function(event) {
 $('.property-type').click(function(event) {
     event.preventDefault();
     $(this).siblings('.property-body').toggle();
+    $(this).toggleClass('open');
 })
 
 // on click show enum list 
 $('.enum-link').click(function(event) {
     event.preventDefault();
     $(this).siblings('.enum-list').toggle();
+    $(this).toggleClass('open');
 });
 
 // smooth scrolling to schema definitions 
-$('a[href^="#"]').on('click', function(event) {
+$('td a[href^="#"]').on('click', function(event) {
     var target = $(this.getAttribute('href'));
     if( target.length ) {
         event.preventDefault();

@@ -1,11 +1,31 @@
 @import 'bambora_ui_variables';
 
+@mixin expand-arrow($arrow-color) {
+    content: '';
+    position: absolute;
+    left: 0px;
+    top: calc(50% - 5px);
+    transform: rotate(-45deg);
+    width: 8px;
+    height: 8px;
+    border-left: 4px solid transparent;
+    border-bottom: 4px solid $arrow-color;
+    border-right: 4px solid $arrow-color;
+    border-top: 4px solid transparent; 
+    transition: transform 0.2s, top 0.2s;
+}
+
+@mixin expanded-arrow {
+    top: calc(50% - 10px);
+    transform: rotate(45deg);
+}
+
 /* h2 level collapsable headings */
 
 h2 {
     position: relative;
     display: inline-block;
-    padding-right: 30px;
+    padding-left: 20px;
 
     a {
         color: $darkest; 
@@ -13,24 +33,12 @@ h2 {
     }
 }
 
-h2:after {
-    content: '';
-    position: absolute;
-    right: 10px;
-    top: calc(50% - 5px);
-    transform: rotate(225deg);
-    width: 8px;
-    height: 8px;
-    border-left: 4px solid transparent;
-    border-bottom: 4px solid $darkest;
-    border-right: 4px solid $darkest;
-    border-top: 4px solid transparent; 
-    transition: transform 0.2s, top 0.2s;
+h2:before {
+    @include expand-arrow($darkest);
 }
 
-h2.open:after {
-    top: calc(50% - 10px);
-    transform: rotate(45deg);
+h2.open:before {
+    @include expanded-arrow;
 }
 
 
@@ -64,7 +72,7 @@ h2.open:after {
         margin-bottom: 15px;
         position: relative;
         display: inline-block;
-        padding-right: 30px;
+        padding-left: 20px;
     }
 }
 
@@ -81,28 +89,12 @@ h2.open:after {
 }
 
 .tag-group h3:after {
-    content: '';
-    position: absolute;
-    right: 10px;
-    top: calc(50% - 3px);
-    transform: rotate(225deg);
-    width: 8px;
-    height: 8px;
-    border-left: 4px solid transparent;
-    border-bottom: 4px solid $contrast;
-    border-right: 4px solid $contrast;
-    border-top: 4px solid transparent; 
-    transition: transform 0.2s, top 0.2s;
+    @include expand-arrow($contrast);
 }
 
 .tag-group h3.open:after {
-    top: calc(50% - 8px);
-    transform: rotate(45deg);
+    @include expanded-arrow;
 }
-
-
-
-
 
 /* expandable operation headings */
 
@@ -179,8 +171,9 @@ h2.open:after {
 
 /* Dropdown arrow */
 .operation-heading:after {
+    // TODO: Combine with expand-arrow mixin
     top: calc(50% - 5px);
-    transform: rotate(225deg);
+    transform: rotate(135deg);
     content: '';
     position: absolute;
     right: 20px;
@@ -194,10 +187,8 @@ h2.open:after {
 }
 
 .operation-heading.open:after {
-    top: calc(50% - 10px);
-    transform: rotate(45deg);
+    @include expanded-arrow;
 }
-
 
 /* Expandable operation content */
 .operation-content {
@@ -242,6 +233,8 @@ h2.open:after {
     }
 
     .schema-title {
+        position: relative;
+        padding-left: 20px;
         a {
             color: $primary !important;
             text-decoration: none;
@@ -249,6 +242,15 @@ h2.open:after {
             &:hover{
                 text-decoration: underline;
             }
+        }
+
+        &:before {
+            @include expand-arrow($primary);
+        }
+        
+        &.open:before {
+            @include expanded-arrow;
+            top: calc(50% - 8px);
         }
     }
 
@@ -281,6 +283,20 @@ h2.open:after {
 
     .property-type {
         color: $tabriz-blue !important;
+        
+        &.expandable {
+            position: relative;
+            padding-left: 20px;
+
+            &:before {
+                @include expand-arrow($tabriz-blue);
+            }
+
+            &.open:before {
+                @include expanded-arrow;
+                top: calc(50% - 8px);
+            }
+        }
     }
 
     .property-body {
@@ -298,9 +314,20 @@ h2.open:after {
     
     text-decoration: none;
     color: $darkest !important;
+    padding-left: 20px;
+    position: relative;
 
     &:hover {
         text-decoration: underline;
+    }
+
+    &:before {
+        @include expand-arrow($darkest);
+    }
+
+    &.open:before {
+        @include expanded-arrow;
+        top: calc(50% - 8px);
     }
 }
 
