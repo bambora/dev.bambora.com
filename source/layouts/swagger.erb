@@ -36,89 +36,103 @@
       <div class="js-toc-content">
         
         <!-- Swagger object fields -->
-        <% swagger = get_data_from_frontmatter current_page.data.swagger %>
+        <% swagger      = get_data_from_frontmatter current_page.data.swagger %>
         <% info         = swagger.info %>
         <% security_defs= swagger.securityDefinitions %>
         <% definitions  = swagger.definitions %>
         <% paths        = swagger.paths %>
+        <% operations   = get_swagger_operations_by_tag paths %>
 
         <!-- Summary Block --> 
-        <h2><%= info.title %></h2>
-        <%= render_markdown info.description %>
-        
-        <p><strong>Version:</strong> <%= info.version %></p>
-        
-        <% if info.contact %> 
-        <p><strong>Contact:</strong> 
-        <p><%= info.contact.name  if info.contact.name %></p>
-        <p><%= info.contact.url   if info.contact.url %></p>
-        <p><%= info.contact.email if info.contact.email %></p>
-        <% end %> 
+        <h2 class="open"><a href="#"><%= info.title %></a></h2>
+          <div class="expandable">
+          <%= render_markdown info.description %>
+          
+          <p><strong>Version:</strong> <%= info.version %></p>
+          
+          <% if info.contact %> 
+          <p><strong>Contact:</strong> 
+          <p><%= info.contact.name  if info.contact.name %></p>
+          <p><%= info.contact.url   if info.contact.url %></p>
+          <p><%= info.contact.email if info.contact.email %></p>
+          <% end %> 
 
-        <% if info.termsOfService %>
-        <p>
-          <strong>Terms of Service:</strong> 
-          <a href="<%= info.termsOfService %>"><%= info.termsOfService %></a>
-        </p>
-        <% end %>
-        
-        <% if info.license %>
-        <p>
-          <strong>License:</strong> 
-          <a href="<%= info.license.url %>"><%= info.license.name %></a>
-        </p>
-        <% end %> 
-
-
-        <!-- Security --> 
-        <h2>Security</h2>
-        <div class="security">
-          <% security_defs.each do |definition| %> 
-            <% def_name = definition[0] %>
-            <% def_body = definition[1] %>
-            
-            <div class="security-definition">
-            <div class="title">
-              <h3><%= def_name %></h3> 
-              <span>(<%= def_body.type.underscore.humanize.downcase %>)</span>
-            </div>
-
-            <p><%= def_body.description %></p>
-
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>In</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><%= def_name %></td>
-                  <td><%= def_body.in %></td>
-                </tr>
-              </tbody>
-            </table>
-            </div>
+          <% if info.termsOfService %>
+          <p>
+            <strong>Terms of Service:</strong> 
+            <a href="<%= info.termsOfService %>"><%= info.termsOfService %></a>
+          </p>
+          <% end %>
+          
+          <% if info.license %>
+          <p>
+            <strong>License:</strong> 
+            <a href="<%= info.license.url %>"><%= info.license.name %></a>
+          </p>
           <% end %> 
         </div>
 
-        <!-- Paths -->
-        <h2>Paths</h2>
-        <% paths.each do |path| %>
-          <div class="row">
-          <div class="col-md-12">
-          
-          <% if path[0].start_with?('/') %> <%# path item object %> 
-            <%= partial "layouts/_swagger_partials/path", :locals => {
-                :path => path, 
-                :definitions => definitions
-                } %>
-            <% end %> <%# else it's a x-* style extension to the spec %> 
 
+        <!-- Security --> 
+        <div class="security">
+          <h2 class="open"><a href="#">Security</a></h2>
+          <div class="expandable security-body">
+            <% security_defs.each do |definition| %> 
+              <% def_name = definition[0] %>
+              <% def_body = definition[1] %>
+              
+              <div class="security-definition">
+              <div class="title">
+                <h3><%= def_name %></h3> 
+                <span>(<%= def_body.type.underscore.humanize.downcase %>)</span>
+              </div>
+
+              <p><%= def_body.description %></p>
+
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>In</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><%= def_name %></td>
+                    <td><%= def_body.in %></td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
+            <% end %> 
           </div>
+        </div>
+
+        <!-- Tags --> 
+        <div class="operations">
+          <h2 class="open"><a href="#">Operations</a></h2>
+          <div class="expandable operations-body">
+            <% operations.keys.each do |tag| %>
+              <div class="tag-group">
+                <h3><a href="#"><%= tag %></a></h3>
+
+                <div class="expandable tag-operations">
+                  <% operations[tag].each do |operation| %>
+
+                    <%= partial "layouts/_swagger_partials/operation", :locals => {
+                          :operation_name => operation["operation_name"],
+                          :path_name      => operation["path_name"],
+                          :operation_body => operation["operation_body"],
+                          :definitions    => definitions 
+                    } %>
+                  
+                  <% end %>
+                </div>
+              </div>
+            <% end %>  
           </div>
-        <% end %>
+        </div>     
+
         </div>
       </div>
       </div>

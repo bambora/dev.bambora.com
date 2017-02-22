@@ -117,4 +117,61 @@ module CustomHelpers
     result += "</div>"
   end
 
+  # Get all tags specified in paths object from swagger file. 
+  # TODO: I think can be replaced by taking keys of return from below method.
+  def get_swagger_tags(paths)
+    tags = Set.new
+    paths.each do |path| 
+      operations = path[1]
+      operations.each do |operation|
+        operation = operation[1]
+        if operation.has_key? "tags"
+          operation.tags.each do |tag| 
+            tags.add tag
+          end
+        end  
+      end  
+    end
+    return tags
+  end
+
+  def get_swagger_operations_by_tag(paths)
+    result = {}
+    paths.each do |path| 
+      if path[0].start_with?('/') # swagger path item object
+        path_name = path[0]
+        operations = path[1]
+
+        operations.each do |operation| 
+          operation_name = operation[0]
+          operation_body = operation[1]
+
+          if ['get', 'put', 'post', 'delete', 
+              'options', 'head', 'path'].include? operation_name
+            # ( else an external ref or list of parameters, 
+            #   not currently handled. )
+            if operation_body.has_key? "tags"
+              tags = operation_body.tags
+
+              result_object = {}
+              result_object["path_name"] = path_name
+              result_object["operation_name"] = operation_name
+              result_object["operation_body"] = operation_body
+
+              tags.each do |tag| 
+                if result.has_key? tag
+                  result[tag] << result_object
+                else 
+                  result[tag] = [result_object]
+                end  
+              end
+            end
+          end
+        end
+      end
+    end
+    return result
+  end
+
+
 end
