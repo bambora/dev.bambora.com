@@ -21,16 +21,32 @@ $(document).ready(function () {
   
   $('#search-button').click(function(event) {
     event.preventDefault();
+    event.stopPropagation();
     $('#search-overlay').fadeIn("fast"); 
     $('#search-overlay input').focus();
     $('#search-overlay input').val("");
     $('body').addClass('no-scroll');
+    
+    // Reset results 
+    var searchresults = $('.search-results');
+    var resultcount = $('#result-count');
+    searchresults.hide();
+    resultcount.hide();
   });
 
   $('#close-search-overlay').click(function(event) {
     event.preventDefault();
+    event.stopPropagation();
     $('body').removeClass('no-scroll');
     $('#search-overlay').fadeOut("fast");
+  });
+
+  $(document).keyup(function(e) {
+    if (e.keyCode == 27) { // escape key maps to keycode `27`
+      event.preventDefault();
+      $('body').removeClass('no-scroll');
+      $('#search-overlay').fadeOut("fast");
+    }
   });
 
   $('input#search').on('keyup', function () {
@@ -74,8 +90,6 @@ $(document).ready(function () {
 
         var searchitem = "<div class='search-result'>" + breadcrumbs + 
                           title + summary + "</div>"; 
-
-        // var searchitem = "<div class='search-result'><p><a href='" + doc.url + "'>" + doc.title + "</a>" + summary;
 
         searchresults.append(searchitem);
       }

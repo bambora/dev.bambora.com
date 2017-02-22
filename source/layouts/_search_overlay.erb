@@ -1,22 +1,23 @@
-<a href="#" id="close-search-overlay"><%= svg "close" %></a>
+<div id="search-overlay">
+  <a href="#" id="close-search-overlay"><%= svg "close" %></a>
 
-<div class="container">
+  <div class="container">
 
     <form>
-        <div class="form-group">
-            <input type="text" id="search" placeholder="Search..." width="100%", autocomplete="off" >
-        </div>
+      <div class="form-group">
+        <input type="text" id="search" placeholder="Search..." width="100%", autocomplete="off" >
+      </div>
     </form>
 
     <div id="result-count"></div>
 
     <div class="list-group">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <ul class="search-results"></ul>
-            </div>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <ul class="search-results"></ul>
         </div>
+      </div>
     </div>
 
+  </div>
 </div>
-

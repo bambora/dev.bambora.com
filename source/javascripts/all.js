@@ -4,3 +4,4 @@
 //= require ./app/_tocbot.min
 //= require ./app/site-search
 //= require ./app/navigation
+//= require ./app/edit-on-github

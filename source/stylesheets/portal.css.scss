@@ -89,7 +89,7 @@ pre {
 .flex-row > [class*='col-'] {
  	display: flex;
  	flex-direction: column;
-    flex-grow: 1;
+  flex-grow: 0;
 
     a {
         background-color: $lightest;
@@ -166,8 +166,6 @@ body {
 footer {
   margin-top: 75px;
 }
-
-/* search overlay */
 
 
 /* Search Overlay */
@@ -283,7 +281,6 @@ footer {
 .breadcrumb-trail {
   margin-top: 30px;
   margin-bottom: 30px;
-  margin-left: 18px; // align with side nav
   color: $contrast;
   font-style: italic;
   display: inline-block;
@@ -339,10 +336,22 @@ footer {
   }
 }
 
-/* forms */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  height: 100%; 
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: $zIndexModal;
 
-form {
-  margin-bottom: 30px;
+  .github-modal {
+    position: fixed;
+    background-color: $lightest;
+    left: calc(50% - 250px); // 50% - half of modal width
+    top: 100px;
+  }
 }
 
 
@@ -351,10 +360,6 @@ form {
 .block-highlight {
 
   padding: 15px;
-
-  a {
-    word-break: break-all;
-  }
 
   p {
     padding-bottom: 0;
@@ -378,7 +383,7 @@ form {
 
 
 /* general mobile styling */ 
-/* (mobile styling for header, side nav are in respective .scss files */
+/* (mobile styling for header, side nav are in respective .scss files) */
 
 @media (max-width : 992px) {
   #edit-on-github {

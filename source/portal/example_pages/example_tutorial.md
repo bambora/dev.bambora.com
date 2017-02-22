@@ -1,5 +1,5 @@
 ---
-title: Test Tutorial
+title: Example Tutorial
 layout: tutorial
 
 navigation:
@@ -8,7 +8,7 @@ navigation:
     toc: in-page
     header_active: Example Pages
 
-breadcrumbs: false
+breadcrumbs: True
 
 summary: > 
   A test tutorial with dummy content added. 
@@ -18,7 +18,7 @@ includes:
 
 ---
 
-# Test Tutorial
+# Example Tutorial
 
 ## Tutorial Sub Heading
 

@@ -1,3 +1,8 @@
+/* 
+Z-index variables to easily keep an index of what goes on top of 
+what else. 
+*/
+
 /* Main body content */
 
 $zIndexBody : 0;
@@ -19,6 +24,10 @@ $zIndexFooter : 200;
 $zIndexSideNav: 300; 
 
 
+/* modal content */
+$zIndexModal: 400;
+
+
 /* Search content */
 
-$zIndexSearch : 400; 
+$zIndexSearch : 500;

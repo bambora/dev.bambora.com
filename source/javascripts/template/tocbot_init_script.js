@@ -11,6 +11,8 @@ tocbot.init({
     // The sections that are hidden will open
     // and close as you scroll to headings within them.
 
+    ignoreSelector: '.js-toc-ignore',
+
     collapseDepth: 1,
     // Main class to add to links.
     //linkClass: '',
