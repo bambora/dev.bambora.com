@@ -27,7 +27,7 @@ Our Server SDKs wrap our Payments, Payment Profiles, and Reporting APIs. You can
 | PHP      | [Source][php-source]    | [Docs][php-docs]    | [Composer][php-pm] |
 | Ruby     | [Source][ruby-source]   |                     | [Gem][ruby-pm]     |
 | Python   | [Source][python-source] | [Docs][python-docs] | [PIP][python-pm]   |
-| Java     | [Source][java-source]   | [Docs][python-docs] | [Maven][python-pm] |
+| Java     | [Source][java-source]   | [Docs][java-docs]   | [Maven][java-pm] |
 | C#       | [Source][csharp-source] | [Docs][csharp-docs] | [Nuget][csharp-pm] |
 | Go       | [Source][go-source]     |                     |                    |
 
@@ -58,27 +58,26 @@ Our Server SDKs wrap our Payments, Payment Profiles, and Reporting APIs. You can
 Our Mobile SDKs wraps our Tokenization API. You can read more about the functionality [here](../collect_card_data#mobile-sdks-payform).
 
 ### Source
-| Platform | Source                   | Additional Docs      | Packet Repository  |
-| -------- | ------------------------ | -------------------- | ------------------ |
-| Android  | [Source][android-source] | [Docs][android-docs] | [NPM][android-pm]  |
-| iOS      | [Source][ios-source]     | [Docs][ios-docs]     | [Composer][ios-pm] |
+| Platform | Source                   |  Packet Repository         |
+| -------- | ------------------------ | -------------------------- |
+| Android  | [Source][android-source] | [Artifactory][android-pm]  |
+| iOS      | [Source][ios-source]     | [Artifactory][ios-pm]      |
 
-[android-source]: #
+[android-source]: https://github.com/Beanstream/beanstream-android-payform
 [android-docs]: #
-[android-pm]: #
-[ios-source]: #
-[ios-docs]: #
-[ios-pm]: #
+[android-pm]: https://beanstream.jfrog.io/beanstream/libs-release
+[ios-source]: https://github.com/Beanstream/beanstream-ios-payform
+[ios-docs]: 
+[ios-pm]: https://beanstream.jfrog.io/beanstream/api/pods/beanstream-public
 
 ## Browser SDK
 Our Browser SDKs wraps our Tokenization API. It limits the scope of your PCI compliance to PCI SAQ-A. You can read more about the functionality [here](../collect_card_data#browser-sdk-payfields).
 
 ### Source
-| Language | Source                    | Additional Docs         | Packet Repository  |
-| -------- | ------------------------- | ----------------------- | ------------------ |
-| JS (ES5) | [Source][browser-source]  | [Docs][browser-docs]    | [NPM][browser-pm]  |
+| Language | Source                    |  Packet Repository  |
+| -------- | ------------------------- | ------------------- |
+| JS (ES5) | [Source][browser-source]  |                     |
 
-
-[browser-source]: #
+[browser-source]: https://github.com/Beanstream/beanstream-payform
 [browser-docs]: #
 [browser-pm]: #
