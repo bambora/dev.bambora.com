@@ -4,6 +4,7 @@ $(document).ready(function () {
     // Hamburger menu on mobile screen
     $('.hamburger-icon').click(function(event) {
         event.preventDefault();
+        event.stopPropagation();
         $(".header-contents").toggleClass("mobile-state-hidden")
     });
 });

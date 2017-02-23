@@ -9,7 +9,12 @@ $(document).ready(function () {
     $('body').addClass('no-scroll');
   });
 
-  $('.close-modal').click(function(){
+  // Prevent a click on the modal from closing it. 
+  $('.github-modal').click(function(event) {
+    event.stopPropagation();
+  });
+
+  $('.close-modal, .modal-overlay').click(function(){
     $('.modal-overlay').toggle();
     $('body').removeClass('no-scroll');
   });

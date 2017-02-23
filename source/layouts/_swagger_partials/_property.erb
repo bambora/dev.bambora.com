@@ -5,13 +5,16 @@
 
 <span class="property-info">
 
-  <span class="property-type">
-    <% if property.maxLength or property.enum or property.description %>
+  <% if property.maxLength or property.enum or property.description %>
+    <span class="property-type expandable">
       <a href="#"><%= property.type %></a>
-    <% else %>
+    </span>
+  <% else %> 
+    <span class="property-type">
       <%= property.type %>
-    <% end %>
-  </span>
+    </span>
+  <% end %>
+
 
   <span class="property-body">
     <% if property.maxLength %> 

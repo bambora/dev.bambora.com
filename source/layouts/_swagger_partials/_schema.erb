@@ -2,22 +2,16 @@
 <%# requires local variables: 
       :schema_title => the name of the schema definitions
       :definitions => the definitions object of the swagger file 
+      :operation => the name of the operation
+      :path_name => the name of the path
 %>
-
-<%# TODO: Bad way to define this probably. Fix. %> 
-<% if not defined? operation %>
-  <% operation = "" %>
-<% end %>
-
-<% if not defined? path_name %>
-  <% path_name = "" %>
-<% end %>
 
 <%# If have been passed a reference to the schema definition %> 
 <% if schema_title.is_a? String %> 
   <% schema_body = definitions["#{schema_title}"] %>
   <% required = schema_body.required %>
 
+<%# TODO: Should we be setting required to something here? %>
 <%# else been passed a definition itself %> 
 <% else %> 
   <% schema_body = schema_title[1] %>
@@ -30,8 +24,8 @@
   <!-- schema title -->
   <span class="schema-title">
     <a href="#" id="<%= make_html_safe "#{operation}-#{path_name}-#{schema_title}" %>">
-      <%= schema_title %>
-    </a>
+      <%= schema_title %><!-- remove blank space 
+    --></a>
   </span>
   <span class="syntax">{</span>
   
@@ -44,15 +38,28 @@
     <% prop_name = prop[0] %>
     <% prop_body = prop[1] %>
 
-
     <!-- If the property is a reference to other schema --> 
     <% if prop_body.to_h["$ref"] %>
       <% schema_title = prop_body.to_h["$ref"].split('/').last %>
-      <% prop_desc = partial "layouts/_swagger_partials/schema", 
-          :locals => {
-            :schema_title => schema_title, 
-            :definitions => definitions
-      } %>
+
+      <% if definitions["#{schema_title}"].has_key? "type" %>
+
+        <% prop_desc = partial "layouts/_swagger_partials/property", 
+            :locals => {
+              :property => definitions["#{schema_title}"]
+            } %>
+
+      <% else %>
+      
+        <% prop_desc = partial "layouts/_swagger_partials/schema", 
+            :locals => {
+              :schema_title => schema_title, 
+              :definitions => definitions,
+              :operation => operation, 
+              :path_name => path_name
+        } %>
+
+      <% end %>
 
     <!-- else if property is an array --> 
     <% elsif prop_body.type == "array" %> 
@@ -69,7 +76,9 @@
         <% prop_desc += partial "layouts/_swagger_partials/schema", 
               :locals => {
                 :schema_title => schema_title, 
-                :definitions => definitions 
+                :definitions  => definitions,
+                :operation    => operation, 
+                :path_name    => path_name
         } %>
       <% end %>
 
