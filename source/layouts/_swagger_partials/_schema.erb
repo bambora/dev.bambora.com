@@ -24,8 +24,8 @@
   <!-- schema title -->
   <span class="schema-title">
     <a href="#" id="<%= make_html_safe "#{operation}-#{path_name}-#{schema_title}" %>">
-      <%= schema_title %>
-    </a>
+      <%= schema_title %><!-- remove blank space 
+    --></a>
   </span>
   <span class="syntax">{</span>
   
@@ -37,7 +37,6 @@
 
     <% prop_name = prop[0] %>
     <% prop_body = prop[1] %>
-
 
     <!-- If the property is a reference to other schema --> 
     <% if prop_body.to_h["$ref"] %>

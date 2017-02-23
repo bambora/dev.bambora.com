@@ -98,7 +98,8 @@ card_sets:
             - 
                 title: Swagger Page
                 description: >
-                    A page for rendering Swagger files. 
+                    A page for rendering Swagger files. Nicer than the js swagger 
+                    renderer, and also faster because it is rendered at build time. 
                 icon: list 
                 link: /portal/example_pages/example_swagger_page/ 
 

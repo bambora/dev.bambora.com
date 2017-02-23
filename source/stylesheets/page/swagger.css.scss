@@ -237,13 +237,15 @@ h2.open:before {
     .schema-title {
         position: relative;
         padding-left: 20px;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }   
+
         a {
             color: $primary !important;
             text-decoration: none;
-
-            &:hover{
-                text-decoration: underline;
-            }
         }
 
         &:before {
@@ -289,6 +291,11 @@ h2.open:before {
         &.expandable {
             position: relative;
             padding-left: 20px;
+            cursor: pointer;
+
+            &:hover {
+                text-decoration: underline;
+            }   
 
             &:before {
                 @include expand-arrow($tabriz-blue);
@@ -318,6 +325,7 @@ h2.open:before {
     color: $darkest !important;
     padding-left: 20px;
     position: relative;
+    cursor: pointer;
 
     &:hover {
         text-decoration: underline;
@@ -338,4 +346,23 @@ h2.open:before {
         display: block;
         margin-left: 20px;
     }
+}
+
+
+/* Fix styling on small screen size */ 
+
+@media (max-width: $screen-sm) {
+
+    .path-name {
+        text-align: center;
+    }
+
+    .summary > span {
+        margin-right: 0 !important;
+    }
+
+    .op-border {
+        display: none;
+    }
+
 }
