@@ -109,7 +109,7 @@ pre {
 .flex-row > [class*='col-'] {
  	display: flex;
  	flex-direction: column;
-  flex-grow: 0;
+  flex-grow: 1;
 
     a {
         background-color: $lightest;
@@ -393,7 +393,7 @@ footer {
 
 /* form messages */
 
-.block-highlight {
+.message {
 
   padding: 15px;
 
