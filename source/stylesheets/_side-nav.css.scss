@@ -154,7 +154,6 @@ ul .js-toc {
 
   .nav-left, .nav-left-fixed {
     position: static;
-    outline: dashed red 1px;
     background-color: $lightest;
     z-index: $zIndexSideNav;
     height: auto;
@@ -163,5 +162,6 @@ ul .js-toc {
     padding-top: 0;
     padding-left: 0;
     box-shadow: none;
+    margin-top: 100px; // TODO: Temporary fix to position below buttons.
   }
 }

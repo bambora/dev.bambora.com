@@ -1,6 +1,7 @@
 <% this_page = get_page_path current_page %>
 
 <%# Get the toc data to use for this page %> 
+<%# TODO: Put this in a helper function %>
 <% if current_page.data.navigation.toc %> 
   <% if current_page.data.navigation.toc == "in-page" || 
         current_page.data.navigation.toc == false %>    
@@ -16,6 +17,7 @@
 
 <% if toc_file != "none" %> 
 
+<div class="nav-wrapper">
 <nav class="nav-left nav-sticky nav-vertical">
 
   <div class="mobile-close"><%= svg :close %></div>
@@ -67,6 +69,7 @@
       </ul>
     <% end %> 
 </nav>
+</div>
 
 <% end %> 
 

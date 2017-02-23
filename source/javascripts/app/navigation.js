@@ -27,15 +27,23 @@ $(document).ready(function () {
 
     // Combine toc and header side nav if page width below $header-break-width.
     var $window = $(window);
+    var $tableOfContents = $('nav.nav-left');
+    var $tableOfContentsWrap = $('.nav-wrapper');
+    var $headerSideNav = $('.header-contents>span');
     var headerBreakWidth = 875;
     var combined = false;
     function checkWidth() {
         var windowsize = $window.width();
-        if (windowsize < 875) {
+        if (windowsize < 875 && combined === false) {
 
-            $tableOfContents = $('nav.nav-left');
-            $headerSideNav = $('.header-contents span');
+            console.log('combine');
+            combined = true;
             $headerSideNav.append($tableOfContents);
+        
+        } else if (windowsize >= 875 && combined === true) {
+            console.log("separate");
+            combined = false;
+            $tableOfContentsWrap.append($tableOfContents);
         }
     }
     checkWidth();
