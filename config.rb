@@ -83,7 +83,7 @@ set :relative_links, true
 # Build Configuration
 configure :build do
   activate :minify_css
-  activate :minify_javascript
+  # activate :minify_javascript # TODO: Tocbot breaks when js minimized. fix.
   activate :asset_hash, :ignore => 'stylesheets/fonts/'
   # activate :relative_assets
   # activate :gzip  
