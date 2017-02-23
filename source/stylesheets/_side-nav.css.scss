@@ -100,7 +100,7 @@ ul .js-toc {
     color: $lightest;
     z-index: $zIndexShowSideNavButton;
     padding: 7px 15px;
-    left: -30px; // TODO: Unsure why needed...
+    left: -30px;
     transform: rotate(-90deg);
     cursor: pointer;
     user-select: none;
