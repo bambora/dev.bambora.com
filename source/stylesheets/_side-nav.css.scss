@@ -84,38 +84,39 @@ ul .js-toc {
 }
 
 
-// /* Responsive nav */ 
+/* Responsive nav */ 
 
-#show-nav-link {
+.show-toc {
   position: fixed;
-  left: 0;
-  top: 15px;
-  background-color: white;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.08);
-  padding: 10px; 
-  padding-bottom: 5px;
-  path {
-    fill: $primary; 
-  }
-  display: none;
-  z-index: $zIndexSideNav;
-}
-
-#nav-close {
-  display:none; 
+  background: $primary;
+  color: $lightest;
+  z-index: $zIndexShowSideNavButton;
+  padding: 7px 15px;
+  left: -30px; // TODO: Unsure why needed...
+  transform: rotate(-90deg);
+  cursor: pointer;
+  user-select: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width : 992px) {
-  .nav-left {
-    position: static;
-  }
+  
+  .nav-left, .nav-left-fixed {
+    position: fixed;
+    left: 0;
+    top: 66px;
+    background-color: $lightest;
+    z-index: $zIndexSideNav;
+    height: calc(100% - 66px);
+    max-height: calc(100% - 66px);
+    width: 200px;
+    padding-top: 30px;
+    padding-left: 15px;
+    transition: left 0.2s;
 
-  .nav-left-fixed {
-    position: static !important;
-  }
 
-  // Hide page toc on mobile
-  .js-toc {
-    display: none;
+    &.mobile-state-hidden {
+      left: -200px;
+    }
   }
 }
