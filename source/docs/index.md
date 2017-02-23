@@ -12,7 +12,7 @@ navigation:
   header_active:
 
 hero_unit:
-    hero_image: Dev_Portal_background2.jpg
+    hero_image: Dev_Portal_background3.jpg
     big_heading: Developer Documentation.
     tag_line:  >
         This single source of truth for our payment gateway.
