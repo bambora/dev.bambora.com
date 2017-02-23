@@ -145,3 +145,23 @@ ul .js-toc {
     }
   }
 }
+
+
+@media (max-width : 875px) {
+  .show-toc, .mobile-close {
+    display: none;
+  }  
+
+  .nav-left, .nav-left-fixed {
+    position: static;
+    outline: dashed red 1px;
+    background-color: $lightest;
+    z-index: $zIndexSideNav;
+    height: auto;
+    max-height: auto;
+    width: auto;
+    padding-top: 0;
+    padding-left: 0;
+    box-shadow: none;
+  }
+}
