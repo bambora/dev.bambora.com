@@ -16,4 +16,10 @@ $(document).ready(function () {
         event.stopPropagation();
         $('.nav-left').toggleClass('mobile-state-hidden');
     });
+
+    // toc close button
+    $('.mobile-close').click(function(event) {
+        event.stopPropagation();
+        $('.nav-left').toggleClass('mobile-state-hidden');
+    });
 });

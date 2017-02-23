@@ -86,20 +86,45 @@ ul .js-toc {
 
 /* Responsive nav */ 
 
-.show-toc {
-  position: fixed;
-  background: $primary;
-  color: $lightest;
-  z-index: $zIndexShowSideNavButton;
-  padding: 7px 15px;
-  left: -30px; // TODO: Unsure why needed...
-  transform: rotate(-90deg);
-  cursor: pointer;
-  user-select: none;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+.show-toc, .mobile-close {
+  display: none;
 }
 
+
 @media (max-width : 992px) {
+
+  .show-toc {
+    display: block;
+    position: fixed;
+    background: $primary;
+    color: $lightest;
+    z-index: $zIndexShowSideNavButton;
+    padding: 7px 15px;
+    left: -30px; // TODO: Unsure why needed...
+    transform: rotate(-90deg);
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .mobile-close {
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: $contrast;
+    cursor: pointer;
+
+    path {
+      fill: $contrast;
+    }
+
+    &:hover {
+      path {
+        fill: $primary;
+      }
+    }
+  }
   
   .nav-left, .nav-left-fixed {
     position: fixed;
@@ -110,10 +135,10 @@ ul .js-toc {
     height: calc(100% - 66px);
     max-height: calc(100% - 66px);
     width: 200px;
-    padding-top: 30px;
+    padding-top: 45px;
     padding-left: 15px;
     transition: left 0.2s;
-
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.04);
 
     &.mobile-state-hidden {
       left: -200px;
