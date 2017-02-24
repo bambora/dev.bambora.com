@@ -162,7 +162,6 @@ ul .js-toc {
     padding-top: 0;
     padding-left: 0;
     box-shadow: none;
-    //margin-top: 100px; // TODO: Temporary fix to position below buttons.
-    outline: solid red 2px;
+    margin-left: 0 !important;
   }
 }
