@@ -47,11 +47,11 @@
         <% nav.buttons and nav.buttons.each do |btn| %>
             <span class="button-wrap">
                 <% if not btn.secondary %> 
-                    <a href="<%= btn.file %>" class="btn btn-small" target="_blank">
+                    <a href="<%= btn.file %>" class="btn btn-small" <% if btn.new_tab %> target="_blank" <% end %>>
                         <%= btn.title %>
                     </a>
                 <% else %> 
-                    <a href="<%= btn.file %>" class="btn btn-small btn-secondary" target="_blank">
+                    <a href="<%= btn.file %>" class="btn btn-small btn-secondary" <% if btn.new_tab %> target="_blank" <% end %>>
                         <%= btn.title %>
                     </a>
                 <% end %>

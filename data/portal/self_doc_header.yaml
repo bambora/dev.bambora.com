@@ -15,3 +15,4 @@ buttons:
   - file: /portal/
     title: Login
     secondary: true
+    new_tab: true
