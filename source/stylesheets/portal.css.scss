@@ -423,7 +423,8 @@ footer {
 
 @media (max-width : 992px) {
   #edit-on-github {
-    display: inline-block;
+    float: none;
+    display: block;
     margin-top: -15px;
     margin-bottom: 15px;
     margin-right: 15px;
