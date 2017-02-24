@@ -26,7 +26,7 @@ $header-break-width: 875px;
 
   .nav-links a {
       color: $lightest;
-  } 
+  }
 
   path {
     fill: $lightest;
@@ -38,9 +38,6 @@ nav { // transitions on landing page scroll
 }
 
 .hamburger-icon {
-  position: fixed;
-  top: 25px;
-  left: 20px;
   display: none;
 }
 
@@ -67,6 +64,10 @@ nav { // transitions on landing page scroll
 
   .hamburger-icon {
     display: inline;
+    position: fixed;
+    top: 25px;
+    left: 20px;
+    z-index: $zIndexHamburger;
   }
 
   .header-contents {
