@@ -82,10 +82,11 @@ set :relative_links, true
 # Download swagger files from url: 
 get_swagger_doc "http://www.beanstream.com/api/v1/swagger", "/na/API_spec/merchant/1_0_2.json"
 
+
 # Build Configuration
 configure :build do
   activate :minify_css
-  activate :minify_javascript
+  # activate :minify_javascript # TODO: Tocbot breaks when js minimized. fix.
   activate :asset_hash, :ignore => 'stylesheets/fonts/'
   # activate :relative_assets
   # activate :gzip  

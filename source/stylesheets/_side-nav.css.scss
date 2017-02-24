@@ -84,38 +84,84 @@ ul .js-toc {
 }
 
 
-// /* Responsive nav */ 
+/* Responsive nav */ 
 
-#show-nav-link {
-  position: fixed;
-  left: 0;
-  top: 15px;
-  background-color: white;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.08);
-  padding: 10px; 
-  padding-bottom: 5px;
-  path {
-    fill: $primary; 
-  }
+.show-toc, .mobile-close {
   display: none;
-  z-index: $zIndexSideNav;
 }
 
-#nav-close {
-  display:none; 
-}
 
 @media (max-width : 992px) {
-  .nav-left {
-    position: static;
+
+  .show-toc {
+    display: block;
+    position: fixed;
+    background: $primary;
+    color: $lightest;
+    z-index: $zIndexShowSideNavButton;
+    padding: 7px 15px;
+    left: -30px;
+    transform: rotate(-90deg);
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   }
 
-  .nav-left-fixed {
-    position: static !important;
-  }
+  .mobile-close {
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: $contrast;
+    cursor: pointer;
 
-  // Hide page toc on mobile
-  .js-toc {
+    path {
+      fill: $contrast;
+    }
+
+    &:hover {
+      path {
+        fill: $primary;
+      }
+    }
+  }
+  
+  .nav-left, .nav-left-fixed {
+    position: fixed;
+    left: 0;
+    top: 66px;
+    background-color: $lightest;
+    z-index: $zIndexSideNav;
+    height: calc(100% - 66px);
+    max-height: calc(100% - 66px);
+    width: 200px;
+    padding-top: 45px;
+    padding-left: 15px;
+    transition: left 0.2s;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.04);
+
+    &.mobile-state-hidden {
+      left: -200px;
+    }
+  }
+}
+
+
+@media (max-width : $header-break-width) {
+  .show-toc, .mobile-close {
     display: none;
+  }  
+
+  .nav-left, .nav-left-fixed {
+    position: static !important;
+    background-color: $lightest;
+    z-index: $zIndexSideNav;
+    height: auto;
+    max-height: auto;
+    width: auto;
+    padding-top: 0;
+    padding-left: 0;
+    box-shadow: none;
+    margin-left: 0 !important;
   }
 }

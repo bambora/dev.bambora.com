@@ -1,7 +1,3 @@
-$(function() {
-
-});
-
 (function() {
   'use strict';
 
@@ -172,7 +168,7 @@ $(function() {
     var stringToHash = '';
     for (var key in perams) {
       if (perams[key]) {
-        stringToHash += key + '=' + perams[key];
+        stringToHash += key + '=' + perams[key] + '&';
       }
     }
     return stringToHash;
@@ -192,7 +188,11 @@ $(function() {
   	   hash = CryptoJS.SHA1(stringToHash + hashKey);
   	}
 
-    var link =  HPF_BASE_URL + '?' + stringToHash + '&' + HPF_HASH_VALUE + '=' + hash;
+    if(hashKey == '') {
+      var link =  HPF_BASE_URL + '?' + stringToHash;
+    } else {
+      var link =  HPF_BASE_URL + '?' + stringToHash + HPF_HASH_VALUE + '=' + hash;
+    }
 
     this.message.classList.remove('hidden');
     this.message.classList.add('visible');

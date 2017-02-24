@@ -11,8 +11,5 @@ $w.on("scroll", function(e) {
     }
 });
 
-// TODO: Putting this here now but should be site-wide. 
-
-
 
 

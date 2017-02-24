@@ -109,7 +109,7 @@ pre {
 .flex-row > [class*='col-'] {
  	display: flex;
  	flex-direction: column;
-  flex-grow: 0;
+  flex-grow: 1;
 
     a {
         background-color: $lightest;
@@ -393,7 +393,7 @@ footer {
 
 /* form messages */
 
-.block-highlight {
+.message {
 
   padding: 15px;
 
@@ -423,8 +423,7 @@ footer {
 
 @media (max-width : 992px) {
   #edit-on-github {
-    float: none;
-    display: block;
+    display: inline-block;
     margin-top: -15px;
     margin-bottom: 15px;
     margin-right: 15px;
@@ -433,5 +432,11 @@ footer {
 
   .breadcrumb-spacer{
     margin: 0;
+  }
+
+  #search-overlay {
+    ul.search-results {
+      padding-left: 0;
+    }
   }
 }

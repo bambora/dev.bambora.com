@@ -116,7 +116,6 @@ footer {
 
 
 .breadcrumb-trail {
-    //margin-left: 28px;
     margin-left: calc(-230px + 20px + 16px); // align with toc
     display: inline-block;
 }
@@ -130,4 +129,33 @@ table {
 
 #edit-on-github {
     margin-right: calc(50% + 15px);
+}
+
+@media (max-width : 992px) { 
+    
+    .breadcrumb-trail {
+        margin-left: 28px;
+    }
+
+    #edit-on-github {
+        float: none;
+        margin-left: 28px;
+    }
+
+    .show-toc {
+        top: 150px;
+    }
+
+    .nav-left {
+        margin: 0;
+    }
+
+    .nav-left.mobile-state-hidden {
+        left: -225px;
+    }
+
+    table.table {
+        margin: auto;
+    }
+    
 }

@@ -16,9 +16,8 @@ breadcrumbs: false
 
 <p>This form will help you to to create secure links to your Beanstream Hosted Payment Form.
     <strong>It will not validate your input.</strong>
-    You can view the documentation including the field requirements on the Hosted Payment Form
+    You can view the documentation for the Hosted Payment Form, including the field requirements,
     <a href="http://support.beanstream.com/bic/w/#docs/customized-payment-form-data-variables.htm">here</a>.
-    You can view the source for this form <a href="#">here</a>.
 </p>
 
 <form id="form">
@@ -35,11 +34,11 @@ breadcrumbs: false
     </div>
     <div class="col-md-6">
         <div class="form-group">
-        <label for="hash-key">Hash Key*</label>
+        <label for="hash-key">Hash Key</label>
         <input id="hash-key" type="text" name="hash-key"
             oninvalid="setCustomValidity('This string can be found in the Back Office at `Administration > Account Settings > Order Settings`.')"
             oninput="setCustomValidity('')"
-            required/>
+            />
         </div>
     </div>
     </div>
