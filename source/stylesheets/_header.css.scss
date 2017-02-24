@@ -1,11 +1,5 @@
 /* header nav styling */
 
-// The pixel width where the header becomes too long
-// for the screen. Will vary depending on what links 
-// are in the header (how many). 
-// TODO: Move this to variables folder. 
-$header-break-width: 875px;
-
 .nav-fixed {
   position: fixed;
   width: 100%;

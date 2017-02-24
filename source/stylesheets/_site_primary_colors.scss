@@ -9,3 +9,10 @@
 $primary: $primary; 
 $primary-light: $faded-violet;
 $primary-dark: $amethyst;
+
+
+// Set the width that the header switch to the compact form. 
+// i.e. should be the width where the content of the header 
+// is too long for the page.
+// If changed, also need to change headerBreakWidth in navigation.js.
+$header-break-width: 875px;

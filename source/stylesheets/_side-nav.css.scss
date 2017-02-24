@@ -147,7 +147,7 @@ ul .js-toc {
 }
 
 
-@media (max-width : 875px) {
+@media (max-width : $header-break-width) {
   .show-toc, .mobile-close {
     display: none;
   }  
