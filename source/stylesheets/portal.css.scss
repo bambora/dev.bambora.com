@@ -434,4 +434,10 @@ footer {
   .breadcrumb-spacer{
     margin: 0;
   }
+
+  #search-overlay {
+    ul.search-results {
+      padding-left: 0;
+    }
+  }
 }

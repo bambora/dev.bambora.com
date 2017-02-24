@@ -1,6 +1,7 @@
 <% this_page = get_page_path current_page %>
 
 <%# Get the toc data to use for this page %> 
+<%# TODO: Put this in a helper function %>
 <% if current_page.data.navigation.toc %> 
   <% if current_page.data.navigation.toc == "in-page" || 
         current_page.data.navigation.toc == false %>    
@@ -16,7 +17,10 @@
 
 <% if toc_file != "none" %> 
 
+<div class="nav-wrapper">
 <nav class="nav-left nav-sticky nav-vertical">
+
+  <div class="mobile-close"><%= svg :close %></div>
 
   <%# Language Tabs for spec page layout are displayed in 
   the side nav when the page collapses to a single column %> 
@@ -65,5 +69,13 @@
       </ul>
     <% end %> 
 </nav>
+</div>
+
+<!-- button to click on small screen to show toc -->
+<div class="show-toc">
+  Contents
+</div>
+
 
 <% end %> 
+

@@ -1,10 +1,5 @@
 /* header nav styling */
 
-// The pixel width where the header becomes too long
-// for the screen. Will vary depending on what links 
-// are in the header (how many). 
-$header-break-width: 875px;
-
 .nav-fixed {
   position: fixed;
   width: 100%;
@@ -25,7 +20,7 @@ $header-break-width: 875px;
 
   .nav-links a {
       color: $lightest;
-  } 
+  }
 
   path {
     fill: $lightest;
@@ -37,9 +32,6 @@ nav { // transitions on landing page scroll
 }
 
 .hamburger-icon {
-  position: fixed;
-  top: 25px;
-  left: 20px;
   display: none;
 }
 
@@ -66,6 +58,10 @@ nav { // transitions on landing page scroll
 
   .hamburger-icon {
     display: inline;
+    position: fixed;
+    top: 25px;
+    left: 20px;
+    z-index: $zIndexHamburger;
   }
 
   .header-contents {
@@ -113,6 +109,14 @@ nav { // transitions on landing page scroll
       .header-contents {
 
         box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.04);
+        width: 200px;
+        position: fixed;
+        top: 66px;
+        left: 0;
+        transition: left 0.5s;
+        height: calc(100% - 66px);
+        max-height: calc(100% - 66px);
+        overflow-y: auto;
 
         &.mobile-state-hidden {
           display: block;
@@ -127,9 +131,9 @@ nav { // transitions on landing page scroll
         height: 100%;
       }
 
-        path {
-          fill: #9197a3;
-        } 
+      path {
+        fill: #9197a3;
+      } 
 
       .pull-left {
         float: none;
@@ -144,7 +148,7 @@ nav { // transitions on landing page scroll
       .pull-right {
           float: none;
           display: block;
-          
+          height: auto;
 
           >a {
             float: none;
@@ -162,7 +166,13 @@ nav { // transitions on landing page scroll
             display: block;
             padding-bottom: 15px;
             text-align: center;
+            margin-right: 0;
           }
+      }
+
+      .nav-left {
+        margin-top: 0;
+        overflow-y: visible;
       }
   }
 

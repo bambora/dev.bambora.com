@@ -9,19 +9,25 @@ $zIndexBody : 0;
 $zIndexDarkBox: 10; // dark code blocks in spec template.
 $zIndexLangSelector: 20; 
 
-/* Header content */
-
-$zIndexHeader : 100;
-
 
 /* Footer content */
 
-$zIndexFooter : 200;
+$zIndexFooter : 100;
 
 
 /* Side nav content */ 
+$zIndexShowSideNavButton: 199;
+$zIndexSideNav: 200; 
 
-$zIndexSideNav: 300; 
+/* Header content */
+
+$zIndexHeader : 300;
+$zIndexHamburger: 301;
+
+
+/* modal content */
+$zIndexModal: 400;
+
 
 
 /* modal content */
