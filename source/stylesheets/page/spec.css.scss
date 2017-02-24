@@ -134,7 +134,28 @@ table {
 @media (max-width : 992px) { 
     
     .breadcrumb-trail {
-        margin-left: 0;
+        margin-left: 28px;
+    }
+
+    #edit-on-github {
+        float: none;
+        margin-left: 28px;
+    }
+
+    .show-toc {
+        top: 150px;
+    }
+
+    .nav-left {
+        margin: 0;
+    }
+
+    .nav-left.mobile-state-hidden {
+        left: -225px;
+    }
+
+    table.table {
+        margin: auto;
     }
     
 }
