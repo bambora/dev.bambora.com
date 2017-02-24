@@ -4,3 +4,5 @@
   title: 'Quickstart: Partner'
 - file: '/docs/guides/onboarding'
   title: 'Onboarding'
+- file: '/docs/guides/3D_secure'
+  title: '3D Secure'
