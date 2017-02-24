@@ -4,7 +4,7 @@
 // small screens. 
 $(document).ready(function () { 
     // Hamburger menu on mobile screen
-    $(".header-contents").toggleClass("mobile-state-hidden")    
+    $(".header-contents").toggle().toggleClass("mobile-state-hidden").toggle(); // toggle to skip css transition on page load
     $('.hamburger-icon').click(function(event) {
         event.preventDefault();
         event.stopPropagation();
@@ -23,6 +23,20 @@ $(document).ready(function () {
     $('.mobile-close').click(function(event) {
         event.stopPropagation();
         $('.nav-left').toggleClass('mobile-state-hidden');
+    });
+
+    // close menu on click outside of it$(document).mouseup(function (e)
+    $(document).mouseup(function (e)
+    {
+        var container = $("nav.nav-pane");
+
+        if (!container.is(e.target) // if the target of the click isn't the container...
+            && container.has(e.target).length === 0) // ... nor a descendant of the container
+        {
+            if(!$(".header-contents").hasClass('mobile-state-hidden')) {
+                $(".header-contents").toggleClass('mobile-state-hidden');
+            }
+        }
     });
 
     // Combine toc and header side nav if page width below $header-break-width.
