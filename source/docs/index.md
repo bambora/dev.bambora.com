@@ -24,7 +24,7 @@ card_sets:
     -  
         title: Guides
         description: >
-            Learn how to get things done.
+            Learn how to get things done. See all the guides <a href="/docs/guides">here.</a>
         cards:
             -
                 title: Merchant Quickstart
@@ -43,7 +43,7 @@ card_sets:
     -
         title: References
         description: >
-            Get an in-depth knowledge of our payment gateway.
+            Get an in-depth knowledge of our payment gateway. See all the references <a href="/docs/guides">here.</a>
         cards:
             -
                 title: Payments API
