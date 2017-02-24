@@ -115,6 +115,14 @@ nav { // transitions on landing page scroll
       .header-contents {
 
         box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.04);
+        width: 200px;
+        position: fixed;
+        top: 66px;
+        left: 0;
+        transition: left 0.5s;
+        height: calc(100% - 66px);
+        max-height: calc(100% - 66px);
+        overflow-y: auto;
 
         &.mobile-state-hidden {
           display: block;
@@ -129,9 +137,9 @@ nav { // transitions on landing page scroll
         height: 100%;
       }
 
-        path {
-          fill: #9197a3;
-        } 
+      path {
+        fill: #9197a3;
+      } 
 
       .pull-left {
         float: none;
@@ -146,7 +154,7 @@ nav { // transitions on landing page scroll
       .pull-right {
           float: none;
           display: block;
-          
+          height: auto;
 
           >a {
             float: none;
@@ -166,6 +174,10 @@ nav { // transitions on landing page scroll
             text-align: center;
             margin-right: 0;
           }
+      }
+
+      .nav-left {
+        overflow-y: visible;
       }
   }
 
