@@ -49,18 +49,14 @@ $(document).ready(function () {
     function checkWidth() {
         var windowsize = $window.width();
         if (windowsize < 875 && combined === false) {
-
-            console.log('combine');
             combined = true;
             $headerSideNav.append($tableOfContents);
         
         } else if (windowsize >= 875 && combined === true) {
-            console.log("separate");
             combined = false;
             $tableOfContentsWrap.append($tableOfContents);
         }
     }
     checkWidth();
     $(window).resize(checkWidth);
-
 });
