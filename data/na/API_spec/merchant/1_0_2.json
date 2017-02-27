@@ -1170,8 +1170,8 @@
           "type" : "string",
           "description" : "Deferred(D) or Equal(E) payment",
           "maxLength" : 1,
-          "enum" : [ "D", "E" ],
-          "default" : "E"
+          "default" : "E",
+          "enum" : [ "D", "E" ]
         },
         "plan_number" : {
           "type" : "string",
@@ -1363,10 +1363,18 @@
           "maxLength" : 16,
           "enum" : [ "P", "R", "VP", "VR", "PA", "PAC" ]
         },
+        "amount" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "A decimal value in dollars, or relevant currency."
+        },
         "payment_method" : {
           "type" : "string",
           "description" : "Payment method",
           "enum" : [ "card", "token", "payment_profile", "cash", "cheque", "apple_pay" ]
+        },
+        "custom" : {
+          "$ref" : "#/definitions/Custom"
         },
         "card" : {
           "$ref" : "#/definitions/CardPurchaseResponse"

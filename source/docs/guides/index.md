@@ -25,9 +25,15 @@ cards:
     -
         title: Onboarding
         description: >
-            Get up to speed on our Onboarding API in minutes.
+            Get up to speed on our Onboarding API in minutes
         icon: list
         link: /docs/guides/onboarding/
+    -
+        title: 3D Secure
+        description: >
+            Learn about implementing 3D Secure based payments
+        icon: list
+        link: /docs/guides/3D_secure
 
 ---
 
