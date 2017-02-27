@@ -230,7 +230,7 @@ footer {
   }
 
   .form-group {
-    margin-bottom: 0;
+    margin-bottom: 15px;
   }
   
   #result-count {
@@ -394,8 +394,11 @@ footer {
 /* form messages */
 
 .message {
-
   padding: 15px;
+
+  a {
+    word-break: break-all;
+  }
 
   p {
     padding-bottom: 0;
