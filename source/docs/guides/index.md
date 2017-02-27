@@ -33,7 +33,7 @@ cards:
         description: >
             Learn about implementing 3D Secure based payments
         icon: list
-        link: /docs/guides/3D_Secure
+        link: /docs/guides/3D_secure
 
 ---
 

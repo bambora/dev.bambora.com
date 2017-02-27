@@ -28,14 +28,14 @@ With a VbV, SecureCode, or SafeKey transaction, a customer is redirected to a ba
 number before a transaction is processed. The bank then returns an authentication response which must be forwarded to 
 our API for a transaction to complete.
 
-Use one of these two options to implement 3D Secure:
+<!-- Use one of these two options to implement 3D Secure: -->
 
 ## 1. Use our 2-Step process
 
 Use our RESTful Payments API to initiate the Payment and to complete the transaction request. In this standard 
 integration, the VbV, SecureCode, and SafeKey process requires two transaction requests.
 
-In addtion to this guide feel free to check out our REST API Demo implementation on GitHub here:
+In addition to this guide feel free to check out our REST API Demo implementation on GitHub here:
 
 https://github.com/Beanstream/rest-api-demo
 
@@ -160,7 +160,7 @@ Response
   ]
 }
 ```
-
+<!--
 ## 2. Use your own process
 
 Some large merchants complete the Verified by Visa (VbV), MasterCard SecureCode, or AMEX SafeKey certification to handle 
@@ -178,3 +178,4 @@ system variables:
 | secure_xid | Include the 20-digit 3D Secure transaction identifier. |
 | secure_eci | SecureECI is a 1-digit status code: 5 – authenticated; 6 – attempted, not completed. |
 | secure_cavv | Include the 40-character Cardholder Authentication Verification Value. |
+-->
