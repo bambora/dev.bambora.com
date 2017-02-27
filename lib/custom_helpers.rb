@@ -72,11 +72,13 @@ module CustomHelpers
   # swagger template to render the spec.  
   def get_swagger_doc(url, destination)
     require 'open-uri'
+    require 'fileutils'
     root = Middleman::Application.root
     name = url.split('/').last
     name, extension = name.split('.')
     download = open(url)
-    IO.copy_stream(download, "#{root}/data/#{destination}")
+    FileUtils.mkdir_p(File.dirname("#{root}/data/autodownload/#{destination}"))
+    IO.copy_stream(download, "#{root}/data/autodownload/#{destination}")
   end
 
   # Get the data file referenced using dot notation 
