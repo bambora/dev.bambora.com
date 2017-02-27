@@ -33,7 +33,7 @@ You're going to need:
  1. Clone this repository. You can optionally fork the repo too.
  3. `cd dev.bambora.com`
  4. Install all dependencies: `bundle install`
- 5. Start the test server: `bundle exec middleman server`
+ 5. Start the test server: `EXECJS_RUNTIME=Node bundle exec middleman server`
 
 Or use the included Dockerfile! (must install Docker first)
 
