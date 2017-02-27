@@ -17,16 +17,15 @@ There are two card formats that you can use to make a payment: tokenized cards, 
 
 ```shell
 CARD_TOKEN="<CARD_TOKEN>"
-PAYMENT_REFERENCE="<PAYMENT_REFERENCE>"
 MERCHANT_NUMBER="<MERCHANT_NUMBER>"
-MERCHANT_TOKEN="<MERCHANT_TOKEN>"
-MERCHANT_SECRET="<MERCHANT_SECRET>"
+PAYMENT_REFERENCE="<PAYMENT_REFERENCE>"
+TOKEN="<TOKEN>"
 
-URL="https://api-beta.bambora.com/payments/${PAYMENT_REFERENCE}/card_token_authorization/"
-AUTHORIZATION="Authorization: Basic "$(echo -n ${MERCHANT_TOKEN}@${MERCHANT_NUMBER}:${MERCHANT_SECRET} | base64)
+URL="https://api.bambora.com/v1/merchants/${MERCHANT_NUMBER}/payments/${PAYMENT_REFERENCE}/card_token_authorization/"
 
 curl \
-    --header "${AUTHORIZATION}" \
+    --request POST \
+    --header "Authorization: Bearer ${TOKEN}" \
     --header "API-Version: 1" \
     --header "Content-Type: application/json" \
     --data '{"currency": "EUR",
@@ -36,106 +35,116 @@ curl \
 ```
 
 ```python
-import requests
-
 CARD_TOKEN = '<CARD_TOKEN>'
-PAYMENT_REFERENCE = '<PAYMENT_REFERENCE>'
 MERCHANT_NUMBER = '<MERCHANT_NUMBER>'
-MERCHANT_TOKEN = '<MERCHANT_TOKEN>'
-MERCHANT_SECRET = '<MERCHANT_SECRET>'
+PAYMENT_REFERENCE = '<PAYMENT_REFERENCE>'
 
-URL = 'https://api-beta.bambora.com/payments/{payment_reference}/card_token_authorization/'
-
-payload = {
+PAYLOAD = {
   "currency": 'EUR',
   "amount": 1000,
   "token": CARD_TOKEN
 }
 
-response = requests.post(
-    URL.format(payment_reference=PAYMENT_REFERENCE),
-    auth=('{}@{}'.format(MERCHANT_TOKEN, MERCHANT_NUMBER), MERCHANT_SECRET),
+URL = 'https://api.bambora.com/v1/merchants/{merchant}/payments/{payment}/card_token_authorization/'
+
+response = oauth_session.post(
+    URL.format(merchant=MERCHANT_NUMBER, payment=PAYMENT_REFERENCE),
     headers={'API-Version': '1'},
-    json=payload
+    json=PAYLOAD
 )
 ```
-> The Python code example requires that the [requests library for Python](https://github.com/kennethreitz/requests/) is installed on the computer that is running the code.
+> The code examples require that you have already retrieved a JSON Web Token. Please see our
+[Authentication examples](#authentication) for details. The Python code example requires the packages [OAuthLib](https://pypi.python.org/pypi/oauthlib) and [Requests-OAuthlib](https://pypi.python.org/pypi/requests-oauthlib).
 
 A tokenized card is when you have already registered a card with us and you're just using the token you received back to pay with it.
 
 You will need the following data in order to make the request:
 
+* A valid JSON Web Token.
 * Data about the payment including amount, currency and a credit card token.
 * A payment reference.
 * A merchant number.
-* A merchant token.
-* A merchant secret.
 
-You will get access to the merchant number, a merchant token and a merchant secret after registering with Bambora.
+You will get access to the merchant number as well as credentials for
+requesting JSON Web Tokens after registering with Bambora.
 
-You need to set a unique payment reference in order to make a
-payment. The maximum length of the payment reference is 2,000
-characters.
+The payment reference refers to the one that you are required to set before
+making a payment. The maximum length of the payment reference is 2,000 characters.
 
-We have created code examples showing how to query a payment - one written in python and the other written in bash using cURL. Please note that each placeholder needs to be replaced with real data.
+We have created code examples showing how to make a payment using a card token - one written in python and the other written in bash using cURL. Please note that each placeholder needs to be replaced with real data.
 
 ### Response
 
-```Response: 
+```json
 {
-    "merchant": "string",
-    "comment": "N/A",
-    "currency": "EUR",
-    "amount": 1000,
-    "region": "string",
-    "state": "Authorized",
-    "operationInProgress": false,
-    "operations": ["Capture", "Cancel"],
-    "captures": [],
-    "payment": "string"
+  "_locked_at": null,
+  "_version": 0,
+  "external_id": "string",
+  "internal_id": "string",
+  "merchant_id": "string",
+  "operations": [
+    {
+      "amount": 1000,
+      "code": "string",
+      "comment": null,
+      "currency": "EUR",
+      "id": "string",
+      "psp": "string",
+      "psp_id": "string",
+      "psp_reference": "string",
+      "success": true,
+      "timestamp": "string",
+      "token": "string",
+      "type": "Authorize token"
+    }
+  ],
+  "schema": 0,
+  "state": "Authorized"
 }
 ```
+
+If the payment operation was successful you will receive an HTTP status code of 201 (Created). Any errors or problems will represent themselves as non-200 status codes. You can see those in the [standard error codes](./errors).
 
 ### Encrypted Cards
 
 ```shell
-PAYMENT_REFERENCE="<PAYMENT_REFERENCE>"
 MERCHANT_NUMBER="<MERCHANT_NUMBER>"
-MERCHANT_TOKEN="<MERCHANT_TOKEN>"
-MERCHANT_SECRET="<MERCHANT_SECRET>"
+PAYMENT_REFERENCE="<PAYMENT_REFERENCE>"
+TOKEN="<TOKEN>"
 
-URL="https://api-beta.bambora.com/payments/${PAYMENT_REFERENCE}/encrypted_card_authorization/"
-AUTHORIZATION="Authorization: Basic "$(echo -n ${MERCHANT_TOKEN}@${MERCHANT_NUMBER}:${MERCHANT_SECRET} | base64)
-​
+URL="https://api.bambora.com/v1/merchants/${MERCHANT_NUMBER}/payments/${PAYMENT_REFERENCE}/encrypted_card_authorization/"
+
 curl \
-    --header "${AUTHORIZATION}" \
+    --request POST \
+    --header "Authorization: Bearer ${TOKEN}" \
     --header "API-Version: 1" \
     --header "Content-Type: application/json" \
-    --data '{"currency": "EUR",
-         "amount": 1000,
-         "encryptedSessionKeys": 
-          [{"fingerprint": "string",
-            "sessionKey": "string"}],
-         "encryptedCard": 
-          {"cardNumber": "string", 
-           "cvcCode": "string", 
-           "expiryMonth": "string", 
-           "expiryYear": "string"},
-           "token": true}' \
+    --data '{
+              "currency": "EUR",
+              "amount": 1000,
+              "encryptedSessionKeys": [
+                {
+                  "fingerprint": "string",
+                  "sessionKey": "string"
+                }
+              ],
+              "encryptedCard":
+                {
+                  "cardNumber": "string",
+                  "cvcCode": "string",
+                  "expiryMonth": "string",
+                  "expiryYear": "string"
+                },
+              "token": true
+            }' \
     "${URL}"
 ```
 
 ```python
-import requests
-
-PAYMENT_REFERENCE = '<PAYMENT_REFERENCE>'
 MERCHANT_NUMBER = '<MERCHANT_NUMBER>'
-MERCHANT_TOKEN = '<MERCHANT_TOKEN>'
-MERCHANT_SECRET = '<MERCHANT_SECRET>'
+PAYMENT_REFERENCE = '<PAYMENT_REFERENCE>'
 
-URL = 'https://api-beta.bambora.com/payments/{payment_reference}/encrypted_card_authorization/'
-
-payload = {
+PAYLOAD = {
   "currency": "EUR",
   "amount": 1000,
   "encryptedSessionKeys": [
@@ -153,57 +162,75 @@ payload = {
   "token": True
 }
 
-response = requests.post(
-    URL.format(payment_reference=PAYMENT_REFERENCE),
-    auth=('{}@{}'.format(MERCHANT_TOKEN, MERCHANT_NUMBER), MERCHANT_SECRET),
+URL = 'https://api.bambora.com/v1/merchants/{merchant}/payments/{payment}/encrypted_card_authorization/'
+
+response = oauth_session.post(
+    URL.format(merchant=MERCHANT_NUMBER, payment=PAYMENT_REFERENCE),
     headers={'API-Version': '1'},
-    json=payload
+    json=PAYLOAD
 )
 ```
 
-> The Python code example requires that the [requests library for Python](https://github.com/kennethreitz/requests/) is installed on the computer that is running the code.
+> The code examples require that you have already retrieved a JSON Web Token. Please see our
+[Authentication examples](#authentication) for details. The Python code example requires the packages [OAuthLib](https://pypi.python.org/pypi/oauthlib) and [Requests-OAuthlib](https://pypi.python.org/pypi/requests-oauthlib).
 
 *Please note:* The /encrypted_card_authorization/ endpoint is only intended for merchants that have a fully PCI compliant backend. If you fit that description, please contact us at native.support@bambora.com for more information.
-
-
 
 An encrypted card will usually be used the first time you make a payment, sending the encrypted card information, in return you will receive a tokenized card.
 
 You will need the following data in order to make the request:
 
-* A payload consisting of data such as currency, amount and encrypted credit card data.
+* A valid JSON Web Token.
 * A merchant number.
-* A merchant token.
-* A merchant secret.
-* A payment reference (the reference that you set in the SDK before the payment in question was made)
+* A payment reference
+* A payload consisting of data such as currency, amount and encrypted credit card data.
 
-The payment reference refers to the one that you are required set in the SDK before making a payment. In order to capture a payment, you need to provide its unique payment reference.
+You will get access to the merchant number as well as credentials for
+requesting JSON Web Tokens after registering with Bambora.
 
-We have created code examples showing how to query a payment - one written in python and the other written in bash using cURL. Please note that each placeholder needs to be replaced with real data.
+The payment reference refers to the one that you are required to set before
+making a payment. The maximum length of the payment reference is 2,000 characters.
+
+We have created code examples showing how to make a payment using encrypted card data - one written in python and the other written in bash using cURL. Please note that each placeholder needs to be replaced with real data.
 
 ## Response
 
-```Response
+```json
 {
-    "region": "string",
-    "merchant": "string",
-    "payment": "string",
-    "state": "Authorized",
-    "currency": "EUR",
-    "amount": 0,
-    "comment": "string",
-    # If token was set to true:
-    "card": {
-        "token": "string",
+  "_locked_at": null,
+  "_version": 0,
+  "external_id": "string",
+  "internal_id": "string",
+  "merchant_id": "string",
+  "operations": [
+    {
+      "amount": 1000,
+      "card": {
         "cardNumber": "string",
-        "cardType": "VISA",
+        "cardType": "string",
         "expiryMonth": 0,
-        "expiryYear": 0
+        "expiryYear": 0,
+        "token": "string"
+      },
+      "code": "string",
+      "comment": null,
+      "currency": "EUR",
+      "id": "string",
+      "psp": "string",
+      "psp_id": "string",
+      "psp_reference": "string",
+      "success": true,
+      "timestamp": "string",
+      "token": null,
+      "tokenize": true,
+      "type": "Authorize card"
     }
+  ],
+  "schema": 0,
+  "state": "Authorized"
 }
 ```
-If the query was successful and you used the encrypted card method then you will receive a tokenized card in return as well (as seen in the example here, the "card" part). This is only the case if you set the "token" to "true" in the payload.
 
-Otherwise you will only get the first part of the response (not the tokenized card).
+If the query was successful and you used the encrypted card method then you will receive a tokenized card in return (as seen in the example here, the "card" part) if you set `token` to `true` in the payload. If `token` was set to `false` you will only get the first part of the response (not the tokenized card).
 
-If the query was successful you will receive an HTTP status code of 201 (Created). Any errors or problems will represent themselves as a non-200 status code. Check the [standard error codes](./api.html#errors) if you get something other than 200. See the response example provided as well.
+If the payment operation was successful you will receive an HTTP status code of 201 (Created). Any errors or problems will represent themselves as non-200 status codes. You can see those in the [standard error codes](./errors).
