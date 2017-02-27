@@ -1,0 +1,36 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Description: dev.bambora.com
+
+Mappings:
+    EnvMap:
+        test:
+            BucketName: bambora-dev-portal-test-eu-west-1
+        prod:
+            BucketName: dev.bambora.com
+
+Outputs:
+    BucketName:
+        Value:
+            !Ref Bucket
+
+Parameters:
+    Environment:
+        Description: Environment to deploy to.
+        Type: String
+        AllowedValues:
+        - test
+        - prod
+
+Resources:
+    Bucket:
+        Type: AWS::S3::Bucket
+        Properties:
+            AccessControl: PublicRead
+            BucketName: !FindInMap [ EnvMap, !Ref Environment, BucketName ]
+            LoggingConfiguration:
+                DestinationBucketName: !Join [ "-", [ bambora, weblogs, !Ref Environment, !Ref "AWS::Region" ]]
+                LogFilePrefix: dev-portal/
+            WebsiteConfiguration:
+                ErrorDocument: error.html
+                IndexDocument: index.html
