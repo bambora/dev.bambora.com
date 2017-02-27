@@ -8,18 +8,22 @@
     <% if footer %> 
 
         <% if footer.copyright %>
-            <%= "© " + footer.copyright %>
+            <% if footer.copyright.link %> 
+                © <a href="<%= footer.copyright.link %>" target="_blank"><%= footer.copyright.title %></a>
+            <% else %>
+                <%= "© " + footer.copyright %>
+            <% end %>
         <% end %>
 
         <div class="links">
             <% footer.left_links and footer.left_links.each do |link| %>
-                <a href="<%= link.link %>"><%= link.title %></a>
+                <a href="<%= link.link %>" target="_blank"><%= link.title %></a>
             <% end %>
         </div>
         
         <div class="pull-right">
             <% footer.right_links and footer.right_links.each do |link| %>
-                <a href="<%= link.link %>"><%= link.title %></a>
+                <a href="<%= link.link %>" target="_blank"><%= link.title %></a>
             <% end %> 
         </div>
 

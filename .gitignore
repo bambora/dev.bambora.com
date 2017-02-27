@@ -21,6 +21,6 @@ _yardoc
 doc/
 .idea/
 
-data/autodownload/
+data/autodownload/*
 
 dockrun.sh

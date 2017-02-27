@@ -6,15 +6,13 @@
 
   <body class="<%= page_classes %>">
 
-    <%= partial "layouts/google_tag_manager" %>
-      
+    <%= partial "layouts/google_tag_manager" %>      
     <%= partial "layouts/header" %>
 
     <div class="container">
 
       <%= partial "layouts/breadcrumb_trail" %> 
       <%= partial "layouts/edit_on_github" %>
-
       <%= partial "layouts/side_nav" %>
 
       <div class="row">
@@ -123,7 +121,7 @@
                           :operation_name => operation["operation_name"],
                           :path_name      => operation["path_name"],
                           :operation_body => operation["operation_body"],
-                          :definitions    => definitions 
+                          :definitions    => definitions
                     } %>
                   
                   <% end %>

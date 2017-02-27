@@ -15,7 +15,6 @@ summary: >
 
 includes:
   - portal/test/test_include_1
-
 ---
 
 # Example Tutorial
@@ -34,6 +33,7 @@ In dolorum ad odit nesciunt suscipit vitae est dolor doloribus tenetur minima te
 | -------- | -------- |----------|----------|----------|
 | cell 1   | cell 2   | cell 3   | cell 4   | cell 5   | 
 | cell 3   | cell 4   | cell 6   | cell 7   | cell 8   |
+
 
 ## Second Level Heading
 
