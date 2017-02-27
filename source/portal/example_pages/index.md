@@ -22,4 +22,5 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat numquam praes
 3. [Example Spec Page](example_spec_page/)
 4. [Example Swagger Page](example_swagger_page/)
 5. [Example Tutorial](example_tutorial/)
+6. [Example FAQ Page](example_FAQ_page/)
 

@@ -1,7 +1,3 @@
-// TODO: Clean this logic up.
-// Just give everything that can expand a class of expandable and target 
-// the next .expandable on click?
-
 // Hide elements that should be hidden on page load 
 $('.tag-operations').toggle();
 $('.schema-body .schema-body').toggle();

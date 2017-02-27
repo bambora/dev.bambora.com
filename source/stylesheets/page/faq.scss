@@ -1,0 +1,60 @@
+@import 'bambora_ui_variables';
+
+
+@mixin expand-arrow($arrow-color) {
+    content: '';
+    position: absolute;
+    left: 0px;
+    top: calc(50% - 5px);
+    transform: rotate(-45deg);
+    width: 8px;
+    height: 8px;
+    border-left: 4px solid transparent;
+    border-bottom: 4px solid $arrow-color;
+    border-right: 4px solid $arrow-color;
+    border-top: 4px solid transparent; 
+    transition: transform 0.2s, top 0.2s;
+}
+
+@mixin expanded-arrow {
+    top: calc(50% - 10px);
+    transform: rotate(45deg);
+}
+
+/* Expandable headings */
+
+h2 {
+    position: relative;
+    cursor: pointer;
+    padding: 10px 15px;
+    margin-bottom: 30px;
+    display: inline-block;
+
+    &.open {
+        margin-bottom: 0;
+    }
+
+    &:before {
+        @include expand-arrow($darkest);
+    }
+
+    &.open:before {
+        @include expanded-arrow;
+    }
+}
+
+/* Heading content */
+
+.faq-answer {
+    display: none;
+    margin-top: 0;
+    margin-bottom: 30px;
+    padding: 20px;
+    padding-bottom: 0;
+}
+
+/* images */
+
+
+
+
