@@ -19,10 +19,10 @@ site_url: ''
 <% form_tag 'https://api.beanstream.com/scripts/merchantaccount/createtestaccount.aspx',
     :id => 'createTestAccount_form', :class => 'form-group', :method => 'POST' do %>
 
-  <%= hidden_field_tag :error_page_url, :value => "#{current_page.data.site_url}/portal/forms/create_test_merchant_account" %>
+  <%= hidden_field_tag :error_page_url,   :value => "#{current_page.data.site_url}/portal/forms/create_test_merchant_account" %>
   <%= hidden_field_tag :success_page_url, :value => "#{current_page.data.site_url}/portal/forms/create_test_merchant_account" %>
-  <%= hidden_field_tag :create_session, :value => '1' %>
-  <%= hidden_field_tag :account_type, :value => 'DEVELOPER' %>
+  <%= hidden_field_tag :create_session,   :value => '1' %>
+  <%= hidden_field_tag :account_type,     :value => 'DEVELOPER' %>
 
   <div class="form-group">
   <%= label_tag :user_login, :caption => 'Username: ' %>
@@ -61,8 +61,12 @@ site_url: ''
         <li role="option"><a href="#">Canada - CAD</a></li>
         <li role="option"><a href="#">Canada - USD</a></li>
         <li role="option"><a href="#">USA - USD</a></li>
+
+        <!-- Unsupported:
         <li role="option"><a href="#">UK - GBP</a></li>
         <li role="option"><a href="#">UK - Euro</a></li>
+        -->
+
       </ul>
     </div>
   </div>
@@ -70,7 +74,7 @@ site_url: ''
   <%= hidden_field_tag :merchant_country, :value => 'CA' %>
   <%= hidden_field_tag :merchant_currency, :value => '1' %>
 
-  <%= submit_tag 'Create Test Merchant Account', :class => "btn btn-default" %>
+  <%= submit_tag 'Create test merchant account', :class => "btn btn-default" %>
 <% end %>
 
 <div class='message block-highlight hidden'><p></p></div>
