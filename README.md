@@ -38,8 +38,9 @@ You're going to need:
 Or use the included Dockerfile! (must install Docker first)
 
 ```shell
-docker build -t devbamboracom .
-docker run -d -p 4567:4567 devbamboracom
+sudo docker build -t devbamboracom .
+
+sudo docker run -v ~/path/to/dev.bambora.com/source:/usr/src/app/source -p 4567:4567 devbamboracom
 ```
 
 If you want to build the static site files only then run:
