@@ -238,11 +238,7 @@ h2.open:before {
         position: relative;
         padding-left: 20px;
         cursor: pointer;
-
-        &:hover {
-            text-decoration: underline;
-        }   
-
+        
         a {
             color: $primary !important;
             text-decoration: none;
