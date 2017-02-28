@@ -16,3 +16,4 @@ buttons:
     secondary: true
   - file: https://www.beanstream.com/admin/sDefault.asp
     title: Login
+    new_tab: True
