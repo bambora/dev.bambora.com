@@ -15,13 +15,7 @@
     </span>
   <% end %>
 
-
   <span class="property-body">
-    <% if property.maxLength %> 
-      <span class="property-detail">
-        max length: <%= property.maxLength %>
-      </span>
-    <% end %>
 
     <% if property.enum %>
       <span class="property-detail">
@@ -35,11 +29,18 @@
       </span>
     <% end %>
 
-    <% if property.description %>
-      <span class="property-detail">
-        <em><%= property.description %></em>
-      </span>
+    <% printed_fields = ['format', 'default', 'maximum', 'minimum', 
+      'minLength', 'maxLength', 'pattern', 'maxItems', 'minItems', 
+      'description'] %>
+
+    <% printed_fields.each do |field| %>
+      <% if property[field] %>
+        <span class="property-detail">
+          <%= field %>: <%= property[field] %>
+        </span>
+      <% end %>
     <% end %>
+
   </span>
 
 </span>
