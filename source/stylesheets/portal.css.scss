@@ -111,6 +111,10 @@ pre {
  	flex-direction: column;
   flex-grow: 1;
 
+  &:last-child {
+    flex-grow: 0;
+  }
+
     a {
         background-color: $lightest;
         color: $darkest; 
@@ -184,7 +188,7 @@ body {
 }
 
 footer {
-  margin-top: 75px;
+  margin-top: 30px;
 }
 
 
@@ -428,6 +432,7 @@ footer {
   #edit-on-github {
     float: none;
     display: block;
+    max-width: 220px;
     margin-top: -15px;
     margin-bottom: 15px;
     margin-right: 15px;
