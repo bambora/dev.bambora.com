@@ -1,5 +1,3 @@
-.git
-.gitignore
 .travis.yml
 CHANGELOG.md
 CONTRIBUTING.md
