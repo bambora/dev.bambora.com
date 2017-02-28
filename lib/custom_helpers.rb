@@ -158,5 +158,10 @@ module CustomHelpers
     return result
   end
 
+  # Return the hash of the latest git commit. Included on each page as 
+  # the site version.
+  def get_latest_commit()
+    `git log -1 HEAD --format=%H`
+  end
 
 end
