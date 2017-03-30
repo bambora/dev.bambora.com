@@ -1,18 +1,33 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
     "Description": "Public access bucket for dev.bambora.com",
+    "Parameters" : {
+        "Environment" : {
+            "Description" : "The environment to deploy to.",
+            "Type" : "String",
+            "AllowedValues" : ["test", "prod"]
+        }
+    },
+    "Mappings" : {
+        "EnvironmentMap" : {
+            "BucketName" : {
+                "test" : "bambora-dev-portal-test-eu-west-1",
+                "prod" : "dev.bambora.com" 
+            }
+        }
+    },
     "Resources" : {
         "Bucket" : {
             "Type" : "AWS::S3::Bucket",
             "Properties" : {
                 "AccessControl" : "PublicRead",
-                "BucketName" : "dev.bambora.com",
+                "BucketName" : { "Fn::FindInMap" : [ "EnvironmentMap", "BucketName", { "Ref": "Environment" } ] },
                 "WebsiteConfiguration" : {
                     "ErrorDocument" : "error.html",
                     "IndexDocument" : "index.html"
                 },
                 "LoggingConfiguration" : {
-                    "DestinationBucketName" : { "Fn::Join" : [ "-", [ "bambora", "weblogs", "prod", { "Ref" : "AWS::Region" } ] ] },
+                    "DestinationBucketName" : { "Fn::Join" : [ "-", [ "bambora", "weblogs", { "Ref" : "Environment" }, { "Ref" : "AWS::Region" } ] ] },
                     "LogFilePrefix" : { "Fn::Join" : [ "", [ "dev-portal", "/" ] ] }
                 }
             }
